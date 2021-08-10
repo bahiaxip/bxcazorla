@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('section1',{static:true}) private section1!:ElementRef;
   @ViewChild('section2',{static:true}) private section2!:ElementRef;
   @ViewChild('section3',{static:true}) private section3!:ElementRef;
+  @ViewChild('section4',{static:true}) private section4!:ElementRef;
   constructor() {
     //window.addEventListener("")
     //this.selectedSection=this.section1.nativeElement;
@@ -25,7 +26,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedSection=this.section1.nativeElement;
-    //document.getElementsByTagName("html")[0].style.overflow="hidden";
+    document.getElementsByTagName("html")[0].style.overflow="hidden";
+    
     window.addEventListener("resize",(e)=>{
       this.selectedSection.scrollIntoView();
       console.log("se esta moviendo:",e);
@@ -67,7 +69,12 @@ export class HomeComponent implements OnInit {
       console.log(this.section2.nativeElement.scrollTop);
     }else if(id==3){
       this.selectedSection=this.section3.nativeElement;
-      console.log("al 2")
+      console.log("al 3")
+      this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});  
+    }
+    else if(id==4){
+      this.selectedSection=this.section4.nativeElement;
+      console.log("al 4")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});  
     }
 

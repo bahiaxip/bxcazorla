@@ -15,12 +15,14 @@ import { MatIconModule } from '@angular/material/icon';
 //import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
+import { RentingComponent } from './renting/renting.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    RentingComponent
   ],
   imports: [
     BrowserModule,
