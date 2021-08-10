@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.g-image-loaded{
+	//height: 100%;
+}
+.mygallery{
+	height: 100vh;
+}
+.g-image-item{
+	//background-size: 100%  !important;
+
+	
+}
+html,body{
+	margin: 0;
+
+}

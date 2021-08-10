@@ -1,0 +1,190 @@
+<!--<p>home works!</p>-->
+
+<!--<div >
+	<button>boton despues</button>
+</div>-->
+<section class="section1" #section1 >
+	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(0,0,0,0.5);">
+		<mat-button-toggle-group #group="matButtonToggleGroup" style="color:#fff;position:fixed;z-index: 999;top:30%;left:5%;background:#ff7500" vertical>
+			<mat-button-toggle (click)="enviar(1)">
+				<mat-icon>info_round</mat-icon>
+			</mat-button-toggle>
+			<mat-button-toggle (click)="enviar(2)">
+				<i class="material-icons material-icons-two-tone">home</i>
+			</mat-button-toggle>
+			<mat-button-toggle (click)="enviar(3)">
+				<i class="material-icons material-icons-outlined">home</i>
+			</mat-button-toggle>
+			<mat-button-toggle>
+				<i class="material-icons material-icons-sharp">home</i>
+			</mat-button-toggle>
+			<mat-button-toggle>
+				<mat-icon>
+					<i class="material-icons-round">home</i>
+				</mat-icon>
+			</mat-button-toggle>
+		</mat-button-toggle-group>
+	</div>
+	<div style="width:100%;height:100%;overflow:hidden">
+		
+			<img src="./assets/rio_cazorla.jpg" style="width:100%;"/>
+		
+		<button mat-icon-button (click)="enviar(2)" style="position: fixed;z-index: 999;bottom:20px;color:#FFF;background: #ff7500;left:50%">
+			<mat-icon style="transform:rotate(90deg)">
+				double_arrow
+			</mat-icon>
+		</button >
+	</div>
+	
+</section>
+<section id="section2" class="section1" #section2>
+	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(0,0,0,0.5);">
+		<gallery [items]="images" fluid class="mygallery" [thumb]="false" ></gallery>
+	</div>
+	
+	<div style="width:100%;display:flex;position:absolute">
+		<button class="boton2" (click)="enviar(1)">Botón</button>
+	</div>
+</section>
+<section id="section3" class="section1" #section3>
+	
+	<div style="width:100%;height: 100vh;min-height: 700px;position:absolute;background-color:rgba(255,255,255,0.7);">
+		<div style="width: 100%;height: 100vh;position:absolute;top:10%;left:20%;">
+			<div style="max-width:70%;position:relative;margin-top:100px;display:inline-block;height:80%">
+				<div style="display: flex;float:left;width:250px">
+				<mat-card style="min-width:200px;margin:10px;">
+					<mat-card-header>
+						<mat-card-title>
+							Apartamentos Martín
+						</mat-card-title>
+					</mat-card-header>
+					<img mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" />
+					<mat-card-content>					
+					</mat-card-content>
+				</mat-card>
+				</div>
+				<div style="display: flex;float:left;width:250px">
+				<mat-card style="min-width:200px;margin:10px">
+					<mat-card-header>
+						<mat-card-title>
+							Apartamentos Martín
+						</mat-card-title>
+					</mat-card-header>
+					<img mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" />
+					<mat-card-content>					
+					</mat-card-content>
+				</mat-card>
+				</div>
+				<div style="display: inline-flex;float:left;width:250px">
+				<mat-card style="min-width:200px;margin:10px">
+					<mat-card-header>
+						<mat-card-title>
+							Apartamentos Martín
+						</mat-card-title>
+					</mat-card-header>
+					<img mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" />
+					<mat-card-content>					
+					</mat-card-content>
+				</mat-card>
+				</div>
+				<div style="display: inline-flex;float:left;width:250px">
+				<mat-card style="min-width:200px;margin:10px">
+					<mat-card-header>
+						<mat-card-title>
+							Apartamentos Martín
+						</mat-card-title>
+					</mat-card-header>
+					<img mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" />
+					<mat-card-content>					
+					</mat-card-content>
+				</mat-card>
+				</div>
+				<div style="display: inline-flex;float:left;width:250px">
+				<mat-card style="min-width:200px;margin:10px">
+					<mat-card-header>
+						<mat-card-title>
+							Apartamentos Martín
+						</mat-card-title>
+					</mat-card-header>
+					<img mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" />
+					<mat-card-content>					
+					</mat-card-content>
+				</mat-card>
+				</div>
+				<div style="display: inline-flex;float:left;width:250px">
+				<mat-card style="min-width:200px;margin:10px">
+					<mat-card-header>
+						<mat-card-title>
+							Apartamentos Martín
+						</mat-card-title>
+					</mat-card-header>
+					<img mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" />
+					<mat-card-content>					
+					</mat-card-content>
+				</mat-card>
+				</div>
+				<div style="display: inline-flex;float:left;width:250px">
+				<mat-card style="min-width:200px;margin:10px">
+					<mat-card-header>
+						<mat-card-title>
+							Apartamentos Martín
+						</mat-card-title>
+					</mat-card-header>
+					<img mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" />
+					<mat-card-content>					
+					</mat-card-content>
+				</mat-card>
+				</div>
+				<div style="display: inline-flex;float:left;width:250px">
+				<mat-card style="min-width:200px;margin:10px">
+					<mat-card-header>
+						<mat-card-title>
+							Apartamentos Martín
+						</mat-card-title>
+					</mat-card-header>
+					<img mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" />
+					<mat-card-content>					
+					</mat-card-content>
+				</mat-card>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+	<div style="width:100%;display:flex;position:absolute">
+		<button class="boton2" (click)="enviar(1)">Botón</button>
+	</div>
+</section>
+<section class="section1" #section4>
+	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(255,255,255,0.7);">
+		<div style="position:absolute;top:30%;left:40%">
+			<mat-accordion style="">
+				<mat-expansion-panel style="margin:20px auto">
+					<mat-expansion-panel-header>
+						<mat-panel-title style="color:black;">
+							Personal data
+						</mat-panel-title>
+						<mat-panel-description>
+							ñlksadjfñsdf
+						</mat-panel-description>
+					</mat-expansion-panel-header>
+					<p>El primer contenido</p>
+				</mat-expansion-panel>
+				<mat-expansion-panel (opened)="panelOpenState=true"
+									 (closed)="panelOpenState=false">
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							Self aware panel						
+						</mat-panel-title>
+						<mat-panel-description>
+							asdfasdf
+						</mat-panel-description>
+					</mat-expansion-panel-header>
+					<p>El segundo contenido</p>
+				</mat-expansion-panel>
+			</mat-accordion>
+		</div>
+	</div>
+</section>

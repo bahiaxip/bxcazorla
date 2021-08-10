@@ -1,0 +1,32 @@
+.section1{
+	//min-height: 100vh;
+	height: 100vh;
+	//max-height: 600px;
+	//max-height: 100%;
+	margin: 0;	
+	padding: 0;
+
+	
+}
+.boton1{
+	display: flex;
+	margin: auto;
+	text-align: center;	
+	background: orange;
+	position: absolute;
+	left: 50%;
+	bottom: 100px;
+	color: #FFF;
+}
+#section2 .boton2{
+	display: flex;
+	position: absolute;
+	margin: auto;
+	text-align: center;	
+	background: red;	
+	bottom: 100px;
+	z-index: 999;
+	left: 50%;
+	color: #FFF;
+}
+
