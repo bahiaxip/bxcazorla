@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   public images2:any;
   panelOpenState=false;
   images: any;
+  private selectActivity:any;
   @ViewChild('section1',{static:true}) private section1!:ElementRef;
   @ViewChild('section2',{static:true}) private section2!:ElementRef;
   @ViewChild('section3',{static:true}) private section3!:ElementRef;
@@ -77,9 +78,28 @@ export class HomeComponent implements OnInit {
       console.log("al 4")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});  
     }
+  }
 
-
-    
+  hideFilter(i:number){
+    /*
+    if(this.selectActivity){
+      console.log("l activity desde el condidiconal: ",this.selectActivity);
+      this.selectActivity.getElementsByTagName("div")[0].style.opacity=1;
+      this.selectActivity.getElementsByTagName("div")[0].style.backgroundColor="rgba(0,0,0,.4)";
+      this.selectActivity.getElementsByTagName("img")[0].style.transform="scale(1)";  
+    }
+    console.log(i)
+    let select=this.selectedSection.getElementsByTagName("span")[i];
+    this.selectActivity=select;
+    console.log("l activity: ",this.selectActivity);
+    select.getElementsByTagName("div")[0].style.opacity=0;
+    select.getElementsByTagName("div")[0].style.backgroundColor="rgba(0,0,0,0)";
+    let image=select.getElementsByTagName("img")[0].style.transform="scale(0.9)";
+    //console.log("primero :",image.src);
+    */
+  }
+  showModal(){
+    console.log("detaller")
   }
 
 }
