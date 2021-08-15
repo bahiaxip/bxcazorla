@@ -5,6 +5,8 @@
 	//max-height: 100%;
 	margin: 0;	
 	padding: 0;
+	z-index: 100;
+	overflow: hidden;
 
 	
 }
@@ -195,6 +197,8 @@
  }
 
 .box_image .div_image .title_image .text_title{
+	width: 74%;
+	margin:14px auto;
 	color:white;
 	text-align:center;
 	font-weight: bold;
@@ -204,10 +208,10 @@
 .box_image .div_image .title_image .icon_image{
 	cursor: pointer;
 	position: absolute;
-	right: 5px;
+	right: 10px;
 	font-size:30px;
 	color:#ff7500;
-	margin-right:15px;
+	
 	margin-top:8px
 }
 
@@ -252,6 +256,47 @@
 .box_image .div_image{
 	transition: transform 1s linear;
 }
+
+.flex_content .modal_detail{
+	width:80%;
+	height: 80%;
+	position:absolute;
+	background:rgba(0,0,0,.7);
+	z-index: 102;
+	margin: auto;
+	left: 10%;
+	//visibility: hidden;
+	overflow: scroll;
+}
+.flex_content>.modal_detail .modal_image{
+	display: block;	
+	max-width: 600px;
+	width: 50%;
+	margin:10px auto;
+	background: orange;
+}
+.flex_content .modal_detail h2.modal_title{
+	width: 80%;
+	color: #FFF;
+	text-algin:center;	
+	z-index: 103;
+	position: relative;
+	margin:20px auto;
+	display: flex;
+	justify-content: center;
+}
+.flex_content .modal_detail p.modal_text{
+	width: 80%;
+	margin: 10px auto;
+	text-align: center;
+	position: relative;
+	justify-content: center;
+	z-index: 103;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+
+}
 /*
 .myspan:hover .div_image{
 	width: calc(100% - 10px);
@@ -261,6 +306,95 @@
 	transition: transform 1s linear;
 }
 */
+
+			/*		snow		*/
+.container_snow{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	//height: 100%;
+	overflow: hidden;
+	
+}
+.container_snow2{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	//height: 100%;
+	//transition: opacity 5s linear;
+}
+.container_snow>div,.container_snow2>div{
+	position: absolute;
+	width: auto;
+	height: 100%;
+	
+	//height: auto;
+	//z-index: 900;
+
+
+	animation-iteration-count: infinite, infinite;
+	animation-direction: normal normal;
+	animation-timing-function: linear, ease-in;
+	
+}
+.container_snow>div>img,.container_snow2>div>img{
+	position: absolute;
+	width: auto;
+	height: auto;
+	
+
+	animation-iteration-count: infinite;
+	animation-direction:  alternate;
+	animation-timing-function:  ease-in-out;
+	//animation-transform-origin: 50% 100%;
+}
+
+@keyframes fade{
+	0% {opacity: 1;}
+	95% {opacity: 1;}
+	100% {opacity: 0;}
+}
+/*original*/
+@keyframes drop2 {
+	0% {transform:  translate(0px,-50px);}
+	100% {transform: translate(0px,100%);}
+	//100% {transform: translate(0px,650px);}
+}
+
+
+@keyframes drop {
+	0% {transform:  translate(-0px,-50px);}
+	100% {transform: translate(0px,100%);}
+	//100% {transform: translate(0px,650px);}
+}
+@keyframes drop3 {
+	0% {transform:  translate(0px,-50px);}
+	100% {transform: translate(0px,120%);}
+	//100% {transform: translate(0px,650px);}
+}
+
+/*original*/
+@keyframes clockwiseSpin2{
+	0% {transform: rotate(-50deg);}
+	100% {transform: rotate(50deg);}
+}
+
+@keyframes clockwiseSpin{
+	0% {transform:scale(0.8,0.8) rotate(90deg);}
+	100% {transform:scale(0.8,0.8) rotate(90deg);}
+}
+
+@keyframes counterclockwiseSpinAndFlip{
+	0% {transform:  scale(0.5,0.5) rotate(90deg);}
+
+	100% {transform:  scale(0.5,0.5) rotate(90deg)}
+}
+
+@keyframes counterclockwiseSpinAndFlip2{
+	0% {transform:  scale(-1,1) rotate(50deg);}
+
+	100% {transform:  scale(-1,1) rotate(-50deg)}
+}
 
 
 @media (max-width: 1450px){
@@ -274,6 +408,13 @@
 @media (min-width:1400px) {
 	.flex_item{
 		width:60%
+	}
+}
+
+@media (max-width: 1200px){
+	.box_image .div_image .title_image .text_title{
+		font-size: 12px;
+
 	}
 }
 @media (max-width: 900px){

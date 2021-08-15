@@ -4,13 +4,23 @@
 	<button>boton despues</button>
 </div>-->
 <section class="section1" #section1 >
-	<button mat-icon-button (click)="enviar(2)" style="position: fixed;z-index: 999;top:20px;color:#FFF;background: transparent;left:50%;transform:translate(-50%,-50%) scale(1.5,1.5);border:transparent 2px solid">
+	<div class="container_snow" id="container_snow1" [ngStyle]="{'opacity':switchOpacitySnow}" *ngIf="switchAllOpacitySnow">
+		<div [ngStyle]="{'top':snow.styleTop+'px','left':snow.styleLeft,'animationName':snow.animationName,animationDuration:snow.animationDuration,'animationDelay':snow.animationDelay}" *ngFor="let snow of snows">
+			<img [src]="snow.image.name" [ngStyle]="{'animationName':snow.image.animationName,'animationDuration':snow.image.animationDuration}" />
+		</div>
+	</div>
+	<div class="container_snow2" [ngStyle]="{'opacity':switchOpacitySnow2}" *ngIf="switchAllOpacitySnow">
+		<div [ngStyle]="{'top':snow.styleTop+'px','left':snow.styleLeft,'animationName':snow.animationName,animationDuration:snow.animationDuration,'animationDelay':snow.animationDelay}" *ngFor="let snow of snows2">
+			<img [src]="snow.image.name" [ngStyle]="{'animationName':snow.image.animationName,'animationDuration':snow.image.animationDuration}" />
+		</div>
+	</div>
+	<button mat-icon-button (click)="enviar(2)" style="position: fixed;z-index: 300;top:20px;color:#FFF;background: transparent;left:50%;transform:translate(-50%,-50%) scale(1.5,1.5);border:transparent 2px solid">
 			<mat-icon style="transform:rotate(270deg) scale(1,2);color:#000;margin-bottom:1px">
 				double_arrow
 			</mat-icon>
 		</button >
 	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(0,0,0,0.5);">
-		<mat-button-toggle-group #group="matButtonToggleGroup" style="color:#fff;position:fixed;z-index: 999;top:30%;left:5%;background:#ff7500" vertical>
+		<mat-button-toggle-group #group="matButtonToggleGroup" style="color:#fff;position:fixed;z-index: 300;top:30%;left:5%;background:#ff7500" vertical>
 			<mat-button-toggle (click)="enviar(1)">
 				<mat-icon>info_round</mat-icon>
 			</mat-button-toggle>
@@ -30,13 +40,13 @@
 			</mat-button-toggle>
 		</mat-button-toggle-group>
 	</div>
-	<div style="width:100%;height:100%;overflow:hidden">
+	<div style="width:100%;height:100%;">
 		
-			<img src="./assets/rio_cazorla.jpg" style="width:100%;"/>
+			<img src="./assets/rio_cazorla.jpg" style="width:100%;overflow:hidden;z-index:300"/>
 		
 		
 	</div>
-	<button mat-icon-button (click)="enviar(2)" style="position: fixed;z-index: 999;bottom:1px;color:#FFF;background: transparent;left:50%;transform:translate(-50%,-50%) scale(1.5,1.5);border:transparent 2px solid">
+	<button mat-icon-button (click)="enviar(2)" style="position: fixed;z-index: 300;bottom:1px;color:#FFF;background: transparent;left:50%;transform:translate(-50%,-50%) scale(1.5,1.5);border:transparent 2px solid">
 			<mat-icon style="transform:rotate(90deg) scale(1,2);color:#000;margin-bottom:1px">
 				double_arrow
 			</mat-icon>
@@ -242,111 +252,30 @@
 				
 			</div>
 			<div class="flex_content">
+				<div class="modal_detail" *ngIf="switchModal">					
+					<mat-icon style="color:white;position:absolute;right:2%;top:2%;cursor:pointer" (click)="switchModal=false;">close</mat-icon>
+					
+					
+					
+					<h2 class="modal_title" >{{titleModal}}</h2>
+					<img class="modal_image" src="{{imageModal}}" />
+					<p class="modal_text">{{textModal}}</p>
 
-				<div class="div_box" >
+				</div>
+
+				<div class="div_box" *ngFor="let place of places">
 					<span class="box_image" (click)="hideFilter(0)">
 						<div class="clone_div_image" ></div>
 						<div class="div_image">
 							<div class="title_image">
-								<mat-icon class="icon_image" (click)="showModal()" title="Más información">info</mat-icon>
-								<p class="text_title" >Rio Borosa</p>
+								<mat-icon class="icon_image" (click)="showModal(place)" title="Más información">info</mat-icon>
+								<p class="text_title" >{{place.title}}</p>
 							</div>
-							<img src="assets/images/cazorla/galeria1.jpg" alt="" class="div_ima">
+							<img src="{{place.image}}" alt="" class="div_ima">
 						<!--<h2 class="image_title">Imagen 1</h2>-->
 						</div>
 					</span>
-				</div>
-				<div class="div_box">
-					<span class="box_image" (click)="hideFilter(1)">
-						<div class="clone_div_image" >
-						</div>
-						<div class="div_image">
-							<div class="title_image">
-								<p style="color:white;text-align:center">Cerrada de Elías</p>
-							</div>
-							<img src="assets/images/cazorla/galeria2.jpg" alt="" class="div_ima">
-						</div>
-					</span>
-					<!--<h2 class="image_title">Imagen 2</h2>-->
-				</div>
-				<div class="div_box" >
-					<span class="box_image" (click)="hideFilter(2)">
-						<div class="clone_div_image" ></div>
-						<div class="div_image">	
-							<div class="title_image">
-								<p style="color:white;text-align:center">Rio Borosa</p>
-								<mat-icon  style="float:right;font-size:15px;color:white;margin-right:10px">info</mat-icon>
-							</div>				
-							<img src="assets/images/cazorla/galeria3.jpg" alt="" class="div_ima" >
-						</div>
-					</span>
-					<!--<h2 class="image_title">Imagen 3</h2>-->
-				</div>
-				<div class="div_box">
-					<span class="box_image">
-						<div class="clone_div_image"></div>
-						<div class="div_image">
-							<div class="title_image">
-								<p style="color:white;text-align:center">Parque Cinegético</p>
-							</div>
-							<img src="assets/images/cazorla/galeria4.jpg" alt="" class="div_ima">
-						</div>
-					</span>
-					<!--<h2 class="image_title">Imagen 4</h2>-->
-				</div>
-				<div class="div_box">
-					<span class="box_image">
-						<div class="clone_div_image"></div>
-						<div class="div_image">
-							<div class="title_image">
-								<p style="color:white;text-align:center">Embalse El tranco</p>
-							</div>
-							<img src="assets/images/cazorla/galeria5.jpg" alt="" class="div_ima">
-						</div>
-					</span>
-					<!--<h2 class="image_title">Imagen 5</h2>-->
-				</div>
-				<div class="div_box">
-					<span class="box_image">
-						<div class="clone_div_image"></div>
-						<div class="div_image">
-							<div class="title_image">
-								<p style="color:white;text-align:center">Rafting</p>
-							</div>
-							<img src="assets/images/cazorla/galeria6.jpg" alt="" class="div_ima">
-						</div>
-					</span>
-					<!--<h2 class="image_title">Imagen 6</h2>-->
-				</div>
-				<div class="div_box">
-					<span class="box_image">
-						<div class="clone_div_image"></div>
-						<div class="div_image">
-							<div class="title_image">
-								<p style="color:white;text-align:center">Rio Borosa</p>
-							</div>
-							<img src="assets/images/cazorla/galeria7.jpg" alt="" class="div_ima">
-						</div>
-					</span>
-					<!--<h2 class="image_title">Imagen 7</h2>-->
-				</div>
-				<div class="div_box">
-					<span class="box_image">
-						<div class="clone_div_image"></div>
-						<div class="div_image">
-							<div class="title_image">
-								<p style="color:white;text-align:center">Aventura en Arroyo Frío</p>
-							</div>
-							<img src="assets/images/cazorla/galeria8.jpg" alt="" class="div_ima">
-						</div>
-					</span>
-					<!--<h2 class="image_title">Imagen 8</h2>-->
-				</div>
-
-			<!--<div class="div_box">
-				<img src="assets/images/cazorla/galeria9.jpg" alt="" class="div_image">
-				<h2 class="image_title">Imagen 9</h2>
-			</div>-->
+				</div>				
 			</div>
 		</div>
 		<!--
