@@ -19,3 +19,73 @@ html,body{
 ::-webkit-scrollbar{
 	display: none;
 }
+
+			/******* genéricos *********/
+
+.floatL{
+	float: left;
+}
+.floatR{
+	float: right;
+}
+.m10_auto{
+	margin: 10px auto;
+}
+
+.mauto{
+	margin: auto;
+}
+.mauto_imp{
+	margin: auto !important;
+}
+
+.mr10{
+	margin-right: 10px;
+}
+
+.back_green{
+	background-color:#f3ffea;
+}
+
+.c_white{
+	color: #FFFFFF;
+}
+.c_lightgreen{
+	color: lightgreen;
+}
+.c_orange{
+	color: orange;
+}
+.c_blue{
+	color: blue;
+}
+
+.w100{
+	width: 100%;
+}
+.w70{
+	width: 70%;
+}
+.w50{
+	width: 50%;
+}
+.w30{
+	width: 30%;
+}
+
+.h100{
+	height: 100%;
+}
+
+.d_flex{
+	display: flex;
+}
+
+.t_center{
+	text-align: center;
+}
+
+.fsize_10{
+	font-size: 10px;
+}
+

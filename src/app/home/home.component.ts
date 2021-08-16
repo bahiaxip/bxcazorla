@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   panelOpenState=false;
   images: any;
   private selectActivity:any;
-  private firstWidth:any;
+  public firstWidth:any;
   public switchAllOpacitySnow=false
   public switchOpacitySnow='1';
   public switchOpacitySnow2='0';
@@ -86,6 +86,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('section2',{static:true}) private section2!:ElementRef;
   @ViewChild('section3',{static:true}) private section3!:ElementRef;
   @ViewChild('section4',{static:true}) private section4!:ElementRef;
+  @ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
   constructor() {
 
     this.textModal="";
@@ -155,6 +156,8 @@ export class HomeComponent implements OnInit {
       console.log("el scrolltop es: ",this.section2.nativeElement.scrollTop)
       this.hideSnow();
       this.setSectionByScroll();
+      this.firstWidth=this.section1.nativeElement.clientWidth;
+      console.log("nuevo firstWidth: ",this.firstWidth)
       //console.log(this.firstWidth=this.section1.nativeElement.clientWidth)
     })
 
@@ -195,6 +198,17 @@ export class HomeComponent implements OnInit {
 
     }
     
+  }
+
+  misectionHorizontal(size:string){
+    console.log("llega al misectionHorizontal")
+    //this.section3.nativeElement.style.transform="translateX(-"+size+")";
+    console.log(this.midivslider);
+    this.midivslider.nativeElement.style.transform="translateX(-"+size+")";
+  }
+  misectionHorizontal2(){
+    console.log("llega al misectionHorizontal")
+    this.midivslider.nativeElement.style.transform="translateX(0px)";
   }
   animation1(){
     for(let i=0;i<200;i++){
