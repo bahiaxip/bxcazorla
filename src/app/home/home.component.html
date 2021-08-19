@@ -33,7 +33,7 @@
 			<mat-button-toggle (click)="enviar(4)" title="Actividades">
 				<i class="material-icons material-icons-sharp">home</i>
 			</mat-button-toggle>
-			<mat-button-toggle>
+			<mat-button-toggle (click)="flash()">
 				<mat-icon>
 					<i class="material-icons-round">home</i>
 				</mat-icon>
@@ -41,7 +41,10 @@
 		</mat-button-toggle-group>
 	</div>
 	<div style="width:100%;height:100%;">
-		<div class="back_image"></div>
+		<!--<div class="back_image" style="position:absolute"></div>-->
+		<div class="back_image" style="" #backimage></div>
+		
+		<div class="back_image2" style="opacity:0" #backimage2></div>
 			<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
 			<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
 		
@@ -384,75 +387,239 @@
 	</div>-->
 </section>
 <section class="section1" #section4 style="background-color:#676767">
-	<div class="div_flex">
-		<div class="flex_header">
-			<div class="div_flex_item" >
-				<div class="flex_item" >
-					<mat-icon class="banner_icon floatL" title="Valoraciones">grade</mat-icon>
-					<mat-icon class="banner_icon floatR mr10"  title="Información">info</mat-icon>
-					<p class="mauto c_white">Bienvendio</p>
-					<p class="mauto c_white">Valoraciones</p>
+	<div class="div_flex_card" >
+		<div class="flex_header " style="position:absolute;">
+			
+			<div class="div_flex_item " style="justify-content:center">
+				<div class="flex_item " >
+					<div style="width:100%;display:flex;">
+						<div style="width:15%;" class="">
+							<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
+						</div>
+						
+						<div style="width: 70%;">
+							<p class="mauto c_white" #bannerp1></p>
 
+							<span style="display:inline-flex;margin:auto;vertical-align: middle;" (click)="showTooltip(selectedCard)" >
+								<div style="display:flex;margin:0 5px 0 0;" *ngIf="switchDivFeedback">
+									<span class="material-icons" style="color:orange;display:flex;font-size:16px;margin:auto;">info</span>
+								
+									<div class="div_feedback" style="width:80px;height:20px;border:#474747 1px solid;margin:auto;display:flex;justify-content:space-around;align-items:center;border-radius: 5px;cursor:pointer"  title="{{levelLocation| levelPipe }}">
+
+										<div style="width:4px;height:4px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:6px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 1 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:8px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 2 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:10px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 3 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:12px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 4 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:14px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 5 ? 'feedgreen':'feedorange'"></div>
+									</div>
+								</div>
+								<!--<span [innerHTML]="textbanner"></span>-->
+								
+								<p class="mauto c_white" #bannerp2  style="white-space: text;"></p>
+								
+								<!--<p>valoración</p>-->
+								
+							</span>
+							<div class="" style="width:100%;">
+								<div style="">
+									<img src="../../assets/images/ap_martin/ap_martin1.jpg" />
+								</div>
+							</div>
+						</div>
+						<div style="width:15%" class="">
+							<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
+						</div>
+					</div>
 				</div>
 			</div>
+			
 		</div>
-		<div class="w100 mauto">
-			<div class="card_rent">
+		<div class="w100 mauto div_card_rent" style="margin-top:100px" >
+			<div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata">				
 				<div class="subcard" >
 					<div class="card_image ">						
 						<div class="w100 h100" >
 							<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
-							
 						</div>
 					</div >
 						
 					<div class="d_flex card_content">
 						<!-- central -->
 						<div class="w100 t_center" >
-							<p class="title_renting_text">
-							Apartamentos Martín
-							</p>
-							
+							<div class="title_renting">
+								<p class="title_renting_text">
+									{{rent.title}}
+								</p>
+
+								<div class="subtitle_renting " style="display:flex;justify-content:center">
+									<div class="icon_circle_double">
+										<span class="material-icons-round">
+											house
+										</span>
+
+										<span class="material-icons-round">
+											holiday_village
+										</span>
+									</div>
+
+									<p class="subtitle_renting_text">Casa/Apartamento</p>
+								</div>
+
+							</div>
 							<div class="content_renting" >
 								<div class="w100 d_flex">
-									<div class="w50 d_flex ">
-										<span class="material-icons-round m10_auto  icon_circle div_icon_hidden" >
-											settings_phone
-										</span>
-										<p class="mauto">953 72 71 06</p>
+									<div class="w50 d_flex link " (click)="selectOptionCard('phone',rent.phone)">
+										<div class="w50 mauto div_icon_hidden">
+											<span class="material-icons-round m10_auto  icon_circle " >
+												settings_phone
+											</span>
+										</div>
+										<div class="w50 mauto div_visible">
+											<p class="mauto">{{rent.phone}}</p>
+										</div>
 									</div>
-									<div class="w50 d_flex">
-										<span class="material-icons-round m10_auto c_orange icon_circle div_icon_hidden" >
-											location_on
-										</span>
-										<button mat-icon-button class="mauto_imp" >
-											<mat-icon class="c_blue ">share_location</mat-icon>
-										</button>
+									<div class="w50 d_flex link" (click)="selectOptionCard('location',rent.numLevelLocation)">
+										<div class="w50 mauto div_icon_hidden">
+											<span class="material-icons-round m10_auto c_orange icon_circle " >
+												location_on
+											</span>
+										</div>
+										<div class="w50 mauto div_visible">
+											<p class="mauto">{{rent.numLevelLocation}}</p>
+											
+										</div>
 									</div>
 								</div>
 								<div class="w100 d_flex">
-									<div class="w50 d_flex m10_auto" >
+									<div class="w50 d_flex link" (click)="selectOptionCard('feedback')">
 										<div class="w50 div_icon_hidden">
-											<div class="icon_circle home "> 
-												<span class="material-icons-round" style="color:black;">
-													house
-												</span>
-												<span class="material-icons-round" style="color:black;">
-													holiday_village
-												</span>
-											</div>
+											
+											<span class="material-icons-round icon_circle m10_auto" >
+												star
+											</span>
+												
+											
 										</div>
-										<div class="w50 mauto" >
-											<p class="mauto"> Casas y apartamentos</p>
+										<div class="w50 mauto div_visible" >
+											<p class="mauto"> Opiniones</p>
 										</div>
 									</div>
-									<div class="w50 d_flex ">
+									<div class="w50 d_flex link" (click)="sendDataToExpansion()">
 										<div class="w50 div_icon_hidden ">
 											<span class="material-icons-round m10_auto c_orange icon_circle" >
 												group
 											</span>
 										</div>
-										<div class="w50 mauto">
+										<div class="w50 mauto div_visible">
+											<p class="mauto"> 2,4 y 6 personas</p>
+										</div>
+										
+									</div>
+								</div>
+								<div class="price">
+									<div class="w30 div_price_item">
+										<span class="price_item">{{rent.minPrice}}€</span>
+									</div>
+									<div class="w70 price_detail">
+										<p>Precio aprox. por 3 noches <span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span></p>
+
+									</div>
+								</div>
+								
+							</div>
+							
+						</div>
+						<!-- lateral derecho -->
+						<!--<div style="width:20%;text-align:center">
+							<p>Teléfono: 23423434</p>
+							<p>Texto: asdfasdf</p>
+							<p>Teléfono: 23423434</p>
+							<p>Teléfono: 23423434</p>
+							<p>Teléfono: 23423434</p>
+							
+						</div>-->
+					</div>
+				</div>
+			</div>
+
+			<div class="card_rent">				
+				<div class="subcard" >
+					<div class="card_image ">						
+						<div class="w100 h100" >
+							<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
+						</div>
+					</div >
+						
+					<div class="d_flex card_content">
+						<!-- central -->
+						<div class="w100 t_center" >
+							<div class="title_renting">
+								<p class="title_renting_text">
+									Residencial Los Robles
+								</p>
+								
+								<div class="subtitle_renting " style="display:flex;justify-content:center">
+									<div class="icon_circle_double">
+										<span class="material-icons-round">
+											house
+										</span>
+
+										<span class="material-icons-round">
+											holiday_village
+										</span>
+									</div>
+
+									<p class="subtitle_renting_text">Casa/Apartamento</p>
+								</div>
+
+							</div>
+							<div class="content_renting" >
+								<div class="w100 d_flex">
+									<div class="w50 d_flex link ">
+										<div class="w50 mauto div_icon_hidden">
+											<span class="material-icons-round m10_auto  icon_circle " >
+												settings_phone
+											</span>
+										</div>
+										<div class="w50 mauto div_visible">
+											<p class="mauto">953 72 71 06</p>
+										</div>
+									</div>
+									<div class="w50 d_flex link">
+										<div class="w50 mauto div_icon_hidden">
+											<span class="material-icons-round m10_auto c_orange icon_circle " >
+												location_on
+											</span>
+										</div>
+										<div class="w50 mauto div_visible">
+											<button mat-icon-button class="mauto_imp" >
+												<mat-icon class="c_blue ">share_location</mat-icon>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="w100 d_flex">
+									<div class="w50 d_flex link" >
+										<div class="w50 div_icon_hidden">
+											
+											<span class="material-icons-round icon_circle m10_auto" >
+												star
+											</span>
+												
+											
+										</div>
+										<div class="w50 mauto div_visible" >
+											<p class="mauto"> Opiniones</p>
+										</div>
+									</div>
+									<div class="w50 d_flex link" (click)="sendDataToExpansion()">
+										<div class="w50 div_icon_hidden ">
+											<span class="material-icons-round m10_auto c_orange icon_circle" >
+												group
+											</span>
+										</div>
+										<div class="w50 mauto div_visible">
 											<p class="mauto"> 2,4 y 6 personas</p>
 										</div>
 										
@@ -463,7 +630,7 @@
 										<span class="price_item">210€</span>
 									</div>
 									<div class="w70 price_detail">
-										<p>Precio por 3 noches <span class="fsize_10">(Mínimo 3 noches)</span></p>
+										<p>Precio aprox. por 3 noches <span class="fsize_10">(Mínimo 3 noches)</span></p>
 
 									</div>
 								</div>
@@ -486,6 +653,7 @@
 				
 				
 			</div>
+
 			<div class="card_rent">
 				<div class="subcard" >
 					<div class="card_image ">						
@@ -499,7 +667,7 @@
 						<!-- central -->
 						<div class="w100 t_center" >
 							<p class="title_renting_text">
-							Apartamentos Martín
+							Residencial Los Robles
 							</p>
 							
 							<div class="content_renting" >

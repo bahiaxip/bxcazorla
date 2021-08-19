@@ -3,7 +3,9 @@ import { GalleryItem, ImageItem} from 'ng-gallery';
 import { GalleryPlaces } from '../models/gallery-places';
 import { MatAccordion } from '@angular/material/expansion';
 import { Snow } from '../models/snow';
-
+import { CardRentData } from '../models/card-rent-data';
+import { CardRent } from '../models/card-rent';
+import { LevelPipePipe } from '../level-pipe.pipe';
 @Component({
   selector: 'pre-home',
   templateUrl: './home.component.html',
@@ -17,7 +19,12 @@ export class HomeComponent implements OnInit {
   panelOpenState=false;
   images: any;
   private selectActivity:any;
+  public selectedCard!:CardRent;
+  public switchDivFeedback:any;
+  public selTypeCard:any;
+  public pushedOptionCard:any;
   public firstWidth:any;
+  public firstHeight:any;
   public switchAllOpacitySnow=false
   public switchOpacitySnow='1';
   public switchOpacitySnow2='0';
@@ -29,6 +36,10 @@ export class HomeComponent implements OnInit {
   public textModal:string="";
   public titleModal:string="";
 
+  //array valoracion localización
+  public levelLocation:number=5;
+  public cardrentdata:any;
+  public textbanner:any;
   private rainInterval:any;
   public places:GalleryPlaces[]=[
   {
@@ -87,6 +98,11 @@ export class HomeComponent implements OnInit {
   @ViewChild('section3',{static:true}) private section3!:ElementRef;
   @ViewChild('section4',{static:true}) private section4!:ElementRef;
   @ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
+  @ViewChild('backimage',{static:true}) private backimage!:ElementRef;
+  @ViewChild('backimage2',{static:true}) private backimage2!:ElementRef;
+  @ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
+  @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
+
   constructor() {
 
     this.textModal="";
@@ -111,7 +127,8 @@ export class HomeComponent implements OnInit {
       );  
     }
     */
-    
+
+    this.cardrentdata=CardRentData.midata;
 
 
     
@@ -141,9 +158,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //console.log("cardrentdata: ",this.cardrentdata[0]);
     //comprobamos y almacenamos el ancho del section principal
     this.firstWidth=this.section1.nativeElement.clientWidth;
     console.log(this.firstWidth);
+    this.firstHeight=this.section1.nativeElement.clientHeight;
+    console.log(this.firstHeight);
     this.setSectionByScroll()
     
     //console.log("total: ",576*2);
@@ -191,13 +211,84 @@ export class HomeComponent implements OnInit {
 
     ];
     this.switchAllOpacitySnow=true;
-    if(this.firstWidth>=1000){
+    if(this.firstWidth>=1000 && this.firstHeight<=this.firstWidth){
+      //anulada animación (poco realista)
+      /*
       this.animation1();
       this.animation2()
       this.rainAuto();
+      */
 
     }
     
+  }
+
+  flash(){
+    console.log("llega al falash")    
+    //this.backimage.nativeElement.style.backgroundImage="url('../../assets/cerrada_de_elias_byn.png')";
+    this.backimage2.nativeElement.className="back_image2 flash animated"
+    setTimeout(()=>{
+      this.backimage2.nativeElement.className="back_image2"
+    },10000)
+  }
+  sendDataToExpansion(){
+
+  }
+  selectCard(card:CardRent){    
+    console.log("tipo: ",this.selTypeCard);
+    if(this.selTypeCard=="location" ){
+      console.log("la seleccionada es: ",card.numLevelLocation);
+      this.levelLocation=card.numLevelLocation;
+      console.log(this.levelLocation)
+      this.switchDivFeedback=true;
+    }
+    else
+      this.switchDivFeedback=false
+    if(!this.pushedOptionCard && this.selectedCard!=card){
+      this.switchDivFeedback=false
+      this.bannerp2.nativeElement.innerHTML="";
+    }
+    //this.selTypeCard=null;
+    this.selectedCard=card;
+    //detecta si se ha pulsado el option card 
+    if(this.pushedOptionCard){
+      console.log("se ha pulsado optioncard")
+      this.pushedOptionCard=false;
+    }
+    this.bannerp1.nativeElement.innerHTML=card.title;
+  }
+  selectOptionCard(type:string, text=null){
+    let totalText;
+    let aux;
+    let div;
+    this.pushedOptionCard=true;
+    this.selTypeCard=type;
+    
+    if(type=="feedback"){ 
+      aux=text;
+      totalText="mifeedback"
+      //div='<div>'
+    }else if(type=="phone"){
+      totalText='Teléfono de contacto: '+text;
+    }else if(type=="location"){
+        
+      
+      aux=text;
+      totalText='Abrir mapa'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
+    }
+    if(!text){
+      console.log("mi text no existe")
+    }else{
+      console.log(totalText)
+    }
+    this.bannerp2.nativeElement.innerHTML=totalText;
+    //this.textbanner='<span class="material-icons">share_location</span>';
+
+  }
+  getLevelLocationString(card:any){
+    //obtenemos una media de la localización... 
+    //si es menor a 1 km : Excelente, si es entre 1 y 2 : muy bueno, si es entre 2 y 3: bueno
+    if(card.numLevelLocation){}
   }
 
   misectionHorizontal(size:string){
@@ -209,6 +300,10 @@ export class HomeComponent implements OnInit {
   misectionHorizontal2(){
     console.log("llega al misectionHorizontal")
     this.midivslider.nativeElement.style.transform="translateX(0px)";
+  }
+
+  showTooltip(card:CardRent){
+    console.log("dato");
   }
   animation1(){
     for(let i=0;i<200;i++){
@@ -228,6 +323,14 @@ export class HomeComponent implements OnInit {
       );  
     }
   }
+  showDivFeedback(){
+
+  }
+  hideDivFeedback(){
+
+  }
+
+
   animation2(){
     for(let i=0;i<500;i++){
       this.snows2[i]=new Snow(
@@ -263,7 +366,7 @@ export class HomeComponent implements OnInit {
             setTimeout(()=>{
               this.switchOpacitySnow2='0';
               //si ya ha pasado el segundo interval ocultamos y bloqueamos
-              if(counterInterval>2){
+              if(counterInterval>1){
                 setTimeout(()=>{
                   this.switchOpacitySnow='0';
                   blockActive=true;
@@ -385,4 +488,22 @@ export class HomeComponent implements OnInit {
   }
   */
 
+  //método cálculo fórmula de Haversine (calcular distancia entre 2 puntos)
+  /*
+  var rad = function(x) {
+    return x * Math.PI / 180;
+  };
+
+  var getDistance = function(p1, p2) {
+    var R = 6378137; // Earth’s mean radius in meter
+    var dLat = rad(p2.lat() - p1.lat());
+    var dLong = rad(p2.lng() - p1.lng());
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+      Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c;
+    return d; // returns the distance in meter
+  };
+  */
 }

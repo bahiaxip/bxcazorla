@@ -16,13 +16,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { RentingComponent } from './renting/renting.component';
+import { LevelPipePipe } from './level-pipe.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    RentingComponent
+    RentingComponent,
+    LevelPipePipe
   ],
   imports: [
     BrowserModule,

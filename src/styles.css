@@ -46,6 +46,9 @@ html,body{
 .back_green{
 	background-color:#f3ffea;
 }
+.back_brown{
+	background-color: rgba(74,58,58,1);
+}
 
 .c_white{
 	color: #FFFFFF;
