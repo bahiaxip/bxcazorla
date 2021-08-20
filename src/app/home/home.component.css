@@ -73,15 +73,17 @@
 
 }
 
-/*
+		/*              galery con grid                */
+
+
 .gallery-container{	
 	display: grid;
-
-
-	grid-template-columns: repeat(4, 1fr);
-	grid-auto-rows: 250px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: 200px;
 	grid-gap: 10px;
-	height: 100vh;
+	height: calc(100vh - 90px);
+	//height: auto;
+	
 }
 
 .gallery__img{
@@ -91,14 +93,23 @@
 	border-radius: 10px;
 
 }
-
+.gallery__item{
+	position: relative;
+	//grid-column-start: span 3 !important;
+}
+.gallery__item:nth-child(1){
+	grid-column-start: span 2;
+}
 .gallery__item:nth-child(4){
 	grid-column-start: span 2;
 }
-.gallery__item:nth-child(6){
+.gallery__item:nth-child(5){
 	grid-row-start: span 2;
+	grid-column-start: span 3;
 }
-*/
+
+				/* fin gallery grid */
+
 /*
 .flex-container{
 	width: 100%;
@@ -166,7 +177,8 @@
 
 	height:70px;
 	width:100%;
-	//position: relative;
+
+	position: relative;
 	z-index: 300;
 }
 .flex_header .div_flex_item{
@@ -178,12 +190,14 @@
 
 .flex_item{
 	min-height: 50px;
+	//max-height: 100%;
+	//height: auto;
 	width:70%;	
 	background-color:rgba(0,0,0,.7);
 	//border:black 2px solid;
 	display: flex;
 	padding: 5px;
-	
+	//overflow: hidden;
 	margin: auto;
 	border-radius:10px;
 	text-align: center;	
@@ -194,7 +208,7 @@
 	font-size:35px;
 	color:orange;
 	cursor:pointer;
-	
+
 	
 }
 
@@ -641,6 +655,13 @@
 		font-size: 12px;
 
 	}
+	.gallery-container{
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.gallery__item:nth-child(n){
+		grid-column-start: auto;
+		grid-row-start: auto;
+	}
 }
 @media (max-width: 900px){
 	.flex_item{
@@ -649,6 +670,15 @@
 	.card_rent{
 		max-width: 100%;		
 	}
+	.gallery-container{
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.gallery__item:nth-child(n){
+		grid-column-start: auto;
+		grid-row-start: auto;
+	}
+	
+
 }
 
 @media (max-width: 600px){
@@ -675,6 +705,13 @@
 	}
 	.flex_item .banner_icon{
 		font-size: 30px;
+	}
+	.gallery-container{
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.gallery__item:nth-child(n){
+		grid-column-start: auto;
+		grid-row-start: auto;
 	}
 }
 

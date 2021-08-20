@@ -6,7 +6,7 @@ export class CardRent {
 		public logo:string,
 		public image:string,
 		public listImages:Array<string>,
-		public type:string,
+		public type:Array<string>,
 		public web:string,
 		public phone:string,
 		public numLevelFeedback:string,

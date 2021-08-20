@@ -5,7 +5,7 @@ import { MatAccordion } from '@angular/material/expansion';
 import { Snow } from '../models/snow';
 import { CardRentData } from '../models/card-rent-data';
 import { CardRent } from '../models/card-rent';
-import { LevelPipePipe } from '../level-pipe.pipe';
+import { LevelPipePipe,IconTypePipe } from '../level-pipe.pipe';
 @Component({
   selector: 'pre-home',
   templateUrl: './home.component.html',
@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   images: any;
   private selectActivity:any;
   public selectedCard!:CardRent;
+  public switchImages=false;
   public switchDivFeedback:any;
   public selTypeCard:any;
   public pushedOptionCard:any;
@@ -233,6 +234,11 @@ export class HomeComponent implements OnInit {
   }
   sendDataToExpansion(){
 
+  }
+  showImagesCard(card:CardRent){
+    this.selectedCard=card;
+    console.log(card.listImages);
+    this.switchImages=true;
   }
   selectCard(card:CardRent){    
     console.log("tipo: ",this.selTypeCard);

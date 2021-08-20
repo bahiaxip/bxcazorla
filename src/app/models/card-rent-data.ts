@@ -8,8 +8,12 @@ export var CardRentData ={
 			"3",
 			"logo",
 			"imagen",
-			[],
-			"casa/apartamento",
+			["ap_martin/ap_martin1.jpg","ap_martin/ap_martin2.jpg","ap_martin/ap_martin3.jpg","ap_martin/ap_martin4.jpg","ap_martin/ap_martin5.jpg",
+			 "ap_martin/ap_martin6.jpg","ap_martin/ap_martin7.jpg","ap_martin/ap_martin8.jpg","ap_martin/ap_martin9.jpg","ap_martin/ap_martin10.jpg","ap_martin/ap_martin11.jpg"
+			 ],
+			[
+				"casa","apartamento"
+			],
 			"https://complejomartinparquenatural.com/",
 			"953 72 71 06",
 			"numLevelFeedback",
@@ -22,9 +26,15 @@ export var CardRentData ={
 			"1",
 			"logo",
 			"imagen",
-			["ap_martin1.jpg","ap_martin2.jpg","ap_martin3.jpg","ap_martin4.jpg","ap_martin5.jpg",
-			"ap_martin6.jpg","ap_martin7.jpg","ap_martin8.jpg","ap_martin9.jpg","ap_martin10.jpg","ap_martin11.jpg"],
-			"casa/apartamento",
+			[
+				"resrobles/resrobles1.jpg","resrobles/resrobles2.jpg","resrobles/resrobles3.jpg","resrobles/resrobles4.jpg","resrobles/resrobles5.jpg",
+				"resrobles/resrobles6.jpg","resrobles/resrobles7.jpg","resrobles/resrobles8.jpg","resrobles/resrobles9.jpg",
+				"resrobles/casa_robles1.jpg","resrobles/casa_robles2.jpg","resrobles/casa_robles3.jpg","resrobles/casa_robles4.jpg",
+				"resrobles/ap_robles1.jpg","resrobles/ap_robles2.jpg","resrobles/ap_robles3.jpg","resrobles/ap_robles4.jpg"
+			],
+			[
+				"casa","apartamento"
+			],
 			"https://www.residenciallosrobles.com/",
 			"953 72 71 77",
 			"numLevelFeedback",
@@ -38,7 +48,9 @@ export var CardRentData ={
 			"logo",
 			"imagen",
 			[],
-			"apartamento/bungalow",
+			[
+				"apartamento","bungalow"
+			],
 			"https://www.hotelenebroscazorla.com/",
 			"953 72 71 10",
 			"numLevelFeedback",
@@ -52,7 +64,9 @@ export var CardRentData ={
 			"logo",
 			"imagen",
 			[],
-			"cabaña",
+			[
+				"cabaña"
+			],
 			"ND",
 			"953 72 70 07",
 			"numLevelFeedback",
@@ -65,7 +79,9 @@ export var CardRentData ={
 			"logo",
 			"imagen",
 			[],
-			"casa",
+			[
+			"casa"
+			],
 			"ND",
 			"608 02 69 64",
 			"numLevelFeedback",

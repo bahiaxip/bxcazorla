@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { RentingComponent } from './renting/renting.component';
-import { LevelPipePipe } from './level-pipe.pipe';
+import { LevelPipePipe,IconTypePipe } from './level-pipe.pipe';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { LevelPipePipe } from './level-pipe.pipe';
     AppComponent,
     HomeComponent,
     RentingComponent,
-    LevelPipePipe
+    LevelPipePipe,
+    IconTypePipe
   ],
   imports: [
     BrowserModule,

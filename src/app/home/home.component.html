@@ -390,14 +390,14 @@
 	<div class="div_flex_card" >
 		<div class="flex_header " style="position:absolute;">
 			
-			<div class="div_flex_item " style="justify-content:center">
-				<div class="flex_item " >
+			<div class="div_flex_item " style="justify-content:center;">
+				<div class="flex_item " style="">
 					<div style="width:100%;display:flex;">
 						<div style="width:15%;" class="">
 							<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
 						</div>
 						
-						<div style="width: 70%;">
+						<div style="width: 70%;font-weight: bold;">
 							<p class="mauto c_white" #bannerp1></p>
 
 							<span style="display:inline-flex;margin:auto;vertical-align: middle;" (click)="showTooltip(selectedCard)" >
@@ -421,9 +421,15 @@
 								<!--<p>valoración</p>-->
 								
 							</span>
-							<div class="" style="width:100%;">
+							<div class="" style="width:100%;" *ngIf="switchImages">
+								<mat-icon class="material-icons" style="color:white" (click)="switchImages=false">close</mat-icon>
 								<div style="">
-									<img src="../../assets/images/ap_martin/ap_martin1.jpg" />
+									<div class="gallery-container" style="overflow:auto">
+										<div class="gallery__item" *ngFor="let image of selectedCard.listImages">
+											<img [src]="'assets/images/'+image" alt="" class="gallery__img">
+											<h2 class="gallery__title">Imagen 1</h2>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -439,8 +445,8 @@
 			<div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata">				
 				<div class="subcard" >
 					<div class="card_image ">						
-						<div class="w100 h100" >
-							<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
+						<div class="w100 h100" (click)="showImagesCard(rent)">
+							<img class="card_img" mat-card-image [src]="'assets/images/'+rent.listImages[0]" alt="Apartamentos Martín" style=" "/>
 						</div>
 					</div >
 						
@@ -452,15 +458,15 @@
 									{{rent.title}}
 								</p>
 
-								<div class="subtitle_renting " style="display:flex;justify-content:center">
-									<div class="icon_circle_double">
-										<span class="material-icons-round">
-											house
+								<div class="subtitle_renting " style="display:flex;justify-content:center" *ngIf="rent.type.length > 0">
+									<div class="icon_circle_double" >
+										<span class="material-icons-round" *ngFor="let type of rent.type">
+											  {{type|iconTypePipe}}
 										</span>
 
-										<span class="material-icons-round">
+										<!--<span class="material-icons-round">
 											holiday_village
-										</span>
+										</span>-->
 									</div>
 
 									<p class="subtitle_renting_text">Casa/Apartamento</p>
