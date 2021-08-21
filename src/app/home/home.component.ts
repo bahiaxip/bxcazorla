@@ -13,14 +13,17 @@ import { LevelPipePipe,IconTypePipe } from '../level-pipe.pipe';
 })
 export class HomeComponent implements OnInit {
 
-  
+
+  public myHeight:string="0";
+  public fixedCloseGal:boolean=false;
   private selectedSection:any=null;
   public images2:any;
   panelOpenState=false;
   images: any;
   private selectActivity:any;
   public selectedCard!:CardRent;
-  public switchImages=false;
+  //switchImages sustituido por myHeight
+  //public switchImages=false;
   public switchDivFeedback:any;
   public selTypeCard:any;
   public pushedOptionCard:any;
@@ -159,6 +162,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     //console.log("cardrentdata: ",this.cardrentdata[0]);
     //comprobamos y almacenamos el ancho del section principal
     this.firstWidth=this.section1.nativeElement.clientWidth;
@@ -221,6 +225,8 @@ export class HomeComponent implements OnInit {
       */
 
     }
+    this.selectedCard=this.cardrentdata[0];
+
     
   }
 
@@ -236,11 +242,23 @@ export class HomeComponent implements OnInit {
 
   }
   showImagesCard(card:CardRent){
+    this.fixedCloseGal=true;
     this.selectedCard=card;
     console.log(card.listImages);
-    this.switchImages=true;
+    //this.switchImages=true;
+    this.myHeight="calc(100vh - 90px)";
   }
-  selectCard(card:CardRent){    
+  hideImagesCard(){
+    //this.fixedCloseGal=false;
+    if(this.myHeight != "0"){
+      this.myHeight="0";
+    }
+    
+  }
+  selectCard(card:CardRent){ 
+    if(this.myHeight != "0"){
+      //this.myHeight="0";
+    }   
     console.log("tipo: ",this.selTypeCard);
     if(this.selTypeCard=="location" ){
       console.log("la seleccionada es: ",card.numLevelLocation);

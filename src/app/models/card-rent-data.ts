@@ -47,7 +47,12 @@ export var CardRentData ={
 			"1",
 			"logo",
 			"imagen",
-			[],
+			[
+				"losenebros/enebros1.jpg","losenebros/enebros2.jpg","losenebros/enebros3.jpg","losenebros/enebros4.jpg","losenebros/enebros5.jpg",
+				"losenebros/enebros6.jpg","losenebros/enebros7.jpg","losenebros/enebros8.jpg","losenebros/enebros9.jpg","losenebros/enebros10.jpg","losenebros/enebros11.jpg",
+				"losenebros/enebros12.jpg","losenebros/enebros13.jpg","losenebros/enebros14.jpg","losenebros/enebros15.jpg","losenebros/enebros16.jpg","losenebros/enebros17.jpg",
+				"losenebros/enebros18.jpg","losenebros/enebros19.jpg","losenebros/enebros20.jpg","losenebros/enebros21.jpg","losenebros/enebros22.jpg"
+			],
 			[
 				"apartamento","bungalow"
 			],
@@ -63,7 +68,11 @@ export var CardRentData ={
 			"3",
 			"logo",
 			"imagen",
-			[],
+			[
+				"cab_lospinos/lospinos1.jpg","cab_lospinos/lospinos2.jpg","cab_lospinos/lospinos3.jpg","cab_lospinos/lospinos4.jpg","cab_lospinos/lospinos5.jpg",
+				"cab_lospinos/lospinos6.jpg","cab_lospinos/lospinos7.jpg","cab_lospinos/lospinos8.jpg","cab_lospinos/lospinos9.jpg","cab_lospinos/lospinos10.jpg",
+				"cab_lospinos/lospinos11.jpg","cab_lospinos/lospinos12.jpg","cab_lospinos/lospinos13.jpg","cab_lospinos/lospinos14.jpg"
+			],
 			[
 				"cabaña"
 			],
@@ -78,7 +87,11 @@ export var CardRentData ={
 			"3",
 			"logo",
 			"imagen",
-			[],
+			[
+				"al_valeria/al_valeria1.jpg","al_valeria/al_valeria2.jpg","al_valeria/al_valeria3.jpg","al_valeria/al_valeria4.jpg","al_valeria/al_valeria5.jpg",
+				"al_valeria/al_valeria6.jpg","al_valeria/al_valeria7.jpg","al_valeria/al_valeria8.jpg","al_valeria/al_valeria9.jpg",
+
+			],
 			[
 			"casa"
 			],
