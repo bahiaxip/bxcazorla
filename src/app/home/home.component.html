@@ -20,7 +20,7 @@
 			</mat-icon>
 		</button >
 	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(0,0,0,0.5);">
-		<mat-button-toggle-group #group="matButtonToggleGroup" style="color:#fff;position:fixed;z-index: 300;top:30%;left:5%;background:#ff7500" vertical>
+		<mat-button-toggle-group name="matButtonToggleGroup" style="color:#fff;position:fixed;z-index: 300;top:30%;left:5%;background:#ff7500" vertical>
 			<mat-button-toggle (click)="enviar(1)">
 				<mat-icon>info_round</mat-icon>
 			</mat-button-toggle>
@@ -464,8 +464,8 @@
 
 								<div class="subtitle_renting " style="display:flex;justify-content:center" *ngIf="rent.type.length > 0">
 									<div class="icon_circle_double" >
-										<span class="material-icons-round" *ngFor="let type of rent.type">
-											  {{type|iconTypePipe}}
+										<span class="material-icons-round" *ngFor="let type of rent.type;let i=index">
+											  {{type | icon}}
 										</span>
 
 										<!--<span class="material-icons-round">

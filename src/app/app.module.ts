@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { RentingComponent } from './renting/renting.component';
-import { LevelPipePipe,IconTypePipe } from './level-pipe.pipe';
+import { Pipe } from '@angular/core';
+import { LevelPipePipe } from './level-pipe.pipe';
+import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
 
 
 @NgModule({
@@ -24,24 +26,26 @@ import { LevelPipePipe,IconTypePipe } from './level-pipe.pipe';
     AppComponent,
     HomeComponent,
     RentingComponent,
-    LevelPipePipe,
-    IconTypePipe
+    LevelPipePipe,    
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    GalleryModule,
-    //material
+    GalleryModule,    
     MatButtonModule,
     MatListModule,
     MatButtonToggleModule,
-    MatIconModule,
-    //CdkAccordionModule,
+    MatIconModule,    
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    CommonModule,
+    PipesCommonModule
   ],
-  providers: [],
+  //providers:[IconPipePipe,IconPipe],
+  exports:[PipesCommonModule],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

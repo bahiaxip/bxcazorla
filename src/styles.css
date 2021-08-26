@@ -121,6 +121,8 @@ html,body{
 }
 
 /*original*/
+
+/*
 @keyframes clockwiseSpin2{
 	0% {transform: rotate(-50deg);}
 	100% {transform: rotate(50deg);}
@@ -170,7 +172,7 @@ html,body{
 		grid-auto-rows: 200px;
 
 	}
-	/*boton de cierre (siempre centrado, ocupa x columnas según resolución)*/
+	//boton de cierre (siempre centrado, ocupa x columnas según resolución)
 	.gallery-container .gallery_first{
 		grid-column-start:span 2;
 	}
@@ -230,7 +232,7 @@ html,body{
 	.gallery-container{
 		grid-template-columns: repeat(1, 1fr);
 	}
-	/*boton de cierre (siempre centrado, ocupa x columnas según resolución)*/
+	//boton de cierre (siempre centrado, ocupa x columnas según resolución)
 	.gallery-container .gallery_first{
 		grid-column-start: span 1;
 	}
@@ -395,6 +397,8 @@ html,body{
 	background: #f3ffca;
 	cursor: pointer;
 }
+
+*/
 /*
 .myspan:hover .div_image{
 	width: calc(100% - 10px);
@@ -407,6 +411,7 @@ html,body{
 
 
 			/*		snow		*/
+/*
 .container_snow{
 	position: absolute;
 	width: 100%;
@@ -448,7 +453,10 @@ html,body{
 	animation-timing-function:  ease-in-out;
 	
 }
+
+*/
 					/* class img*/
+/*
 .box_image .div_image .div_ima{
 	width: 100%;
 	height: 100%;
@@ -514,9 +522,10 @@ html,body{
 .div_feedback div{
 	
 }
-
+*/
 
 /* ocultar iconos */
+/*
 .icon_circle{
 	
 	
@@ -546,3 +555,4 @@ html,body{
 .div_icon_hidden{
 	display: inline-block;
 }
+*/

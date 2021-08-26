@@ -32,9 +32,9 @@ export class LevelPipePipe implements PipeTransform {
   }
 
 }
-
+/*
 @Pipe({
-  name:'iconTypePipe'
+  name: 'iconType'
 })
 export class IconTypePipe implements PipeTransform{
   transform(param:string){
@@ -50,3 +50,4 @@ export class IconTypePipe implements PipeTransform{
     return icon;
   }
 }
+*/

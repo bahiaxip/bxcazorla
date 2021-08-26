@@ -5,11 +5,14 @@ import { MatAccordion } from '@angular/material/expansion';
 import { Snow } from '../models/snow';
 import { CardRentData } from '../models/card-rent-data';
 import { CardRent } from '../models/card-rent';
-import { LevelPipePipe,IconTypePipe } from '../level-pipe.pipe';
+import { LevelPipePipe } from '../level-pipe.pipe';
+
 @Component({
   selector: 'pre-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+
+
 })
 export class HomeComponent implements OnInit {
 
