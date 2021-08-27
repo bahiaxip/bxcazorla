@@ -1,0 +1,111 @@
+<div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata">				
+	<div class="subcard" >
+		<div class="card_image ">						
+			<div class="w100 h100" (click)="showImagesCard(rent)">
+				<img class="card_img" mat-card-image [src]="'assets/images/'+rent.listImages[0]" alt="Apartamentos Martín" style=" "/>
+			</div>
+		</div >
+			
+		<div class="d_flex card_content">
+			<!-- central -->
+			<div class="w100 t_center" >
+				<div class="title_renting">
+					<p class="title_renting_text">
+						{{rent.title}}
+					</p>
+
+					<div class="subtitle_renting " style="display:flex;justify-content:center" *ngIf="rent.type.length > 0">
+						<div class="icon_circle_double" >
+							<span class="material-icons-round" *ngFor="let type of rent.type;let i=index">
+								  {{type | iconType}}
+							</span>
+
+							<!--<span class="material-icons-round">
+								holiday_village
+							</span>-->
+						</div>
+
+						<p class="subtitle_renting_text" >
+
+							<span *ngFor="let type of rent.type;let i=index">
+								<span *ngIf="i!=0">/</span>{{type}}</span>
+
+						</p>
+					</div>
+
+				</div>
+				<div class="content_renting" >
+					<div class="w100 d_flex">
+						<div class="w50 d_flex link " (click)="selectOptionCard('phone',rent.phone)">
+							<div class="w50 mauto div_icon_hidden">
+								<span class="material-icons-round m10_auto  icon_circle " >
+									settings_phone
+								</span>
+							</div>
+							<div class="w50 mauto div_visible">
+								<p class="mauto">{{rent.phone}}</p>
+							</div>
+						</div>
+						<div class="w50 d_flex link" (click)="selectOptionCard('location',rent.numLevelLocation)">
+							<div class="w50 mauto div_icon_hidden">
+								<span class="material-icons-round m10_auto c_orange icon_circle " >
+									location_on
+								</span>
+							</div>
+							<div class="w50 mauto div_visible">
+								<p class="mauto">{{rent.numLevelLocation | levelPipe}}</p>
+								
+							</div>
+						</div>
+					</div>
+					<div class="w100 d_flex">
+						<div class="w50 d_flex link" (click)="selectOptionCard('feedback',rent.title)">
+							<div class="w50 div_icon_hidden">
+								
+								<span class="material-icons-round icon_circle m10_auto" >
+									star
+								</span>
+									
+								
+							</div>
+							<div class="w50 mauto div_visible" >
+								<p class="mauto"> Opiniones</p>
+							</div>
+						</div>
+						<div class="w50 d_flex link" (click)="selectOptionCard('capacity',rent.capacity)">
+							<div class="w50 div_icon_hidden ">
+								<span class="material-icons-round m10_auto c_orange icon_circle" >
+									group
+								</span>
+							</div>
+							<div class="w50 mauto div_visible">
+								<p class="mauto"> 2,4 y 6 personas</p>
+							</div>
+							
+						</div>
+					</div>
+					<div class="price">
+						<div class="w30 div_price_item">
+							<span class="price_item">{{rent.minPrice}}€</span>
+						</div>
+						<div class="w70 price_detail">
+							<p>Precio aprox. por 3 noches <span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span></p>
+
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			<!-- lateral derecho -->
+			<!--<div style="width:20%;text-align:center">
+				<p>Teléfono: 23423434</p>
+				<p>Texto: asdfasdf</p>
+				<p>Teléfono: 23423434</p>
+				<p>Teléfono: 23423434</p>
+				<p>Teléfono: 23423434</p>
+				
+			</div>-->
+		</div>
+	</div>
+</div>

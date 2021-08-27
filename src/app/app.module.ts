@@ -19,6 +19,7 @@ import { RentingComponent } from './renting/renting.component';
 import { Pipe } from '@angular/core';
 import { LevelPipePipe,IconTypePipe } from './level-pipe.pipe';
 import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -28,7 +29,8 @@ import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
     HomeComponent,
     RentingComponent,
     LevelPipePipe,
-    IconTypePipe
+    IconTypePipe,
+    CardComponent
 
   ],
   imports: [

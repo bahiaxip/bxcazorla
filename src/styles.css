@@ -92,7 +92,11 @@ html,body{
 	font-size: 10px;
 }
 
-
+.feed_level{
+	font-size:14px;
+	color:orange;
+	vertical-align:middle
+}
 
 /*keyframes & media*/
 

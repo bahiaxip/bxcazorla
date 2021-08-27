@@ -3,12 +3,11 @@ import { GalleryItem, ImageItem} from 'ng-gallery';
 import { GalleryPlaces } from '../models/gallery-places';
 import { MatAccordion } from '@angular/material/expansion';
 import { Snow } from '../models/snow';
-import { CardRentData } from '../models/card-rent-data';
-import { CardRent } from '../models/card-rent';
-import { LevelPipePipe, IconTypePipe } from '../level-pipe.pipe';
+
 import { Title } from '@angular/platform-browser';
 //import { IconPipe } from '../pipes/icon.pipe';
-
+import { CardRent } from '../models/card-rent';
+import { CardRentData } from '../models/card-rent-data';
 
 @Component({
   selector: 'pre-home',
@@ -20,20 +19,19 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-
-  public myHeight:string="0";
-  public fixedCloseGal:boolean=false;
+  public cardrentdata:any;
+  
+  
   private selectedSection:any=null;
   public images2:any;
   panelOpenState=false;
   images: any;
   private selectActivity:any;
-  public selectedCard!:CardRent;
-  //switchImages sustituido por myHeight
-  //public switchImages=false;
-  public switchDivFeedback:any;
-  public selTypeCard:any;
-  public pushedOptionCard:any;
+  
+  public myHeight:string="0";
+  
+  
+  
   public firstWidth:any;
   public firstHeight:any;
   public switchAllOpacitySnow=false
@@ -48,9 +46,14 @@ export class HomeComponent implements OnInit {
   public textModal:string="";
   public titleModal:string="";
 
-  //array valoracion localización
+  public switchDivFeedback:any;
   public levelLocation:number=5;
-  public cardrentdata:any;
+  public selectedCard:any;
+
+  public feedbytitle:any;
+
+  
+
   public textbanner:any;
   private rainInterval:any;
   public places:GalleryPlaces[]=[
@@ -109,9 +112,12 @@ export class HomeComponent implements OnInit {
   @ViewChild('section2',{static:true}) private section2!:ElementRef;
   @ViewChild('section3',{static:true}) private section3!:ElementRef;
   @ViewChild('section4',{static:true}) private section4!:ElementRef;
+  //section2
   @ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
+  //section1
   @ViewChild('backimage',{static:true}) private backimage!:ElementRef;
   @ViewChild('backimage2',{static:true}) private backimage2!:ElementRef;
+  //section4
   @ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
   @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
 
@@ -143,10 +149,17 @@ export class HomeComponent implements OnInit {
       );  
     }
     */
-
+//objetos creados
     this.cardrentdata=CardRentData.midata;
 
 
+    
+  }
+  hideImagesCard(){
+    //this.fixedCloseGal=false;
+    if(this.myHeight != "0"){
+      this.myHeight="0";
+    }
     
   }
   //establecer section mediante scroll
@@ -242,6 +255,10 @@ export class HomeComponent implements OnInit {
     
   }
 
+  
+  location(){
+    console.log("solo location");
+  }
   flash(){
     console.log("llega al falash")    
     //this.backimage.nativeElement.style.backgroundImage="url('../../assets/cerrada_de_elias_byn.png')";
@@ -250,97 +267,7 @@ export class HomeComponent implements OnInit {
       this.backimage2.nativeElement.className="back_image2"
     },10000)
   }
-  sendDataToExpansion(){
-
-  }
-  showImagesCard(card:CardRent){
-    this.fixedCloseGal=true;
-    this.selectedCard=card;
-    console.log(card.listImages);
-    //this.switchImages=true;
-    this.myHeight="calc(100vh - 90px)";
-  }
-  hideImagesCard(){
-    //this.fixedCloseGal=false;
-    if(this.myHeight != "0"){
-      this.myHeight="0";
-    }
-    
-  }
-  location(){
-    console.log("solo location");
-  }
-  selectCard(card:CardRent){ 
-    if(this.myHeight != "0"){
-      //this.myHeight="0";
-    }   
-    console.log("tipo: ",this.selTypeCard);
-    if(this.selTypeCard=="location" ){
-      console.log("la seleccionada es: ",card.numLevelLocation);
-      this.levelLocation=card.numLevelLocation;
-      console.log(this.levelLocation)
-      this.switchDivFeedback=true;
-    }
-    else
-      this.switchDivFeedback=false
-    if(!this.pushedOptionCard && this.selectedCard!=card){
-      this.switchDivFeedback=false
-      this.bannerp2.nativeElement.innerHTML="";
-    }
-    //this.selTypeCard=null;
-    this.selectedCard=card;
-    //detecta si se ha pulsado el option card 
-    if(this.pushedOptionCard){
-      console.log("se ha pulsado optioncard")
-      this.pushedOptionCard=false;
-    }
-    this.bannerp1.nativeElement.innerHTML=card.title;
-  }
-  selectOptionCard(type:string, text:any=null){
-    let totalText;
-    let aux;
-    let div;
-    this.pushedOptionCard=true;
-    this.selTypeCard=type;
-    
-    if(type=="feedback"){ 
-      aux=text;
-      totalText="mifeedback"
-      //div='<div>'
-    }else if(type=="capacity"){
-      /*
-      if(text){        
-        for(let i=0;i<text.length;i++){          
-          if(i>0){
-            list+',';
-          }
-          list+text[i];
-        }
-        console.log(list)
-      }
-      */
-      totalText='<span style="color:orange">Capacidad: </span><span style="font-size:16px;margin-left:10px">'+text+' personas</span>';
-
-    }else if(type=="phone"){
-      totalText='<span style="color:orange">Teléfono de contacto: </span><span style="font-size:16px;margin-left:10px">'+text+'</span>';
-    }else if(type=="location"){
-      aux=text;
-      totalText='<span style="color:orange;font-size:10px">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
-    }
-    if(!text){
-      console.log("mi text no existe")
-    }else{
-      console.log(totalText)
-    }
-    this.bannerp2.nativeElement.innerHTML=totalText;
-    //this.textbanner='<span class="material-icons">share_location</span>';
-
-  }
-  getLevelLocationString(card:any){
-    //obtenemos una media de la localización... 
-    //si es menor a 1 km : Excelente, si es entre 1 y 2 : muy bueno, si es entre 2 y 3: bueno
-    if(card.numLevelLocation){}
-  }
+  
 
   misectionHorizontal(size:string){
     console.log("llega al misectionHorizontal")
@@ -353,7 +280,7 @@ export class HomeComponent implements OnInit {
     this.midivslider.nativeElement.style.transform="translateX(0px)";
   }
 
-  showTooltip(card:CardRent){
+  showTooltip(card:any){
     console.log("dato");
   }
   animation1(){
