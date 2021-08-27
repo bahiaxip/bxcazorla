@@ -3,6 +3,7 @@ export class CardRent {
 		public title:string,
 		public minPrice:string,
 		public minNight:string,
+		public capacity:Array<number>,
 		public logo:string,
 		public image:string,
 		public listImages:Array<string>,

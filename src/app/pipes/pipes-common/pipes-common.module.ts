@@ -8,6 +8,7 @@ import { IconPipe } from '../icon.pipe';
   imports: [
     CommonModule
   ],
+  
   exports:[IconPipe]
 })
 export class PipesCommonModule { }

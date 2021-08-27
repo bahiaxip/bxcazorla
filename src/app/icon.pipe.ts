@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'icon'
+  name: 'iconmy'
 })
 export class IconPipe implements PipeTransform {
 
-  transform(value: string): unknown {
+  transform(value: string): string {
     let data;
     if(value=="casa"){
       data="home";

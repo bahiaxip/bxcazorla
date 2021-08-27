@@ -17,8 +17,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { RentingComponent } from './renting/renting.component';
 import { Pipe } from '@angular/core';
-import { LevelPipePipe } from './level-pipe.pipe';
+import { LevelPipePipe,IconTypePipe } from './level-pipe.pipe';
 import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
+
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
     AppComponent,
     HomeComponent,
     RentingComponent,
-    LevelPipePipe,    
+    LevelPipePipe,
+    IconTypePipe
 
   ],
   imports: [
@@ -41,10 +43,8 @@ import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
     MatExpansionModule,
     MatCardModule,
     CommonModule,
-    PipesCommonModule
+    PipesCommonModule,    
   ],
-  //providers:[IconPipePipe,IconPipe],
-  exports:[PipesCommonModule],
   
   bootstrap: [AppComponent]
 })

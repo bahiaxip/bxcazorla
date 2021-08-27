@@ -6,6 +6,7 @@ export var CardRentData ={
 			"Apartamentos Martín",
 			"210",
 			"3",
+			[2,4,6],
 			"logo",
 			"imagen",
 			["ap_martin/ap_martin1.jpg","ap_martin/ap_martin2.jpg","ap_martin/ap_martin3.jpg","ap_martin/ap_martin4.jpg","ap_martin/ap_martin5.jpg",
@@ -21,9 +22,11 @@ export var CardRentData ={
 			"https://www.google.com/maps/@37.946471,-2.919678,14z?hl=es",
 			"texto"),
 
-		new CardRent("Residencial Los Robles",
+		new CardRent(
+			"Residencial Los Robles",
 			"90",
 			"1",
+			[2,4,6],
 			"logo",
 			"imagen",
 			[
@@ -45,6 +48,7 @@ export var CardRentData ={
 			"Los Enebros",
 			"80",
 			"1",
+			[2,4,6],
 			"logo",
 			"imagen",
 			[
@@ -66,6 +70,7 @@ export var CardRentData ={
 			"Los pinos",
 			"220",
 			"3",
+			[2,4,6],
 			"logo",
 			"imagen",
 			[
@@ -85,6 +90,7 @@ export var CardRentData ={
 		new CardRent("Alojamiento Valeria",
 			"306",
 			"3",
+			[2,4,6],
 			"logo",
 			"imagen",
 			[

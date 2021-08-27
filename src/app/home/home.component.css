@@ -1,8 +1,10 @@
 .section1{
-	//min-height: 100vh;
+	/*min-height: 100vh;*/
 	height: 100vh;
-	//max-height: 600px;
-	//max-height: 100%;
+	/*
+	max-height: 600px;
+	max-height: 100%;
+	*/
 	margin: 0;	
 	padding: 0;
 	z-index: 100;
@@ -17,7 +19,7 @@
 	height: 100%;
 	background-size: 100%;
 	background-repeat: no-repeat;
-	//background-clip: padding-box;
+	/*background-clip: padding-box;*/
 }
 .back_image2{
 	position: absolute;
@@ -29,7 +31,7 @@
 	height: 100%;
 	background-size: 100%;
 	background-repeat: no-repeat;
-	//background-clip: padding-box;	
+	/*background-clip: padding-box;	*/
 }
 .animated{
 	animation-iteration-count: 1;
@@ -79,13 +81,12 @@
 .gallery-container{	
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	//grid-auto-rows: 200px;
+	/*grid-auto-rows: 200px;*/
 	/*pasamos a minmax para poder establecer con height el botón de cierre*/
 	grid-auto-rows: minmax(20px 200px);
 	grid-gap: 10px;
-	//height: calc(100vh - 90px);
-	height: 0;
-	//height: auto;
+	/*height: calc(100vh - 90px);*/
+	height: 0;	
 	
 }
 .gallery-container div{
@@ -115,7 +116,7 @@
 }
 .gallery__item{
 	position: relative;
-	//grid-column-start: span 3 !important;
+	/*grid-column-start: span 3 !important;*/
 }
 
 
@@ -172,14 +173,14 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 
 .div_flex{
 	width: 100%;
-	//display: flex;
+	/*display: flex;*/
 	height: 100vh;
-	//padding: 15px;
+	/*padding: 15px;*/
 	
 	padding: 20px;
-	//background-color: lightblue;
-	//background: transparent;
-	//flex-flow: row wrap;
+	
+	/*background: transparent;*/
+	
 	justify-content: center;
 	overflow: auto;
 	scrollbar-width: none;
@@ -190,12 +191,9 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	width: 100%;
 	display: flex;
 	height: 100vh;
-	//padding: 15px;
+	/*padding: 15px;*/
 	
-	padding: 20px;
-	//background-color: lightblue;
-	//background: transparent;
-	//flex-flow: row wrap;
+	padding: 20px;	
 	justify-content: center;
 	overflow: auto;
 	scrollbar-width: none;
@@ -220,14 +218,14 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 .flex_item{
 	min-height: 50px;
 
-	//max-height: 100%;
-	//height: auto;
+	/*max-height: 100%;*/
+	
 	width:70%;	
 	background-color:rgba(0,0,0,.7);
-	//border:black 2px solid;
+	
 	display: flex;
 	padding: 5px;
-	//overflow: hidden;
+	
 	margin: auto;
 	border-radius:10px;
 	text-align: center;	
@@ -248,26 +246,25 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	width: 100%;
 	margin: auto;
 	display: flex;
-	flex-flow: row wrap;
-	//background-color: orange;	
+	flex-flow: row wrap;	
 	box-sizing: border-box;
 }
 
 .div_box{
 	width: 23%;
 	max-width: 500px;
-	//height: 30vh;
+	
 	background: transparent;
 	margin: 15px auto;
 	padding: 0px min(5px);
 	position: relative;
 	overflow: hidden;	
-	//box-shadow: -10px 10px 6px rgba(0,0,0,.5),-4px 5px 8px rgba(0,0,0,.4), 14px -15px 8px rgba(0,0,0,.4) inset;
+	/*box-shadow: -10px 10px 6px rgba(0,0,0,.5),-4px 5px 8px rgba(0,0,0,.4), 14px -15px 8px rgba(0,0,0,.4) inset;*/
 	cursor: default;
 }
 
 .box_image{
-	//opacity: 1;
+	/*opacity: 1;*/
 	width: 100%;
 	height: auto;
 
@@ -280,8 +277,8 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	height: 100%;
 	object-fit: cover;
 	border-radius: 10px;
-	//border: rgba(0,0,0,.5) 2px solid;
-	//cursor: pointer;
+	/*border: rgba(0,0,0,.5) 2px solid;*/
+	/*cursor: pointer;*/
 
 	
 	background-color: rgba(0,0,0,.7);
@@ -289,7 +286,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	
 }
 .box_image .div_image .title_image{
-	//visibility: hidden;
+	/*visibility: hidden;*/
 	opacity: 0;
 	position:absolute;
 	width:calc(100% - 10px);
@@ -305,7 +302,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 }
 .box_image:hover .div_image .title_image{
  	opacity: 1;
- 	//visibility: visible;
+ 	/*visibility: visible;*/
  	bottom: -2px;
  }
 
@@ -329,20 +326,19 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 }
 
 
-
-
-
-
 				/*class clone div_image */
 .box_image .clone_div_image{
 	width: calc(100% - 10px);
 	height: 100%;
 
 	border-radius: 10px;
-	//border: rgba(0,0,0,.5) 2px solid;
-	//cursor: pointer;
+	/*
+	border: rgba(0,0,0,.5) 2px solid;
+	cursor: pointer;
+	left: 0;
+	*/
 	position: absolute;
-	//left: 0;
+	
 	opacity: 1;
 	background-color: rgba(0,0,0,.4);
 	transition: transform 4s linear, opacity 1s linear, background 4s linear;
@@ -378,17 +374,29 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	z-index: 102;
 	margin: auto;
 	left: 10%;
-	//visibility: hidden;
+	/*visibility: hidden;*/
 	overflow: scroll;
 }
-.flex_content>.modal_detail .modal_image{
+.flex_content .modal_detail2{
+	width:80%;
+	//width: 50%;
+	height: 80%;
+	position:absolute;
+	background:rgba(0,0,0,.7);
+	z-index: 102;
+	margin: auto;
+	left: 10%;
+	/*visibility: hidden;*/
+	overflow: scroll;
+}
+.flex_content>.modal_detail .modal_image,.flex_content>.modal_detail2 .modal_image{
 	display: block;	
 	max-width: 600px;
 	width: 50%;
 	margin:10px auto;
 	background: orange;
 }
-.flex_content .modal_detail h2.modal_title{
+.flex_content .modal_detail h2.modal_title,.flex_content .modal_detail2 h2.modal_title{
 	width: 80%;
 	color: #FFF;
 	text-algin:center;	
@@ -398,7 +406,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	display: flex;
 	justify-content: center;
 }
-.flex_content .modal_detail p.modal_text{
+.flex_content .modal_detail p.modal_text, .flex_content .modal_detail2 p.modal_text{
 	width: 80%;
 	margin: 10px auto;
 	text-align: center;
@@ -418,7 +426,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	background-color: orange;
 }
 .div_feedback div{
-	//background-color: orange;
+	/*background-color: orange;*/
 }
 .card_rent{
 	max-width:60%;
@@ -426,8 +434,10 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	flex-flow:column wrap;
 	margin:10px auto;
 	background-color: #F7F7F7;
-	//background-color: #f8dcc3;
-	//background-color:white;
+	/*
+	background-color: #f8dcc3;
+	background-color:white;
+	*/
 	border-radius:10px
 }
 .card_rent .card_image{
@@ -466,10 +476,13 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	text-align:center;
 	font-size:19px;
 	font-weight: bold;
-	//border:#979797 1px solid;
-	//border-radius:10px;
+	/*
+	border:#979797 1px solid;
+	border-radius:10px;
+	background-color:rgba(0,0,0,.4);
+	*/
 	box-sizing:border-box;
-	//background-color:rgba(0,0,0,.4);
+	
 	color:#FFF;
 	margin:3px;	
 }
@@ -484,7 +497,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	font-size: 16px;
 	font-family: Quicksand;
 	font-weight: bold;
-	//background-color: rgba(0,0,0,.8);
+	/*background-color: rgba(0,0,0,.8);*/
 	background: #f3ffea;
 
 	
@@ -499,16 +512,19 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	display:flex;
 	border:lightgreen 1px solid;
 	margin:2px auto;
-	//padding: 0 2px;
+	/*padding: 0 2px;*/
 	border-radius:10px;
 	font-family:Quicksand;
 	
 
 }
 .content_renting .price .div_price_item{
-	//background-color:#f3ffea;
+	/*
+	background-color:#f3ffea;
+	background-color: rgba(74,58,58,1);
+	*/
 	background-color: green;
-	//background-color: rgba(74,58,58,1);
+	
 	border-bottom-left-radius: 10px;
 	border-top-left-radius: 10px;
 	letter-spacing: 1px;
@@ -516,10 +532,13 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 }
 .content_renting .price .price_item{
 	font-size:25px;
-	//color:#009143;
+	/*
+	color:#009143;
+	justify-content:center;
+	*/
 	color: #FFF;
 	display:flex;
-	//justify-content:center;
+	
 	align-items: center;
 	
 	margin: auto;
@@ -554,7 +573,9 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	//height: 100%;
+	/*
+	height: 100%;
+	*/
 	overflow: hidden;
 	
 }
@@ -562,52 +583,48 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	//height: 100%;
-	//transition: opacity 5s linear;
+	/*
+	height: 100%;
+	transition: opacity 5s linear;
+	*/
 }
 .container_snow>div,.container_snow2>div{
 	position: absolute;
 	width: auto;
 	height: 100%;
-	
-	//height: auto;
 	z-index: 900;
-
-
 	animation-iteration-count: infinite, infinite;
 	animation-direction: normal normal;
 	animation-timing-function: linear, ease-in;
-	
 }
+
 .container_snow>div>img,.container_snow2>div>img{
 	position: absolute;
 	width: auto;
 	height: auto;
 
-	
-
 	animation-iteration-count: infinite;
 	animation-direction:  alternate;
-	animation-timing-function:  ease-in-out;
-	//animation-transform-origin: 50% 100%;
+	animation-timing-function:  ease-in-out;	
 }
 
 /* ocultar iconos */
 .icon_circle{
-	//display: flex;
-	//background-color: #D3D3D3;
-	//background: #474747;
-	border: #676767 1px solid;
-	//background-color: #f3ffea;
-	border-radius: 50%;
-	//color: #009143;
+	/*
+	display: flex;
+	background-color: #D3D3D3;
+	background: #474747;
+	background-color: #f3ffea;
+	color: #009143;
+	*/
+
+	border: #676767 1px solid;	
+	border-radius: 50%;	
 	color: orange;
 	padding: 5px;
 	font-size: 24px;
 	background-color: rgba(74,58,58,1);
 	margin: 5px auto;
-
-
 }
 .icon_circle.home{
 	display: inline-flex;
@@ -634,19 +651,19 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 @keyframes drop2 {
 	0% {transform:  translate(0px,-50px);}
 	100% {transform: translate(0px,100%);}
-	//100% {transform: translate(0px,650px);}
+	/*100% {transform: translate(0px,650px);}*/
 }
 
 
 @keyframes drop {
 	0% {transform:  translate(-0px,-50px);}
 	100% {transform: translate(0px,120%);}
-	//100% {transform: translate(0px,650px);}
+	/*100% {transform: translate(0px,650px);}*/
 }
 @keyframes drop3 {
 	0% {transform:  translate(0px,-50px);}
 	100% {transform: translate(0px,120%);}
-	//100% {transform: translate(0px,650px);}
+	/*100% {transform: translate(0px,650px);}*/
 }
 
 /*original*/
@@ -706,8 +723,10 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	}
 
 	.gallery__item:nth-child(n){
-		//grid-column-start: auto;
-		//grid-row-start: auto;
+		/*
+		grid-column-start: auto;
+		grid-row-start: auto;
+		*/
 	}
 }
 @media (max-width: 900px){
@@ -722,7 +741,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	}
 	.gallery-container div{
 		grid-template-columns: repeat(2, 1fr);
-		//grid-column-start: auto;
+		/*grid-column-start: auto;*/
 	}
 	
 	.gallery__item:nth-child(n){

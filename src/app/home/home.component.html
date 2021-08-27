@@ -71,7 +71,7 @@
 		<div #midivslider  style="height:100%;display:flex;flex-flow:row wrap;transition:transform 1s linear" [ngStyle]="{'width':firstWidth*2+'px'}" >
 			<!--<div style="width:100%;">-->
 				<div [ngStyle]="{'width':firstWidth+'px'}" style="" >
-					<div style="width:90%;height: 100vh;background-color:transparent;margin:auto;display:flex;">
+					<div style="width:90%;height: 100vh;position: relative;background-color:transparent;margin:auto;display:flex;">
 						
 						<button (click)="misectionHorizontal(firstWidth+'px')" style="position:absolute">ñlaskjdf</button>
 
@@ -140,7 +140,7 @@
 						-->
 						<div class="div_flex">
 							<div class="flex_header">
-								<div style="width:80%;margin:auto;margin-top:30px">
+								<div style="width:80%;margin:auto;margin-top:30px" >
 									<div class="flex_item" >
 										<mat-icon  style="float:left;font-size:35px;color:lightgreen">whatsapp</mat-icon>
 										<mat-icon  style="float:right;font-size:35px;color:orange;margin-right:10px">info</mat-icon>
@@ -152,6 +152,7 @@
 								
 							</div>
 							<div class="flex_content">
+
 								<div class="modal_detail" *ngIf="switchModal">					
 									<mat-icon style="color:white;position:absolute;right:2%;top:2%;cursor:pointer" (click)="switchModal=false;">close</mat-icon>
 									
@@ -304,8 +305,8 @@
 								
 							</div>
 							<div class="flex_content">
-								<div class="modal_detail" *ngIf="switchModal">					
-									<mat-icon style="color:white;position:absolute;right:2%;top:2%;cursor:pointer" (click)="switchModal=false;">close</mat-icon>
+								<div class="modal_detail2" *ngIf="switchModal2">					
+									<mat-icon style="color:white;position:absolute;right:2%;top:2%;cursor:pointer" (click)="switchModal2=false;">close</mat-icon>
 									
 									
 									
@@ -320,7 +321,7 @@
 										<div class="clone_div_image" ></div>
 										<div class="div_image">
 											<div class="title_image">
-												<mat-icon class="icon_image" (click)="showModal(place)" title="Más información">info</mat-icon>
+												<mat-icon class="icon_image" (click)="showModal2(place)" title="Más información">info</mat-icon>
 												<p class="text_title" >{{place.title}}</p>
 											</div>
 											<img src="{{place.image}}" alt="" class="div_ima">
@@ -393,34 +394,36 @@
 			<div class="div_flex_item " style="justify-content:center;">
 				<div class="flex_item " style="" >
 					<div style="width:100%;display:flex;">
+					<!-- icono valoraciones -->
 						<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard()">
 							<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
 						</div>
 						
 						<div style="width: 70%;font-weight: bold;">
-							<p class="mauto c_white bannerp1" #bannerp1></p>
-
-							<span style="display:inline-flex;margin:auto;vertical-align: middle;" (click)="showTooltip(selectedCard)" >
-								<div style="display:flex;margin:0 5px 0 0;" *ngIf="switchDivFeedback">
-									<span class="material-icons" style="color:orange;display:flex;font-size:16px;margin:auto;">info</span>
+							<p class="mauto c_white bannerp1" #bannerp1>Alojamiento en Arroyo Frío</p>
+						<!-- gráfica puntuación de ubicación -->
+							<span style="display:inline-flex;margin:auto;vertical-align: middle;"  >
+								<div style="display:flex;margin:0 10px 0 0;" *ngIf="switchDivFeedback" >
+									<span class="material-icons" style="color:orange;display:flex;font-size:16px;margin:auto;cursor:pointer" >info</span>
 								
-									<div class="div_feedback" style="width:80px;height:20px;border:#474747 1px solid;margin:auto;display:flex;justify-content:space-around;align-items:center;border-radius: 5px;cursor:pointer"  title="{{levelLocation| levelPipe }}">
+									<div class="div_feedback" style="width:80px;height:20px;border:#474747 1px solid;margin:auto;display:flex;justify-content:space-around;align-items:center;border-radius: 5px;cursor:pointer"  title="{{levelLocation| levelPipe }}" (click)="showTooltip(selectedCard)">
 
-										<div style="width:4px;height:4px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:6px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 1 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:8px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 2 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:10px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 3 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:12px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 4 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:14px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 5 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:3px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:4px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 1 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:6px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 2 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:8px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 3 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:10px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 4 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:12px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 5 ? 'feedgreen':'feedorange'"></div>
 									</div>
 								</div>
 								<!--<span [innerHTML]="textbanner"></span>-->
 								
-								<p class="mauto c_white" #bannerp2  style="white-space: text;"></p>
+								<p class="mauto c_white" #bannerp2  style="white-space: text;cursor:pointer;margin-left:10px" (click)="location()"></p>
 								
 								<!--<p>valoración</p>-->
 								
 							</span>
+						<!-- imágenes -->
 							<div class="" style="width:100%;"  >
 								
 								
@@ -437,6 +440,7 @@
 								
 							</div>
 						</div>
+					<!-- icono Info -->
 						<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard()">
 							<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
 						</div>
@@ -465,7 +469,7 @@
 								<div class="subtitle_renting " style="display:flex;justify-content:center" *ngIf="rent.type.length > 0">
 									<div class="icon_circle_double" >
 										<span class="material-icons-round" *ngFor="let type of rent.type;let i=index">
-											  {{type | icon}}
+											  {{type | iconType}}
 										</span>
 
 										<!--<span class="material-icons-round">
@@ -520,7 +524,7 @@
 											<p class="mauto"> Opiniones</p>
 										</div>
 									</div>
-									<div class="w50 d_flex link" (click)="sendDataToExpansion()">
+									<div class="w50 d_flex link" (click)="selectOptionCard('capacity',rent.capacity)">
 										<div class="w50 div_icon_hidden ">
 											<span class="material-icons-round m10_auto c_orange icon_circle" >
 												group

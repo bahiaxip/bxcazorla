@@ -5,12 +5,16 @@ import { MatAccordion } from '@angular/material/expansion';
 import { Snow } from '../models/snow';
 import { CardRentData } from '../models/card-rent-data';
 import { CardRent } from '../models/card-rent';
-import { LevelPipePipe } from '../level-pipe.pipe';
+import { LevelPipePipe, IconTypePipe } from '../level-pipe.pipe';
+import { Title } from '@angular/platform-browser';
+//import { IconPipe } from '../pipes/icon.pipe';
+
 
 @Component({
   selector: 'pre-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  
 
 
 })
@@ -39,6 +43,7 @@ export class HomeComponent implements OnInit {
   public snows2:Snow[]=[];  
   public snow:any;
   public switchModal:boolean=false;
+  public switchModal2:boolean=false;
   public imageModal:string="";
   public textModal:string="";
   public titleModal:string="";
@@ -110,7 +115,11 @@ export class HomeComponent implements OnInit {
   @ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
   @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
 
-  constructor() {
+  constructor(
+    private titleService:Title,    
+  ) {
+
+    this.titleService.setTitle("Mi titulo");
 
     this.textModal="";
     this.titleModal="";
@@ -221,11 +230,11 @@ export class HomeComponent implements OnInit {
     this.switchAllOpacitySnow=true;
     if(this.firstWidth>=1000 && this.firstHeight<=this.firstWidth){
       //anulada animación (poco realista)
-      /*
+      
       this.animation1();
       this.animation2()
       this.rainAuto();
-      */
+      
 
     }
     this.selectedCard=this.cardrentdata[0];
@@ -258,6 +267,9 @@ export class HomeComponent implements OnInit {
     }
     
   }
+  location(){
+    console.log("solo location");
+  }
   selectCard(card:CardRent){ 
     if(this.myHeight != "0"){
       //this.myHeight="0";
@@ -284,7 +296,7 @@ export class HomeComponent implements OnInit {
     }
     this.bannerp1.nativeElement.innerHTML=card.title;
   }
-  selectOptionCard(type:string, text=null){
+  selectOptionCard(type:string, text:any=null){
     let totalText;
     let aux;
     let div;
@@ -295,13 +307,25 @@ export class HomeComponent implements OnInit {
       aux=text;
       totalText="mifeedback"
       //div='<div>'
+    }else if(type=="capacity"){
+      /*
+      if(text){        
+        for(let i=0;i<text.length;i++){          
+          if(i>0){
+            list+',';
+          }
+          list+text[i];
+        }
+        console.log(list)
+      }
+      */
+      totalText='<span style="color:orange">Capacidad: </span><span style="font-size:16px;margin-left:10px">'+text+' personas</span>';
+
     }else if(type=="phone"){
-      totalText='Teléfono de contacto: '+text;
+      totalText='<span style="color:orange">Teléfono de contacto: </span><span style="font-size:16px;margin-left:10px">'+text+'</span>';
     }else if(type=="location"){
-        
-      
       aux=text;
-      totalText='Abrir mapa'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
+      totalText='<span style="color:orange;font-size:10px">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
     }
     if(!text){
       console.log("mi text no existe")
@@ -473,8 +497,18 @@ export class HomeComponent implements OnInit {
     this.textModal=place.detail;
     this.titleModal=place.title;
     console.log("detaller: ",place);
+    if(this.switchModal2)
+      this.switchModal2=false;
     this.switchModal=true;
 
+  }
+  showModal2(place:GalleryPlaces){
+    this.imageModal=place.image;
+    this.textModal=place.detail;
+    this.titleModal=place.title;
+    console.log("detaller: ",place);
+    this.switchModal=false;
+    this.switchModal2=true;    
   }
 
 
