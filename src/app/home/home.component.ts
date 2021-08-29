@@ -9,6 +9,9 @@ import { Title } from '@angular/platform-browser';
 import { CardRent } from '../models/card-rent';
 import { CardRentData } from '../models/card-rent-data';
 
+//services
+import { CardService } from '../services/card.service';
+
 @Component({
   selector: 'pre-home',
   templateUrl: './home.component.html',
@@ -20,7 +23,7 @@ import { CardRentData } from '../models/card-rent-data';
 export class HomeComponent implements OnInit {
 
   public cardrentdata:any;
-  
+  public selectedCard:any;
   
   private selectedSection:any=null;
   public images2:any;
@@ -30,16 +33,19 @@ export class HomeComponent implements OnInit {
   
   public myHeight:string="0";
   
+  public myHeight2:string="0";
   
   
   public firstWidth:any;
   public firstHeight:any;
+  //snow
   public switchAllOpacitySnow=false
   public switchOpacitySnow='1';
   public switchOpacitySnow2='0';
   public snows:Snow[]=[];  
   public snows2:Snow[]=[];  
   public snow:any;
+
   public switchModal:boolean=false;
   public switchModal2:boolean=false;
   public imageModal:string="";
@@ -48,11 +54,11 @@ export class HomeComponent implements OnInit {
 
   public switchDivFeedback:any;
   public levelLocation:number=5;
-  public selectedCard:any;
+  
 
   public feedbytitle:any;
 
-  
+  public switchDivMaps:any;
 
   public textbanner:any;
   private rainInterval:any;
@@ -122,13 +128,18 @@ export class HomeComponent implements OnInit {
   @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
 
   constructor(
-    private titleService:Title,    
+    private titleService:Title,
+    private _cardService:CardService,    
   ) {
 
     this.titleService.setTitle("Mi titulo");
 
     this.textModal="";
     this.titleModal="";
+    
+    //cargamos la primera card para que la transición tome efecto desde la primera vez
+    this.selectedCard=CardRentData.midata[0];
+
     //window.addEventListener("")
     //this.selectedSection=this.section1.nativeElement;
     /*
@@ -149,41 +160,10 @@ export class HomeComponent implements OnInit {
       );  
     }
     */
+
+    //no necesario
 //objetos creados
-    this.cardrentdata=CardRentData.midata;
-
-
-    
-  }
-  hideImagesCard(){
-    //this.fixedCloseGal=false;
-    if(this.myHeight != "0"){
-      this.myHeight="0";
-    }
-    
-  }
-  //establecer section mediante scroll
-  setSectionByScroll(){
-    //alto total del scroll (por si recarga la página detectar y seleccionar el section)    
-    let scrollY=window.scrollY;
-    //alto de cada section
-    let sectionSize=window.innerHeight;
-    //seleccionamos el section seleccionado por si se recarga la página
-    for(let i=0;i<5;i++){
-      if(window.scrollY == sectionSize * i){
-      let sect;        
-        if(i==1)
-          this.selectedSection=this.section2.nativeElement;
-        else if(i==2)
-          this.selectedSection=this.section3.nativeElement;
-        else if(i==3)
-          this.selectedSection=this.section4.nativeElement;
-        else if(i==4)
-          this.selectedSection=this.section4.nativeElement;
-        else 
-          this.selectedSection=this.section1.nativeElement;
-      }
-    }
+    //this.cardrentdata=CardRentData.midata;
   }
 
   ngOnInit(): void {
@@ -250,14 +230,101 @@ export class HomeComponent implements OnInit {
       
 
     }
-    this.selectedCard=this.cardrentdata[0];
-
+    //set default card
+    //this._cardService.setSelectedCard(this.cardrentdata[0])
+    //this.selectedCard=this.cardrentdata[0];
     
   }
+  //switch que permite mostrar el div del feedback de location
+  switchDivFeed(value:boolean){
+    this.switchDivFeedback=value;
+    //this.switchDivMaps=value;
+  }
+  setBanner1(card:CardRent){
+    console.log("datos desde SetBanner1: ",card.title)
+    this._cardService.setSelectedCard(card);
+    this.bannerp1.nativeElement.innerHTML=card.title;    
+    /*
+    this.selectedCard=this._cardService.getSelectedCard();
+    console.log(this.selectedCard); 
+    this.bannerp1.nativeElement.innerHTML=title;
+    this.myHeight="calc(100vh - 90px)";
+    */
+  }
+  //en setBanner2() no especificamos el tipo CardRent, al añadir otra propiedad y agruparla
+  //en un nuevo objeto (el emit solo acepta un parámetro), esto es solo para
+  //identificar si el botón pulsado es la imagen de la card. (recomendable 
+  //optimizar identificando la pulsación de la imagen mediante otro método)
+  setBanner2(card:any){
+    //si el objeto trae la propiedad selectedElement y es images mostramos imágenes
+    if(card.selectedElement  && card.selectedElement=="images"){    
+      
+      //asignamos el card.card en lugar de utilizar el método getSelectedCard del servicio 
+      //porque el emit se ejecuta antes(método selectOptionCard) y el card se establece 
+      //después(método selectCard) mediante setSelectedCard() del servicio.      
+      this.selectedCard=card.card;      
+      
+      this.myHeight2="0";
+      this.myHeight="calc(100vh - 90px)";      
+    }else if(card.selectedElement && card.selectedElement=="open_maps"){
+      this.myHeight="0";
+      this.myHeight2="calc(100vh - 90px)";      
+    }else{
+      this.bannerp2.nativeElement.innerHTML=card;  
+    }
+    console.log("el card es: ",card)    
+
+  }
+  miPrueba(){
+    console.log("prueba de mostrar mapa")
+  }
+
+  hideImagesCard(type:string){
+    //this.fixedCloseGal=false;
+    if(type=="images"){
+      if(this.myHeight != "0")
+        this.myHeight="0";
+    }else if(type == "open_maps"){
+      if(this.myHeight2 != "0")
+        this.myHeight2="0";        
+    }
+    
+  }
+  //establecer section mediante scroll
+  setSectionByScroll(){
+    //alto total del scroll (por si recarga la página detectar y seleccionar el section)    
+    let scrollY=window.scrollY;
+    //alto de cada section
+    let sectionSize=window.innerHeight;
+    //seleccionamos el section seleccionado por si se recarga la página
+    for(let i=0;i<5;i++){
+      if(window.scrollY == sectionSize * i){
+      let sect;        
+        if(i==1)
+          this.selectedSection=this.section2.nativeElement;
+        else if(i==2)
+          this.selectedSection=this.section3.nativeElement;
+        else if(i==3)
+          this.selectedSection=this.section4.nativeElement;
+        else if(i==4)
+          this.selectedSection=this.section4.nativeElement;
+        else 
+          this.selectedSection=this.section1.nativeElement;
+      }
+    }
+  }
+
+
 
   
-  location(){
-    console.log("solo location");
+  dinamicMethod(){
+    let miType=this._cardService.getTypeCard();
+    let miCard=this._cardService.getSelectedCard();
+    if(this.switchDivFeedback){
+      this.setBanner2({selectedElement:"open_maps",card:miCard});
+    }
+    console.log("dinamicMethod: ",this.switchDivFeedback);
+    console.log("dinamicMethod2: ",miType);
   }
   flash(){
     console.log("llega al falash")    

@@ -1,7 +1,7 @@
 <div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata">				
 	<div class="subcard" >
 		<div class="card_image ">						
-			<div class="w100 h100" (click)="showImagesCard(rent)">
+			<div class="w100 h100" (click)="selectOptionCard('images',rent)">
 				<img class="card_img" mat-card-image [src]="'assets/images/'+rent.listImages[0]" alt="Apartamentos Martín" style=" "/>
 			</div>
 		</div >

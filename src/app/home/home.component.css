@@ -486,37 +486,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	animation-timing-function:  ease-in-out;	
 }
 
-/* ocultar iconos */
-.icon_circle{
-	/*
-	display: flex;
-	background-color: #D3D3D3;
-	background: #474747;
-	background-color: #f3ffea;
-	color: #009143;
-	*/
 
-	border: #676767 1px solid;	
-	border-radius: 50%;	
-	color: orange;
-	padding: 5px;
-	font-size: 24px;
-	background-color: rgba(74,58,58,1);
-	margin: 5px auto;
-}
-.icon_circle.home{
-	display: inline-flex;
-}
-.icon_circle_double{
-	color: #009143;
-	font-size: 22px;
-}
-.div_visible{
-	width: 100%;
-}
-.div_icon_hidden{
-	display: inline-block;
-}
 
 
 
