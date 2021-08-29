@@ -177,6 +177,7 @@ export class CardComponent implements OnInit {
               </div>            
               `+'<span style="">'+feed[num].text+'</span>';
           //this.bannerp2.nativeElement.innerHTML=totalText;
+          this.banner2.emit(totalText)
           console.log("interval de valoraciones, feed: ",num)
 
           if(num==feed.length-1)
