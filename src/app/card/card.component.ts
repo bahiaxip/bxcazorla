@@ -253,7 +253,7 @@ export class CardComponent implements OnInit {
       totalText='<span style="color:orange">Teléfono de contacto: </span><span style="font-size:16px;margin-left:10px">'+text+'</span>';
     }else if(type=="location"){
       aux=text;
-      totalText='<span style="color:orange;font-size:10px">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
+      totalText='<span style="color:orange;font-size:10px;user-select:none">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
     }else if(type=="images"){
       console.log("llega a imaages")
       let selectedElement=type

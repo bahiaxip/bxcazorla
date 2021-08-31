@@ -491,6 +491,17 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 }
 
 
+.bannerp3{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	//max-width: 100ch;
+	cursor:pointer;
+	/*margin-left:5px;*/
+	font-size:14px;
+	/*clear:left;*/
+	transition:transform 1s ease-out
+}
 
 
 

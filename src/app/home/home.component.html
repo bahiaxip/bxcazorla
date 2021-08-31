@@ -430,10 +430,10 @@
 								
 								
 								<p class="mauto c_white" #bannerp2  style="
-								white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;cursor:pointer;margin-left:10px;font-size:14px;clear:left;transition:transform 1s ease-out" (click)="dinamicMethod()"  >
+								cursor:pointer;font-size:14px;clear:left;transition:transform 1s ease-out" (click)="dinamicMethod()"  >
 								</p>
-								<p class="mauto c_white" #bannerp3  style="
-								white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;cursor:pointer;margin-left:10px;font-size:14px;clear:left;transition:transform 1s ease-out" (click)="dinamicMethod()"  >
+								<p class="mauto c_white bannerp3" #bannerp3  style="" [ngStyle]="{'max-width':maxWidthBannerp3+'px'}"
+								 (click)="dinamicMethod()"  >
 								</p>
 								
 								<!--<p>valoración</p>-->
@@ -443,15 +443,15 @@
 							<div class="" style="width:100%;"  *ngIf="selectedCard" >
 								<div class="mapouter"  style="transition: all 1s linear;margin: auto;/*margin:10px auto*/"  [ngStyle]="{'height':myHeight2}">
 
-									<div class="gmap_canvas" [ngStyle]="{'height':myHeight2}" style="transition:all 1s linear;text-align: center;">
-										<mat-icon class="material-icons" style="color:white;font-size:25px;cursor:pointer" (click)="hideImagesCard('open_maps')" >close</mat-icon>
-										<iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Arroyo%20Frio,%20la%20iruela&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://getasearch.com/nordvpn-coupon/"></a><br><style>.mapouter{position:relative;text-align:right;/*height:500px;*/width:600px;}</style><a href="https://www.embedgooglemap.net">location map for website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+									<div class="gmap_canvas"  [ngStyle]="{'height':myHeight2}" style="transition:all 1s linear;text-align: center;overflow: auto;">
+										<mat-icon class="material-icons" style="color:white;font-size:25px;cursor:pointer;user-select:none" (click)="hideImagesCard('open_maps')" >close</mat-icon>
+										<iframe [width]="maxWidthBannerp3+'px'" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Arroyo%20Frio,%20la%20iruela&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://getasearch.com/nordvpn-coupon/"></a><br><style>.mapouter{position:relative;text-align:right;/*height:500px;*/}</style><a href="https://www.embedgooglemap.net">location map for website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;}</style></div>
 								</div>
 								
 								<div class="gallery-container" style="overflow:auto;transition:all 0.5s linear" [ngStyle]="{'height':myHeight}"  >
 									<!--<div style="" class="gallery_first" [ngStyle]="fixedCloseGal ? {'position':'fixed','top':'10%','left':'50%','transform':'translateX(-50%)'}:{'position':'relative'}">-->
 									<div class="gallery_first" style="cursor:pointer">
-										<mat-icon class="material-icons" style="color:white;font-size:25px" (click)="hideImagesCard('images')" >close</mat-icon>
+										<mat-icon class="material-icons" style="color:white;font-size:25px;user-select:none" (click)="hideImagesCard('images')" >close</mat-icon>
 									</div>
 									
 									<div class="gallery__item" *ngFor="let image of selectedCard.listImages">

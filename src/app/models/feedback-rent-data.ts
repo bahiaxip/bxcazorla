@@ -21,7 +21,7 @@ export var FeedbackRentData = {
 			null,
 			5,
 			null,
-			"Fantástico, paisajes maravillosos. Lo recomiendo 100%"
+			"Fantástico"
 		),
 		new FeedbackRent(
 			"Residencial Los Robles",

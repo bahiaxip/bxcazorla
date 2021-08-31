@@ -64,6 +64,8 @@ export class HomeComponent implements OnInit {
   public typeFeedback:any;
   public switchDivMaps:any;
 
+  //max-width de bannerp3 para mostrar correctamente el white-space
+  public maxWidthBannerp3:any;
   public textbanner:any;
   private rainInterval:any;
   public places:GalleryPlaces[]=[
@@ -172,19 +174,27 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    //console.log("cardrentdata: ",this.cardrentdata[0]);
+    
+    
+    
     //comprobamos y almacenamos el ancho del section principal
     this.firstWidth=this.section1.nativeElement.clientWidth;
     console.log(this.firstWidth);
     this.firstHeight=this.section1.nativeElement.clientHeight;
     console.log(this.firstHeight);
     this.setSectionByScroll()
-    
-    //console.log("total: ",576*2);
+
+    //actualizamos el ancho para los mensajes deslizantes de valoraciones
+    this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
+    //establecemos overflow hidden genérico a la etiqueta html para que no se pueda
+    //hacer scroll entre sections, se podría hacer un event scrollWheel para detectar
+    //2 o 3 veces la rueda y cambiar de section, aunque solo podría ser en algunos sections
+    //pk existe scrolling en div internos en algunos de los sections
     document.getElementsByTagName("html")[0].style.overflow="hidden";
     
     window.addEventListener("resize",(e)=>{
+      //actualizamos el ancho para los mensajes deslizantes de valoraciones
+      this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
 
       this.selectedSection.scrollIntoView();
       console.log("se esta moviendo:",e);
@@ -268,8 +278,12 @@ export class HomeComponent implements OnInit {
   //identificar si el botón pulsado es la imagen de la card. (recomendable 
   //optimizar identificando la pulsación de la imagen mediante otro método)
   setBanner2(card:any){
+    //si no es de tipo feedback, limpiamos el tercer <p> (orientado a la rotación 
+    //de mensajes de valoraciones, que van pasando una a una)
+    if(this._cardService.getTypeCard() != "feedback")
+      this.bannerp3.nativeElement.innerHTML="";
     console.log("pasamos a 0 duration y vemos el typecard: ",this._cardService.getTypeCard())
-    this.bannerp3.nativeElement.innerHTML="";      
+    //
 
     //si el objeto trae la propiedad selectedElement y es images mostramos imágenes
     if(card.selectedElement  && card.selectedElement=="images"){
@@ -286,28 +300,51 @@ export class HomeComponent implements OnInit {
       this.myHeight="0";
       this.myHeight2="calc(100vh - 90px)";
     }else if(this._cardService.getTypeCard()=="feedback"){
-
-      this.bannerp2.nativeElement.innerHTML="";
-
-      console.log("pasa la primera")      
-      this.bannerp3.nativeElement.style.transform="translateX(-200%)";
-      //this.bannerp3.nativeElement.style.transform="translateX(-2000px)";
+      //limpiamos bannerp2
+      this.bannerp2.nativeElement.innerHTML="";        
       
-      setTimeout(()=> {        
-          this.bannerp3.nativeElement.style.opacity="0";
-          this.bannerp3.nativeElement.style.transform="translateX(200%)";
-          this.bannerp3.nativeElement.innerHTML=card;                    
+      //El tipo feedback se encuentra introducido dentro de un interval (creado en 
+      //card.component.ts, método selectOptionCard()) que permite deslizar los mensajes,
+      //para ello comprobamos si es la primera vez o si está continuando el interval
+
+      if(this.bannerp3.nativeElement.innerHTML==""){
+        this.bannerp3.nativeElement.style.opacity="0";
+        this.bannerp3.nativeElement.style.transform="translateX(200%)";
+        this.bannerp3.nativeElement.innerHTML=card;
         
-        setTimeout(()=> {
+        setTimeout(()=>{
           //para que no se mantenga el setTimeout() una vez seleccionado otro botón
           if(this.bannerp2.nativeElement.innerHTML==""){
             this.bannerp3.nativeElement.style.opacity="1";
             this.bannerp3.nativeElement.style.transform="translateX(0)";
           }
+        },500)  
+      }else{
+       
+        this.bannerp3.nativeElement.innerHTML=card;
+        this.bannerp3.nativeElement.style.transform="translateX(-200%)";
+        console.log("banner3 tien algo")
+        //this.bannerp3.nativeElement.style.transform="translateX(-2000px)";
+      
+        setTimeout(()=> {        
+            this.bannerp3.nativeElement.style.opacity="0";
+            this.bannerp3.nativeElement.style.transform="translateX(200%)";
+            this.bannerp3.nativeElement.innerHTML=card;                    
+             
+             
+          setTimeout(()=> {
+            //para que no se mantenga el setTimeout() una vez seleccionado otro botón
+            if(this.bannerp2.nativeElement.innerHTML==""){
+              this.bannerp3.nativeElement.style.opacity="1";
+              this.bannerp3.nativeElement.style.transform="translateX(0)";
+            }
+          },800)
+          
+          
         },800)
-        
-        console.log(this.bannerp2.nativeElement.clientWidth);
-      },800)
+      }
+      
+      
 
     }else{
       
