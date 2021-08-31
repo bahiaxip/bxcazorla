@@ -402,6 +402,15 @@
 						
 						<div style="width: 70%;font-weight: bold;">
 							<p class="mauto c_white bannerp1" #bannerp1>Alojamiento en Arroyo Frío</p>
+
+							<p style="display:block;width: 100%;margin:auto;margin-top:5px" *ngIf="switchDivFeedback2">
+						            <span class="material-icons feed_level">star</span>
+						            <span class="material-icons feed_level">star</span>
+						            <span class="material-icons feed_level">star</span>
+						            <span class="material-icons feed_level">star</span>
+						            <span class="material-icons feed_level">star</span>
+				            </p>
+					        
 						<!-- gráfica puntuación de ubicación -->
 							<span style="display:inline-flex;margin:auto;vertical-align: middle;"  >
 								<div style="display:flex;margin:0 10px 0 0;" *ngIf="switchDivFeedback" >
@@ -409,7 +418,7 @@
 								
 									<div class="div_feedback" style="width:80px;height:20px;border:#474747 1px solid;margin:auto;display:flex;justify-content:space-around;align-items:center;border-radius: 5px;cursor:pointer"  title="{{levelLocation| levelPipe }}" (click)="showTooltip('selectedCard')">
 
-										<div style="width:4px;height:3px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
+										<div style="width:4px;height:2px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
 										<div style="width:4px;height:4px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 1 ? 'feedgreen':'feedorange'"></div>
 										<div style="width:4px;height:6px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 2 ? 'feedgreen':'feedorange'"></div>
 										<div style="width:4px;height:8px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 3 ? 'feedgreen':'feedorange'"></div>
@@ -419,14 +428,19 @@
 								</div>
 								<!--<span [innerHTML]="textbanner"></span>-->
 								
+								
 								<p class="mauto c_white" #bannerp2  style="
-								white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;cursor:pointer;margin-left:10px;font-size:14px" (click)="dinamicMethod()"></p>
+								white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;cursor:pointer;margin-left:10px;font-size:14px;clear:left;transition:transform 1s ease-out" (click)="dinamicMethod()"  >
+								</p>
+								<p class="mauto c_white" #bannerp3  style="
+								white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;cursor:pointer;margin-left:10px;font-size:14px;clear:left;transition:transform 1s ease-out" (click)="dinamicMethod()"  >
+								</p>
 								
 								<!--<p>valoración</p>-->
 								
 							</span>
 						<!-- imágenes -->
-							<div class="" style="width:100%;"  *ngIf="selectedCard">
+							<div class="" style="width:100%;"  *ngIf="selectedCard" >
 								<div class="mapouter"  style="transition: all 1s linear;margin: auto;/*margin:10px auto*/"  [ngStyle]="{'height':myHeight2}">
 
 									<div class="gmap_canvas" [ngStyle]="{'height':myHeight2}" style="transition:all 1s linear;text-align: center;">

@@ -16,7 +16,7 @@ export class CardComponent implements OnInit {
   @Output() banner1 = new EventEmitter<any>();
   @Output() banner2 = new EventEmitter<any>();
   //switch que muestra/oculta div feedback location
-  @Output() switchDivFeed=new EventEmitter<boolean>();
+  @Output() switchDivFeed=new EventEmitter<any>();
 //@Input(cardrentdata)
   public feedrentdata:any;
   public cardrentdata:any;
@@ -79,15 +79,25 @@ export class CardComponent implements OnInit {
   */
   //mostrar/ocultar div de feedback de location en home.component
   swDivFeed(value:boolean){
-    this.switchDivFeed.emit(value)
+    this.switchDivFeed.emit({type:'location',value:value})
+  }
+  //mostrar/ocultar div de feedback de feedbacks en home.component
+  swDivFeed2(value:boolean){
+     this.switchDivFeed.emit({type:'feedback',value:value}) 
   }
   
   
   selectCard(card:CardRent){ 
     if(this.myHeight != "0"){
       //this.myHeight="0";
-    }       
+    }   
+    //para no repetir el mismo botón de la card    
+    if(this.selTypeCard != null && this.oldTypeCard==this.selTypeCard){
+      console.log("ultimo")
+        return;
+      }
     console.log("selTypeCard antes de condición location: ",this.selTypeCard);
+
     //con la siguiente condición comprobamos:
     //1 -Si el anterior era location y se ha pulsado el card externamente (ninguno
     //de los botones del card) 
@@ -98,17 +108,29 @@ export class CardComponent implements OnInit {
       this.levelLocation=card.numLevelLocation; 
       this.swDivFeed(true);           
     }
-    else
-      
+    else      
       this.swDivFeed(false);
+
+    if(this.selTypeCard=="feedback"
+      || this.selTypeCard=="images" && this.oldTypeCard=="feedback"){      
+      this.swDivFeed2(true)
+
+    }else
+      this.swDivFeed2(false)
 
     //si no se ha pulsado ningún botón de la card y se ha seleccionada 
     //una nueva card limpiamos el segundo <p>(bannerp2)
     if(!this.pushedOptionCard && this.selectedCard!=card
       || this.selTypeCard=="images" && this.selectedCard!=card){      
       this.swDivFeed(false);
+      this.swDivFeed2(false);
       //this.bannerp2.nativeElement.innerHTML="";
       this.banner2.emit("");
+      if(this.intervalFeedActive ){
+        this.intervalFeedActive=false;
+        clearInterval(this.intervalFeedText)  
+      }
+      
     }
     
     //this.selTypeCard=null;
@@ -134,51 +156,70 @@ export class CardComponent implements OnInit {
     let totalText;
     let aux;
     let div;
+    
     this.pushedOptionCard=true;
     console.log("la seleccionada anterior es: ",this.selTypeCard)
     //si la anterior era feedback y la nueva seleccionada no lo es:
     // limpiamos el interval() que rota los mensajes de valoraciones
-    if(type!="feedback" && this.selTypeCard == "feedback"){
+    if(type!="feedback" && type!="images" && this.selTypeCard == "feedback"
+      || type!="feedback" && type!="images" && this.selTypeCard == "images"      
+      ){
+
       this.intervalFeedActive=false;
       clearInterval(this.intervalFeedText)
     }
     this._cardService.setTypeCard(type);
     this.selTypeCard=type;
+    //para no repetir el mismo botón de la card
+    if(this.selTypeCard != null && this.oldTypeCard==this.selTypeCard){
+      console.log("ultimo")
+        return;
+      }
     console.log("type antes de feedback: ",type)
     
     if(type=="feedback"){ 
+      this.swDivFeed2(true);
       //aux=text;
       let feed=this.selectFeedbackByRent(text);
       if(text){
         
-        totalText=`
+        totalText=
+        /*
+        `
             <div style="">
-            <span class="material-icons feed_level">star</span>
-            <span class="material-icons feed_level">star</span>
-            <span class="material-icons feed_level">star</span>
-            <span class="material-icons feed_level">star</span>
-            <span class="material-icons feed_level">star</span>
-            </div>            
-            `+'<span style="">'+feed[0].text+'</span>';
-        console.log("mi feed: ",feed)
+              <span class="material-icons feed_level">star</span>
+              <span class="material-icons feed_level">star</span>
+              <span class="material-icons feed_level">star</span>
+              <span class="material-icons feed_level">star</span>
+              <span class="material-icons feed_level">star</span>
+            </div>
+
+        `+
+        */
+            '<span style="">'+feed[0].text+'</span>';
+        //console.log("mi feed: ",feed)
       }
       let num=0;
       if(!this.intervalFeedActive){
         this.intervalFeedActive=true;
         this.intervalFeedText=setInterval(()=>{
           console.log("creado nuevo interval")
-          totalText=`
+          totalText=
+          /*
+          `
               <div style="">
-              <span class="material-icons feed_level">star</span>
-              <span class="material-icons feed_level">star</span>
-              <span class="material-icons feed_level">star</span>
-              <span class="material-icons feed_level">star</span>
-              <span class="material-icons feed_level">star</span>
+                <span class="material-icons feed_level">star</span>
+                <span class="material-icons feed_level">star</span>
+                <span class="material-icons feed_level">star</span>
+                <span class="material-icons feed_level">star</span>
+                <span class="material-icons feed_level">star</span>
               </div>            
-              `+'<span style="">'+feed[num].text+'</span>';
+          `+
+          */
+              '<span style="">'+feed[num].text+'</span>';
           //this.bannerp2.nativeElement.innerHTML=totalText;
           this.banner2.emit(totalText)
-          console.log("interval de valoraciones, feed: ",num)
+          //console.log("interval de valoraciones, feed: ",num)
 
           if(num==feed.length-1)
             num=0;
@@ -187,9 +228,14 @@ export class CardComponent implements OnInit {
 
         },10000);  
       }
+      /*
+      let selectedElement=type;
+      let card=text;
+      this.banner2.emit({selectedElement,card})
+      return;
+      */
       
-      //totalText="mifeedback"
-      //div='<div>'
+      
     }else if(type=="capacity"){      
       //if(text){        
       //  for(let i=0;i<text.length;i++){          
@@ -216,7 +262,6 @@ export class CardComponent implements OnInit {
       this.banner2.emit({selectedElement,card})
       return;
     }
-
     if(!text){
       console.log("mi text no existe")
     }else{

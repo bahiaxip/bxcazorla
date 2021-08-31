@@ -52,12 +52,16 @@ export class HomeComponent implements OnInit {
   public textModal:string="";
   public titleModal:string="";
 
+  //switch para mostrar/ocultar feedback de location
   public switchDivFeedback:any;
+  //switch para mostrar/ocultar feedback de valoraciones
+  public switchDivFeedback2:any;
   public levelLocation:number=5;
   
 
   public feedbytitle:any;
 
+  public typeFeedback:any;
   public switchDivMaps:any;
 
   public textbanner:any;
@@ -126,12 +130,13 @@ export class HomeComponent implements OnInit {
   //section4
   @ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
   @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
+  @ViewChild('bannerp3',{static:true}) private bannerp3!:ElementRef;
 
   constructor(
     private titleService:Title,
     private _cardService:CardService,    
   ) {
-
+    this.typeFeedback=true;
     this.titleService.setTitle("Mi titulo");
 
     this.textModal="";
@@ -236,9 +241,16 @@ export class HomeComponent implements OnInit {
     
   }
   //switch que permite mostrar el div del feedback de location
-  switchDivFeed(value:boolean){
-    this.switchDivFeedback=value;
+  switchDivFeed(data:any){
+    if(data && data.type == "location")    
+      this.switchDivFeedback=data.value;
+    else if(data && data.type == "feedback"){
+      this.switchDivFeedback2=data.value;
+      console.log(this.switchDivFeedback2)
+    }     
+      
     //this.switchDivMaps=value;
+    console.log("data desde switchDivFeed: ",data)
   }
   setBanner1(card:CardRent){
     console.log("datos desde SetBanner1: ",card.title)
@@ -256,8 +268,11 @@ export class HomeComponent implements OnInit {
   //identificar si el botón pulsado es la imagen de la card. (recomendable 
   //optimizar identificando la pulsación de la imagen mediante otro método)
   setBanner2(card:any){
+    console.log("pasamos a 0 duration y vemos el typecard: ",this._cardService.getTypeCard())
+    this.bannerp3.nativeElement.innerHTML="";      
+
     //si el objeto trae la propiedad selectedElement y es images mostramos imágenes
-    if(card.selectedElement  && card.selectedElement=="images"){    
+    if(card.selectedElement  && card.selectedElement=="images"){
       
       //asignamos el card.card en lugar de utilizar el método getSelectedCard del servicio 
       //porque el emit se ejecuta antes(método selectOptionCard) y el card se establece 
@@ -267,12 +282,38 @@ export class HomeComponent implements OnInit {
       this.myHeight2="0";
       this.myHeight="calc(100vh - 90px)";      
     }else if(card.selectedElement && card.selectedElement=="open_maps"){
+      
       this.myHeight="0";
-      this.myHeight2="calc(100vh - 90px)";      
+      this.myHeight2="calc(100vh - 90px)";
+    }else if(this._cardService.getTypeCard()=="feedback"){
+
+      this.bannerp2.nativeElement.innerHTML="";
+
+      console.log("pasa la primera")      
+      this.bannerp3.nativeElement.style.transform="translateX(-200%)";
+      //this.bannerp3.nativeElement.style.transform="translateX(-2000px)";
+      
+      setTimeout(()=> {        
+          this.bannerp3.nativeElement.style.opacity="0";
+          this.bannerp3.nativeElement.style.transform="translateX(200%)";
+          this.bannerp3.nativeElement.innerHTML=card;                    
+        
+        setTimeout(()=> {
+          //para que no se mantenga el setTimeout() una vez seleccionado otro botón
+          if(this.bannerp2.nativeElement.innerHTML==""){
+            this.bannerp3.nativeElement.style.opacity="1";
+            this.bannerp3.nativeElement.style.transform="translateX(0)";
+          }
+        },800)
+        
+        console.log(this.bannerp2.nativeElement.clientWidth);
+      },800)
+
     }else{
+      
       this.bannerp2.nativeElement.innerHTML=card;  
     }
-    console.log("el card es: ",card)    
+    //console.log("el card es: ",card)    
 
   }
   miPrueba(){
@@ -284,10 +325,13 @@ export class HomeComponent implements OnInit {
     if(type=="images"){
       if(this.myHeight != "0")
         this.myHeight="0";
+      if(this.myHeight2 != "0")
+        this.myHeight2 = "0";
     }else if(type == "open_maps"){
       if(this.myHeight2 != "0")
         this.myHeight2="0";        
     }
+    console.log("type es: ",type)
     
   }
   //establecer section mediante scroll

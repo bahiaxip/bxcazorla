@@ -234,7 +234,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	border-radius:10px;
 	text-align: center;	
 	box-sizing: border-box;
-
+	overflow: hidden;
 	
 }
 .flex_item .banner_icon{
