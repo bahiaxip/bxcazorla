@@ -36,7 +36,7 @@
 				</div>
 				<div class="content_renting" >
 					<div class="w100 d_flex">
-						<div class="w50 d_flex link " (click)="selectOptionCard('phone',rent.phone)">
+						<div class="w50 d_flex link " (click)="selectOptionCard('phone',rent)">
 							<div class="w50 mauto div_icon_hidden">
 								<span class="material-icons-round m10_auto  icon_circle " >
 									settings_phone
@@ -46,7 +46,7 @@
 								<p class="mauto">{{rent.phone}}</p>
 							</div>
 						</div>
-						<div class="w50 d_flex link" (click)="selectOptionCard('location',rent.numLevelLocation)">
+						<div class="w50 d_flex link" (click)="selectOptionCard('location',rent)">
 							<div class="w50 mauto div_icon_hidden">
 								<span class="material-icons-round m10_auto c_orange icon_circle " >
 									location_on
@@ -59,7 +59,7 @@
 						</div>
 					</div>
 					<div class="w100 d_flex">
-						<div class="w50 d_flex link" (click)="selectOptionCard('feedback',rent.title)">
+						<div class="w50 d_flex link" (click)="selectOptionCard('feedback',rent)">
 							<div class="w50 div_icon_hidden">
 								
 								<span class="material-icons-round icon_circle m10_auto" >
@@ -72,7 +72,7 @@
 								<p class="mauto"> Opiniones</p>
 							</div>
 						</div>
-						<div class="w50 d_flex link" (click)="selectOptionCard('capacity',rent.capacity)">
+						<div class="w50 d_flex link" (click)="selectOptionCard('capacity',rent)">
 							<div class="w50 div_icon_hidden ">
 								<span class="material-icons-round m10_auto c_orange icon_circle" >
 									group
@@ -88,12 +88,64 @@
 						<div class="w30 div_price_item">
 							<span class="price_item">{{rent.minPrice}}€</span>
 						</div>
-						<div class="w70 price_detail">
-							<p>Precio aprox. por 3 noches <span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span></p>
-
+						<div class="w70 price_detail"  style="display:flex">
+							<div class="w50" (click)="menuPrice ? menuPrice=false : menuPrice=true">
+								<p>2 Personas
+									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+								</p>
+							</div>
+							<div class="w50">
+								<p>3 noches
+									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+								</p>
+							</div>
+							
+							<!--<mat-accordion  >
+							<mat-expansion-panel >
+								<mat-expansion-panel-header  >
+									<mat-panel-title >
+										<p>Precio aprox. por 3 noches <span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span></p>
+									</mat-panel-title>
+								</mat-expansion-panel-header>
+								<p>Precio aprox. por 3 noches <span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span></p>
+							</mat-expansion-panel>
+						</mat-accordion>-->
 						</div>
 					</div>
-					
+				</div>
+				<div class="content_renting" style="position:relative;background:transparent" *ngIf="menuPrice">
+					<div style="position:absolute;width:100%;margin:auto">
+						<div class="price_tmp" style="margin:0 auto;" >
+							<div class="w30 div_price_item">
+								
+							</div>
+							<div class="w70 price_detail" style="background-color:#f3ffea;border-left:lightgreen 1px solid;border-right: lightgreen 1px solid;display:flex">
+								<div class="w50" (click)="menuPrice ? menuPrice=false : menuPrice=true">
+								<p>3 Personas
+									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+								</p>
+							</div>
+							<div class="w50">
+								<p>4 noches
+									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+								</p>
+							</div>
+							</div>
+						</div>
+						<div class="price_tmp" style="margin:0 auto">
+							<div class="w30 div_price_item">
+								
+							</div>
+							<div class="w70 price_detail" style="background-color:#f3ffea;border-left:lightgreen 1px solid;border-right: lightgreen 1px solid;display:flex">
+								<div class="w50">
+									<p>6 personas</p>
+								</div>
+								<div class="w50">
+									<p>5 noches</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				
 			</div>

@@ -250,20 +250,20 @@ export class HomeComponent implements OnInit {
     //this.selectedCard=this.cardrentdata[0];
     
   }
-  //switch que permite mostrar el div del feedback de location
+  //switch que permite mostrar/ocultar el div del feedback de location
   switchDivFeed(data:any){
     if(data && data.type == "location")    
       this.switchDivFeedback=data.value;
     else if(data && data.type == "feedback"){
       this.switchDivFeedback2=data.value;
-      console.log(this.switchDivFeedback2)
+//console.log(this.switchDivFeedback2)
     }     
       
     //this.switchDivMaps=value;
-    console.log("data desde switchDivFeed: ",data)
+//console.log("data desde switchDivFeed: ",data)
   }
   setBanner1(card:CardRent){
-    console.log("datos desde SetBanner1: ",card.title)
+  //console.log("datos desde SetBanner1: ",card.title)
     this._cardService.setSelectedCard(card);
     this.bannerp1.nativeElement.innerHTML=card.title;    
     /*
@@ -278,11 +278,18 @@ export class HomeComponent implements OnInit {
   //identificar si el botón pulsado es la imagen de la card. (recomendable 
   //optimizar identificando la pulsación de la imagen mediante otro método)
   setBanner2(card:any){
-    //si no es de tipo feedback, limpiamos el tercer <p> (orientado a la rotación 
-    //de mensajes de valoraciones, que van pasando una a una)
-    if(this._cardService.getTypeCard() != "feedback")
+
+    //si el card es vacío (se ha pulsado el genérico un card distinto) limpiamos los 2 banners
+    if(card == ""){
+      this.bannerp2.nativeElement.innerHTML="";
       this.bannerp3.nativeElement.innerHTML="";
-    console.log("pasamos a 0 duration y vemos el typecard: ",this._cardService.getTypeCard())
+    }
+
+    //si no es de tipo feedback ni tampoco images, limpiamos el tercer <p> 
+    //(orientado a la rotación de mensajes de valoraciones, que van pasando una a una)    
+    if(card.selectedElement && card.selectedElement != "feedback" && card.selectedElement != "images")
+      this.bannerp3.nativeElement.innerHTML="";
+  //console.log("pasamos a 0 duration y vemos el typecard: ",this._cardService.getTypeCard())
     //
 
     //si el objeto trae la propiedad selectedElement y es images mostramos imágenes
@@ -299,60 +306,63 @@ export class HomeComponent implements OnInit {
       
       this.myHeight="0";
       this.myHeight2="calc(100vh - 90px)";
-    }else if(this._cardService.getTypeCard()=="feedback"){
+    }else if(card.selectedElement && card.selectedElement=="feedback"){
       //limpiamos bannerp2
       this.bannerp2.nativeElement.innerHTML="";        
       
       //El tipo feedback se encuentra introducido dentro de un interval (creado en 
       //card.component.ts, método selectOptionCard()) que permite deslizar los mensajes,
-      //para ello comprobamos si es la primera vez o si está continuando el interval
+      //para ello comprobamos si es la primera vez o se ha pulsado el botón feedback de otro card(posible opción),
+      //o si está continuando el ciclo del interval (otra posible opción)
 
-      if(this.bannerp3.nativeElement.innerHTML==""){
-        this.bannerp3.nativeElement.style.opacity="0";
-        this.bannerp3.nativeElement.style.transform="translateX(200%)";
-        this.bannerp3.nativeElement.innerHTML=card;
+      if(this.bannerp3.nativeElement.innerHTML=="" || this.selectedCard != card.card){
+
+        //console.log("PRIMERA VEZ interval");        
+        this.selectedCard=card.card;
+        this.animationFeedback('hide',card);        
         
         setTimeout(()=>{
           //para que no se mantenga el setTimeout() una vez seleccionado otro botón
-          if(this.bannerp2.nativeElement.innerHTML==""){
-            this.bannerp3.nativeElement.style.opacity="1";
-            this.bannerp3.nativeElement.style.transform="translateX(0)";
+          if(this.bannerp2.nativeElement.innerHTML=="" ){
+            this.animationFeedback('visible');
           }
-        },500)  
+        },1000)  
       }else{
-       
-        this.bannerp3.nativeElement.innerHTML=card;
-        this.bannerp3.nativeElement.style.transform="translateX(-200%)";
-        console.log("banner3 tien algo")
-        //this.bannerp3.nativeElement.style.transform="translateX(-2000px)";
-      
-        setTimeout(()=> {        
-            this.bannerp3.nativeElement.style.opacity="0";
-            this.bannerp3.nativeElement.style.transform="translateX(200%)";
-            this.bannerp3.nativeElement.innerHTML=card;                    
-             
+        //console.log("SEGUNDA VEZ")
+        this.bannerp3.nativeElement.style.transform="translateX(-"+(this.maxWidthBannerp3+200)+"px)";
+        
+        setTimeout(()=> {
+          this.animationFeedback('hide',card);
              
           setTimeout(()=> {
             //para que no se mantenga el setTimeout() una vez seleccionado otro botón
             if(this.bannerp2.nativeElement.innerHTML==""){
-              this.bannerp3.nativeElement.style.opacity="1";
-              this.bannerp3.nativeElement.style.transform="translateX(0)";
+              this.animationFeedback('visible');
             }
           },800)
-          
-          
+
         },800)
       }
-      
-      
 
-    }else{
-      
+    }else{      
       this.bannerp2.nativeElement.innerHTML=card;  
     }
-    //console.log("el card es: ",card)    
-
   }
+  //animación de mensajes deslizantes de valoraciones
+  animationFeedback(type:string,card:any=null){
+    //moviendo el elemento(mensaje) a la derecha de forma oculta
+    if(type=="hide" && card){
+      this.bannerp3.nativeElement.style.opacity="0";
+      this.bannerp3.nativeElement.style.transform="translateX("+(this.maxWidthBannerp3+200)+"px)";
+      this.bannerp3.nativeElement.innerHTML=card.totalText;  
+    }else if(type=="visible"){
+      this.bannerp3.nativeElement.style.opacity="1";
+      this.bannerp3.nativeElement.style.transform="translateX(0)";
+    }
+    
+  }
+  
+
   miPrueba(){
     console.log("prueba de mostrar mapa")
   }
@@ -510,7 +520,7 @@ export class HomeComponent implements OnInit {
           }  
         }
         counterInterval++;
-        console.log("counter: ",counterInterval);
+  //console.log("counter: ",counterInterval);
         //al llegar al interval 12 reinicia el contador a 0 y desbloquea
         if(counterInterval==12){
           counterInterval=0;

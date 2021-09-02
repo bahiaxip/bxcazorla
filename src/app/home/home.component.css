@@ -235,6 +235,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	text-align: center;	
 	box-sizing: border-box;
 	overflow: hidden;
+	user-select: none;
 	
 }
 .flex_item .banner_icon{
@@ -500,7 +501,7 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	/*margin-left:5px;*/
 	font-size:14px;
 	/*clear:left;*/
-	transition:transform 1s ease-out
+	transition:transform 1s ease-in-out
 }
 
 

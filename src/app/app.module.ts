@@ -31,7 +31,6 @@ import { CardComponent } from './card/card.component';
     LevelPipePipe,
     IconTypePipe,
     CardComponent
-
   ],
   imports: [
     BrowserModule,
@@ -43,7 +42,7 @@ import { CardComponent } from './card/card.component';
     MatButtonToggleModule,
     MatIconModule,    
     MatExpansionModule,
-    MatCardModule,
+    MatCardModule,    
     CommonModule,
     PipesCommonModule,    
   ],
