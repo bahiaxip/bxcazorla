@@ -1,8 +1,9 @@
 export class CardRent {
 	constructor(
-		public title:string,
+		public title:string,		
 		public minPrice:string,
-		public minNight:string,
+		public minNights:number,
+		public minCapacity:number,
 		public capacity:Array<number>,
 		public logo:string,
 		public image:string,

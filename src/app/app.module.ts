@@ -20,6 +20,8 @@ import { Pipe } from '@angular/core';
 import { LevelPipePipe,IconTypePipe } from './level-pipe.pipe';
 import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
 import { CardComponent } from './card/card.component';
+import { PricePipe } from './pipes/price.pipe';
+import { MinimrentPipe } from './pipes/minimrent.pipe';
 
 
 
@@ -30,7 +32,9 @@ import { CardComponent } from './card/card.component';
     RentingComponent,
     LevelPipePipe,
     IconTypePipe,
-    CardComponent
+    CardComponent,
+    PricePipe,
+    MinimrentPipe
   ],
   imports: [
     BrowserModule,

@@ -184,6 +184,12 @@
 }
 
 
+.changePrice{
+	background-color:#f3ffea;
+	border-left:lightgreen 1px solid;
+	border-right: lightgreen 1px solid;
+}
+
 				/* media query solo en card component */
 
 

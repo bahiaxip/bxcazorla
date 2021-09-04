@@ -3,7 +3,10 @@ import { CardRentData } from '../models/card-rent-data';
 import { CardRent } from '../models/card-rent';
 import { FeedbackRentData } from '../models/feedback-rent-data';
 import { FeedbackRent } from '../models/feedback-rent';
+import { PriceRentData } from '../models/price-rent-data';
 import { LevelPipePipe, IconTypePipe } from '../level-pipe.pipe';
+import { PricePipe } from '../pipes/price.pipe';
+import { MinimrentPipe } from '../pipes/minimrent.pipe';
 import { CardService } from '../services/card.service';
 
 @Component({
@@ -20,6 +23,7 @@ export class CardComponent implements OnInit {
 //@Input(cardrentdata)
   public feedrentdata:any;
   public cardrentdata:any;
+  public pricerentdata:any;
   //card seleccionada
   public selectedCard!:CardRent;
 
@@ -38,7 +42,9 @@ export class CardComponent implements OnInit {
   public pushedOptionCard:any;
   //mostrar ocultar distintos menu de tarifas
   public menuPrice:any=false;
+  public menuPrice2:any=false;
 
+  public pushedPrice:any;
   public intervalFeedText:any;
   //interruptor para no repetir interval() de rotación de mensajes de valoraciones
   public intervalFeedActive:boolean=false;
@@ -49,6 +55,7 @@ export class CardComponent implements OnInit {
   ) {
     this.cardrentdata=CardRentData.midata;
     this.feedrentdata=FeedbackRentData.midata;
+    this.pricerentdata = PriceRentData.midata;
     _cardService.setSelectedCard(this.cardrentdata[0]);
   }
 
@@ -464,6 +471,36 @@ export class CardComponent implements OnInit {
     this.banner2.emit(totalText);
     //this.bannerp2.nativeElement.innerHTML=totalText;
     //this.textbanner='<span class="material-icons">share_location</span>';
+
+  }
+  editPrice(num:number){    
+    if(num==1){
+      if(this.menuPrice){
+        this.menuPrice=false;
+      }else{
+        this.menuPrice=true;  
+      }      
+    }else if(num==2){
+      if(this.menuPrice2){
+        this.menuPrice2=false;
+      }else{
+        this.menuPrice2=true;  
+      }
+    }
+  }
+
+  divPrice(){
+    if(!this.pushedPrice){
+      this.menuPrice=false;
+      this.menuPrice2=false;
+    }else{
+      this.pushedPrice=false;
+    }
+  }
+
+  updatePrice(){
+    console.log("edit")
+    this.pushedPrice=true;
 
   }
 
