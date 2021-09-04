@@ -68,317 +68,7 @@
 </section>
 <section id="section3" class="section1" #section3 style="background-color:#676767;transition:transform 0.3s linear">
 	<div style="position:absolute;height:100%;display:block;overflow:hidden;" [ngStyle]="{'width':firstWidth+'px'}">
-		<div #midivslider  style="height:100%;display:flex;flex-flow:row wrap;transition:transform 1s linear" [ngStyle]="{'width':firstWidth*2+'px'}" >
-			<!--<div style="width:100%;">-->
-				<div [ngStyle]="{'width':firstWidth+'px'}" style="" >
-					<div style="width:90%;height: 100vh;position: relative;background-color:transparent;margin:auto;display:flex;">
-						
-						<button (click)="misectionHorizontal(firstWidth+'px')" style="position:absolute">ñlaskjdf</button>
-
-						<!--<div style="position:absolute;top:30%;left:10%">-->
-							<!--<mat-accordion style="">
-								<mat-expansion-panel style="margin:20px auto">
-									<mat-expansion-panel-header>
-										<mat-panel-title style="color:black;">
-											Personal data
-										</mat-panel-title>
-										<mat-panel-description>
-											ñlksadjfñsdf
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>El primer contenido</p>
-								</mat-expansion-panel>
-								<mat-expansion-panel (opened)="panelOpenState=true"
-													 (closed)="panelOpenState=false">
-									<mat-expansion-panel-header>
-										<mat-panel-title>
-											Self aware panel						
-										</mat-panel-title>
-										<mat-panel-description>
-											asdfasdf
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>El segundo contenido</p>
-								</mat-expansion-panel>
-							</mat-accordion>-->
-
-							<!--<div class="flex-container">
-								<div class="caja caja1">
-									Caja1
-								</div>
-								<div class="caja caja2">
-									Caja2
-								</div>
-								<div class="caja">
-									Caja3
-								</div>
-								<div class="caja">
-									Caja4
-								</div>
-								<div class="caja">
-									Caja1
-								</div>
-								<div class="caja">
-									Caja2
-								</div>
-								<div class="caja">
-									Caja3
-								</div>
-								<div class="caja">
-									Caja4
-								</div>
-								<div class="caja">
-									Caja1
-								</div>
-								<div class="caja">
-									Caja2
-								</div>				
-							</div>-->
-						<!--</div>-->
-
-						<!--.div_flex>.div_box*9>img.div_image[src="assets/images/cazorla/galeria$.jpg"]+h2.image_title{Imagen $}
-						-->
-						<div class="div_flex">
-							<div class="flex_header">
-								<div style="width:80%;margin:auto;margin-top:30px" >
-									<div class="flex_item" >
-										<mat-icon  style="float:left;font-size:35px;color:lightgreen">whatsapp</mat-icon>
-										<mat-icon  style="float:right;font-size:35px;color:orange;margin-right:10px">info</mat-icon>
-										<p class="mauto c_white" style="font-size:22px">Lugares cercanos en Arroyo Frío</p>
-										
-
-									</div>
-								</div>
-								
-							</div>
-							<div class="flex_content">
-
-								<div class="modal_detail" *ngIf="switchModal">					
-									<mat-icon style="color:white;position:absolute;right:2%;top:2%;cursor:pointer" (click)="switchModal=false;">close</mat-icon>
-									
-									
-									
-									<h2 class="modal_title" >{{titleModal}}</h2>
-									<img class="modal_image" src="{{imageModal}}" />
-									<p class="modal_text">{{textModal}}</p>
-
-								</div>
-
-								<div class="div_box" *ngFor="let place of places">
-									<span class="box_image" (click)="hideFilter(0)">
-										<div class="clone_div_image" ></div>
-										<div class="div_image">
-											<div class="title_image">
-												<mat-icon class="icon_image" (click)="showModal(place)" title="Más información">info</mat-icon>
-												<p class="text_title" >{{place.title}}</p>
-											</div>
-											<img src="{{place.image}}" alt="" class="div_ima">
-										<!--<h2 class="image_title">Imagen 1</h2>-->
-										</div>
-									</span>
-								</div>				
-							</div>
-						</div>
-						<!--
-							.gallery-container>.gallery__item*9>img.gallery__img[src="assets/images/cazorla/galeria$.jpg"]+h2.gallery__title{Imagen $}
-						-->
-						<!--
-						<div class="gallery-container">
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria1.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 1</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria2.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 2</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria3.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 3</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria4.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 4</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria5.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 5</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria6.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 6</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria7.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 7</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria8.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 8</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria9.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 9</h2>
-							</div>
-						</div>
-					-->
-								
-					</div>
-				</div>
-				<div [ngStyle]="{'width':firstWidth+'px'}" style="">
-					<div style="width:90%;height: 100vh;position:relative;z-index: 88;background-color:transparent;margin:auto;display:flex">
-						<button (click)="misectionHorizontal2()" style="position:absolute">ñlaskjdf</button>
-						<!--<div style="position:absolute;top:30%;left:10%">-->
-							<!--<mat-accordion style="">
-								<mat-expansion-panel style="margin:20px auto">
-									<mat-expansion-panel-header>
-										<mat-panel-title style="color:black;">
-											Personal data
-										</mat-panel-title>
-										<mat-panel-description>
-											ñlksadjfñsdf
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>El primer contenido</p>
-								</mat-expansion-panel>
-								<mat-expansion-panel (opened)="panelOpenState=true"
-													 (closed)="panelOpenState=false">
-									<mat-expansion-panel-header>
-										<mat-panel-title>
-											Self aware panel						
-										</mat-panel-title>
-										<mat-panel-description>
-											asdfasdf
-										</mat-panel-description>
-									</mat-expansion-panel-header>
-									<p>El segundo contenido</p>
-								</mat-expansion-panel>
-							</mat-accordion>-->
-
-							<!--<div class="flex-container">
-								<div class="caja caja1">
-									Caja1
-								</div>
-								<div class="caja caja2">
-									Caja2
-								</div>
-								<div class="caja">
-									Caja3
-								</div>
-								<div class="caja">
-									Caja4
-								</div>
-								<div class="caja">
-									Caja1
-								</div>
-								<div class="caja">
-									Caja2
-								</div>
-								<div class="caja">
-									Caja3
-								</div>
-								<div class="caja">
-									Caja4
-								</div>
-								<div class="caja">
-									Caja1
-								</div>
-								<div class="caja">
-									Caja2
-								</div>				
-							</div>-->
-						<!--</div>-->
-
-						<!--.div_flex>.div_box*9>img.div_image[src="assets/images/cazorla/galeria$.jpg"]+h2.image_title{Imagen $}
-						-->
-						<div class="div_flex">
-							<div class="flex_header">
-								<div style="width:80%;margin:auto;margin-top:30px">
-									<div class="flex_item" >
-										<mat-icon  style="float:left;font-size:35px;color:lightgreen">whatsapp</mat-icon>
-										<mat-icon  style="float:right;font-size:35px;color:orange;margin-right:10px">info</mat-icon>
-										<p class="mauto c_white" style="font-size:22px">Lugares lejanos en Arroyo Frío</p>
-										
-
-									</div>
-								</div>
-								
-							</div>
-							<div class="flex_content">
-								<div class="modal_detail2" *ngIf="switchModal2">					
-									<mat-icon style="color:white;position:absolute;right:2%;top:2%;cursor:pointer" (click)="switchModal2=false;">close</mat-icon>
-									
-									
-									
-									<h2 class="modal_title" >{{titleModal}}</h2>
-									<img class="modal_image" src="{{imageModal}}" />
-									<p class="modal_text">{{textModal}}</p>
-
-								</div>
-
-								<div class="div_box" *ngFor="let place of places">
-									<span class="box_image" (click)="hideFilter(0)">
-										<div class="clone_div_image" ></div>
-										<div class="div_image">
-											<div class="title_image">
-												<mat-icon class="icon_image" (click)="showModal2(place)" title="Más información">info</mat-icon>
-												<p class="text_title" >{{place.title}}</p>
-											</div>
-											<img src="{{place.image}}" alt="" class="div_ima">
-										<!--<h2 class="image_title">Imagen 1</h2>-->
-										</div>
-									</span>
-								</div>				
-							</div>
-						</div>
-						<!--
-							.gallery-container>.gallery__item*9>img.gallery__img[src="assets/images/cazorla/galeria$.jpg"]+h2.gallery__title{Imagen $}
-						-->
-						<!--
-						<div class="gallery-container">
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria1.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 1</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria2.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 2</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria3.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 3</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria4.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 4</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria5.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 5</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria6.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 6</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria7.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 7</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria8.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 8</h2>
-							</div>
-							<div class="gallery__item">
-								<img src="assets/images/cazorla/galeria9.jpg" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 9</h2>
-							</div>
-						</div>
-					-->
-								
-					</div>
-				</div>
-			<!--</div>-->
-		</div>
+		<pre-activity [firstwidth]="firstWidth"></pre-activity>
 	</div>
 
 
@@ -388,357 +78,359 @@
 	</div>-->
 </section>
 <section class="section1" #section4 style="background-color:#676767">
-	<div class="div_flex_card" >
-		<div class="flex_header " style="position:absolute; ">
-			
-			<div class="div_flex_item " style="justify-content:center;">
-				<div class="flex_item " style="" >
-					<div style="width:100%;display:flex;">
-					<!-- icono valoraciones -->
-						<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('images')">
-							<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
-							<!--<mat-icon mat-card-avatar class="banner_icon " style="margin:15px auto;font-size:30px" title="Todas las Valoraciones">person</mat-icon>-->
-						</div>
-						
-						<div style="width: 70%;font-weight: bold;">
-							<p class="mauto c_white bannerp1" #bannerp1>Alojamiento en Arroyo Frío</p>
+	<div style="position:absolute;height:100%;display:block">
+		<div class="div_flex_card" >
+			<div class="flex_header " style="position:absolute; ">
+				
+				<div class="div_flex_item " style="justify-content:center;">
+					<div class="flex_item " style="" >
+						<div style="width:100%;display:flex;">
+						<!-- icono valoraciones -->
+							<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('images')">
+								<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
+								<!--<mat-icon mat-card-avatar class="banner_icon " style="margin:15px auto;font-size:30px" title="Todas las Valoraciones">person</mat-icon>-->
+							</div>
+							
+							<div style="width: 70%;font-weight: bold;">
+								<p class="mauto c_white bannerp1" #bannerp1>Alojamiento en Arroyo Frío</p>
 
-							<p style="display:block;width: 100%;margin:auto;margin-top:5px" *ngIf="switchDivFeedback2">
-						            <span class="material-icons feed_level">star</span>
-						            <span class="material-icons feed_level">star</span>
-						            <span class="material-icons feed_level">star</span>
-						            <span class="material-icons feed_level">star</span>
-						            <span class="material-icons feed_level">star</span>
-				            </p>
-					        
-						<!-- gráfica puntuación de ubicación -->
-							<span style="display:inline-flex;margin:auto;vertical-align: middle;"  >
-								<div style="display:flex;margin:0 10px 0 0;" *ngIf="switchDivFeedback" >
-									<span class="material-icons" style="color:orange;display:flex;font-size:16px;margin:auto;cursor:pointer" >info</span>
-								
-									<div class="div_feedback" style="width:80px;height:20px;border:#474747 1px solid;margin:auto;display:flex;justify-content:space-around;align-items:center;border-radius: 5px;cursor:pointer"  title="{{levelLocation| levelPipe }}" (click)="showTooltip('selectedCard')">
-
-										<div style="width:4px;height:2px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:4px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 1 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:6px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 2 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:8px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 3 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:10px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 4 ? 'feedgreen':'feedorange'"></div>
-										<div style="width:4px;height:12px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 5 ? 'feedgreen':'feedorange'"></div>
-									</div>
-								</div>
-								<!--<span [innerHTML]="textbanner"></span>-->
-								
-								
-								<p class="mauto c_white" #bannerp2  style="
-								cursor:pointer;font-size:14px;clear:left;" (click)="dinamicMethod()"  >
-								</p>
-								<p class="mauto c_white bannerp3" #bannerp3  style="transition:transform 1s ease-out" [ngStyle]="{'max-width':maxWidthBannerp3+'px'}"
-								 (click)="dinamicMethod()"  >
-								</p>
-								
-								<!--<p>valoración</p>-->
-								
-							</span>
-						<!-- imágenes -->
-							<div class="" style="width:100%;"  *ngIf="selectedCard" >
-								<div class="mapouter"  style="transition: all 1s linear;margin: auto;/*margin:10px auto*/"  [ngStyle]="{'height':myHeight2}">
-
-									<div class="gmap_canvas"  [ngStyle]="{'height':myHeight2}" style="transition:all 1s linear;text-align: center;overflow: auto;">
-										<mat-icon class="material-icons" style="color:white;font-size:25px;cursor:pointer;" (click)="hideImagesCard('open_maps')" >close</mat-icon>
-										<iframe [width]="maxWidthBannerp3+'px'" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Arroyo%20Frio,%20la%20iruela&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://getasearch.com/nordvpn-coupon/"></a><br><style>.mapouter{position:relative;text-align:right;/*height:500px;*/}</style><a href="https://www.embedgooglemap.net">location map for website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;}</style></div>
-								</div>
-								
-								<div class="gallery-container" style="overflow:auto;transition:all 0.5s linear" [ngStyle]="{'height':myHeight}"  >
-									<!--<div style="" class="gallery_first" [ngStyle]="fixedCloseGal ? {'position':'fixed','top':'10%','left':'50%','transform':'translateX(-50%)'}:{'position':'relative'}">-->
-									<div class="gallery_first" style="cursor:pointer">
-										<mat-icon class="material-icons" style="color:white;font-size:25px" (click)="hideImagesCard('images')" >close</mat-icon>
-									</div>
+								<p style="display:block;width: 100%;margin:auto;margin-top:5px" *ngIf="switchDivFeedback2">
+							            <span class="material-icons feed_level">star</span>
+							            <span class="material-icons feed_level">star</span>
+							            <span class="material-icons feed_level">star</span>
+							            <span class="material-icons feed_level">star</span>
+							            <span class="material-icons feed_level">star</span>
+					            </p>
+						        
+							<!-- gráfica puntuación de ubicación -->
+								<span style="display:inline-flex;margin:auto;vertical-align: middle;"  >
+									<div style="display:flex;margin:0 10px 0 0;" *ngIf="switchDivFeedback" >
+										<span class="material-icons" style="color:orange;display:flex;font-size:16px;margin:auto;cursor:pointer" >info</span>
 									
-									<div class="gallery__item" *ngFor="let image of selectedCard.listImages">
-										<img [src]="'assets/images/'+image" alt="" class="gallery__img">
-										<h2 class="gallery__title">Imagen 1</h2>
-									</div>
-									<!--
-									<div class="mapouter">
-										<div class="gmap_canvas">
-											<iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-											</iframe>
-											<a href="https://getasearch.com/nordvpn-coupon/"></a>
+										<div class="div_feedback" style="width:80px;height:20px;border:#474747 1px solid;margin:auto;display:flex;justify-content:space-around;align-items:center;border-radius: 5px;cursor:pointer"  title="{{levelLocation| levelPipe }}" (click)="showTooltip('selectedCard')">
 
-											<br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">location map for website</a>
-												<style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+											<div style="width:4px;height:2px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
+											<div style="width:4px;height:4px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 1 ? 'feedgreen':'feedorange'"></div>
+											<div style="width:4px;height:6px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 2 ? 'feedgreen':'feedorange'"></div>
+											<div style="width:4px;height:8px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 3 ? 'feedgreen':'feedorange'"></div>
+											<div style="width:4px;height:10px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 4 ? 'feedgreen':'feedorange'"></div>
+											<div style="width:4px;height:12px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 5 ? 'feedgreen':'feedorange'"></div>
 										</div>
 									</div>
-									-->
+									<!--<span [innerHTML]="textbanner"></span>-->
+									
+									
+									<p class="mauto c_white" #bannerp2  style="
+									cursor:pointer;font-size:14px;clear:left;" (click)="dinamicMethod()"  >
+									</p>
+									<p class="mauto c_white bannerp3" #bannerp3  style="transition:transform 1s ease-out" [ngStyle]="{'max-width':maxWidthBannerp3+'px'}"
+									 (click)="dinamicMethod()"  >
+									</p>
+									
+									<!--<p>valoración</p>-->
+									
+								</span>
+							<!-- imágenes -->
+								<div class="" style="width:100%;"  *ngIf="selectedCard" >
+									<div class="mapouter"  style="transition: all 1s linear;margin: auto;/*margin:10px auto*/"  [ngStyle]="{'height':myHeight2}">
+
+										<div class="gmap_canvas"  [ngStyle]="{'height':myHeight2}" style="transition:all 1s linear;text-align: center;overflow: auto;">
+											<mat-icon class="material-icons" style="color:white;font-size:25px;cursor:pointer;" (click)="hideImagesCard('open_maps')" >close</mat-icon>
+											<iframe [width]="maxWidthBannerp3+'px'" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Arroyo%20Frio,%20la%20iruela&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://getasearch.com/nordvpn-coupon/"></a><br><style>.mapouter{position:relative;text-align:right;/*height:500px;*/}</style><a href="https://www.embedgooglemap.net">location map for website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;}</style></div>
+									</div>
+									
+									<div class="gallery-container" style="overflow:auto;transition:all 0.5s linear" [ngStyle]="{'height':myHeight}"  >
+										<!--<div style="" class="gallery_first" [ngStyle]="fixedCloseGal ? {'position':'fixed','top':'10%','left':'50%','transform':'translateX(-50%)'}:{'position':'relative'}">-->
+										<div class="gallery_first" style="cursor:pointer">
+											<mat-icon class="material-icons" style="color:white;font-size:25px" (click)="hideImagesCard('images')" >close</mat-icon>
+										</div>
+										
+										<div class="gallery__item" *ngFor="let image of selectedCard.listImages">
+											<img [src]="'assets/images/'+image" alt="" class="gallery__img">
+											<h2 class="gallery__title">Imagen 1</h2>
+										</div>
+										<!--
+										<div class="mapouter">
+											<div class="gmap_canvas">
+												<iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+												</iframe>
+												<a href="https://getasearch.com/nordvpn-coupon/"></a>
+
+												<br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">location map for website</a>
+													<style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+											</div>
+										</div>
+										-->
+									</div>
+									
 								</div>
-								
 							</div>
-						</div>
-					<!-- icono Info -->
-						<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('images')">
-							<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
+						<!-- icono Info -->
+							<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('images')">
+								<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
+							</div>
 						</div>
 					</div>
 				</div>
+				
 			</div>
-			
-		</div>
-		<div class="w100 mauto div_card_rent" style="margin-top:100px" >
-			
-			<pre-card (banner1)="setBanner1($event)" (banner2)="setBanner2($event)" (switchDivFeed)="switchDivFeed($event)"></pre-card>
-			
+			<div class="w100 mauto div_card_rent" style="margin-top:100px" >
+				
+				<pre-card (banner1)="setBanner1($event)" (banner2)="setBanner2($event)" (switchDivFeed)="switchDivFeed($event)"></pre-card>
+				
 
-			<!--<div class="card_rent">				
-				<div class="subcard" >
-					<div class="card_image ">						
-						<div class="w100 h100" >
-							<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
+				<!--<div class="card_rent">				
+					<div class="subcard" >
+						<div class="card_image ">						
+							<div class="w100 h100" >
+								<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
+							</div>
+						</div >
+							
+						<div class="d_flex card_content">
+							
+							<div class="w100 t_center" >
+								<div class="title_renting">
+									<p class="title_renting_text">
+										Residencial Los Robles
+									</p>
+									
+									<div class="subtitle_renting " style="display:flex;justify-content:center">
+										<div class="icon_circle_double">
+											<span class="material-icons-round">
+												house
+											</span>
+
+											<span class="material-icons-round">
+												holiday_village
+											</span>
+										</div>
+
+										<p class="subtitle_renting_text">Casa/Apartamento</p>
+									</div>
+
+								</div>
+								<div class="content_renting" >
+									<div class="w100 d_flex">
+										<div class="w50 d_flex link ">
+											<div class="w50 mauto div_icon_hidden">
+												<span class="material-icons-round m10_auto  icon_circle " >
+													settings_phone
+												</span>
+											</div>
+											<div class="w50 mauto div_visible">
+												<p class="mauto">953 72 71 06</p>
+											</div>
+										</div>
+										<div class="w50 d_flex link">
+											<div class="w50 mauto div_icon_hidden">
+												<span class="material-icons-round m10_auto c_orange icon_circle " >
+													location_on
+												</span>
+											</div>
+											<div class="w50 mauto div_visible">
+												<button mat-icon-button class="mauto_imp" >
+													<mat-icon class="c_blue ">share_location</mat-icon>
+												</button>
+											</div>
+										</div>
+									</div>
+									<div class="w100 d_flex">
+										<div class="w50 d_flex link" >
+											<div class="w50 div_icon_hidden">
+												
+												<span class="material-icons-round icon_circle m10_auto" >
+													star
+												</span>
+													
+												
+											</div>
+											<div class="w50 mauto div_visible" >
+												<p class="mauto"> Opiniones</p>
+											</div>
+										</div>
+										<div class="w50 d_flex link" >
+											<div class="w50 div_icon_hidden ">
+												<span class="material-icons-round m10_auto c_orange icon_circle" >
+													group
+												</span>
+											</div>
+											<div class="w50 mauto div_visible">
+												<p class="mauto"> 2,4 y 6 personas</p>
+											</div>
+											
+										</div>
+									</div>
+									<div class="price">
+										<div class="w30 div_price_item">
+											<span class="price_item">210€</span>
+										</div>
+										<div class="w70 price_detail">
+											<p>Precio aprox. por 3 noches <span class="fsize_10">(Mínimo 3 noches)</span></p>
+
+										</div>
+									</div>
+									
+								</div>
+								
+							</div>						
 						</div>
-					</div >
-						
-					<div class="d_flex card_content">
-						
-						<div class="w100 t_center" >
-							<div class="title_renting">
+					</div>
+					
+					
+					
+				</div>-->
+
+				<!--<div class="card_rent">
+					<div class="subcard" >
+						<div class="card_image ">						
+							<div class="w100 h100" >
+								<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
+								
+							</div>
+						</div >
+							
+						<div class="d_flex card_content">
+							
+							<div class="w100 t_center" >
 								<p class="title_renting_text">
-									Residencial Los Robles
+								Residencial Los Robles
 								</p>
 								
-								<div class="subtitle_renting " style="display:flex;justify-content:center">
-									<div class="icon_circle_double">
-										<span class="material-icons-round">
-											house
-										</span>
-
-										<span class="material-icons-round">
-											holiday_village
-										</span>
-									</div>
-
-									<p class="subtitle_renting_text">Casa/Apartamento</p>
-								</div>
-
-							</div>
-							<div class="content_renting" >
-								<div class="w100 d_flex">
-									<div class="w50 d_flex link ">
-										<div class="w50 mauto div_icon_hidden">
-											<span class="material-icons-round m10_auto  icon_circle " >
+								<div class="content_renting" >
+									<div class="w100 d_flex">
+										<div class="w50 d_flex">
+											<span class="material-icons-round m10_auto  icon_circle" >
 												settings_phone
 											</span>
-										</div>
-										<div class="w50 mauto div_visible">
 											<p class="mauto">953 72 71 06</p>
 										</div>
-									</div>
-									<div class="w50 d_flex link">
-										<div class="w50 mauto div_icon_hidden">
-											<span class="material-icons-round m10_auto c_orange icon_circle " >
+										<div class="w50 d_flex">
+											<span class="material-icons-round m10_auto c_orange icon_circle" >
 												location_on
 											</span>
-										</div>
-										<div class="w50 mauto div_visible">
 											<button mat-icon-button class="mauto_imp" >
 												<mat-icon class="c_blue ">share_location</mat-icon>
 											</button>
 										</div>
 									</div>
-								</div>
-								<div class="w100 d_flex">
-									<div class="w50 d_flex link" >
-										<div class="w50 div_icon_hidden">
-											
-											<span class="material-icons-round icon_circle m10_auto" >
-												star
-											</span>
-												
-											
+									<div class="w100 d_flex">
+										<div class="w50 d_flex m10_auto" >
+											<div class="w50 icon_circle">
+												<span class="material-icons-round" style="color:black;">
+													house
+												</span>
+												<span class="material-icons-round" style="color:black;">
+													house
+												</span>
+											</div>
+											<div class="w50">
+												<p class="mauto"> Casas y apartamentos</p>
+											</div>
 										</div>
-										<div class="w50 mauto div_visible" >
-											<p class="mauto"> Opiniones</p>
-										</div>
-									</div>
-									<div class="w50 d_flex link" >
-										<div class="w50 div_icon_hidden ">
+										<div class="w50 d_flex ">
 											<span class="material-icons-round m10_auto c_orange icon_circle" >
 												group
 											</span>
-										</div>
-										<div class="w50 mauto div_visible">
 											<p class="mauto"> 2,4 y 6 personas</p>
 										</div>
-										
 									</div>
-								</div>
-								<div class="price">
-									<div class="w30 div_price_item">
-										<span class="price_item">210€</span>
-									</div>
-									<div class="w70 price_detail">
-										<p>Precio aprox. por 3 noches <span class="fsize_10">(Mínimo 3 noches)</span></p>
-
-									</div>
-								</div>
-								
-							</div>
-							
-						</div>						
-					</div>
-				</div>
-				
-				
-				
-			</div>-->
-
-			<!--<div class="card_rent">
-				<div class="subcard" >
-					<div class="card_image ">						
-						<div class="w100 h100" >
-							<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
-							
-						</div>
-					</div >
-						
-					<div class="d_flex card_content">
-						
-						<div class="w100 t_center" >
-							<p class="title_renting_text">
-							Residencial Los Robles
-							</p>
-							
-							<div class="content_renting" >
-								<div class="w100 d_flex">
-									<div class="w50 d_flex">
-										<span class="material-icons-round m10_auto  icon_circle" >
-											settings_phone
-										</span>
-										<p class="mauto">953 72 71 06</p>
-									</div>
-									<div class="w50 d_flex">
-										<span class="material-icons-round m10_auto c_orange icon_circle" >
-											location_on
-										</span>
-										<button mat-icon-button class="mauto_imp" >
-											<mat-icon class="c_blue ">share_location</mat-icon>
-										</button>
-									</div>
-								</div>
-								<div class="w100 d_flex">
-									<div class="w50 d_flex m10_auto" >
-										<div class="w50 icon_circle">
-											<span class="material-icons-round" style="color:black;">
-												house
-											</span>
-											<span class="material-icons-round" style="color:black;">
-												house
-											</span>
+									<div class="price">
+										<div class="w30 back_green">
+											<span class="price_item">210€</span>
 										</div>
-										<div class="w50">
-											<p class="mauto"> Casas y apartamentos</p>
+										<div class="w70 price_detail">
+											<p>Precio por 3 noches <span class="fsize_10">(Mínimo 3 noches)</span></p>
+
 										</div>
 									</div>
-									<div class="w50 d_flex ">
-										<span class="material-icons-round m10_auto c_orange icon_circle" >
-											group
-										</span>
-										<p class="mauto"> 2,4 y 6 personas</p>
-									</div>
-								</div>
-								<div class="price">
-									<div class="w30 back_green">
-										<span class="price_item">210€</span>
-									</div>
-									<div class="w70 price_detail">
-										<p>Precio por 3 noches <span class="fsize_10">(Mínimo 3 noches)</span></p>
-
-									</div>
+									
 								</div>
 								
 							</div>
 							
 						</div>
-						
 					</div>
-				</div>
-				
-				
-				
-			</div>-->
-			<!--<div class="card_rent">
-				<div class="subcard" >
-					<div class="card_image ">						
-						<div class="w100 h100" >
-							<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
-							
-						</div>
-					</div >
-						
-					<div class="d_flex card_content">
-						
-						<div class="w100 t_center" >
-							<p class="title_renting_text">
-							Apartamentos Martín
-							</p>
-							
-							<div class="content_renting" >
-								<div class="w100 d_flex">
-									<div class="w50 d_flex">
-										<span class="material-icons-round m10_auto c_lightgreen icon_circle" >
-											settings_phone
-										</span>
-										<p class="mauto">953 72 71 06</p>
-									</div>
-									<div class="w50 d_flex">
-										<span class="material-icons-round m10_auto c_orange icon_circle" >
-											location_on
-										</span>
-										<button mat-icon-button class="mauto_imp" >
-											<mat-icon class="c_blue ">share_location</mat-icon>
-										</button>
-									</div>
-								</div>
-								<div class="w100 d_flex">
-									<div class="w50 d_flex m10_auto" >
-										<div class="w50 icon_circle">
-											<span class="material-icons-round" style="color:black;">
-												house
-											</span>
-											<span class="material-icons-round" style="color:black;">
-												house
-											</span>
-										</div>
-										<div class="w50">
-											<p class="mauto"> Casas y apartamentos</p>
-										</div>
-									</div>
-									<div class="w50 d_flex ">
-										<span class="material-icons-round m10_auto c_orange icon_circle" >
-											group
-										</span>
-										<p class="mauto"> 2,4 y 6 personas</p>
-									</div>
-								</div>
-								<div class="price">
-									<div class="w30 back_green">
-										<span class="price_item">210€</span>
-									</div>
-									<div class="w70 price_detail">
-										<p>Precio por 3 noches <span class="fsize_10">(Mínimo 3 noches)</span></p>
-
-									</div>
-								</div>
+					
+					
+					
+				</div>-->
+				<!--<div class="card_rent">
+					<div class="subcard" >
+						<div class="card_image ">						
+							<div class="w100 h100" >
+								<img class="card_img" mat-card-image src="assets/images/card/apartamentos_martin.jpg" alt="Apartamentos Martín" style=" "/>
 								
 							</div>
+						</div >
 							
-						</div>						
+						<div class="d_flex card_content">
+							
+							<div class="w100 t_center" >
+								<p class="title_renting_text">
+								Apartamentos Martín
+								</p>
+								
+								<div class="content_renting" >
+									<div class="w100 d_flex">
+										<div class="w50 d_flex">
+											<span class="material-icons-round m10_auto c_lightgreen icon_circle" >
+												settings_phone
+											</span>
+											<p class="mauto">953 72 71 06</p>
+										</div>
+										<div class="w50 d_flex">
+											<span class="material-icons-round m10_auto c_orange icon_circle" >
+												location_on
+											</span>
+											<button mat-icon-button class="mauto_imp" >
+												<mat-icon class="c_blue ">share_location</mat-icon>
+											</button>
+										</div>
+									</div>
+									<div class="w100 d_flex">
+										<div class="w50 d_flex m10_auto" >
+											<div class="w50 icon_circle">
+												<span class="material-icons-round" style="color:black;">
+													house
+												</span>
+												<span class="material-icons-round" style="color:black;">
+													house
+												</span>
+											</div>
+											<div class="w50">
+												<p class="mauto"> Casas y apartamentos</p>
+											</div>
+										</div>
+										<div class="w50 d_flex ">
+											<span class="material-icons-round m10_auto c_orange icon_circle" >
+												group
+											</span>
+											<p class="mauto"> 2,4 y 6 personas</p>
+										</div>
+									</div>
+									<div class="price">
+										<div class="w30 back_green">
+											<span class="price_item">210€</span>
+										</div>
+										<div class="w70 price_detail">
+											<p>Precio por 3 noches <span class="fsize_10">(Mínimo 3 noches)</span></p>
+
+										</div>
+									</div>
+									
+								</div>
+								
+							</div>						
+						</div>
 					</div>
-				</div>
-				
-				
-				
-			</div>-->
+					
+					
+					
+				</div>-->
+			</div>
+
 		</div>
-
 	</div>
 	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(255,255,255,0.7);overflow:scroll">
 		

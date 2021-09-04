@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GalleryItem, ImageItem} from 'ng-gallery';
-import { GalleryPlaces } from '../models/gallery-places';
+
 import { MatAccordion } from '@angular/material/expansion';
 import { Snow } from '../models/snow';
 
@@ -46,11 +46,7 @@ export class HomeComponent implements OnInit {
   public snows2:Snow[]=[];  
   public snow:any;
 
-  public switchModal:boolean=false;
-  public switchModal2:boolean=false;
-  public imageModal:string="";
-  public textModal:string="";
-  public titleModal:string="";
+ 
 
   //switch para mostrar/ocultar feedback de location
   public switchDivFeedback:any;
@@ -68,64 +64,14 @@ export class HomeComponent implements OnInit {
   public maxWidthBannerp3:any;
   public textbanner:any;
   private rainInterval:any;
-  public places:GalleryPlaces[]=[
-  {
-    _id:"",
-    title:"Charco de la cuna",
-    image: "assets/images/cazorla/galeria1.jpg",
-    detail:"El Charco de la cuna es un tramo del río Borosa, ubicado justo antes de su desembocadura, destacable por una sucesión de rocas perpendiculares al río que originan una serie saltos y pozas donde está permitido bañarse y creando un efecto de pequeñas cascada.",    
-  },
-  {
-    _id:"",
-    title:"Puente de las Herrerías",
-    image: "assets/images/cazorla/galeria2.jpg",
-    detail:"",    
-  },
-  {
-    _id:"",
-    title:"Salto de los órganos",
-    image: "assets/images/cazorla/galeria3.jpg",
-    detail:"",    
-  },
-  {
-    _id:"",
-    title:"Parque cinegético",
-    image: "assets/images/cazorla/galeria4.jpg",
-    detail:"",    
-  },
-  {
-    _id:"",
-    title:'Embalse "El tranco" ',
-    image: "assets/images/cazorla/galeria5.jpg",
-    detail:"",    
-  },
-  {
-    _id:"",
-    title:"Actividades multiaventura",
-    image: "assets/images/cazorla/galeria6.jpg",
-    detail:"",    
-  },
-  {
-    _id:"",
-    title:"Cerrada de Elías",
-    image: "assets/images/cazorla/galeria7.jpg",
-    detail:"",    
-  },
-  {
-    _id:"",
-    title:"Ocio Arroyo Frío",
-    image: "assets/images/cazorla/galeria8.jpg",
-    detail:"",    
-  },
-    
-  ];
+  
 
   @ViewChild('section1',{static:true}) private section1!:ElementRef;
   @ViewChild('section2',{static:true}) private section2!:ElementRef;
   @ViewChild('section3',{static:true}) private section3!:ElementRef;
   @ViewChild('section4',{static:true}) private section4!:ElementRef;
   //section2
-  @ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
+  //@ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
   //section1
   @ViewChild('backimage',{static:true}) private backimage!:ElementRef;
   @ViewChild('backimage2',{static:true}) private backimage2!:ElementRef;
@@ -141,8 +87,7 @@ export class HomeComponent implements OnInit {
     this.typeFeedback=true;
     this.titleService.setTitle("Mi titulo");
 
-    this.textModal="";
-    this.titleModal="";
+    
     
     //cargamos la primera card para que la transición tome efecto desde la primera vez
     this.selectedCard=CardRentData.midata[0];
@@ -427,16 +372,7 @@ export class HomeComponent implements OnInit {
   }
   
 
-  misectionHorizontal(size:string){
-    console.log("llega al misectionHorizontal")
-    //this.section3.nativeElement.style.transform="translateX(-"+size+")";
-    console.log(this.midivslider);
-    this.midivslider.nativeElement.style.transform="translateX(-"+size+")";
-  }
-  misectionHorizontal2(){
-    console.log("llega al misectionHorizontal")
-    this.midivslider.nativeElement.style.transform="translateX(0px)";
-  }
+  
 
   showTooltip(card:any){
     console.log("dato");
@@ -559,42 +495,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  hideFilter(i:number){
-    /*
-    if(this.selectActivity){
-      console.log("l activity desde el condidiconal: ",this.selectActivity);
-      this.selectActivity.getElementsByTagName("div")[0].style.opacity=1;
-      this.selectActivity.getElementsByTagName("div")[0].style.backgroundColor="rgba(0,0,0,.4)";
-      this.selectActivity.getElementsByTagName("img")[0].style.transform="scale(1)";  
-    }
-    console.log(i)
-    let select=this.selectedSection.getElementsByTagName("span")[i];
-    this.selectActivity=select;
-    console.log("l activity: ",this.selectActivity);
-    select.getElementsByTagName("div")[0].style.opacity=0;
-    select.getElementsByTagName("div")[0].style.backgroundColor="rgba(0,0,0,0)";
-    let image=select.getElementsByTagName("img")[0].style.transform="scale(0.9)";
-    //console.log("primero :",image.src);
-    */
-  }
-  showModal(place:GalleryPlaces){
-    this.imageModal=place.image;
-    this.textModal=place.detail;
-    this.titleModal=place.title;
-    console.log("detaller: ",place);
-    if(this.switchModal2)
-      this.switchModal2=false;
-    this.switchModal=true;
-
-  }
-  showModal2(place:GalleryPlaces){
-    this.imageModal=place.image;
-    this.textModal=place.detail;
-    this.titleModal=place.title;
-    console.log("detaller: ",place);
-    this.switchModal=false;
-    this.switchModal2=true;    
-  }
+  
+  
 
 
             //animation snow

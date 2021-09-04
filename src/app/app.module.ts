@@ -22,6 +22,9 @@ import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
 import { CardComponent } from './card/card.component';
 import { PricePipe } from './pipes/price.pipe';
 import { MinimrentPipe } from './pipes/minimrent.pipe';
+import { ActivityComponent } from './activity/activity.component';
+import { ActivityHeaderComponent } from './activity/activity-header/activity-header.component';
+import { ActivityContentComponent } from './activity/activity-content/activity-content.component';
 
 
 
@@ -34,7 +37,10 @@ import { MinimrentPipe } from './pipes/minimrent.pipe';
     IconTypePipe,
     CardComponent,
     PricePipe,
-    MinimrentPipe
+    MinimrentPipe,
+    ActivityComponent,
+    ActivityHeaderComponent,
+    ActivityContentComponent
   ],
   imports: [
     BrowserModule,
