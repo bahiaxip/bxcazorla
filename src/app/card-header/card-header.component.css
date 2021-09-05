@@ -1,0 +1,109 @@
+.flex_header{
+
+	height:70px;
+	width:100%;
+
+	position: relative;
+	z-index: 300;
+}
+.flex_header .div_flex_item{
+	width:100%;
+	margin:30px auto;
+
+	
+}
+
+.flex_item{
+	min-height: 50px;
+
+	/*max-height: 100%;*/
+	
+	width:70%;	
+	background-color:rgba(0,0,0,.7);
+	
+	display: flex;
+	padding: 5px;
+	
+	margin: auto;
+	border-radius:10px;
+	text-align: center;	
+	box-sizing: border-box;
+	overflow: hidden;
+	user-select: none;
+	
+}
+
+.flex_item .banner_icon{
+	display: flex;
+	font-size:35px;
+	color:orange;
+	cursor:pointer;
+
+	
+}
+
+.div_feedback div{
+	/*background-color: orange;*/
+}
+.feedgreen{
+	background-color: lightgreen;
+}
+.feedorange{
+	background-color: orange;
+}
+
+.bannerp3{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	//max-width: 100ch;
+	cursor:pointer;
+	/*margin-left:5px;*/
+	font-size:14px;
+	/*clear:left;*/
+	transition:transform 1s ease-in-out
+}
+
+		/*              galery con grid                */
+
+
+.gallery-container{	
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	/*grid-auto-rows: 200px;*/
+	/*pasamos a minmax para poder establecer con height el botón de cierre*/
+	grid-auto-rows: minmax(20px 200px);
+	grid-gap: 10px;
+	/*height: calc(100vh - 90px);*/
+	height: 0;	
+	
+}
+.gallery-container div{
+	grid-auto-rows: 200px;
+	grid-column-start: span 1;
+
+}
+/*boton de cierre (siempre centrado, ocupa x columnas según resolución)*/
+
+.gallery-container .gallery_first{
+	grid-column-start:span 3;
+	height: 20px;
+
+	
+	
+}
+.gallery-container div:first-child{
+	
+}
+
+.gallery__img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+
+}
+.gallery__item{
+	position: relative;
+	/*grid-column-start: span 3 !important;*/
+}

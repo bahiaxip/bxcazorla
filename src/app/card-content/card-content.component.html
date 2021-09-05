@@ -1,0 +1,151 @@
+<div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata">				
+	<div class="subcard" >
+		<div class="card_image ">						
+			<div class="w100 " style="height:100%;overflow:hidden" (click)="selectOptionCard('images',rent)">
+				<img class="card_img" mat-card-image [src]="'assets/images/'+rent.listImages[0]" alt="Apartamentos Martín" style=" "/>
+			</div>
+		</div >
+			
+		<div class="d_flex card_content">
+			<!-- central -->
+			<div class="w100 t_center" >
+				<div class="title_renting">
+					<p class="title_renting_text">
+						{{rent.title}}
+					</p>
+
+					<div class="subtitle_renting " style="display:flex;justify-content:center" *ngIf="rent.type.length > 0">
+						<div class="icon_circle_double" >
+							<span class="material-icons-round" *ngFor="let type of rent.type;let i=index">
+								  {{type | iconType}}
+							</span>
+
+							<!--<span class="material-icons-round">
+								holiday_village
+							</span>-->
+						</div>
+
+						<p class="subtitle_renting_text" >
+
+							<span *ngFor="let type of rent.type;let i=index">
+								<span *ngIf="i!=0">/</span>{{type}}</span>
+
+						</p>
+					</div>
+
+				</div>
+				<div class="content_renting" >
+
+					<div class="w100 d_flex">
+						<div class="w50 d_flex link " (click)="selectOptionCard('phone',rent)">
+							<div class="w50 mauto div_icon_hidden">
+								<span class="material-icons-round m10_auto  icon_circle " >
+									settings_phone
+								</span>
+							</div>
+
+							<div class="w50 mauto div_visible">
+								<p class="mauto">{{rent.phone}}</p>
+							</div>
+						</div>
+
+						<div class="w50 d_flex link" (click)="selectOptionCard('location',rent)">
+							<div class="w50 mauto div_icon_hidden">
+								<span class="material-icons-round m10_auto c_orange icon_circle " >
+									location_on
+								</span>
+							</div>
+							<div class="w50 mauto div_visible">
+								<p class="mauto">{{rent.numLevelLocation | levelPipe}}</p>
+								
+							</div>
+						</div>
+					</div>
+
+					<div class="w100 d_flex">
+						<div class="w50 d_flex link" (click)="selectOptionCard('feedback',rent)">
+							<div class="w50 div_icon_hidden">
+								<span class="material-icons-round icon_circle m10_auto" >
+									star
+								</span>
+							</div>
+
+							<div class="w50 mauto div_visible" >
+								<p class="mauto"> Opiniones</p>
+							</div>
+						</div>
+
+						<div class="w50 d_flex link" (click)="selectOptionCard('capacity',rent)">
+							<div class="w50 div_icon_hidden ">
+								<span class="material-icons-round m10_auto c_orange icon_circle" >
+									group
+								</span>
+							</div>
+							<div class="w50 mauto div_visible">
+								<p class="mauto"> 2,4 y 6 personas</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="price">
+						<div class="w30 div_price_item">
+							<span class="price_item">{{rent.minPrice}}€</span>
+						</div>
+						<div class="w70 price_detail"  style="display:flex">
+							<div class="w50" (click)="editPrice(1)">
+								<p>{{rent.minCapacity}} {{rent.minCapacity|minimrent:'capacity'}}
+									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+								</p>
+							</div>
+							<div class="w50" (click)="editPrice(2)">
+
+								<p>{{rent.minNights}} {{rent.minNights|minimrent:'night'}}
+									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="content_renting" style="position:relative;" >
+					<div style="position:absolute;width:100%;margin:auto;background:orange" *ngIf="menuPrice || menuPrice2" (click)="divPrice()">
+						<div class="price_tmp" style="margin:0 auto;" *ngFor="let priceItem of pricerentdata;let i=index">
+
+							<div class="w30 div_price_item" style="z-index:-1">
+								
+							</div>
+							
+							<div class="w70 price_detail" style="display:flex">
+								<div class="w50" style="" [ngClass]="{'changePrice':menuPrice}" (click)="updatePrice()">
+									<p *ngIf="menuPrice">3 Personas
+										<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+									</p>
+								</div>
+								<div class="w50" style=""  [ngClass]="{'changePrice':menuPrice2}">
+									<p *ngIf="menuPrice2">{{priceItem | pricePipe:0 }}
+										<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+									</p>
+								</div>
+							</div>							
+						</div>
+						
+						<div class="price_tmp" style="margin:0 auto">
+							<div class="w30 div_price_item">
+								
+							</div>
+							<div class="w70 price_detail" style="display:flex">
+								<div class="w50" style="" [ngClass]="{'changePrice':menuPrice}" >
+									<p *ngIf="menuPrice">6 personas</p>
+								</div>
+								<div class="w50" style="" [ngClass]="{'changePrice':menuPrice2}" >
+									<p *ngIf="menuPrice2">5 noches</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

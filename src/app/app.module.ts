@@ -25,6 +25,8 @@ import { MinimrentPipe } from './pipes/minimrent.pipe';
 import { ActivityComponent } from './activity/activity.component';
 import { ActivityHeaderComponent } from './activity/activity-header/activity-header.component';
 import { ActivityContentComponent } from './activity/activity-content/activity-content.component';
+import { CardHeaderComponent } from './card-header/card-header.component';
+import { CardContentComponent } from './card-content/card-content.component';
 
 
 
@@ -40,7 +42,9 @@ import { ActivityContentComponent } from './activity/activity-content/activity-c
     MinimrentPipe,
     ActivityComponent,
     ActivityHeaderComponent,
-    ActivityContentComponent
+    ActivityContentComponent,
+    CardHeaderComponent,
+    CardContentComponent
   ],
   imports: [
     BrowserModule,

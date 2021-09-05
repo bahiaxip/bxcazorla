@@ -22,6 +22,10 @@ import { CardService } from '../services/card.service';
 })
 export class HomeComponent implements OnInit {
 
+
+  public banner1:any;
+  public banner2:any;
+  public banner3:any;
   public cardrentdata:any;
   public selectedCard:any;
   
@@ -52,6 +56,9 @@ export class HomeComponent implements OnInit {
   public switchDivFeedback:any;
   //switch para mostrar/ocultar feedback de valoraciones
   public switchDivFeedback2:any;
+
+  public swDivFeedback:any;
+  public swDivFeedback2:any;
   public levelLocation:number=5;
   
 
@@ -76,9 +83,9 @@ export class HomeComponent implements OnInit {
   @ViewChild('backimage',{static:true}) private backimage!:ElementRef;
   @ViewChild('backimage2',{static:true}) private backimage2!:ElementRef;
   //section4
-  @ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
-  @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
-  @ViewChild('bannerp3',{static:true}) private bannerp3!:ElementRef;
+  //@ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
+  //@ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
+  //@ViewChild('bannerp3',{static:true}) private bannerp3!:ElementRef;
 
   constructor(
     private titleService:Title,
@@ -130,7 +137,7 @@ export class HomeComponent implements OnInit {
     this.setSectionByScroll()
 
     //actualizamos el ancho para los mensajes deslizantes de valoraciones
-    this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
+
     //establecemos overflow hidden genérico a la etiqueta html para que no se pueda
     //hacer scroll entre sections, se podría hacer un event scrollWheel para detectar
     //2 o 3 veces la rueda y cambiar de section, aunque solo podría ser en algunos sections
@@ -138,8 +145,7 @@ export class HomeComponent implements OnInit {
     document.getElementsByTagName("html")[0].style.overflow="hidden";
     
     window.addEventListener("resize",(e)=>{
-      //actualizamos el ancho para los mensajes deslizantes de valoraciones
-      this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
+    
 
       this.selectedSection.scrollIntoView();
       console.log("se esta moviendo:",e);
@@ -197,135 +203,29 @@ export class HomeComponent implements OnInit {
   }
   //switch que permite mostrar/ocultar el div del feedback de location
   switchDivFeed(data:any){
+    /*
     if(data && data.type == "location")    
       this.switchDivFeedback=data.value;
+      
     else if(data && data.type == "feedback"){
       this.switchDivFeedback2=data.value;
 //console.log(this.switchDivFeedback2)
-    }     
+    }
+    */
+    this.swDivFeedback=data;
+         
       
     //this.switchDivMaps=value;
 //console.log("data desde switchDivFeed: ",data)
-  }
-  setBanner1(card:CardRent){
-  //console.log("datos desde SetBanner1: ",card.title)
-    this._cardService.setSelectedCard(card);
-    this.bannerp1.nativeElement.innerHTML=card.title;    
-    /*
-    this.selectedCard=this._cardService.getSelectedCard();
-    console.log(this.selectedCard); 
-    this.bannerp1.nativeElement.innerHTML=title;
-    this.myHeight="calc(100vh - 90px)";
-    */
-  }
-  //en setBanner2() no especificamos el tipo CardRent, al añadir otra propiedad y agruparla
-  //en un nuevo objeto (el emit solo acepta un parámetro), esto es solo para
-  //identificar si el botón pulsado es la imagen de la card. (recomendable 
-  //optimizar identificando la pulsación de la imagen mediante otro método)
-  setBanner2(card:any){
-
-    //si el card es vacío (se ha pulsado el genérico un card distinto) limpiamos los 2 banners
-    if(card == ""){
-      this.bannerp2.nativeElement.innerHTML="";
-      this.bannerp3.nativeElement.innerHTML="";
-    }
-
-    //si no es de tipo feedback ni tampoco images, limpiamos el tercer <p> 
-    //(orientado a la rotación de mensajes de valoraciones, que van pasando una a una)    
-    if(card.selectedElement && card.selectedElement != "feedback" && card.selectedElement != "images")
-      this.bannerp3.nativeElement.innerHTML="";
-  //console.log("pasamos a 0 duration y vemos el typecard: ",this._cardService.getTypeCard())
-    //
-
-    //si el objeto trae la propiedad selectedElement y es images mostramos imágenes
-    if(card.selectedElement  && card.selectedElement=="images"){
-      
-      //asignamos el card.card en lugar de utilizar el método getSelectedCard del servicio 
-      //porque el emit se ejecuta antes(método selectOptionCard) y el card se establece 
-      //después(método selectCard) mediante setSelectedCard() del servicio.      
-      this.selectedCard=card.card;      
-      
-      this.myHeight2="0";
-      this.myHeight="calc(100vh - 90px)";      
-    }else if(card.selectedElement && card.selectedElement=="open_maps"){
-      
-      this.myHeight="0";
-      this.myHeight2="calc(100vh - 90px)";
-    }else if(card.selectedElement && card.selectedElement=="feedback"){
-      //limpiamos bannerp2
-      this.bannerp2.nativeElement.innerHTML="";        
-      
-      //El tipo feedback se encuentra introducido dentro de un interval (creado en 
-      //card.component.ts, método selectOptionCard()) que permite deslizar los mensajes,
-      //para ello comprobamos si es la primera vez o se ha pulsado el botón feedback de otro card(posible opción),
-      //o si está continuando el ciclo del interval (otra posible opción)
-
-      if(this.bannerp3.nativeElement.innerHTML=="" || this.selectedCard != card.card){
-
-        //console.log("PRIMERA VEZ interval");        
-        this.selectedCard=card.card;
-        this.animationFeedback('hide',card);        
-        
-        setTimeout(()=>{
-          //para que no se mantenga el setTimeout() una vez seleccionado otro botón
-          if(this.bannerp2.nativeElement.innerHTML=="" ){
-            this.animationFeedback('visible');
-          }
-        },1000)  
-      }else{
-        //console.log("SEGUNDA VEZ")
-        this.bannerp3.nativeElement.style.transform="translateX(-"+(this.maxWidthBannerp3+200)+"px)";
-        
-        setTimeout(()=> {
-          this.animationFeedback('hide',card);
-             
-          setTimeout(()=> {
-            //para que no se mantenga el setTimeout() una vez seleccionado otro botón
-            if(this.bannerp2.nativeElement.innerHTML==""){
-              this.animationFeedback('visible');
-            }
-          },800)
-
-        },800)
-      }
-
-    }else{      
-      this.bannerp2.nativeElement.innerHTML=card;  
-    }
-  }
-  //animación de mensajes deslizantes de valoraciones
-  animationFeedback(type:string,card:any=null){
-    //moviendo el elemento(mensaje) a la derecha de forma oculta
-    if(type=="hide" && card){
-      this.bannerp3.nativeElement.style.opacity="0";
-      this.bannerp3.nativeElement.style.transform="translateX("+(this.maxWidthBannerp3+200)+"px)";
-      this.bannerp3.nativeElement.innerHTML=card.totalText;  
-    }else if(type=="visible"){
-      this.bannerp3.nativeElement.style.opacity="1";
-      this.bannerp3.nativeElement.style.transform="translateX(0)";
-    }
-    
-  }
+  }  
+  
+  
   
 
   miPrueba(){
     console.log("prueba de mostrar mapa")
   }
-
-  hideImagesCard(type:string){
-    //this.fixedCloseGal=false;
-    if(type=="images"){
-      if(this.myHeight != "0")
-        this.myHeight="0";
-      if(this.myHeight2 != "0")
-        this.myHeight2 = "0";
-    }else if(type == "open_maps"){
-      if(this.myHeight2 != "0")
-        this.myHeight2="0";        
-    }
-    console.log("type es: ",type)
-    
-  }
+  
   //establecer section mediante scroll
   setSectionByScroll(){
     //alto total del scroll (por si recarga la página detectar y seleccionar el section)    
@@ -350,18 +250,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
-
   
-  dinamicMethod(){
-    let miType=this._cardService.getTypeCard();
-    let miCard=this._cardService.getSelectedCard();
-    if(this.switchDivFeedback){
-      this.setBanner2({selectedElement:"open_maps",card:miCard});
-    }
-    console.log("dinamicMethod: ",this.switchDivFeedback);
-    console.log("dinamicMethod2: ",miType);
-  }
+  
   flash(){
     console.log("llega al falash")    
     //this.backimage.nativeElement.style.backgroundImage="url('../../assets/cerrada_de_elias_byn.png')";
