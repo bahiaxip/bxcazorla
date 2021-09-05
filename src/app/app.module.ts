@@ -13,20 +13,22 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 //import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatCardModule } from '@angular/material/card';
-import { RentingComponent } from './renting/renting.component';
-import { Pipe } from '@angular/core';
-import { LevelPipePipe,IconTypePipe } from './level-pipe.pipe';
-import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
-import { CardComponent } from './card/card.component';
-import { PricePipe } from './pipes/price.pipe';
-import { MinimrentPipe } from './pipes/minimrent.pipe';
+//import { MatExpansionModule } from '@angular/material/expansion';
+//import { MatCardModule } from '@angular/material/card';
+//import { RentingComponent } from './renting/renting.component';
+//import { Pipe } from '@angular/core';
+//import { LevelPipePipe,IconTypePipe } from './level-pipe.pipe';
+//import { PipesCommonModule } from './pipes/pipes-common/pipes-common.module';
+//import { CardComponent } from './card/card.component';
+//import { PricePipe } from './pipes/price.pipe';
+//import { MinimrentPipe } from './pipes/minimrent.pipe';
 import { ActivityComponent } from './activity/activity.component';
 import { ActivityHeaderComponent } from './activity/activity-header/activity-header.component';
 import { ActivityContentComponent } from './activity/activity-content/activity-content.component';
-import { CardHeaderComponent } from './card-header/card-header.component';
-import { CardContentComponent } from './card-content/card-content.component';
+
+import { CardrentModule } from './cardrent/cardrent.module';
+//import { CardHeaderComponent } from './card-header/card-header.component';
+//import { CardContentComponent } from './card-content/card-content.component';
 
 
 
@@ -34,17 +36,15 @@ import { CardContentComponent } from './card-content/card-content.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    RentingComponent,
-    LevelPipePipe,
-    IconTypePipe,
-    CardComponent,
-    PricePipe,
-    MinimrentPipe,
+    //RentingComponent,
+    //LevelPipePipe,
+    //IconTypePipe,
+    //CardComponent,
+    //PricePipe,
+    //MinimrentPipe,
     ActivityComponent,
     ActivityHeaderComponent,
     ActivityContentComponent,
-    CardHeaderComponent,
-    CardContentComponent
   ],
   imports: [
     BrowserModule,
@@ -55,10 +55,11 @@ import { CardContentComponent } from './card-content/card-content.component';
     MatListModule,
     MatButtonToggleModule,
     MatIconModule,    
-    MatExpansionModule,
-    MatCardModule,    
+    //MatExpansionModule,
+    //MatCardModule,    
     CommonModule,
-    PipesCommonModule,    
+    //PipesCommonModule,
+    CardrentModule   
   ],
   
   bootstrap: [AppComponent]

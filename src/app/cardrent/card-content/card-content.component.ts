@@ -4,10 +4,10 @@ import { CardRent } from '../models/card-rent';
 import { FeedbackRentData } from '../models/feedback-rent-data';
 import { FeedbackRent } from '../models/feedback-rent';
 import { PriceRentData } from '../models/price-rent-data';
-import { LevelPipePipe, IconTypePipe } from '../level-pipe.pipe';
-import { PricePipe } from '../pipes/price.pipe';
-import { MinimrentPipe } from '../pipes/minimrent.pipe';
-import { CardService } from '../services/card.service';
+//import { LevelPipePipe, IconTypePipe } from '../../level-pipe.pipe';
+//import { PricePipe } from '../../pipes/price.pipe';
+//import { MinimrentPipe } from '../../pipes/minimrent.pipe';
+import { CardrentService } from '../services/cardrent.service';
 
 
 @Component({
@@ -48,7 +48,7 @@ export class CardContentComponent implements OnInit {
   public intervalFeedActive:boolean=false;
 
   constructor(
-    private _cardService:CardService,
+    private _cardService:CardrentService,
   ) {
     this.cardrentdata=CardRentData.midata;
     this.feedrentdata=FeedbackRentData.midata;

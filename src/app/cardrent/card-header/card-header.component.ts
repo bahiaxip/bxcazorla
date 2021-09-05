@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { CardService } from '../services/card.service';
-import { CardRentData } from '../models/card-rent-data';
-import { CardRent } from '../models/card-rent';
-import { LevelPipePipe, IconTypePipe } from '../level-pipe.pipe';
+import { CardrentService } from '../services/cardrent.service';
+import { CardRentData } from '../../models/card-rent-data';
+import { CardRent } from '../../models/card-rent';
+//import { LevelPipePipe, IconTypePipe } from '../../level-pipe.pipe';
 
 import { Subscription } from 'rxjs';
 
@@ -40,7 +40,7 @@ export class CardHeaderComponent implements OnInit {
   @ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
   @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
   @ViewChild('bannerp3',{static:true}) private bannerp3!:ElementRef;
-  constructor(private _cardService:CardService) {
+  constructor(private _cardService:CardrentService) {
     this.selectedCard=CardRentData.midata[0];
   }
 

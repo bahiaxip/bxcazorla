@@ -249,9 +249,7 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-
-  
-  
+  //animación flash en section-home
   flash(){
     console.log("llega al falash")    
     //this.backimage.nativeElement.style.backgroundImage="url('../../assets/cerrada_de_elias_byn.png')";
@@ -260,13 +258,11 @@ export class HomeComponent implements OnInit {
       this.backimage2.nativeElement.className="back_image2"
     },10000)
   }
-  
-
-  
 
   showTooltip(card:any){
     console.log("dato");
   }
+  
   animation1(){
     for(let i=0;i<200;i++){
       this.snows[i]=new Snow(
