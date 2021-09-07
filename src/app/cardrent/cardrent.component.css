@@ -2,12 +2,56 @@
 	width: 100%;
 	display: flex;
 	height: 100vh;
-	/*padding: 15px;*/
 	
+	/*padding: 15px;*/
+	//background-color: orange;
 	padding: 20px;	
 	justify-content: center;
 	overflow: auto;
 	scrollbar-width: none;
 	
 	box-sizing: border-box;	
+}
+.flex_header{
+
+	height:70px;
+	width:100%;
+
+	position: relative;
+	z-index: 300;
+}
+.flex_header .div_flex_item{
+	width:100%;
+	margin:30px auto;
+
+	
+}
+
+.flex_item{
+	min-height: 50px;
+
+	/*max-height: 100%;*/
+	
+	width:70%;	
+	background-color:rgba(0,0,0,.7);
+	
+	display: flex;
+	padding: 5px;
+	
+	margin: auto;
+	border-radius:10px;
+	text-align: center;	
+	box-sizing: border-box;
+	overflow: hidden;
+	user-select: none;
+	
+}
+
+.flex_item .banner_icon{
+	display: flex;
+	font-size:35px;
+	color:orange;
+	cursor:pointer;
+
+	
 }

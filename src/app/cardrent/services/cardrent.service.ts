@@ -52,7 +52,7 @@ export class CardrentService {
     return this.banner2;
   }
 
-  setSwitchFeed(data:any){
+  setSwitchFeed(data:any){    
     this.switchFeed=data;
     this.switchDivFeed.next();
   }

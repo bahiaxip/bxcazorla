@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 /* You can add global styles to this file, and also import other style files */
 .g-image-loaded{
 	/*height: 100%;*/
@@ -74,6 +75,9 @@ html,body{
 }
 .w30{
 	width: 30%;
+}
+.w10{
+	width: 10%;
 }
 
 .h100{

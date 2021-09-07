@@ -14,8 +14,23 @@ export class CardRent {
 		public numLevelFeedback:string,
 		public numLevelLocation:number,
 		public maps:string,
-		public text:string
+		public text:string,
+
 	){
 
 	}
 }
+
+//servicios:
+//wifi
+//A/A
+//piscina
+//restaurante
+//spa
+//bar(hotel)
+//parking
+//gimnasio
+//mascotas
+//fumar/no fumar
+//TV
+

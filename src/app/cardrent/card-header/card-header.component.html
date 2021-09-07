@@ -4,7 +4,7 @@
 		<div class="flex_item " style="" >
 			<div style="width:100%;display:flex;">
 			<!-- icono valoraciones -->
-				<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('images')">
+				<div style="width:15%;cursor:pointer" class="" >
 					<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
 					<!--<mat-icon mat-card-avatar class="banner_icon " style="margin:15px auto;font-size:30px" title="Todas las Valoraciones">person</mat-icon>-->
 				</div>
@@ -15,28 +15,12 @@
 				
 				<!-- gráfica puntuación general de valoraciones -->
 					<p style="display:block;width: 100%;margin:auto;margin-top:5px" *ngIf="switchDivFeedback2">
-				            <span class="material-icons feed_level">star</span>
-				            <span class="material-icons feed_level">star</span>
-				            <span class="material-icons feed_level">star</span>
-				            <span class="material-icons feed_level">star</span>
-				            <span class="material-icons feed_level">star</span>
+						<pre-divlevel></pre-divlevel>
 		            </p>
 						        
 				<!-- gráfica puntuación de ubicación -->
-					<span style="display:inline-flex;margin:auto;vertical-align: middle;"  >
-						<div style="display:flex;margin:0 10px 0 0;" *ngIf="switchDivFeedback" >
-							<span class="material-icons" style="color:orange;display:flex;font-size:16px;margin:auto;cursor:pointer" >info</span>
-						
-							<div class="div_feedback" style="width:80px;height:20px;border:#474747 1px solid;margin:auto;display:flex;justify-content:space-around;align-items:center;border-radius: 5px;cursor:pointer"  title="{{levelLocation| levelPipe }}" (click)="showTooltip('selectedCard')">
-
-								<div style="width:4px;height:2px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
-								<div style="width:4px;height:4px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 1 ? 'feedgreen':'feedorange'"></div>
-								<div style="width:4px;height:6px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 2 ? 'feedgreen':'feedorange'"></div>
-								<div style="width:4px;height:8px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 3 ? 'feedgreen':'feedorange'"></div>
-								<div style="width:4px;height:10px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 4 ? 'feedgreen':'feedorange'"></div>
-								<div style="width:4px;height:12px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 5 ? 'feedgreen':'feedorange'"></div>
-							</div>
-						</div>
+					<span style="display:inline-flex;margin:auto;vertical-align: middle;"  >						
+						<pre-divlevel2 [levelLocation]="levelLocation" *ngIf="switchDivFeedback"></pre-divlevel2>
 						<!--<span [innerHTML]="textbanner"></span>-->
 				<!-- bannerp2 -->
 						<p class="mauto c_white" #bannerp2  style="
@@ -51,29 +35,13 @@
 				<!-- div (imágenes y maps) -->
 					<div class="" style="width:100%;"  *ngIf="selectedCard" >
 					<!-- maps -->
-						<div class="mapouter"  style="transition: all 1s linear;margin: auto;/*margin:10px auto*/"  [ngStyle]="{'height':myHeight2}">
-
-							<div class="gmap_canvas"  [ngStyle]="{'height':myHeight2}" style="transition:all 1s linear;text-align: center;overflow: auto;">
-								<mat-icon class="material-icons" style="color:white;font-size:25px;cursor:pointer;" (click)="hideImagesCard('open_maps')" >close</mat-icon>
-								<iframe [width]="maxWidthBannerp3+'px'" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Arroyo%20Frio,%20la%20iruela&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://getasearch.com/nordvpn-coupon/"></a><br><style>.mapouter{position:relative;text-align:right;/*height:500px;*/}</style><a href="https://www.embedgooglemap.net">location map for website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;}</style></div>
-						</div>
+						<pre-cardmaps [maxWidthBannerp3]="maxWidthBannerp3" [myHeight]="myHeight" [myHeight2]="myHeight2" (emitHeight)="updateHeight($event)"></pre-cardmaps>
 					<!-- images -->	
-						<div class="gallery-container" style="overflow:auto;transition:all 0.5s linear" [ngStyle]="{'height':myHeight}"  >
-							<!--<div style="" class="gallery_first" [ngStyle]="fixedCloseGal ? {'position':'fixed','top':'10%','left':'50%','transform':'translateX(-50%)'}:{'position':'relative'}">-->
-							<div class="gallery_first" style="cursor:pointer">
-								<mat-icon class="material-icons" style="color:white;font-size:25px" (click)="hideImagesCard('images')" >close</mat-icon>
-							</div>
-							
-							<div class="gallery__item" *ngFor="let image of selectedCard.listImages">
-								<img [src]="'assets/images/'+image" alt="" class="gallery__img">
-								<h2 class="gallery__title">Imagen 1</h2>
-							</div>							
-						</div>
-						
+						<pre-card-images [selectedCard]="selectedCard" [myHeight]="myHeight" [myHeight2]="myHeight2" (emitHeight)="updateHeight($event)"></pre-card-images>
 					</div>
 				</div>
 			<!-- icono Info -->
-				<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('images')">
+				<div style="width:15%;cursor:pointer" class="" >
 					<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
 				</div>
 			</div>

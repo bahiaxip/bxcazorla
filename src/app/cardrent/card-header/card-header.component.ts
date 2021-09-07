@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class CardHeaderComponent implements OnInit {
 
+    
   public lastBannerDom2:any;
   public lastSwitchDivInfo:any;
   //switch para mostrar/ocultar feedback de location
@@ -24,7 +25,7 @@ export class CardHeaderComponent implements OnInit {
   public selectedCard:any;
   //max-width de bannerp3 para mostrar correctamente el white-space
   public maxWidthBannerp3:any;
-  public levelLocation:number=5;
+  public levelLocation:number=3;
 
   public myHeight:string="0";
   public myHeight2:string="0";
@@ -44,7 +45,7 @@ export class CardHeaderComponent implements OnInit {
     this.selectedCard=CardRentData.midata[0];
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     //actualizamos el ancho para los mensajes deslizantes de valoraciones
 //necesario window.addEventListener(resize) para actualizar maxWidthBannerp3
     this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
@@ -53,11 +54,10 @@ export class CardHeaderComponent implements OnInit {
       this.setBanner1(this._cardService.getBanner1());
     })
     this.subscriptionBanner2=this._cardService.banner2$.subscribe(()=> {
-      this.setBanner2(this._cardService.getBanner2());
+      this.setBanner2(this._cardService.getBanner2());      
     })
-    this.subscriptionDivFeed=this._cardService.switchDivFeed$.subscribe(()=> {
-      console.log("cambio: ",this._cardService.getSwitchFeed())
-      this.switchDivFeed(this._cardService.getSwitchFeed())
+    this.subscriptionDivFeed=this._cardService.switchDivFeed$.subscribe(()=> {      
+      this.switchDivFeed(this._cardService.getSwitchFeed());      
     })
   }
 
@@ -78,7 +78,13 @@ export class CardHeaderComponent implements OnInit {
         this.myHeight2="0";        
     }
     console.log("type es: ",type)
+
     
+  }
+  updateHeight(data:any){
+    this.myHeight=data.myHeight;
+    this.myHeight2=data.myHeight2;
+    console.log("desde updateHeight: ",data)
   }
 
   showTooltip(card:any){
@@ -118,7 +124,7 @@ export class CardHeaderComponent implements OnInit {
     if(card == ""){
       console.log("es blanco")
       this.bannerp2.nativeElement.innerHTML="";
-      this.bannerp3.nativeElement.innerHTML="";
+      this.bannerp3.nativeElement.innerHTML="";      
     }
 
     //si no es de tipo feedback ni tampoco images, limpiamos el tercer <p> 
@@ -130,14 +136,16 @@ export class CardHeaderComponent implements OnInit {
 
     //si el objeto trae la propiedad selectedElement y es images mostramos imágenes
     if(card.selectedElement  && card.selectedElement=="images"){
-      
+
       //asignamos el card.card en lugar de utilizar el método getSelectedCard del servicio 
       //porque el emit se ejecuta antes(método selectOptionCard) y el card se establece 
       //después(método selectCard) mediante setSelectedCard() del servicio.      
       this.selectedCard=card.card;      
       
       this.myHeight2="0";
-      this.myHeight="calc(100vh - 90px)";      
+      this.myHeight="calc(100vh - 90px)";
+      console.log("myHeight desde setBanner2: ",this.myHeight)
+      console.log("myHeight2 desde setBanner2: ",this.myHeight2)      
     }else if(card.selectedElement && card.selectedElement=="open_maps"){
       
       this.myHeight="0";
@@ -180,9 +188,11 @@ export class CardHeaderComponent implements OnInit {
         },800)
       }
 
-    }else{      
+    }else{
+      console.log("pasa por aquí : ",card)     
       this.bannerp2.nativeElement.innerHTML=card;  
     }
+    console.log("hace un setbanner2")
   }
 
   //animación de mensajes deslizantes de valoraciones
@@ -198,7 +208,7 @@ export class CardHeaderComponent implements OnInit {
     }
   }
 
-  switchDivFeed(data:any){    
+  switchDivFeed(data:any){     
     if(data && data.type == "location"){          
       this.switchDivFeedback=data.value;
     }      

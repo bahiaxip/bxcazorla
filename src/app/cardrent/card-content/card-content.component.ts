@@ -83,10 +83,12 @@ export class CardContentComponent implements OnInit {
   */
   //mostrar/ocultar div de feedback de location(rayitas) en home.component
   swDivFeed(value:boolean){
+    console.log("update swDivFeed")
     this._cardService.setSwitchFeed({type:'location',value:value})    
   }
   //mostrar/ocultar div de feedback de feedbacks(estrellitas) en home.component
   swDivFeed2(value:boolean){
+      console.log("update swDivFeed2")
       this._cardService.setSwitchFeed({type:'feedback',value:value})      
   }
 
@@ -138,15 +140,17 @@ export class CardContentComponent implements OnInit {
       
       //si el botón pulsado no es ni images ni feedback y el interval
       //se encuentra activo, limpiamos el interval y el div de valoraciones(estrellitas)
-      if(type != "feedback" && type != "images" ||card !=this.selectedCard){
-        console.log("es distinta card")
+      if(type != "feedback" && type != "images" ||card !=this.selectedCard && this.selectedCard != null){
+        //console.log("es distinta card")
         this.resetFeed2Interval();
-        this._cardService.setBanner2("");        
+        this._cardService.setBanner2("");
+
       }
 
       //si el botón pulsado no es location ni images limpiamos el div de nivel de ubicación(rayitas)
-      if(type != "location" && type != "images"|| type == "images" && card != this.selectedCard){
+      if(type != "location" && type != "images"|| type == "images" && card != this.selectedCard){        
         this.swDivFeed(false)
+        
       }
       
       if(type == "feedback" || type == "images"){
@@ -186,7 +190,7 @@ export class CardContentComponent implements OnInit {
             this.intervalFeedActive=true;
             this.intervalFeedText=setInterval(()=>{
               console.log("creado nuevo interval")
-              totalText='<span style="">'+feed[num].text+'</span>'; 
+              totalText='<span style="">'+feed[num].text+'</span>';               
               this._cardService.setBanner2({'selectedElement':'feedback',totalText,'card':this.selectedCard});                       
               //al llegar al final comenzamos de 0
               if(num==feed.length-1)
@@ -194,11 +198,12 @@ export class CardContentComponent implements OnInit {
               else
                 num++;
             },10000);  
-          }       
+          }
+          
           this._cardService.setBanner2({selectedElement,totalText,card});          
         }else if(type == "images"){          
           selectedElement=type;
-          //enviamos un objeto en lugar de un string y detenemos
+          //enviamos un objeto en lugar de un string y detenemos          
           this._cardService.setBanner2({selectedElement,totalText,card})          
         }
 
@@ -211,9 +216,9 @@ export class CardContentComponent implements OnInit {
           this.levelLocation = card.numLevelLocation;
           this.swDivFeed(true);
           totalText='<span style="color:orange;font-size:10px;user-select:none">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
-        }
+        }        
         this._cardService.setBanner2(totalText)        
-      }
+      }      
     }
   }
 

@@ -1,0 +1,13 @@
+<div style="display:flex;margin:0 10px 0 0;">
+	<span class="material-icons" style="color:orange;display:flex;font-size:16px;margin:auto;cursor:pointer" >info</span>
+							
+	<div class="div_feedback" style="width:80px;height:20px;border:#474747 1px solid;margin:auto;display:flex;justify-content:space-around;align-items:center;border-radius: 5px;cursor:pointer"  title="{{levelLocation| levelPipe }}" >
+
+		<div style="width:4px;height:2px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 0 ? 'feedgreen':'feedorange'"></div>
+		<div style="width:4px;height:4px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 1 ? 'feedgreen':'feedorange'"></div>
+		<div style="width:4px;height:6px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 2 ? 'feedgreen':'feedorange'"></div>
+		<div style="width:4px;height:8px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 3 ? 'feedgreen':'feedorange'"></div>
+		<div style="width:4px;height:10px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 4 ? 'feedgreen':'feedorange'"></div>
+		<div style="width:4px;height:12px;border-radius: 2px;display:flex;" [ngClass]="levelLocation >= 5 ? 'feedgreen':'feedorange'"></div>
+	</div>
+</div>

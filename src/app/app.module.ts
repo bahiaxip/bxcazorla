@@ -8,6 +8,8 @@ import { GalleryModule } from 'ng-gallery';
 import { HomeComponent } from './home/home.component';
 
 //material
+import { MatInputModule } from '@angular/material/input';
+//import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -29,7 +31,7 @@ import { ActivityContentComponent } from './activity/activity-content/activity-c
 import { CardrentModule } from './cardrent/cardrent.module';
 //import { CardHeaderComponent } from './card-header/card-header.component';
 //import { CardContentComponent } from './card-content/card-content.component';
-
+//import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { CardrentModule } from './cardrent/cardrent.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    GalleryModule,    
+    GalleryModule,
+    //MatInputModule,
     MatButtonModule,
     MatListModule,
     MatButtonToggleModule,
@@ -59,9 +62,15 @@ import { CardrentModule } from './cardrent/cardrent.module';
     //MatCardModule,    
     CommonModule,
     //PipesCommonModule,
-    CardrentModule   
+    CardrentModule,
+    //MatFormFieldModule,
+    
+  ],
+  exports:[
+    
   ],
   
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

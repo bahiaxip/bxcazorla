@@ -1,6 +1,7 @@
 <div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata">				
 	<div class="subcard" >
-		<div class="card_image ">						
+		<div class="card_image ">	
+		<!-- main image -->					
 			<div class="w100 " style="height:100%;overflow:hidden" (click)="selectOptionCard('images',rent)">
 				<img class="card_img" mat-card-image [src]="'assets/images/'+rent.listImages[0]" alt="Apartamentos Martín" style=" "/>
 			</div>
@@ -9,12 +10,15 @@
 		<div class="d_flex card_content">
 			<!-- central -->
 			<div class="w100 t_center" >
+			<!-- title/subtitle -->
 				<div class="title_renting">
+				<!-- title -->
 					<p class="title_renting_text">
 						{{rent.title}}
 					</p>
-
+				<!-- subtitle -->
 					<div class="subtitle_renting " style="display:flex;justify-content:center" *ngIf="rent.type.length > 0">
+					<!-- icons subtitle -->
 						<div class="icon_circle_double" >
 							<span class="material-icons-round" *ngFor="let type of rent.type;let i=index">
 								  {{type | iconType}}
@@ -24,19 +28,23 @@
 								holiday_village
 							</span>-->
 						</div>
-
+					<!-- text subtitle -->
 						<p class="subtitle_renting_text" >
 
 							<span *ngFor="let type of rent.type;let i=index">
-								<span *ngIf="i!=0">/</span>{{type}}</span>
+								<span *ngIf="i!=0">/</span>
+								{{type}}
+							</span>
 
 						</p>
 					</div>
 
 				</div>
 				<div class="content_renting" >
-
+				
 					<div class="w100 d_flex">
+
+					<!-- phone -->
 						<div class="w50 d_flex link " (click)="selectOptionCard('phone',rent)">
 							<div class="w50 mauto div_icon_hidden">
 								<span class="material-icons-round m10_auto  icon_circle " >
@@ -48,7 +56,7 @@
 								<p class="mauto">{{rent.phone}}</p>
 							</div>
 						</div>
-
+					<!-- location -->
 						<div class="w50 d_flex link" (click)="selectOptionCard('location',rent)">
 							<div class="w50 mauto div_icon_hidden">
 								<span class="material-icons-round m10_auto c_orange icon_circle " >
@@ -63,6 +71,7 @@
 					</div>
 
 					<div class="w100 d_flex">
+					<!-- feedback -->
 						<div class="w50 d_flex link" (click)="selectOptionCard('feedback',rent)">
 							<div class="w50 div_icon_hidden">
 								<span class="material-icons-round icon_circle m10_auto" >
@@ -74,7 +83,7 @@
 								<p class="mauto"> Opiniones</p>
 							</div>
 						</div>
-
+					<!-- capacity -->
 						<div class="w50 d_flex link" (click)="selectOptionCard('capacity',rent)">
 							<div class="w50 div_icon_hidden ">
 								<span class="material-icons-round m10_auto c_orange icon_circle" >
@@ -88,15 +97,19 @@
 					</div>
 
 					<div class="price">
+					<!-- price -->
 						<div class="w30 div_price_item">
 							<span class="price_item">{{rent.minPrice}}€</span>
 						</div>
+					<!-- select nights/persons -->
 						<div class="w70 price_detail"  style="display:flex">
+						<!-- select persons -->
 							<div class="w50" (click)="editPrice(1)">
 								<p>{{rent.minCapacity}} {{rent.minCapacity|minimrent:'capacity'}}
 									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
 								</p>
 							</div>
+						<!-- select nights -->
 							<div class="w50" (click)="editPrice(2)">
 
 								<p>{{rent.minNights}} {{rent.minNights|minimrent:'night'}}
