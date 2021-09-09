@@ -5,6 +5,15 @@ export class CardRent {
 		public minNights:number,
 		public minCapacity:number,
 		public capacity:Array<number>,
+		public pricerents:[
+			{
+				capacity:number,
+				type:string,
+				minNights:number,
+				priceDefault:number,
+				priceExtraNight:number,
+			}
+		]|null,
 		public logo:string,
 		public image:string,
 		public listImages:Array<string>,

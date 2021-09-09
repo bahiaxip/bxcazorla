@@ -8,6 +8,8 @@ export var CardRentData ={
 			3,
 			2,
 			[2,4,6],
+			//[{capacity:0,type:"",minNights:0,priceDefault:0,priceExtraNight:0}],
+			null,
 			"logo",
 			"imagen",
 			["ap_martin/ap_martin1.jpg","ap_martin/ap_martin2.jpg","ap_martin/ap_martin3.jpg","ap_martin/ap_martin4.jpg","ap_martin/ap_martin5.jpg",
@@ -29,6 +31,7 @@ export var CardRentData ={
 			1,
 			2,
 			[2,4,6],
+			null,
 			"logo",
 			"imagen",
 			[
@@ -52,6 +55,7 @@ export var CardRentData ={
 			1,
 			2,
 			[2,4,6],
+			null,
 			"logo",
 			"imagen",
 			[
@@ -75,6 +79,7 @@ export var CardRentData ={
 			3,
 			2,
 			[2,4,6],
+			null,
 			"logo",
 			"imagen",
 			[
@@ -96,6 +101,7 @@ export var CardRentData ={
 			3,
 			2,
 			[2,4,6],
+			null,
 			"logo",
 			"imagen",
 			[
