@@ -11,11 +11,14 @@
 			<!-- central -->
 			<div class="w100 t_center" >
 			<!-- title/subtitle -->
+			<mat-icon class="banner_icon  mr10 mt10 floatR" style="color:orange"  title="Editar" >edit_note</mat-icon>
+			<mat-icon class="banner_icon  mr10 mt10 floatL" style="color:orange"  title="Información" >info</mat-icon>
 				<div class="title_renting">
 				<!-- title -->
 					<p class="title_renting_text">
 						{{rent.title}}
 					</p>
+
 				<!-- subtitle -->
 					<div class="subtitle_renting " style="display:flex;justify-content:center" *ngIf="rent.type.length > 0">
 					<!-- icons subtitle -->
@@ -38,6 +41,7 @@
 
 						</p>
 					</div>
+
 
 				</div>
 				<div class="content_renting" >

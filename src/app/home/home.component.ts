@@ -144,17 +144,25 @@ export class HomeComponent implements OnInit {
     //pk existe scrolling en div internos en algunos de los sections
     document.getElementsByTagName("html")[0].style.overflow="hidden";
     
-    window.addEventListener("resize",(e)=>{
     
-
-      this.selectedSection.scrollIntoView();
+    window.addEventListener("resize",(e)=>{
+      console.log(this.section4.nativeElement.getBoundingClientRect().top)
+    //evitamos scrollear a 0 si no es necesario
+      
+      console.log(window.scrollY)
+      //this.selectedSection.styletop=0
+      console.log(this.selectedSection.scrollTop)
+//probamos al final
+      //this.selectedSection.scrollIntoView();
       console.log("se esta moviendo:",e);
       console.log("el scrolltop es: ",this.section2.nativeElement.scrollTop)
       this.hideSnow();
+//revisar si no es necesario
       this.setSectionByScroll();
       this.firstWidth=this.section1.nativeElement.clientWidth;
       console.log("nuevo firstWidth: ",this.firstWidth)
       //console.log(this.firstWidth=this.section1.nativeElement.clientWidth)
+      this.selectedSection.scrollIntoView();
     })
 
       
@@ -380,6 +388,8 @@ export class HomeComponent implements OnInit {
       this.selectedSection=this.section4.nativeElement;
       console.log("al 4")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});  
+      console.log(this.section4.nativeElement.getBoundingClientRect().top)
+      console.log(this.section4.nativeElement.scrollTop);
     }
   }
 

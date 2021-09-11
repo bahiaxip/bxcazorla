@@ -43,6 +43,9 @@ html,body{
 .mr10{
 	margin-right: 10px;
 }
+.mt10{
+	margin-top: 10px;
+}
 
 .back_green{
 	background-color:#f3ffea;
@@ -76,6 +79,9 @@ html,body{
 .w30{
 	width: 30%;
 }
+.w25{
+	width: 25%;
+}
 .w10{
 	width: 10%;
 }
@@ -103,6 +109,10 @@ html,body{
 	margin: auto 2px;
 }
 
+
+
+
+
 /*keyframes & media*/
 
 @keyframes fade{
@@ -127,6 +137,23 @@ html,body{
 	0% {transform:  translate(0px,-50px);}
 	100% {transform: translate(0px,120%);}
 	
+}
+
+	/* media queries */
+
+/*presente en cardrent.component, activity-header.component, card-header.component */
+@media (min-width:1400px) {
+	.flex_item{
+		width:60%
+	}
+}
+@media (max-width: 900px){
+	.flex_item{
+		width: 100%;		
+	}
+	.card_rent{
+		max-width: 100%;		
+	}
 }
 
 /*original*/
@@ -565,3 +592,4 @@ html,body{
 	display: inline-block;
 }
 */
+				

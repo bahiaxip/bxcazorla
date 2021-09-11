@@ -3,7 +3,9 @@
 	height:70px;
 	width:100%;
 
-	position: relative;
+
+	position: absolute;
+	left: 0;
 	z-index: 300;
 }
 .flex_header .div_flex_item{

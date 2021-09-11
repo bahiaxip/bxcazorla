@@ -1,62 +1,75 @@
 <!--<div style="position:relative;height:100%;display:block">-->
-<div style="position:absolute;height:100%;display:block;" [ngStyle]="{'width':firstwidth+'px'}">
+<!--<div style="position: absolute;height:100%;display:block;overflow:hidden" >-->
 
 	<div #slidercardrent style="display:flex;flex-flow:row wrap;height:100%;transition:transform 1s ease-out" [ngStyle]="{'width':firstwidth*2+'px'}">
 
-		<div style="background-color:#676767;display:flex;position:relative" [ngStyle]="{'width':firstwidth+'px'}"> 
-			<button (click)="misectionHorizontal(firstwidth+'px')" style="position:absolute">ñlaskjdf</button>
+		<div [ngStyle]="{'width':firstwidth+'px'}">		
+			<div style="background-color:#676767;display:flex;position:relative" > 
+				<button (click)="misectionHorizontal(firstwidth+'px','1s')" style="position:absolute">ñlaskjdf</button>
 
-				<pre-card></pre-card>
+					<pre-card (emitWidth)="misectionHorizontal(firstwidth+'px','1s')"></pre-card>
+			</div>
 		</div>
+		<div [ngStyle]="{'width':firstwidth+'px'}">
+		
+			<div style="background-color:#676767;display:flex;position:relative" >
+				
+				<!-- modal para imagen no válida -->
+				<div style="position:absolute;width:100%;height:100vh;background-color:rgba(0,0,0,.3);display: flex;align-items: center;z-index:110;margin:auto;justify-content:center" *ngIf="switchModal">
+					<div style="background-color:rgba(0,0,0,.8);color:white;padding:0 15px">
+						<p style="font-size:15px">La imagen no es válida</p>
+						<p style="justify-content:center;text-align:center">
+							<button mat-button (click)="setModal(false)">OK</button>						
+						</p>
+					</div>
 
-		<div style="background-color:#676767;display:flex;position:relative" [ngStyle]="{'width':firstwidth+'px'}">
-			<button (click)="misectionHorizontal2(firstwidth+'px')" style="position:absolute">ñlaskjdf2</button>
-			<div class="div_flex_card">
+				</div>
+				<!-- fin modal -->
 
-				<div class="flex_header " style="position:absolute; ">
-					<div class="div_flex_item " style="justify-content:center;">
-						<div class="flex_item " style="" >
-							<div style="width:100%;display:flex;margin:auto">
-								<p>Crear nuevo alojamiento</p>
+				<button (click)="misectionHorizontal2(firstwidth+'px','1s')" style="position:absolute">ñlaskjdf2</button>
+				<div class="div_flex_card" style="display:block">
 
-								<mat-form-field style="color:white;margin:auto">
-									<mat-label>Nombre</mat-label>
-									<input matInput placeholder="nuevo">
-								</mat-form-field>
+					<div class="flex_header " style="position:relative; color:white;font-weight:bold">
+						<div class="div_flex_item " style="justify-content:center;">
+							<div class="flex_item " style="" >
+								<div style="width:100%;display:flex;justify-content:center;vertical-align:middle">
+									<div>Crear alojamiento</div>
+
+									
 
 
-							<!-- icono valoraciones -->
-								<!--
-								<div style="width:15%;cursor:pointer" class="" >
-									<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
+								<!-- icono valoraciones -->
+									<!--
+									<div style="width:15%;cursor:pointer" class="" >
+										<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
+									</div>
+								
+									<div style="width: 70%;font-weight: bold;">
+										<p class="mauto c_white bannerp1" #bannerp1>Crear nuevo alojamiento</p>
+									</div>
+
+								
+
+									<div style="width:15%;cursor:pointer" class="" >
+										<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
+									</div>
+								-->
 								</div>
-							
-								<div style="width: 70%;font-weight: bold;">
-									<p class="mauto c_white bannerp1" #bannerp1>Crear nuevo alojamiento</p>
-								</div>
-
-							
-
-								<div style="width:15%;cursor:pointer" class="" >
-									<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
-								</div>
-							-->
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="w100 mauto div_card_rent" style="margin-top:100px" >
-					<pre-newcard ></pre-newcard>
+					<div class="w100 mauto div_card_rent" style="" >
+						<pre-newcard (modal)="setModal($event)"></pre-newcard>
+							
+
+							
 						
-
-						<button mat-button>Basic</button>
-					
+					</div>
 				</div>
+					<!--<pre-card></pre-card>-->
 			</div>
-				<!--<pre-card></pre-card>-->
-		</div>
 
 	</div>
-</div>
+<!--</div>-->
 <!--</div>-->

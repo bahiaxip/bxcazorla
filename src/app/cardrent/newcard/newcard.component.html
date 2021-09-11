@@ -1,11 +1,11 @@
-<div style="width:80%;margin:auto;background-color: rgba(44,18,18,.7);">
-						
-	<div class="" style="padding: 0;" style="width:100%;margin:0;display:flex;height:100%">
+<div class="newcard_content">
+		
+	<div class="newcard_form" >
 
 		<form [formGroup]="formCardRent" (ngSubmit)="onSubmit()" style="display:block;width:100%">
 		
-		  <div style="width:100%;display:flex;flex-flow:row nowrap;margin:10px auto">
-			<div class="w50" style="margin:auto 10px">
+		  <div class="inputsrent" >
+			<div class="inputrent" >
 				
 				<div style="background-color:#f3ffea;text-align:center;">
 					
@@ -38,10 +38,10 @@
 					</button>
 				</p>
 			-->
-			<div class="w50" style="margin:auto 10px">
+			<div class="inputrent">
 				<div style="background-color:#f3ffea;text-align:center;">
 					<p style="background-color:#f3ffea;text-align:center">
-						<mat-form-field style="color:black;">
+						<mat-form-field style="color:orange;">
 							<mat-label>Teléfono</mat-label>
 							<span matPrefix>+34 &nbsp;</span>
 							<input matInput type="tel" placeholder="626050505" formControlName="phone">
@@ -54,8 +54,8 @@
 		  
 		  
 		  
-		  <div style="width:100%;display:flex">
-			<div class="w50" style="margin:auto 10px">
+		  <div class="inputsrent">
+			<div class="inputrent">
 				<p style="background-color:#f3ffea;text-align:center">
 					<mat-form-field style="color:black;">
 						<mat-label>Web</mat-label>
@@ -64,7 +64,7 @@
 					</mat-form-field>
 				</p>
 			</div>
-			<div class="w50" style="display:block;margin:auto 10px">
+			<div class="inputrent">
 				<p style="background-color:#f3ffea;text-align:center">
 					<mat-form-field style="color:black">
 						<mat-label>Dirección maps</mat-label>
@@ -75,8 +75,8 @@
 			</div>
 		  </div>
 
-		  <div style="width:100%;display:flex">
-		  	<div class="w50" style="margin:auto 10px">
+		  <div class="inputsrent">
+		  	<div class="inputrent">
 				<p style="text-align:center;background-color:#f3ffea;">
 					<mat-form-field style="color:black;">
 						<mat-label>Tipo</mat-label>
@@ -94,7 +94,7 @@
 					</mat-form-field>	
 				</p>
 			</div>							  
-			<div class="w50" style="margin:auto 10px">
+			<div class="inputrent">
 				<div style="background-color:#f3ffea;text-align:center;">
 					<mat-form-field style="color:black;" >
 						<mat-label>Capacidad</mat-label>
@@ -126,21 +126,24 @@
 					<div style="margin:auto;display:block;width:100%;" *ngIf="listCapacities?.length>0" formArrayName="capacities">
 						
 							<div *ngFor="let item of listCapacities.controls;let i=index" style="" [formGroupName]="i">
-								<div  style="justify-content:space-around;align-items: center;display:flex" >
+								<div style="text-align:center" >Capacidad para {{capacity.value[i]}} personas</div>
+								<div class="inputsprice" >
 									
-										<span style="" >{{capacity.value[i]}} personas {{i}}</span>
+									
+									
 										<mat-form-field>
 											<mat-label>Tipo</mat-label>
 											<mat-select formControlName="subtype">
 												<mat-option *ngFor="let tipe of type.value" [value]="tipe">{{tipe}}</mat-option>								
 											</mat-select>
 										</mat-form-field>
-
+									
+									
 										<mat-form-field>
 											<mat-label>Mínimo de noches</mat-label>
 											<input matInput type="number" min="0" formControlName="minNights"/>
 										</mat-form-field>
-										
+									
 
 										<mat-form-field>
 											<mat-label>Precio base</mat-label>
@@ -162,64 +165,78 @@
 
 		  <p style="margin:10px" formGroupName="services">
 		<mat-accordion>
-			<mat-expansion-panel>
+			<mat-expansion-panel >
 				<mat-expansion-panel-header>
-					<mat-panel-title>
-						Servicios
+					<mat-panel-title style="width:100%">
+						<p style="margin:auto">
+							Servicios
+						</p>
 					</mat-panel-title>
 					<!--<mat-panel-description>
 						Pon tu nombre
 					</mat-panel-description>-->
 				</mat-expansion-panel-header>
-				<div style="display:flex">
-					<div class="w10">
-						<mat-checkbox formControlName="wifi">Wifi</mat-checkbox>
+				<div class="services" >
+					<div class="subservices">
+						<div class="title_services" >
+							<div >
+								<mat-checkbox formControlName="wifi">Wifi</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox formControlName="aa">A.Acondicionado</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox formControlName="mascota">Mascota</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox formControlName="parking">Parking</mat-checkbox>
+							</div>
+						</div>
+						<div class="title_services" >
+							<div >
+								<mat-checkbox formControlName="piscina">Piscina</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox formControlName="spa">Spa</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox formControlName="bar">Bar</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox formControlName="restaurante">Restaurante</mat-checkbox>
+							</div>
+						</div>
 					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="aa">A.Acondicionado</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="mascota">Mascota</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="parking">Parking</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="piscina">Piscina</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="spa">Spa</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="bar">Bar</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="restaurante">Restaurante</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="sillaruedas">Acceso silla de ruedas</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="cuna">Cuna/Parque</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox formControlName="fumar">Permitido fumar</mat-checkbox>
-					</div>
-					
-					<div class="w10">
-						<mat-checkbox>Fumar</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox>Fumar</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox>Fumar</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox>Fumar</mat-checkbox>
-					</div>
-					<div class="w10">
-						<mat-checkbox>Fumar</mat-checkbox>
+					<div class="subservices" >
+						<div class="title_services " >
+							<div >
+								<mat-checkbox formControlName="sillaruedas">Acceso silla de ruedas</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox formControlName="cuna">Cuna/Parque</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox formControlName="fumar">Permitido fumar</mat-checkbox>
+							</div>
+							
+							<div >
+								<mat-checkbox>Fumar</mat-checkbox>
+							</div>
+						</div>
+						<div class="title_services" >
+							<div >
+								<mat-checkbox>Fumar</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox>Fumar</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox>Fumar</mat-checkbox>
+							</div>
+							<div >
+								<mat-checkbox>Fumar</mat-checkbox>
+							</div>
+						</div>
 					</div>
 				</div>
 			</mat-expansion-panel>
@@ -227,35 +244,67 @@
 
 		</mat-accordion>
 	</p>
+
+	<p style="margin:10px">
+		<mat-accordion >
+			<mat-expansion-panel>
+				<mat-expansion-panel-header>
+					<mat-panel-title style="width:100%">
+						<p style="margin: auto">Imágenes</p>
+					</mat-panel-title>
+					<!--<mat-panel-description>
+						<input type="file" placeholder="Subir archivos">
+					</mat-panel-description>-->
+				</mat-expansion-panel-header>
+
+				<div style="width:100%;height: 200px;display:flex;vertical-align:middle;overflow:auto;" (drop)="dropHandler($event)" (dragover)="dragOverHandler($event)">
+					<div class="div_absolute" style="position:absolute;height:200px;outline:#676767 1px solid;display:flex;margin:auto;/*box-shadow:1px 1px 1px black, -1px 1px 1px black,1px 1px 15px black inset;*/">
+						
+					</div>
+					<div style="position:absolute;display: flex;vertical-align: middle;justify-content:center;align-items:center;width:'calc(100% - 48px)';min-height:200px" *ngIf="!existsImg">
+						<button mat-raised-button  style="margin:auto;background-color:rgba(0,0,0,.8);color:white">Soltar imagen aquí</button>
+					</div>
+					<div *ngIf="existsImg" style="display:flex;user-select:none">
+					<!-- añadir display:flex si es más alta que ancha, necesario 
+						para que se vea el icono close en ese tipo de imágenes-->
+						<div  style="display: flex;width:150px;position:relative;overflow:hidden;align-items:center;margin:5px" *ngFor="let images of listImages;let j=index">
+							<span style="width:100%;height:auto">
+								<div  style="width: 100%;height: 100%;overflow:hidden;object-fit: cover;display:flex;justify-content:center" >
+									<img [src]="images" style="width:auto;height:auto;overflow:hidden"/>
+									<div style="position:absolute;right: 0;background-color:white" (click)="deleteTransfer(j)">
+										<mat-icon class="material-icons">
+											close
+										</mat-icon>
+									</div>
+								</div>
+								
+							</span>	
+						</div>
+					</div>
+					
+					
+				</div>
+
+			</mat-expansion-panel>
+		</mat-accordion>
+	</p>
+	<p style="background-color:#f3ffea;text-align:center;margin:10px;display:block">
+		<mat-form-field style="color:black;display:block">
+			<mat-label>Detalle</mat-label>
+			<textarea matInput placeholder="Escribe aquí"></textarea>
+		</mat-form-field>
+	</p>
+	
+	
+	<button mat-button style="background-color:rgba(0,0,0,.9);color:white;display:block;width:100%">Guardar</button>
+	
+	
 		</form>
 	</div>
 	
 
 	
-	<p style="margin:10px">
-		<mat-accordion >
-			<mat-expansion-panel>
-				<mat-expansion-panel-header>
-					<mat-panel-title>
-						Imágenes
-					</mat-panel-title>
-					<mat-panel-description>
-						<input type="file" placeholder="Subir archivos">
-					</mat-panel-description>
-				</mat-expansion-panel-header>
-			</mat-expansion-panel>
-		</mat-accordion>
-	</p>
+	
 
-	<p style="background-color:#f3ffea;text-align:center;margin:10px">
-		<mat-form-field style="color:black">
-			<mat-label>Texto</mat-label>
-			<textarea matInput placeholder="Escribe aquí"></textarea>
-		</mat-form-field>
-	</p>
-	<p>
-	<button mat-button (click)="boton()">
-		hola
-	</button>						
-</p>
+	
 </div>

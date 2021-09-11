@@ -79,16 +79,28 @@ export class ActivityComponent implements OnInit {
     this.titleModal="";
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+    
+    window.addEventListener("resize",(e)=>{
+      let midivsliderStyle = this.midivslider.nativeElement.style
+      //console.log("el divslider transform: ",midivsliderStyle);
+      console.log("hola2: ",window.scrollY)
+      if(midivsliderStyle.transform && midivsliderStyle!="translateX(0px)"){
+
+        this.misectionHorizontal(this.firstwidth+'px','0s');
+      }
+    });
   }
 
-  misectionHorizontal(size:string){
+  misectionHorizontal(size:string,duration:string){
+    this.midivslider.nativeElement.style.transitionDuration=duration;
     console.log("llega al misectionHorizontal")
     //this.section3.nativeElement.style.transform="translateX(-"+size+")";
     console.log(this.midivslider);
     this.midivslider.nativeElement.style.transform="translateX(-"+size+")";
   }
   misectionHorizontal2(){
+    this.midivslider.nativeElement.style.transitionDuration='1s';
     console.log("llega al misectionHorizontal")
     this.midivslider.nativeElement.style.transform="translateX(0px)";
   }

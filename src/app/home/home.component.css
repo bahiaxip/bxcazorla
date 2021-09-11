@@ -553,68 +553,14 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 	100% {transform:  scale(-1,1) rotate(50deg)}
 }
 
+			//media queries
 
-@media (max-width: 1450px){
-	.div_box{
-		min-width: 210px;
-		height: 200px;			
-	}
-	
 
-}
-@media (min-width:1400px) {
-	.flex_item{
-		width:60%
-	}
-}
 
-@media (max-width: 1200px){
-	.box_image .div_image .title_image .text_title{
-		font-size: 12px;
 
-	}
-	.gallery-container{
-		grid-template-columns: repeat(2, 1fr);
 
-	}
-	.gallery-container div{
-		grid-auto-rows: 200px;
 
-	}
-	/*boton de cierre (siempre centrado, ocupa x columnas según resolución)*/
-	.gallery-container .gallery_first{
-		grid-column-start:span 2;
-	}
 
-	.gallery__item:nth-child(n){
-		/*
-		grid-column-start: auto;
-		grid-row-start: auto;
-		*/
-	}
-}
-@media (max-width: 900px){
-	.flex_item{
-		width: 100%;		
-	}
-	.card_rent{
-		max-width: 100%;		
-	}
-	.gallery-container{
-		grid-template-columns: repeat(2, 1fr);
-	}
-	.gallery-container div{
-		grid-template-columns: repeat(2, 1fr);
-		/*grid-column-start: auto;*/
-	}
-	
-	.gallery__item:nth-child(n){
-		grid-column-start: auto;
-		grid-row-start: auto;
-	}
-	
-
-}
 
 @media (max-width: 600px){
 	.flex_content{

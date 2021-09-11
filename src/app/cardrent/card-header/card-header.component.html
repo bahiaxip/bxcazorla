@@ -1,10 +1,10 @@
-<div class="flex_header " style="position:absolute; ">
+<div class="flex_header " style="display:flex ">
 				
 	<div class="div_flex_item " style="justify-content:center;">
 		<div class="flex_item " style="" >
 			<div style="width:100%;display:flex;">
 			<!-- icono valoraciones -->
-				<div style="width:15%;cursor:pointer" class="" >
+				<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('')">
 					<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
 					<!--<mat-icon mat-card-avatar class="banner_icon " style="margin:15px auto;font-size:30px" title="Todas las Valoraciones">person</mat-icon>-->
 				</div>
@@ -41,8 +41,10 @@
 					</div>
 				</div>
 			<!-- icono Info -->
-				<div style="width:15%;cursor:pointer" class="" >
-					<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
+				<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('')">
+					
+				<mat-icon class="banner_icon  mr10 floatR"  title="Información" (click)="emittWidth('envio')">add_circle</mat-icon>
+				
 				</div>
 			</div>
 		</div>

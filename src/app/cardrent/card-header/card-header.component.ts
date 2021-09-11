@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, ElementRef,EventEmitter } from '@angular/core';
 import { CardrentService } from '../services/cardrent.service';
 import { CardRentData } from '../../models/card-rent-data';
 import { CardRent } from '../../models/card-rent';
@@ -13,7 +13,8 @@ import { Subscription } from 'rxjs';
 })
 export class CardHeaderComponent implements OnInit {
 
-    
+  @Output()
+  emitWidth=new EventEmitter<any>();
   public lastBannerDom2:any;
   public lastSwitchDivInfo:any;
   //switch para mostrar/ocultar feedback de location
@@ -59,6 +60,12 @@ export class CardHeaderComponent implements OnInit {
     this.subscriptionDivFeed=this._cardService.switchDivFeed$.subscribe(()=> {      
       this.switchDivFeed(this._cardService.getSwitchFeed());      
     })
+
+    window.addEventListener("resize",()=> {
+      //para que el ancho de bannerp3 se actualice y realice el efecto 
+      //white-space actualizamos maxWidthBannerp3 
+      this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
+    })
   }
 
   ngOnChanges(){
@@ -67,6 +74,7 @@ export class CardHeaderComponent implements OnInit {
   }
 
   hideImagesCard(type:string){
+    console.log("el type: ",type)
     //this.fixedCloseGal=false;
     if(type=="images"){
       if(this.myHeight != "0")
@@ -76,6 +84,9 @@ export class CardHeaderComponent implements OnInit {
     }else if(type == "open_maps"){
       if(this.myHeight2 != "0")
         this.myHeight2="0";        
+    }else{
+        this.myHeight2 = "0"
+        this.myHeight = "0"
     }
     console.log("type es: ",type)
 
@@ -215,5 +226,10 @@ export class CardHeaderComponent implements OnInit {
     else if(data && data.type == "feedback"){      
       this.switchDivFeedback2=data.value;
     }
+  }
+
+  emittWidth(data:string){
+    console.log("hace el emit")
+    this.emitWidth.emit("enviar");
   }
 }
