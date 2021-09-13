@@ -13,9 +13,9 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  emitir(){
+  emitir(ev:any){
     console.log("llega a emitir")
-    this.emitWidth.emit("enviar")
+    this.emitWidth.emit(ev)
   }
 
 }

@@ -18,6 +18,7 @@ export class ActivityComponent implements OnInit {
   public imageModal:string="";
   public textModal:string="";
   public titleModal:string="";
+  public selectedPanel:string="panel-left";
 
   public places:GalleryPlaces[]=[
   {
@@ -87,22 +88,43 @@ export class ActivityComponent implements OnInit {
       console.log("hola2: ",window.scrollY)
       if(midivsliderStyle.transform && midivsliderStyle!="translateX(0px)"){
 
-        this.misectionHorizontal(this.firstwidth+'px','0s');
+        this.sendToPanel(this.firstwidth+'px','0s','panel-left');
       }
     });
   }
 
-  misectionHorizontal(size:string,duration:string){
-    this.midivslider.nativeElement.style.transitionDuration=duration;
-    console.log("llega al misectionHorizontal")
+  sendToEmit(panel:string){
+    console.log("enviando a :",panel)
+    
+    this.sendToPanel(this.firstwidth+'px','1s',panel);
+    
+  }
+
+  sendToPanel(size:string,duration:string,toPanel:string){
+    
+    //this.midivslider.nativeElement.style.transitionDuration=duration;
+    
     //this.section3.nativeElement.style.transform="translateX(-"+size+")";
-    console.log(this.midivslider);
-    this.midivslider.nativeElement.style.transform="translateX(-"+size+")";
+    console.log(toPanel);
+
+
+    this.midivslider.nativeElement.style.transitionDuration='1s';
+    if(toPanel=="panel-right"){
+      this.selectedPanel="panel-right";
+      
+      this.midivslider.nativeElement.style.transform="translateX(-"+size+")";  
+    }else if(toPanel=="panel-left"){
+      this.selectedPanel="panel-left";
+      this.midivslider.nativeElement.style.transform="translateX(0px)";
+    }
+    console.log(this.selectedPanel)
+    
   }
   misectionHorizontal2(){
-    this.midivslider.nativeElement.style.transitionDuration='1s';
-    console.log("llega al misectionHorizontal")
-    this.midivslider.nativeElement.style.transform="translateX(0px)";
+    
+    
+    
+    
   }
 
   showModal(place:GalleryPlaces){

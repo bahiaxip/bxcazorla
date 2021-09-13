@@ -230,6 +230,6 @@ export class CardHeaderComponent implements OnInit {
 
   emittWidth(data:string){
     console.log("hace el emit")
-    this.emitWidth.emit("enviar");
+    this.emitWidth.emit(data);
   }
 }

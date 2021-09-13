@@ -1,0 +1,43 @@
+<mat-accordion  [formGroup]="formCardRent">
+	<mat-expansion-panel [disabled]="!listCapacity || listCapacity?.length==0 || !listtypeGroup.value || listtypeGroup.value?.length==0">
+		<mat-expansion-panel-header style="text-align:center;margin:auto">
+			<mat-panel-title style="width:100%;">
+				<p style="margin:auto">
+				Tarifas
+			</p>
+			</mat-panel-title>					
+		</mat-expansion-panel-header>
+		<div style="margin:auto;display:block;width:100%;" *ngIf="listCapacity?.length>0" formArrayName="capacities">
+			
+				<div *ngFor="let item of listCapacity;let i=index" style="" [formGroupName]="i">
+					<div style="text-align:center" >Capacidad para {{listCapacity[i].capacity}} personas</div>
+					<div class="inputsprice" >
+						
+						<mat-form-field>
+							<mat-label>Tipo</mat-label>
+							<mat-select formControlName="subtype">
+								<mat-option *ngFor="let tipe of listtypeGroup.value" [value]="tipe">{{tipe}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+					
+					
+						<mat-form-field>
+							<mat-label>Mínimo de noches</mat-label>
+							<input matInput type="number" min="0" formControlName="minNights"/>
+						</mat-form-field>
+					
+
+						<mat-form-field>
+							<mat-label>Precio base</mat-label>
+							<input matInput type="number" min="0" formControlName="priceBase"/>
+						</mat-form-field>
+
+						<mat-form-field>
+							<mat-label>Precio noche</mat-label>
+							<input matInput type="number" min="0" formControlName="priceNight"/>
+						</mat-form-field>
+					</div>
+				</div>
+		</div>
+	</mat-expansion-panel>
+</mat-accordion>

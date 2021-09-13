@@ -17,6 +17,10 @@ import { CardmapsComponent } from './cardmaps/cardmaps.component';
 import { CardImagesComponent } from './card-images/card-images.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { NewcardServicesComponent } from './newcard/newcard-services/newcard-services.component';
+import { NewcardImagesComponent } from './newcard/newcard-images/newcard-images.component';
+import { NewcardInputsComponent } from './newcard/newcard-inputs/newcard-inputs.component';
+import { NewcardPricesComponent } from './newcard/newcard-prices/newcard-prices.component';
 @NgModule({
   declarations: [
     CardrentComponent,
@@ -32,7 +36,11 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     Divlevel2Component,
     CardComponent,
     CardmapsComponent,
-    CardImagesComponent
+    CardImagesComponent,
+    NewcardServicesComponent,
+    NewcardImagesComponent,
+    NewcardInputsComponent,
+    NewcardPricesComponent
   ],
   imports: [
     CommonModule,    

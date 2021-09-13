@@ -151,7 +151,7 @@ export class HomeComponent implements OnInit {
       
       console.log(window.scrollY)
       //this.selectedSection.styletop=0
-      console.log(this.selectedSection.scrollTop)
+      //console.log(this.selectedSection.scrollTop)
 //probamos al final
       //this.selectedSection.scrollIntoView();
       console.log("se esta moviendo:",e);
@@ -238,22 +238,28 @@ export class HomeComponent implements OnInit {
   setSectionByScroll(){
     //alto total del scroll (por si recarga la página detectar y seleccionar el section)    
     let scrollY=window.scrollY;
+    console.log("desde setSectionByScroll(): ",scrollY)    
     //alto de cada section
     let sectionSize=window.innerHeight;
+    console.log("desde setSectionByScroll(): ",sectionSize)
     //seleccionamos el section seleccionado por si se recarga la página
     for(let i=0;i<5;i++){
-      if(window.scrollY == sectionSize * i){
-      let sect;        
-        if(i==1)
-          this.selectedSection=this.section2.nativeElement;
-        else if(i==2)
-          this.selectedSection=this.section3.nativeElement;
-        else if(i==3)
-          this.selectedSection=this.section4.nativeElement;
-        else if(i==4)
-          this.selectedSection=this.section4.nativeElement;
-        else 
-          this.selectedSection=this.section1.nativeElement;
+      if(window.scrollY == sectionSize * i 
+        ){
+        console.log("entra en el loop")
+        let sect;        
+          if(i==1)
+            this.selectedSection=this.section2.nativeElement;
+          else if(i==2)
+            this.selectedSection=this.section3.nativeElement;
+          else if(i==3)
+            this.selectedSection=this.section4.nativeElement;
+          else if(i==4)
+            this.selectedSection=this.section4.nativeElement;
+          else 
+            this.selectedSection=this.section1.nativeElement;
+      }else{
+        console.log("NO entra en el loop")
       }
     }
   }

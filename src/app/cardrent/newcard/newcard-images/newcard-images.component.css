@@ -1,0 +1,6 @@
+.div_absolute{
+	/*restamos el padding del mat-expansion de angular material y sumamos 
+	1 para que no se solape el outline*/
+
+	width: calc(100% - 47px);
+}

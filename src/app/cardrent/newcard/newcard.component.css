@@ -13,59 +13,11 @@
 	//background-color: rgba(0,0,0,.9);
 }
 
-.services{
-	display:flex;
-	justify-content: center;
-	align-items: center;
-}
 
-.subservices{
-	width: 100%;
-	display: flex;
-	flex-flow: row nowrap;
-	//margin: auto;
-	
-}
-.div_absolute{
-	/*restamos el padding del mat-expansion de angular material y sumamos 
-	1 para que no se solape el outline*/
-
-	width: calc(100% - 47px);
-}
-
-.title_services{
-	width: 50%;
-	display: flex;
-	flex-flow: column nowrap;
-	margin: auto;
-}
-
-.title_services div{
-	//margin: auto;
-	display: block;	
-}
-
-
-.inputsprice{
-	display:flex;
-	justify-content:space-around;
-	flex-flow: row wrap;
-	
-	
-}
 .inputprice{
 	
 }
-.inputsrent{
-	width:95%;
-	display:flex;
-	flex-flow:row nowrap;
-	margin: 10px auto;
-}
-.inputrent{
-	width: 50%;
-	margin: auto 5px;
-}
+
 
 
 
@@ -75,18 +27,6 @@
 	}
 }
 
-@media(max-width: 650px){	
-	.inputsprice{
-		flex-flow: column nowrap;
-	}
-	.inputsrent{		
-		display: block;
-	}
-	.inputrent{
-		width: 100%;
-		margin: auto;
-	}
-}
 
 @media (max-width: 550px){
 	.subservices{

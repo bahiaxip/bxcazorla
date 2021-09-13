@@ -1,13 +1,22 @@
 <!--<div style="position:relative;height:100%;display:block">-->
 <!--<div style="position: absolute;height:100%;display:block;overflow:hidden" >-->
 
-	<div #slidercardrent style="display:flex;flex-flow:row wrap;height:100%;transition:transform 1s ease-out" [ngStyle]="{'width':firstwidth*2+'px'}">
+	<div #slidercardrent style="display:flex;flex-flow:row wrap;height:100%;transition:transform 1s ease-out" [ngStyle]="{'width':firstwidth*3+'px'}">
 
+		<div [ngStyle]="{'width':firstwidth+'px','left':'-'+firstwidth+'px'}" style="position:absolute;display:block">		
+			<div style="background-color:#676767;display:flex;position:relative" > 
+				<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute">final</button>
+				<button (click)="misectionHorizontal(firstwidth+'px','1s','center')" style="position:absolute;right:300px">derecha</button>
+
+					<pre-card (emitWidth)="misectionHorizontal(firstwidth+'px','1s',$event)"></pre-card>
+			</div>
+		</div>
 		<div [ngStyle]="{'width':firstwidth+'px'}">		
 			<div style="background-color:#676767;display:flex;position:relative" > 
-				<button (click)="misectionHorizontal(firstwidth+'px','1s')" style="position:absolute">ñlaskjdf</button>
+				<button (click)="misectionHorizontal(firstwidth+'px','1s','left')" style="position:absolute">izquierda</button>
+				<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute;right:100px">derecha</button>
 
-					<pre-card (emitWidth)="misectionHorizontal(firstwidth+'px','1s')"></pre-card>
+					<pre-card (emitWidth)="misectionHorizontal(firstwidth+'px','1s',$event)"></pre-card>
 			</div>
 		</div>
 		<div [ngStyle]="{'width':firstwidth+'px'}">
@@ -26,7 +35,7 @@
 				</div>
 				<!-- fin modal -->
 
-				<button (click)="misectionHorizontal2(firstwidth+'px','1s')" style="position:absolute">ñlaskjdf2</button>
+				<button (click)="misectionHorizontal(firstwidth+'px','1s','center')" style="position:absolute">izquierda</button>
 				<div class="div_flex_card" style="display:block">
 
 					<div class="flex_header " style="position:relative; color:white;font-weight:bold">

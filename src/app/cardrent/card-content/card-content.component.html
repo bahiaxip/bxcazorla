@@ -1,4 +1,4 @@
-<div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata">				
+<div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata;let i=index">				
 	<div class="subcard" >
 		<div class="card_image ">	
 		<!-- main image -->					
@@ -8,17 +8,20 @@
 		</div >
 			
 		<div class="d_flex card_content">
-			<!-- central -->
+		<!-- central -->
 			<div class="w100 t_center" >
-			<!-- title/subtitle -->
-			<mat-icon class="banner_icon  mr10 mt10 floatR" style="color:orange"  title="Editar" >edit_note</mat-icon>
-			<mat-icon class="banner_icon  mr10 mt10 floatL" style="color:orange"  title="Información" >info</mat-icon>
+		
+		<!-- icon edit -->
+				<mat-icon class="banner_icon  mr10 mt10 floatR" style="color:orange"  title="Editar" >edit_note</mat-icon>
+		<!-- icon info -->
+				<mat-icon class="banner_icon  mr10 mt10 floatL" style="color:orange"  title="Información" >info</mat-icon>
+
+		<!-- title/subtitle -->
 				<div class="title_renting">
 				<!-- title -->
 					<p class="title_renting_text">
 						{{rent.title}}
 					</p>
-
 				<!-- subtitle -->
 					<div class="subtitle_renting " style="display:flex;justify-content:center" *ngIf="rent.type.length > 0">
 					<!-- icons subtitle -->
@@ -38,16 +41,12 @@
 								<span *ngIf="i!=0">/</span>
 								{{type}}
 							</span>
-
 						</p>
 					</div>
-
-
 				</div>
-				<div class="content_renting" >
-				
-					<div class="w100 d_flex">
 
+				<div class="content_renting" >
+					<div class="w100 d_flex">
 					<!-- phone -->
 						<div class="w50 d_flex link " (click)="selectOptionCard('phone',rent)">
 							<div class="w50 mauto div_icon_hidden">
@@ -105,26 +104,44 @@
 						<div class="w30 div_price_item">
 							<span class="price_item">{{rent.minPrice}}€</span>
 						</div>
-					<!-- select nights/persons -->
+					<!-- selection nights/persons -->
 						<div class="w70 price_detail"  style="display:flex">
 						<!-- select persons -->
-							<div class="w50" (click)="editPrice(1)">
+							<div class="w50" (click)="editPrice(1,i)">
 								<p>{{rent.minCapacity}} {{rent.minCapacity|minimrent:'capacity'}}
 									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
 								</p>
+								<div style="position:relative;width:100%;background-color:pink;height:100%" *ngIf="menuPrice && priceSelected==i">
+									<div style="position:absolute;width:100%;background-color:orange;display:block" >
+										<p>{{rent.minCapacity}} {{rent.minCapacity|minimrent:'capacity'}}
+											<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+										</p>
+										
+									</div>
+								</div>
 							</div>
-						<!-- select nights -->
-							<div class="w50" (click)="editPrice(2)">
+
+						<!-- selection nights -->
+							<div class="w50" (click)="editPrice(2,i)">
 
 								<p>{{rent.minNights}} {{rent.minNights|minimrent:'night'}}
 									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
 								</p>
+								<!-- menu -->
+								<div style="position:relative;width:100%;background-color:pink;height:100%" *ngIf="menuPrice2 && priceSelected==i">
+									<div style="position:absolute;width:100%;background-color:orange;display:block" >
+										<p>{{rent.minCapacity}} {{rent.minCapacity|minimrent:'capacity'}}
+											<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
+										</p>
+										
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 
 				</div>
-
+			<!--
 				<div class="content_renting" style="position:relative;" >
 					<div style="position:absolute;width:100%;margin:auto;background:orange" *ngIf="menuPrice || menuPrice2" (click)="divPrice()">
 						<div class="price_tmp" style="margin:0 auto;" *ngFor="let priceItem of pricerentdata;let i=index">
@@ -136,13 +153,15 @@
 							<div class="w70 price_detail" style="display:flex">
 								<div class="w50" style="" [ngClass]="{'changePrice':menuPrice}" (click)="updatePrice()">
 									<p *ngIf="menuPrice">3 Personas
+				-->
 										<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
-									</p>
+				<!--					</p>
 								</div>
 								<div class="w50" style=""  [ngClass]="{'changePrice':menuPrice2}">
 									<p *ngIf="menuPrice2">{{priceItem | pricePipe:0 }}
+				-->
 										<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
-									</p>
+				<!--					</p>
 								</div>
 							</div>							
 						</div>
@@ -162,6 +181,7 @@
 						</div>
 					</div>
 				</div>
+			-->
 			</div>
 		</div>
 	</div>

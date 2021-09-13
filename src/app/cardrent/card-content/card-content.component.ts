@@ -22,6 +22,7 @@ export class CardContentComponent implements OnInit {
   public feedrentdata:any;
   public cardrentdata:any;
   public pricerentdata:any;
+  public priceSelected:any=[];
   //card seleccionada
   public selectedCard!:CardRent;
 
@@ -222,7 +223,8 @@ export class CardContentComponent implements OnInit {
     }
   }
 
-  editPrice(num:number){    
+  editPrice(num:number,num2:number){ 
+    this.priceSelected=num2;
     if(num==1){
       if(this.menuPrice){
         this.menuPrice=false;

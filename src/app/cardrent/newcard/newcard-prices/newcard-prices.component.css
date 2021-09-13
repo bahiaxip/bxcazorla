@@ -1,0 +1,11 @@
+.inputsprice{
+	display:flex;
+	justify-content:space-around;
+	flex-flow: row wrap;
+}
+
+@media(max-width: 650px){	
+	.inputsprice{
+		flex-flow: column nowrap;
+	}
+}

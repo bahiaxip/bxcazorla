@@ -1,0 +1,87 @@
+<div [formGroup]="formCardRent">
+	<div class="inputsrent" >
+		<div class="inputrent" >
+			<div style="background-color:#f3ffea;text-align:center;">
+						
+				<mat-form-field style="color:orange;margin-top:4px">
+					<mat-label>Nombre</mat-label>
+					<input matInput placeholder="Apartamentos Martín" formControlName="name">
+					<mat-icon matSuffix>title</mat-icon>
+				</mat-form-field>
+				
+			</div>
+		</div>
+		<div class="inputrent">
+			<div style="background-color:#f3ffea;text-align:center;">
+				<p style="background-color:#f3ffea;text-align:center">
+					<mat-form-field style="color:orange;">
+						<mat-label>Teléfono</mat-label>
+						<span matPrefix>+34 &nbsp;</span>
+						<input matInput type="tel" placeholder="626050505" formControlName="phone">
+						<mat-icon matSuffix>phone</mat-icon>
+					</mat-form-field>
+				</p>
+			</div>
+		</div>
+	</div>
+	  
+	<div class="inputsrent">
+		<div class="inputrent">
+			<p style="background-color:#f3ffea;text-align:center">
+				<mat-form-field style="color:black;">
+					<mat-label>Web</mat-label>
+					<input matInput placeholder="http://www.midominio.es" type="url" formControlName="web">
+					<mat-icon matSuffix>web</mat-icon>
+				</mat-form-field>
+			</p>
+		</div>
+		<div class="inputrent">
+			<p style="background-color:#f3ffea;text-align:center">
+				<mat-form-field style="color:black">
+					<mat-label>Dirección maps</mat-label>
+					<input matInput placeholder="https://www.google.es/maps/..." type="url" formControlName="maps">
+					<mat-icon matSuffix>location_on</mat-icon>
+				</mat-form-field>
+			</p>							
+		</div>
+	</div>
+
+	<div class="inputsrent">
+	  	<div class="inputrent">
+			<p style="text-align:center;background-color:#f3ffea;">
+				<mat-form-field style="color:black;">
+					<mat-label>Tipo</mat-label>
+					<mat-select [formControl]="type" multiple (selectionChange)="updateType()">
+						<mat-select-trigger>
+							{{type.value ? type.value[0] : ''}}
+								<span *ngIf="type.value?.length > 1" class="example-additional-selection">
+								({{type.value.length - 1}} {{type.value?.length === 2 ? 'tipo' : 'tipos'}} más)
+								</span>
+						</mat-select-trigger>	
+
+						<mat-option *ngFor="let item of listTypeRent" [value]="item" >{{item}}</mat-option>
+					</mat-select>
+					<mat-icon matSuffix>home</mat-icon>
+				</mat-form-field>	
+			</p>
+		</div>							  
+		<div class="inputrent">
+			<div style="background-color:#f3ffea;text-align:center;">
+				<mat-form-field style="color:black;" >
+					<mat-label>Capacidad</mat-label>
+					<mat-select [formControl]="capacity" multiple (selectionChange)="createFormArray()">
+						<mat-select-trigger>
+							{{capacity.value ? capacity.value[0] : ''}}
+								<span *ngIf="capacity.value?.length > 1" class="example-additional-selection">
+								({{capacity.value.length - 1}} {{capacity.value?.length === 2 ? 'capacidad' : 'capacidades'}} más)
+								</span>
+						</mat-select-trigger>	
+
+						<mat-option *ngFor="let item of lista" [value]="item" >{{item}} personas</mat-option>
+					</mat-select>
+					<mat-icon matSuffix>group</mat-icon>
+				</mat-form-field>
+			</div>
+		</div>
+	</div>
+</div>
