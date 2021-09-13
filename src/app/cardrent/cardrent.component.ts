@@ -12,7 +12,7 @@ export class CardrentComponent{
 
   //switch para modal imagen no válida
   public switchModal:boolean=false;
-
+  public panelSelected:string='center';
   
   @ViewChild('slidercardrent',{static:true}) private slidercardrent!:ElementRef; 
   constructor() {
@@ -23,17 +23,18 @@ export class CardrentComponent{
     
     window.addEventListener("resize",(e)=>{
       let slidercardrentStyle = this.slidercardrent.nativeElement.style
-      console.log("hola: ",this.slidercardrent.nativeElement.scrollY)
+
+      console.log("hola: ",slidercardrentStyle.transform)
       //this.slidercardrent.nativeElement.scrollTop=0;
 //si no es el de en medio pasamos automáticamente al derecho, necesario cambiar al añadir otro panel
-      if(!slidercardrentStyle.transform || slidercardrentStyle.transform == "translateX(0px)"){
-        console.log("entra en window: ",window.scrollY)
+      if(this.panelSelected=='center')        
         this.misectionHorizontal(this.firstwidth+'px','0s','center');
-      }else if(slidercardrentStyle.transform && slidercardrentStyle.transform=="translateX("+this.firstwidth+"px)"){
+      else if(this.panelSelected=='right')
         this.misectionHorizontal(this.firstwidth+'px','0s','right');        
-      }else{
+      else if(this.panelSelected=='left')
         this.misectionHorizontal(this.firstwidth+'px','0s','left');
-      }
+      else
+        this.misectionHorizontal(this.firstwidth+'px','0s','center');
     });
   }
 
@@ -42,12 +43,16 @@ export class CardrentComponent{
   }
   misectionHorizontal(size:string,duration:string,side:string){
     this.slidercardrent.nativeElement.style.transitionDuration=duration;
+    console.log(this.slidercardrent.nativeElement.style.transform);
+    this.panelSelected=side;
     if(side=="left")
       this.slidercardrent.nativeElement.style.transform="translateX("+size+")";
     else if(side=="center")
       this.slidercardrent.nativeElement.style.transform="translateX(0px)";
     else if(side == "right")
-      this.slidercardrent.nativeElement.style.transform="translateX(-"+size+")";    
+      this.slidercardrent.nativeElement.style.transform="translateX(-"+size+")";
+    console.log(this.slidercardrent.nativeElement.style.transform);  
+    
 
   }
   misectionHorizontalLeft(size:string,duration:string){

@@ -146,16 +146,15 @@ export class HomeComponent implements OnInit {
     
     
     window.addEventListener("resize",(e)=>{
-      console.log(this.section4.nativeElement.getBoundingClientRect().top)
+      //console.log(this.section4.nativeElement.getBoundingClientRect().top)
     //evitamos scrollear a 0 si no es necesario
       
-      console.log(window.scrollY)
+      //console.log(window.scrollY)
       //this.selectedSection.styletop=0
       //console.log(this.selectedSection.scrollTop)
 //probamos al final
       //this.selectedSection.scrollIntoView();
-      console.log("se esta moviendo:",e);
-      console.log("el scrolltop es: ",this.section2.nativeElement.scrollTop)
+      //console.log("se esta moviendo:",e);      
       this.hideSnow();
 //revisar si no es necesario
       this.setSectionByScroll();
@@ -166,7 +165,7 @@ export class HomeComponent implements OnInit {
     })
 
       
-      console.log("thissnow: ",this.snows)
+      //console.log("thissnow: ",this.snows)
     
 
     
@@ -238,15 +237,15 @@ export class HomeComponent implements OnInit {
   setSectionByScroll(){
     //alto total del scroll (por si recarga la página detectar y seleccionar el section)    
     let scrollY=window.scrollY;
-    console.log("desde setSectionByScroll(): ",scrollY)    
+    //console.log("desde setSectionByScroll(): ",scrollY)    
     //alto de cada section
     let sectionSize=window.innerHeight;
-    console.log("desde setSectionByScroll(): ",sectionSize)
+    //console.log("desde setSectionByScroll(): ",sectionSize)
     //seleccionamos el section seleccionado por si se recarga la página
     for(let i=0;i<5;i++){
       if(window.scrollY == sectionSize * i 
         ){
-        console.log("entra en el loop")
+        //console.log("entra en el loop")
         let sect;        
           if(i==1)
             this.selectedSection=this.section2.nativeElement;
@@ -259,7 +258,7 @@ export class HomeComponent implements OnInit {
           else 
             this.selectedSection=this.section1.nativeElement;
       }else{
-        console.log("NO entra en el loop")
+        //console.log("NO entra en el loop")
       }
     }
   }

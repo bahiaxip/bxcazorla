@@ -1,13 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CardRentData } from '../models/card-rent-data';
-import { CardRent } from '../models/card-rent';
-import { FeedbackRentData } from '../models/feedback-rent-data';
-import { FeedbackRent } from '../models/feedback-rent';
-import { PriceRentData } from '../models/price-rent-data';
+import { CardRentData } from '../../models/card-rent-data';
+import { CardRent } from '../../models/card-rent';
+import { FeedbackRentData } from '../../models/feedback-rent-data';
+import { FeedbackRent } from '../../models/feedback-rent';
+import { PriceRentData } from '../../models/price-rent-data';
 //import { LevelPipePipe, IconTypePipe } from '../../level-pipe.pipe';
 //import { PricePipe } from '../../pipes/price.pipe';
 //import { MinimrentPipe } from '../../pipes/minimrent.pipe';
-import { CardrentService } from '../services/cardrent.service';
+import { CardrentService } from '../../services/cardrent.service';
 
 
 @Component({
