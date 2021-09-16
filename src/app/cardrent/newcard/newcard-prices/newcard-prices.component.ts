@@ -11,6 +11,8 @@ export class NewcardPricesComponent implements OnInit {
   public formCardRent:any;
   public listCapacity:any;
   public listtypeGroup:any;
+  
+  //public pulsedPanel:boolean=false;
   public subscriptionForm:any;
 
   constructor(private _cardrentService:CardrentService) {
@@ -31,5 +33,11 @@ export class NewcardPricesComponent implements OnInit {
 
     })
   }
+  //anulado
+  /*
+  pulsedExpansionPanel(){
+    this.pulsedPanel=true;
+  }
+  */
 
 }

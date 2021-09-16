@@ -9,6 +9,7 @@ var CardrentSchema = Schema({
 	minNights: Number,
 	minCapacity: Number,
 	capacity: [Number],
+	services:[String],
 	logo: String,
 	image: String,
 	images:[String],

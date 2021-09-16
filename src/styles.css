@@ -8,8 +8,11 @@
 }
 .g-image-item{
 	/*background-size: 100%  !important;*/
-
-	
+}
+/* añadimos los estilos del textarea de newcard ya que en local no toma efecto
+los estilos propios de angular material */
+.mat_textarea span.mat-form-field-label-wrapper{
+	margin-top: 5px;	
 }
 html,body{
 	margin: 0;

@@ -1,3 +1,27 @@
+.mat-button.mat-success,.mat-stroked-button.mat-success{
+	color: #FFF;
+}
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success{
+	background-color: rgba(0,0,0,.9);
+}
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success{
+	color: #FFF;
+	background-color:rgba(0,0,0,.9);
+}
+.mat-icon-button.mat-success{
+	color: #FFF;
+}
+.mat-button-disabled.mat-success{
+	background-color: transparent;
+	color: #D3D3D3;
+	/*box-shadow: -10px 10px 2px rgba(0,0,0,.5) inset,-10px -10px 2px rgba(0,0,0,.4) inset, 5px -5px 2px rgba(0,0,0,.4) inset;*/
+	box-shadow: 10px 10px 10px 2px rgba(0,0,0,.4) inset,-10px -10px 10px 2px rgba(0,0,0,.4) inset;
+}
+
 .newcard_content{
 	width:80%;
 	margin:auto;
@@ -8,7 +32,7 @@
 	width:100%;
 	height:100%;
 	padding: 0;
-	margin:0;
+	margin:0;	
 	display:flex;
 	//background-color: rgba(0,0,0,.9);
 }
@@ -17,6 +41,8 @@
 .inputprice{
 	
 }
+
+
 
 
 

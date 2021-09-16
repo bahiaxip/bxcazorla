@@ -2,6 +2,7 @@
 	<mat-expansion-panel [disabled]="!listCapacity || listCapacity?.length==0 || !listtypeGroup.value || listtypeGroup.value?.length==0">
 		<mat-expansion-panel-header style="text-align:center;margin:auto">
 			<mat-panel-title style="width:100%;">
+				<span style="position:absolute;font-size:10px;color:red" *ngIf="listCapacity && listCapacity.length>0 && formCardRent.controls.capacities.status=='INVALID' ">Complete sus tarifas</span>
 				<p style="margin:auto">
 				Tarifas
 			</p>

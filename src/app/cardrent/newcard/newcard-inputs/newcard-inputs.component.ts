@@ -17,10 +17,10 @@ export class NewcardInputsComponent implements OnInit {
   public lista:any;
 
   //capacity se obtiene fuera del formCardRent
-  public capacity=new FormControl('',Validators.required);
+  public capacity=new FormControl('',[Validators.required]);
 
   //type se obtiene fuera del formCardRent
-  public type = new FormControl('',Validators.required); 
+  public type = new FormControl('',[Validators.required]); 
 
   public formCardRent:any;
 
@@ -29,8 +29,9 @@ export class NewcardInputsComponent implements OnInit {
   constructor(private _cardrentService:CardrentService ){
     this.formCardRent=_cardrentService.getFormCardRent();
     console.log("formcardrent: ", this.formCardRent);
-    //lista de capacidad de personas
-    this.lista=[...Array(10).keys()];
+    //creamos lista de las distintas capacidades de personas(del 1 al 10 
+    //y convertimos en 9 con shift())
+    this.lista=[...Array(10).keys()];    
     this.lista.shift();
   }
 
@@ -64,18 +65,24 @@ export class NewcardInputsComponent implements OnInit {
           );
       }
       this.listCapacities=list;
+      //actualizamos la propiedad capacity y capacities del formGroup(formCardRent)
+      this.formCardRent.controls.capacity=this.capacity;
       this.formCardRent.controls.capacities=this.listCapacities;
-      //actualizar servicio
+      //actualizar formGroup en el servicio
       this._cardrentService.setFormCardRent(this.formCardRent);
       //console.log("list al final: ",this.formCardRent.controls.capacities);
   }
 
   updateType(){
 
-    console.log("console: ",this.type)
+    
     //a diferencia de capacity, al ser solo un array de strings, se puede establecer
     //el array desde type.value sin tener que crear los formGroup de cada uno
     this.formCardRent.controls.type=this.type;
+
+    //this.formCardRent.value.type=this.type.value;
+    console.log(this.formCardRent);
+    console.log(this.type)
     this._cardrentService.setFormCardRent(this.formCardRent)
     console.log("desde updateType(): ",this.formCardRent.controls)
   }

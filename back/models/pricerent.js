@@ -8,7 +8,7 @@ const PricerentSchema = Schema({
 	type:String,
 	minNights:Number,
 	priceBase:Number,
-	priceExtraNight:Number,
+	priceNight:Number,
 	rentId:Schema.Types.ObjectId	
 
 })

@@ -1,4 +1,4 @@
-import { PriceRent } from './price-rent';
+//import { PriceRent } from './price-rent';
 //title			
 //minNights		
 //minNight1 	//extraNight1
@@ -9,6 +9,8 @@ import { PriceRent } from './price-rent';
 //minNight8		//extraNight8
 //minNight12	//extraNight12
 
+//anulado al cambiar el modelo PriceRent
+/*
 export var PriceRentData = {
 	midata:[
 		new PriceRent(
@@ -68,3 +70,4 @@ export var PriceRentData = {
 	]
 	
 }
+*/

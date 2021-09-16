@@ -1,6 +1,7 @@
 export class PriceRent {
 
 	constructor(
+		/*
 		public title:string,
 		public minNights:number,
 		public minNight1:number|null,		
@@ -17,6 +18,12 @@ export class PriceRent {
 		public extraNight6:number|null,
 		public extraNight8:number|null,
 		public extraNight12:number|null,
-
+		*/
+		capacity:number,
+		type:string,
+		minNights:number|null,
+		priceBase:number|null,
+		priceNight:number|null,
+		
 	){}
 }

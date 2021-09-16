@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
 @Component({
   selector: 'pre-newcard-services',
@@ -6,7 +6,8 @@ import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
   styleUrls: ['./newcard-services.component.css']
 })
 export class NewcardServicesComponent implements OnInit {
-
+  @Output()
+  changedCheckbox=new EventEmitter<any>();
   public services= new FormGroup({
       wifi:new FormControl(false),
       mascota:new FormControl(false),
@@ -24,6 +25,11 @@ export class NewcardServicesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  cambio(){
+    this.changedCheckbox.emit(this.services);
+    //console.log(this.services);
   }
 
 }

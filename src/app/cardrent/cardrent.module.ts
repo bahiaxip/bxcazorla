@@ -21,6 +21,8 @@ import { NewcardServicesComponent } from './newcard/newcard-services/newcard-ser
 import { NewcardImagesComponent } from './newcard/newcard-images/newcard-images.component';
 import { NewcardInputsComponent } from './newcard/newcard-inputs/newcard-inputs.component';
 import { NewcardPricesComponent } from './newcard/newcard-prices/newcard-prices.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CardInfoservicesComponent } from './card/card-header/card-infoservices/card-infoservices.component';
 @NgModule({
   declarations: [
     CardrentComponent,
@@ -40,13 +42,15 @@ import { NewcardPricesComponent } from './newcard/newcard-prices/newcard-prices.
     NewcardServicesComponent,
     NewcardImagesComponent,
     NewcardInputsComponent,
-    NewcardPricesComponent
+    NewcardPricesComponent,
+    CardInfoservicesComponent
   ],
   imports: [
     CommonModule,    
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     
   ],
   exports:[CardrentComponent ]

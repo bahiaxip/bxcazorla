@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { CardRent } from '../models/card-rent';
 import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
-import { Subject } from 'rxjs';
-
+import { Subject,Observable } from 'rxjs';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Global } from '../../shared/global';
 @Injectable({
   providedIn: 'root'
 })
 export class CardrentService {
+
+  private url:string;
+
   private subjectBanner1 = new Subject<void>();
   public observableBanner1$ = this.subjectBanner1.asObservable();
 
@@ -23,6 +27,7 @@ export class CardrentService {
   public typeCard:any;
   public banner1:any;
   public banner2:any;
+  public images:Array<string>=[];
   
   public switchFeed:any;
 
@@ -38,13 +43,17 @@ export class CardrentService {
     //type:new FormControl('',[Validators.required]),
     web: new FormControl('',Validators.pattern("https://.*")),
     phone: new FormControl('',[Validators.required,Validators.minLength(6)]),
-    maps: new FormControl('',[Validators.required,Validators.pattern("https://www.google.*")]),
+    //maps: new FormControl('',[Validators.required,Validators.pattern("https://www.google.*")]),
+    maps: new FormControl('',[Validators.pattern("https://www.google.*")]),
     text: new FormControl(''),
     //omitido temporalmente
     //logo: new FormControl(''),
     //image: new FormControl(''),
     images: new FormControl(''),
-    capacities:new FormArray([]),
+    capacities:new FormControl(''),
+    //capacities:new FormArray([]),
+    capacity:new FormControl(''),
+    //Validators.required da error en type
     type:new FormControl(''),
     /*
     services: new FormGroup({
@@ -63,7 +72,9 @@ export class CardrentService {
     })
     */
   })
-  constructor() { }
+  constructor(private _http:HttpClient){
+    this.url=Global.url;
+  }
 
   getSelectedCard(){
     return this.selectedCard;
@@ -111,6 +122,27 @@ export class CardrentService {
   getFormCardRent(){
     console.log("pasamos dataos")
     return this.formCardRent;
+  }
+
+  addCardRent(cardrent:any):Observable<any>{
+    let headers=new HttpHeaders({
+      "Content-Type":"application/json"
+    });
+
+    return this._http.post(this.url+"cardrent",cardrent,{headers:headers});
+  }
+
+  //recomendable optimizar subiendo o eliminando una a una y no todas 
+  //cada vez
+  setImages(images:Array<any>){
+    this.images=images;
+  }
+  getImages(){
+    return this.images;
+  }
+
+  uploadImages(images:any,id:string){
+    return this._http.post(this.url+'images/'+id,images);
   }
   
 
