@@ -8,6 +8,7 @@ import { PriceRentData } from '../../models/price-rent-data';
 //import { PricePipe } from '../../pipes/price.pipe';
 //import { MinimrentPipe } from '../../pipes/minimrent.pipe';
 import { CardrentService } from '../../services/cardrent.service';
+import { Subscription,Observable } from 'rxjs';
 
 
 @Component({
@@ -17,12 +18,26 @@ import { CardrentService } from '../../services/cardrent.service';
 })
 export class CardContentComponent implements OnInit {  
   
-  
+  private subscriptionCardRents:any;
+  public switchMenu1:any;
+  public switchMenu2:any;
+  public listNights:any=[];
+  //índice del array capacities seleccionado de los 2 menúes 
+  //(indSelPson: de personas y indSeldNIght: de noches)
+  public indSelPson:any=[];
+  public indSelNights:any=[];
+  //opción seleccionada de los 2 menús 
+  //(selectedPersons: de personas y selectedNights: de noches)
+  public selectedPersons:any=[];
+
+  public selectedPrice:any=[];
+  public selectedNights:any=[];
 //@Input(cardrentdata)
+  
   public feedrentdata:any;
   public cardrentdata:any;
   public pricerentdata:any;
-  public priceSelected:any=[];
+ 
   //card seleccionada
   public selectedCard!:CardRent;
 
@@ -39,25 +54,108 @@ export class CardContentComponent implements OnInit {
   public levelLocation:number=5;
   //switch que indica si se ha pulsado un botón de la card o la card
   public pushedOptionCard:any;
+
+  //pricerent
+  //indice del card de alojamiento modificable mediante botón de menú 
+  //de personas o noches
+  //anulado, sustituido por menu1Active[] y menu2Active[]
+  //public indexSelRent:any;
   //mostrar ocultar distintos menu de tarifas
-  public menuPrice:any=false;
-  public menuPrice2:any=false;
+  public menu1Active:any=[];
+  public menu2Active:any=[];
 
   public pushedPrice:any;
   public intervalFeedText:any;
   //interruptor para no repetir interval() de rotación de mensajes de valoraciones
   public intervalFeedActive:boolean=false;
 
+  //list cardrent
+  //anulado
+  //public cardrents:any;
+
   constructor(
-    private _cardService:CardrentService,
+    private _cardrentService:CardrentService,
   ) {
-    this.cardrentdata=CardRentData.midata;
+    
+    
+    
+    
+    
     this.feedrentdata=FeedbackRentData.midata;
     this.pricerentdata = PriceRentData.midata;
-    _cardService.setSelectedCard(this.cardrentdata[0]);
+    
   }
 
   ngOnInit(): void {
+    //permite recargar la db de datos reales (limpiar db antes)
+    //this.fillDB();
+  this.getCardRents();
+  console.log("los ardrents: ",this.cardrentdata)   
+    this.subscriptionCardRents=this._cardrentService.cardRents$.subscribe(()=> {
+      this.getCardRents();
+    })    
+  }
+
+  //rellenar base de datos con un array de objetos ya creado
+  fillDB(){
+    //lista directa desde card-rent-data        
+    //this.cardrentdata=CardRentData.midata;
+    let list=CardRentData.midata;
+    list.map((cardrent:any)=>{
+      console.log("mi cardrent desde map: ",cardrent)      
+      this._cardrentService.addCardRent(cardrent).subscribe();
+    })
+  }
+
+  //creamos un array de nights desde el mínimo de noches a 10 noches
+    //a cada uno de los rentcards asociado mediante el índice
+  createListNights(minNights:number,index:number){
+    let lista = [...Array(11).keys()];
+    lista.splice(0,minNights);    
+    return lista;
+  }
+
+  getCardRents(){
+    this._cardrentService.getCardRents().subscribe(
+      response => {
+        console.log("el response :",response)
+        this.cardrentdata=response.cardrents;
+        this.cardrentdata.map((rent:any,index:number)=> {
+          console.log(rent)
+          
+          this.selectedPersons[index]=rent.capacities;
+          //generamos un índice dinámico para poder omitir la opción
+          //seleccionada en el menu seleccionable de personas, también
+          //para identificar el elemento seleccionado de cada rentcard 
+          this.indSelPson[index]=0;
+          this.indSelNights[index]=0;
+
+          //creamos la lista(array) de número de noches (desde el mínimo
+          //establecido hasta 10) del primero de la lista de capacities ([0])
+          this.listNights[index]=this.createListNights(rent.capacities[0].minNights,index);
+          
+          this.selectedPrice[index]=rent.capacities[0].priceBase;
+          //Asignamos el número de noches(integer) como seleccionado estableciendo
+          //el primero de la lista.
+          //Es decir establecemos el primero(array de enteros) de la lista capacities (listNights)          
+          //y el primer elemento(entero) de esa listNight
+          this.selectedNights[index]=this.listNights[index][0];
+
+          this.menu1Active[index]=false;
+          this.menu2Active[index]=false;
+          //console.log(this.selectedPersons[index])
+          //this.selectedNights[index]=rent.capacities[0].minNights;
+          //console.log(this.selectedPersons[index])
+          //console.log(index)
+        })
+        //this.selectedPerson=this.cardrentdata
+        //this.cardrentdata.listImages=this.cardrentdata.capacities;
+        
+      },
+      error => {
+
+      }
+    )
   }
 
   selectFeedbackByRent(rentTitle:string){
@@ -85,12 +183,12 @@ export class CardContentComponent implements OnInit {
   //mostrar/ocultar div de feedback de location(rayitas) en home.component
   swDivFeed(value:boolean){
     console.log("update swDivFeed")
-    this._cardService.setSwitchFeed({type:'location',value:value})    
+    this._cardrentService.setSwitchFeed({type:'location',value:value})    
   }
   //mostrar/ocultar div de feedback de feedbacks(estrellitas) en home.component
   swDivFeed2(value:boolean){
       console.log("update swDivFeed2")
-      this._cardService.setSwitchFeed({type:'feedback',value:value})      
+      this._cardrentService.setSwitchFeed({type:'feedback',value:value})      
   }
 
   resetFeed2Interval(){
@@ -103,19 +201,18 @@ export class CardContentComponent implements OnInit {
   }
   
   
-  selectCard(card:CardRent){    
-
+  selectCard(card:CardRent){  
     if(card != this.selectedCard){
       if(!this.pushedOptionCard){        
         this.selTypeCard=null;
         this.swDivFeed(false);
         this.resetFeed2Interval();
-        this._cardService.setBanner2("");        
+        this._cardrentService.setBanner2("");        
       }
-      this._cardService.setBanner1(card);      
+      this._cardrentService.setBanner1(card);      
     }
     //actualizamos card
-    this._cardService.setSelectedCard(card);
+    this._cardrentService.setSelectedCard(card);
     this.selectedCard=card;  
     if(this.pushedOptionCard){      
       this.pushedOptionCard=false;
@@ -136,7 +233,7 @@ export class CardContentComponent implements OnInit {
       || card != this.selectedCard || this.selTypeCard == "images"){
       console.log("entra en selectOptionCard")
       //actualizamos el tipo de botón pulsado
-      this._cardService.setTypeCard(type);
+      this._cardrentService.setTypeCard(type);
       this.selTypeCard=type;
       
       //si el botón pulsado no es ni images ni feedback y el interval
@@ -144,7 +241,7 @@ export class CardContentComponent implements OnInit {
       if(type != "feedback" && type != "images" ||card !=this.selectedCard && this.selectedCard != null){
         //console.log("es distinta card")
         this.resetFeed2Interval();
-        this._cardService.setBanner2("");
+        this._cardrentService.setBanner2("");
 
       }
 
@@ -192,7 +289,7 @@ export class CardContentComponent implements OnInit {
             this.intervalFeedText=setInterval(()=>{
               console.log("creado nuevo interval")
               totalText='<span style="">'+feed[num].text+'</span>';               
-              this._cardService.setBanner2({'selectedElement':'feedback',totalText,'card':this.selectedCard});                       
+              this._cardrentService.setBanner2({'selectedElement':'feedback',totalText,'card':this.selectedCard});                       
               //al llegar al final comenzamos de 0
               if(num==feed.length-1)
                 num=0;
@@ -201,11 +298,11 @@ export class CardContentComponent implements OnInit {
             },10000);  
           }
           
-          this._cardService.setBanner2({selectedElement,totalText,card});          
+          this._cardrentService.setBanner2({selectedElement,totalText,card});          
         }else if(type == "images"){          
           selectedElement=type;
           //enviamos un objeto en lugar de un string y detenemos          
-          this._cardService.setBanner2({selectedElement,totalText,card})          
+          this._cardrentService.setBanner2({selectedElement,totalText,card})          
         }
 
       }else{
@@ -218,32 +315,110 @@ export class CardContentComponent implements OnInit {
           this.swDivFeed(true);
           totalText='<span style="color:orange;font-size:10px;user-select:none">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
         }        
-        this._cardService.setBanner2(totalText)        
+        this._cardrentService.setBanner2(totalText)        
       }      
     }
+  }
+  //obtenemos el precio mediante el objeto capacities seleccionado 
+  //y las noches actuales asignadas
+  getPriceByList(listCapacities:any,indexCardRent:any){
+    //asignamos precio base del capacities seleccionado
+    let selectedPriceBase =listCapacities.priceBase;
+    //asignamos el mínimo de noches
+    let selectedMinNights = listCapacities.minNights;
+    let price
+    //comprobamos si las noches seleccionadas coinciden con el mínimo de noches
+    if(selectedMinNights == this.selectedNights[indexCardRent]){
+      price=selectedPriceBase;
+    }else{
+      let extraNights = this.selectedNights[indexCardRent] - selectedMinNights;      
+      price = selectedPriceBase + (listCapacities.priceNight * extraNights);
+    }
+    return price;
   }
 
-  editPrice(num:number,num2:number){ 
-    this.priceSelected=num2;
-    if(num==1){
-      if(this.menuPrice){
-        this.menuPrice=false;
+  editPrice(num:number,num2:number,selectedOption:any=null){
+    //num -> 1:menu persons, 2: menu nights
+    //num2 -> index of rentcard
+    //selectedOption -> index loop for of capacities(persons)
+    
+    //si existe el parámetro selectedOption el botón pulsado pertenece a alguno
+    //de los botones del menu1 o menu2 si no, es alguno de los 2 botones 
+    //que activan el menú
+    if(selectedOption!==null){
+      console.log("hola desde editPrice")
+      if(num==1){
+      //actualizamos el índice para disponer siempre de la opción seleccionada 
+      //de cada rentcard y para no repetir la opción seleccionada dentro del menú
+        this.indSelPson[num2]=selectedOption;
+
+      //obtenemos el objeto de capacities seleccionado para obtener sus propiedades
+      let selectedCapacities=this.cardrentdata[num2].capacities[selectedOption];
+      
+      let price=this.getPriceByList(selectedCapacities,num2);
+      /*
+      let selectedPriceBase =selectedCapacities.priceBase;
+      let selectedMinNights = selectedCapacities.minNights;
+      let price;
+      if(selectedMinNights == this.selectedNights[num2]){
+        console.log("son las noches por defecto")
+        price=selectedPriceBase;
       }else{
-        this.menuPrice=true;  
-      }      
-    }else if(num==2){
-      if(this.menuPrice2){
-        this.menuPrice2=false;
-      }else{
-        this.menuPrice2=true;  
+        let extraNights=this.selectedNights[num2] - selectedMinNights;
+        price=selectedPriceBase+(selectedCapacities.priceNight * extraNights);        
       }
-    }
+      */
+      this.selectedPrice[num2]=price;
+      console.log("price: ",price)
+
+  //si la opción seleccionada de noches no es la mínima(minNights) se añade
+  //el precio de minNights + las noches restantes de minNights a la seleccionada,
+  //si minNights es 3 y la seleccionada 5 calcular (precio minNights + precio noche * (minNights - seleccionada))
+      //let price = selectedOption * 3;
+      }else if(num==2){
+        //Establecemos la noche
+        this.selectedNights[num2]=selectedOption;
+
+        //Asignamos el objeto actual de capacities
+        let selectedCapacities = this.cardrentdata[num2].capacities[this.indSelPson[num2]];
+        let price = this.getPriceByList(selectedCapacities,num2);        
+        this.selectedPrice[num2]=price;
+      }
+    }else{
+      //con esto identificamos que se ha pulsado el botón de pulsar menú 
+      //para que no se cierre desde selectCard()
+      
+      if(num==1){
+        //this.menu1Active[num2]=true;
+      }
+        //this.switchMenu1=true;
+      //if(num==2)
+        //this.switchMenu2=true;
+    } 
+      //this.indexSelRent=num2;
+      this.toggleMenus(num,num2);
   }
+
+  hideMenu(index:number){
+    this.menu1Active[index]=false;
+    this.menu2Active[index]=false;
+  }
+  //efecto toggle menú1 y menú2
+  toggleMenus(menu:number,index:number){
+    //num==1 es el menú 1(personas), num==2 es el menú 2(noches)      
+    
+      if(menu==1){
+        this.menu1Active[index] = (this.menu1Active[index]) ? false:true;
+      }else if(menu==2){
+        this.menu2Active[index]= (this.menu2Active[index]) ? false:true;        
+      }
+  }
+
 
   divPrice(){
     if(!this.pushedPrice){
-      this.menuPrice=false;
-      this.menuPrice2=false;
+      this.menu1Active=false;
+      this.menu2Active=false;
     }else{
       this.pushedPrice=false;
     }

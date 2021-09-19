@@ -8,11 +8,19 @@ export var CardRentData ={
 			3,
 			2,
 			[2,4,6],
+			[
+				{capacity:2,type:"cabaña",minNights:3,priceBase:210,priceNight:70},
+				{capacity:2,type:"casa",minNights:3,priceBase:240,priceNight:80},
+				{capacity:6,type:"casa",minNights:3,priceBase:285,priceNight:95}
+			],
+			[],
+			[
+				"ap_martin/ap_martin1.jpg","ap_martin/ap_martin2.jpg","ap_martin/ap_martin3.jpg","ap_martin/ap_martin4.jpg","ap_martin/ap_martin5.jpg",
+			 	"ap_martin/ap_martin6.jpg","ap_martin/ap_martin7.jpg","ap_martin/ap_martin8.jpg","ap_martin/ap_martin9.jpg","ap_martin/ap_martin10.jpg","ap_martin/ap_martin11.jpg"
+			],
 			"logo",
 			"imagen",
-			["ap_martin/ap_martin1.jpg","ap_martin/ap_martin2.jpg","ap_martin/ap_martin3.jpg","ap_martin/ap_martin4.jpg","ap_martin/ap_martin5.jpg",
-			 "ap_martin/ap_martin6.jpg","ap_martin/ap_martin7.jpg","ap_martin/ap_martin8.jpg","ap_martin/ap_martin9.jpg","ap_martin/ap_martin10.jpg","ap_martin/ap_martin11.jpg"
-			 ],
+			"",
 			[
 				"casa","apartamento"
 			],
@@ -29,14 +37,21 @@ export var CardRentData ={
 			1,
 			2,
 			[2,4,6],
-			"logo",
-			"imagen",
+			[
+				{capacity:2,type:"casa",minNights:2,priceBase:140,priceNight:60},
+				{capacity:4,type:"casa",minNights:2,priceBase:180,priceNight:90},
+				{capacity:6,type:"casa",minNights:2,priceBase:230,priceNight:115},
+			],
+			[],
 			[
 				"resrobles/resrobles1.jpg","resrobles/resrobles2.jpg","resrobles/resrobles3.jpg","resrobles/resrobles4.jpg","resrobles/resrobles5.jpg",
 				"resrobles/resrobles6.jpg","resrobles/resrobles7.jpg","resrobles/resrobles8.jpg","resrobles/resrobles9.jpg",
 				"resrobles/casa_robles1.jpg","resrobles/casa_robles2.jpg","resrobles/casa_robles3.jpg","resrobles/casa_robles4.jpg",
 				"resrobles/ap_robles1.jpg","resrobles/ap_robles2.jpg","resrobles/ap_robles3.jpg","resrobles/ap_robles4.jpg"
 			],
+			"logo",
+			"imagen",
+			"",
 			[
 				"casa","apartamento"
 			],
@@ -52,14 +67,23 @@ export var CardRentData ={
 			1,
 			2,
 			[2,4,6],
-			"logo",
-			"imagen",
+			[
+				{capacity:2,type:"casa",minNights:2,priceBase:80,priceNight:150},
+				{capacity:5,type:"casa",minNights:2,priceBase:110,priceNight:200},
+				{capacity:6,type:"casa",minNights:2,priceBase:132,priceNight:232},
+				{capacity:8,type:"casa",minNights:2,priceBase:150,priceNight:260},
+				{capacity:12,type:"casa",minNights:2,priceBase:183,priceNight:300},
+			],
+			[],
 			[
 				"losenebros/enebros1.jpg","losenebros/enebros2.jpg","losenebros/enebros3.jpg","losenebros/enebros4.jpg","losenebros/enebros5.jpg",
 				"losenebros/enebros6.jpg","losenebros/enebros7.jpg","losenebros/enebros8.jpg","losenebros/enebros9.jpg","losenebros/enebros10.jpg","losenebros/enebros11.jpg",
 				"losenebros/enebros12.jpg","losenebros/enebros13.jpg","losenebros/enebros14.jpg","losenebros/enebros15.jpg","losenebros/enebros16.jpg","losenebros/enebros17.jpg",
 				"losenebros/enebros18.jpg","losenebros/enebros19.jpg","losenebros/enebros20.jpg","losenebros/enebros21.jpg","losenebros/enebros22.jpg"
 			],
+			"logo",
+			"imagen",
+			"",
 			[
 				"apartamento","bungalow"
 			],
@@ -75,13 +99,18 @@ export var CardRentData ={
 			3,
 			2,
 			[2,4,6],
-			"logo",
-			"imagen",
+			[
+				{capacity:4,type:"bungalow",minNights:5,priceBase:675,priceNight:120},
+			],
+			[],
 			[
 				"cab_lospinos/lospinos1.jpg","cab_lospinos/lospinos2.jpg","cab_lospinos/lospinos3.jpg","cab_lospinos/lospinos4.jpg","cab_lospinos/lospinos5.jpg",
 				"cab_lospinos/lospinos6.jpg","cab_lospinos/lospinos7.jpg","cab_lospinos/lospinos8.jpg","cab_lospinos/lospinos9.jpg","cab_lospinos/lospinos10.jpg",
 				"cab_lospinos/lospinos11.jpg","cab_lospinos/lospinos12.jpg","cab_lospinos/lospinos13.jpg","cab_lospinos/lospinos14.jpg"
 			],
+			"logo",
+			"imagen",
+			"",
 			[
 				"cabaña"
 			],
@@ -91,18 +120,23 @@ export var CardRentData ={
 			5,
 			"https://www.google.es/maps/place/Caba%C3%B1as+de+Madera+Los+Pinos/@37.9442854,-2.9495387,15z/data=!4m9!1m2!2m1!1sCaba%C3%B1as+de+Madera+Arroyo+Fr%C3%ADo!3m5!1s0xd6f081ebb72ec31:0xe1dc14a5d2c701ee!5m2!4m1!1i2!15sCh9DYWJhw7FhcyBkZSBNYWRlcmEgQXJyb3lvIEZyw61vkgEXbGVnYWxseV9kZWZpbmVkX2xvZGdpbmc",
 			"texto"),
-		new CardRent("Alojamiento Valeria",
+		new CardRent(
+			"Alojamiento Valeria",
 			"306",
 			3,
 			2,
 			[2,4,6],
-			"logo",
-			"imagen",
+			[
+				{capacity:4,type:"apartamento",minNights:2,priceBase:170,priceNight:80},
+			],
+			[],
 			[
 				"al_valeria/al_valeria1.jpg","al_valeria/al_valeria2.jpg","al_valeria/al_valeria3.jpg","al_valeria/al_valeria4.jpg","al_valeria/al_valeria5.jpg",
 				"al_valeria/al_valeria6.jpg","al_valeria/al_valeria7.jpg","al_valeria/al_valeria8.jpg","al_valeria/al_valeria9.jpg",
-
 			],
+			"logo",
+			"imagen",
+			"",
 			[
 			"casa"
 			],

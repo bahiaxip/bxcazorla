@@ -151,7 +151,8 @@ export class CardHeaderComponent implements OnInit {
       //asignamos el card.card en lugar de utilizar el método getSelectedCard del servicio 
       //porque el emit se ejecuta antes(método selectOptionCard) y el card se establece 
       //después(método selectCard) mediante setSelectedCard() del servicio.      
-      this.selectedCard=card.card;      
+      this.selectedCard=card.card;  
+      console.log("el card: ",this.selectedCard)    
       
       this.myHeight2="0";
       this.myHeight="calc(100vh - 90px)";

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { CardrentService } from '../../services/cardrent.service';
 @Component({
   selector: 'pre-newcard-images',
@@ -7,6 +7,8 @@ import { CardrentService } from '../../services/cardrent.service';
 })
 export class NewcardImagesComponent implements OnInit {
 
+  @Input()
+  listImages:any;
   @Output()
   modal=new EventEmitter<any>();
   @Output()
@@ -14,7 +16,7 @@ export class NewcardImagesComponent implements OnInit {
 
   public existsImg:boolean=false;
   //public miimage:any;
-  public listImages:any=[];
+  //public listImages:any=[];
   //public listFormData:any=[];
   public listFiles:any=[];
   constructor(private _cardrentService:CardrentService){
@@ -22,10 +24,14 @@ export class NewcardImagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   //eliminar imagen transferida mediante drag&drop
   deleteTransfer(index:any){
+    if(index==0){
+      this.listImages=[];
+    }
     console.log("arraiba:. ",this.listImages)    
     this.listImages.splice(index,1);
     if(this.listImages.length==0){

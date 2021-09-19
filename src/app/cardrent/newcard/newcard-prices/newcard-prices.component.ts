@@ -19,12 +19,14 @@ export class NewcardPricesComponent implements OnInit {
     this.formCardRent = _cardrentService.getFormCardRent();
     this.listCapacity=this.formCardRent.controls.capacities.controls;
     this.listtypeGroup=this.formCardRent.controls.type.controls;
+
   }
 
   ngOnInit(): void {
     this.subscriptionForm= this._cardrentService.formCardRent$.subscribe(()=> {
       this.formCardRent = this._cardrentService.getFormCardRent();
       this.listCapacity=this.formCardRent.controls.capacities.controls;
+      console.log("el listCapacity: ",this.listCapacity)
 
       this.listtypeGroup=this.formCardRent.controls.type;
       console.log("listtyupeGroup: ",this.listtypeGroup)

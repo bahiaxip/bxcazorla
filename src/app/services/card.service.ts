@@ -30,6 +30,10 @@ export class CardService {
   setSelectedCard(card:CardRent){
     this.selectedCard=card;
   }
+
+  getCards(){
+    //return this._http.get(this.url+"cardrents");
+  }
   getTypeCard(){
     return this.typeCard;
   }

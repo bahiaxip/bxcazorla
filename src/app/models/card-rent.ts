@@ -10,8 +10,8 @@ export class CardRent {
 				capacity:number,
 				type:string,
 				minNights:number,
-				priceDefault:number,
-				priceExtraNight:number,
+				priceBase:number,
+				priceNight:number,
 			}
 		]|null,
 		public logo:string,

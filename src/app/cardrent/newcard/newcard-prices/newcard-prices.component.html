@@ -11,7 +11,7 @@
 		<div style="margin:auto;display:block;width:100%;" *ngIf="listCapacity?.length>0" formArrayName="capacities">
 			
 				<div *ngFor="let item of listCapacity;let i=index" style="" [formGroupName]="i">
-					<div style="text-align:center" >Capacidad para {{listCapacity[i].capacity}} personas</div>
+					<div style="text-align:center" >Capacidad para {{listCapacity[i].controls.capacity.value}}{{listCapacity[i].controls.capacity.value|minimrent:'capacity'}}</div>
 					<div class="inputsprice" >
 						
 						<mat-form-field>

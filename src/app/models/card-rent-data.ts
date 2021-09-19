@@ -21,7 +21,7 @@ export var CardRentData ={
 			"https://complejomartinparquenatural.com/",
 			"953 72 71 06",
 			"numLevelFeedback",
-			5,
+			1,
 			"https://www.google.com/maps/@37.946471,-2.919678,14z?hl=es",
 			"texto"),
 
@@ -93,7 +93,7 @@ export var CardRentData ={
 			"ND",
 			"953 72 70 07",
 			"numLevelFeedback",
-			5,
+			2,
 			"https://www.google.es/maps/place/Caba%C3%B1as+de+Madera+Los+Pinos/@37.9442854,-2.9495387,15z/data=!4m9!1m2!2m1!1sCaba%C3%B1as+de+Madera+Arroyo+Fr%C3%ADo!3m5!1s0xd6f081ebb72ec31:0xe1dc14a5d2c701ee!5m2!4m1!1i2!15sCh9DYWJhw7FhcyBkZSBNYWRlcmEgQXJyb3lvIEZyw61vkgEXbGVnYWxseV9kZWZpbmVkX2xvZGdpbmc",
 			"texto"),
 		new CardRent("Alojamiento Valeria",

@@ -14,6 +14,9 @@ export class NewcardComponent implements OnInit {
   modal=new EventEmitter<any>();
   
   public selectCapacity:any;
+  //creamos listImages aquí en lugar de newcard-images, para poder limpiar
+  //los dataTransfer al resetear el formulario, mediante el decorador Input
+  public listImages:any=[];
   
   //public formCardRent = new FormGroup({})
   public formCardRent:any;
@@ -78,7 +81,8 @@ export class NewcardComponent implements OnInit {
   }
 
   onSubmit(){
-    //console.log(this.formCardRent)
+
+    console.log(this.formCardRent)
     this.cardrent={
       title:this.formCardRent.controls.name.value,
       //minPrice:this.formCardRent.controls.capacities.controls[0].controls.priceBase,
@@ -93,7 +97,7 @@ export class NewcardComponent implements OnInit {
       images:[],      
       logo:null,
       image:null,
-      listImages:[],
+      selectedImage:null,
       type:this.formCardRent.controls.type.value,
       web:this.formCardRent.controls.web.value,
       phone:this.formCardRent.controls.phone.value,
@@ -108,10 +112,10 @@ export class NewcardComponent implements OnInit {
     //las imágenes en otro método
     //this.cardrent.images=this.getImages();
     //console.log(this.cardrent.images);
-    if(this.cardrent.capacities && this.cardrent.title && this.cardrent.phone
-      && this.cardrent.type)  
+    //if(this.cardrent.capacities && this.cardrent.title && this.cardrent.phone
+      //&& this.cardrent.type)  
 
-      this.createCardRent();    
+      //this.createCardRent();    
   }
 
   uploadImages(id:string){    
@@ -124,7 +128,12 @@ export class NewcardComponent implements OnInit {
       this._cardrentService.uploadImages(fd,id).subscribe(
         response => {        
           if(response){
-            console.log(response)          
+            console.log(response)
+            //actualizamos la lista de rentcards (cardrent.component)
+            this._cardrentService.cardRentsSubject.next();
+            this.formCardRent.reset();
+            this.listImages=[];
+            this._cardrentService.setFormCardRent(this.formCardRent);
           }
         },
         error => {
@@ -162,23 +171,32 @@ export class NewcardComponent implements OnInit {
   }
 
   //crear nuevo rentcard
+  /*
   createCardRent(){
     //console.log("desde createCardrent: ",this.cardrent) 
     this._cardrentService.addCardRent(this.cardrent).subscribe(
+  
       response=> {       
         if(response){
           console.log(response);          
           if(this._cardrentService.getImages().length>0){
             this.uploadImages(response.id)
+          }else{
+            //actualizamos la lista de rentcards (cardrent.component)
+            this._cardrentService.cardRentsSubject.next();
+            this.formCardRent.reset();
+            this.listImages=[];
+            this._cardrentService.setFormCardRent(this.formCardRent);
           }
         }
       },
       error => {
-        console.log("Error creando rentcard: ",error);
+        //mensaje Error durante la creación del alojamiento
+        console.log("Error newcard: ",error);
       }
     )
   }
-
+  */
   /* anulado */
   /*
   boton(){

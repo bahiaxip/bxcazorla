@@ -11,7 +11,7 @@
 			<pre-newcard-services (changedCheckbox)="updateServices($event)"></pre-newcard-services>
 
 			<p style="margin:10px">
-				<pre-newcard-images (modal)="showModal($event)" ></pre-newcard-images>
+				<pre-newcard-images (modal)="showModal($event)" [listImages]="listImages" ></pre-newcard-images>
 			</p>
 
 			<p style="background-color:#f3ffea;text-align:center;margin:10px;display:block">

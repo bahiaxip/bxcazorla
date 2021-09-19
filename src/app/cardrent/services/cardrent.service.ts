@@ -23,6 +23,9 @@ export class CardrentService {
   private switchDivFeed = new Subject<void>();
   public switchDivFeed$ = this.switchDivFeed.asObservable();
 
+  public cardRentsSubject = new Subject<void>();
+  public cardRents$ = this.cardRentsSubject.asObservable();
+
   public selectedCard:any;
   public typeCard:any;
   public banner1:any;
@@ -112,7 +115,7 @@ export class CardrentService {
 
   getSwitchFeed(){
     return this.switchFeed;
-  }
+  }  
 
   setFormCardRent(form:any){
     console.log("establecemos dataos")
@@ -124,12 +127,16 @@ export class CardrentService {
     return this.formCardRent;
   }
 
-  addCardRent(cardrent:any):Observable<any>{
+  addCardRent(cardrent:any){
     let headers=new HttpHeaders({
       "Content-Type":"application/json"
     });
-
-    return this._http.post(this.url+"cardrent",cardrent,{headers:headers});
+    console.log("llega al addCardRent...",cardrent)
+    
+    return this._http.post(this.url+"cardrent",cardrent,{headers:headers});  
+    
+    
+    
   }
 
   //recomendable optimizar subiendo o eliminando una a una y no todas 
@@ -143,6 +150,10 @@ export class CardrentService {
 
   uploadImages(images:any,id:string){
     return this._http.post(this.url+'images/'+id,images);
+  }
+  
+  getCardRents():Observable<any>{
+    return this._http.get(this.url+'cardrents');
   }
   
 

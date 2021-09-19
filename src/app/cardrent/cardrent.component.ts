@@ -13,6 +13,8 @@ export class CardrentComponent{
   //switch para modal imagen no válida
   public switchModal:boolean=false;
   public panelSelected:string='center';
+
+  
   
   @ViewChild('slidercardrent',{static:true}) private slidercardrent!:ElementRef; 
   constructor() {
@@ -20,7 +22,6 @@ export class CardrentComponent{
   }
 
   ngOnInit(){
-    
     window.addEventListener("resize",(e)=>{
       let slidercardrentStyle = this.slidercardrent.nativeElement.style
 

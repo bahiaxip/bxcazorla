@@ -4,7 +4,7 @@
 		<mat-icon class="material-icons" style="color:white;font-size:25px" (click)="hideImagesCard('images')" >close</mat-icon>
 	</div>
 	
-	<div class="gallery__item" *ngFor="let image of selectedCard.listImages">
+	<div class="gallery__item" *ngFor="let image of selectedCard.images">
 		<img [src]="'assets/images/'+image" alt="" class="gallery__img">
 		<h2 class="gallery__title">Imagen 1</h2>
 	</div>							
