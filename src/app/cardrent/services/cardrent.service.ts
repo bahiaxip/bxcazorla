@@ -19,7 +19,8 @@ export class CardrentService {
 
   private formCardRentSubject = new Subject<void>();
   public formCardRent$ = this.formCardRentSubject.asObservable();
-
+//optimizar, ya que, los suscriptores actualizan tanto cuando es el 
+//div location como el feedback, quizás mejor 2 suscripciones...
   private switchDivFeed = new Subject<void>();
   public switchDivFeed$ = this.switchDivFeed.asObservable();
 

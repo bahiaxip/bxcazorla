@@ -215,9 +215,13 @@ export class CardContentComponent implements OnInit {
   }
   */
   //mostrar/ocultar div de feedback de location(rayitas) en home.component
-  swDivFeed(value:boolean){
+  swDivFeed(value:boolean,card:any=null){
     console.log("update swDivFeed")
-    this._cardrentService.setSwitchFeed({type:'location',value:value})    
+    let data={type:'location',value:value,card:null};
+    if(card){        
+      data.card=card;
+    }
+    this._cardrentService.setSwitchFeed(data)    
   }
   //mostrar/ocultar div de feedback de feedbacks(estrellitas) en home.component
   swDivFeed2(value:boolean,card:any=null){
@@ -252,6 +256,7 @@ export class CardContentComponent implements OnInit {
       if(!this.pushedOptionCard){        
         this.selTypeCard=null;        
         this.swDivFeed(false);
+        this.swDivFeed2(false,card);
         this.resetFeed2Interval();
         this._cardrentService.setBanner2("");        
       }
@@ -371,7 +376,7 @@ export class CardContentComponent implements OnInit {
           totalText='<span style="color:orange">Teléfono de contacto: </span><span style="font-size:16px;margin-left:10px">'+card.phone+'</span>';
         }else if(type == "location"){
           this.levelLocation = card.numLevelLocation;
-          this.swDivFeed(true);
+          this.swDivFeed(true,card);
           totalText='<span style="color:orange;font-size:10px;user-select:none">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
         }        
         this._cardrentService.setBanner2(totalText)        

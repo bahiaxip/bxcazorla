@@ -29,7 +29,8 @@
 
 .feedback_stars{
 	font-size: 35px;
-	margin: auto 10px;	
+	margin: auto 10px;
+	cursor: pointer;	
 }
 
 @media(max-width: 1200px){

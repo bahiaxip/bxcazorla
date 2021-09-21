@@ -13,6 +13,7 @@ export class FeedbackComponent implements OnInit {
   public selectedCard:any;
   public subscriptionSelCard:any;
   public subscriptionSelFeeds:any;
+  public subscriptionDivFeed:any;
   public selectFeeds:any;
   //propiedad height dinámica
   public heightPanel:string='0';
@@ -25,6 +26,7 @@ export class FeedbackComponent implements OnInit {
   })
 
   public scoreStars:number=0;
+  public numLevelFeedback:number=0;
 
   constructor(private _cardrentService: CardrentService){
 
@@ -34,10 +36,18 @@ export class FeedbackComponent implements OnInit {
     this.subscriptionSelCard = this._cardrentService.selectedCard$.subscribe(()=> {
       this.selectedCard=this._cardrentService.getSelectedCard()
     })
-    
+    //lista de feedbacks asociados al cardrent seleccionado
     this.subscriptionSelFeeds = this._cardrentService.selFeeds$.subscribe(()=>{
       this.selectFeeds = this._cardrentService.getSelectFeeds();
       console.log("nueva lista de feedback: ", this.selectFeeds);
+    })
+    this.subscriptionDivFeed = this._cardrentService.switchDivFeed$.subscribe(() => {
+      let param=this._cardrentService.getSwitchFeed();
+      if(param && param.card){
+        this.numLevelFeedback=param.card.numLevelFeedback;
+      }else{
+        this.numLevelFeedback=0;
+      }
     })
     
   }
@@ -85,11 +95,14 @@ export class FeedbackComponent implements OnInit {
   setPanel(side:string){
     this._cardrentService.setPanel(side);
   }
-
+  //asignar puntuación en formulario de nuevo feedback
   setScore(score:number){
     this.scoreStars=score;
   }
 
+  setDivFeed(){
+
+  }
   
 
 }

@@ -21,14 +21,16 @@ export class CardHeaderComponent implements OnInit {
   public switchDivFeedback:any;
   public lastswitchDivFeedback:any;
   //puntuación de feedback general del alojamiento (Atributo para pre-divlevel)
-  public numLevelFeedback:any=0;
+  public numLevelFeedback:number=0;
+  //puntuación de ubicación del alojamiento (Atributo para pre-divlevel2)
+  public numLevelLocation:number=0;
   //switch para mostrar/ocultar feedback de valoraciones
   public switchDivFeedback2:any;
   public lastswitchDivFeedback2:any;
   public selectedCard:any;
   //max-width de bannerp3 para mostrar correctamente el white-space
   public maxWidthBannerp3:any;
-  public levelLocation:number=6;
+  
 
   public myHeight:string="0";
   public myHeight2:string="0";
@@ -223,7 +225,9 @@ export class CardHeaderComponent implements OnInit {
   }
   //permite mostrar/ocultar los 2 divs (rayitas:location, estrellitas:feedback)
   switchDivFeed(data:any){     
-    if(data && data.type == "location"){          
+    if(data && data.type == "location"){
+      (data.card && data.card.numLevelLocation) ?
+        this.numLevelLocation=data.card.numLevelLocation:this.numLevelLocation=0;
       this.switchDivFeedback=data.value;
     }      
     else if(data && data.type == "feedback"){
