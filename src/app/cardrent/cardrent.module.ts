@@ -23,6 +23,7 @@ import { NewcardInputsComponent } from './newcard/newcard-inputs/newcard-inputs.
 import { NewcardPricesComponent } from './newcard/newcard-prices/newcard-prices.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardInfoservicesComponent } from './card/card-header/card-infoservices/card-infoservices.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 @NgModule({
   declarations: [
     CardrentComponent,
@@ -43,7 +44,8 @@ import { CardInfoservicesComponent } from './card/card-header/card-infoservices/
     NewcardImagesComponent,
     NewcardInputsComponent,
     NewcardPricesComponent,
-    CardInfoservicesComponent
+    CardInfoservicesComponent,
+    FeedbackComponent
   ],
   imports: [
     CommonModule,    

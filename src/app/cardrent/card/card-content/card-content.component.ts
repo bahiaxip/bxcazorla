@@ -81,7 +81,7 @@ export class CardContentComponent implements OnInit {
     
     
     
-    this.feedrentdata=FeedbackRentData.midata;
+    //this.feedrentdata=FeedbackRentData.midata;
     this.pricerentdata = PriceRentData.midata;
     
   }
@@ -90,6 +90,8 @@ export class CardContentComponent implements OnInit {
     //permite recargar la db de datos reales (limpiar db antes)
     //this.fillDB();
   this.getCardRents();
+  this.getFeeds();
+
   console.log("los ardrents: ",this.cardrentdata)   
     this.subscriptionCardRents=this._cardrentService.cardRents$.subscribe(()=> {
       this.getCardRents();
@@ -100,11 +102,14 @@ export class CardContentComponent implements OnInit {
   fillDB(){
     //lista directa desde card-rent-data        
     //this.cardrentdata=CardRentData.midata;
+    
+    /*
     let list=CardRentData.midata;
     list.map((cardrent:any)=>{
       console.log("mi cardrent desde map: ",cardrent)      
       this._cardrentService.addCardRent(cardrent).subscribe();
     })
+    */
   }
 
   //creamos un array de nights desde el mínimo de noches a 10 noches
@@ -113,6 +118,31 @@ export class CardContentComponent implements OnInit {
     let lista = [...Array(11).keys()];
     lista.splice(0,minNights);    
     return lista;
+  }
+  //obtenemos todos los feedbacks y desde el frontend se seleccionan los que tiene el id
+  //del alojamiento pulsado
+  getFeeds(){
+    this._cardrentService.getFeedbacks().subscribe(
+      response => {
+        this.feedrentdata=response.feedbacks;
+        console.log("response desde getFeeds(): ",response)
+      },
+      error => {
+
+      }
+    )
+  }
+  //por id
+  getFeedsByRentId(id:string){
+    this._cardrentService.getFeedbacksByRentId(id).subscribe(
+      response => {
+        this.feedrentdata=response.feedbacks;
+        console.log("response desde getFeeds(): ",response)
+      },
+      error => {
+
+      }
+    )
   }
 
   getCardRents(){
@@ -158,14 +188,18 @@ export class CardContentComponent implements OnInit {
     )
   }
 
-  selectFeedbackByRent(rentTitle:string){
-    //console.log(rentTitle+" hola")
+  selectFeedbackByRent(card:any){
+
+    console.log(card," hola")
+    //console.log(this.feedrentdata)    
     let listFeedback:any=[];
-    this.feedrentdata.map((feed:FeedbackRent)=>{
-      if(feed.titleRent=="Apartamentos Martín"){
+    this.feedrentdata.map((feed:any)=>{
+      if(feed.rentId==card._id){
         listFeedback.push(feed);
+        //console.log("listFeedback: ",listFeedback)
       }
     })
+    //this._cardrentService.setSelectFeeds(listFeedback)
     return listFeedback;
   }
 
@@ -186,11 +220,22 @@ export class CardContentComponent implements OnInit {
     this._cardrentService.setSwitchFeed({type:'location',value:value})    
   }
   //mostrar/ocultar div de feedback de feedbacks(estrellitas) en home.component
-  swDivFeed2(value:boolean){
+  swDivFeed2(value:boolean,card:any=null){
       console.log("update swDivFeed2")
-      this._cardrentService.setSwitchFeed({type:'feedback',value:value})      
+      if(card){
+        console.log("llega el card")
+      }else{
+        console.log("no llega el card")
+      }
+      let data={type:'feedback',value:value,card:null};
+      if(card){        
+        data.card=card;
+      }
+      this._cardrentService.setSwitchFeed(data)      
   }
 
+  //limpiar interval de rotación de mensajes de feedback (mostrado en 
+  //card-header.component), tb oculta el div de estrellitas
   resetFeed2Interval(){
     if(this.intervalFeedActive){        
       this.swDivFeed2(false);
@@ -202,12 +247,20 @@ export class CardContentComponent implements OnInit {
   
   
   selectCard(card:CardRent){  
+    console.log("llega a selectCard")
     if(card != this.selectedCard){
       if(!this.pushedOptionCard){        
-        this.selTypeCard=null;
+        this.selTypeCard=null;        
         this.swDivFeed(false);
         this.resetFeed2Interval();
         this._cardrentService.setBanner2("");        
+      }
+      //podríamos comprobar si el tipo es feedback, ya que en ese caso ya dispondría del
+      //array de feedbacks de ese alojamiento y si no crearlo
+      console.log("tipo de card desde selectCard: ",this.selTypeCard)
+      if(this.selTypeCard != "feedback"){
+        let feed = this.selectFeedbackByRent(card);
+        this._cardrentService.setSelectFeeds(feed);
       }
       this._cardrentService.setBanner1(card);      
     }
@@ -217,6 +270,8 @@ export class CardContentComponent implements OnInit {
     if(this.pushedOptionCard){      
       this.pushedOptionCard=false;
     }
+
+    //this._cardrentService.setSelectedCard(card);
   }
 
 
@@ -270,10 +325,14 @@ export class CardContentComponent implements OnInit {
           }
           */
 
-          this.swDivFeed2(true);
+          this.swDivFeed2(true,card);
           //almacenamos una lista de objetos para obtener los mensajes con selectFeedbackByRent
           //para después manejarlos
-          let feed=this.selectFeedbackByRent(card.title);
+          console.log(card)
+//tenemos que cargar los feedbacks correspondientes al id del alojamiento seleccionado
+//tanto si pulsamos valoraciones como si pulsamos en el card(selectCard()), para luego 
+//poder disponer de ellos desde el componente feedback
+          let feed=this.selectFeedbackByRent(card);
 
           console.log("feed: ",feed)
           if(card.title){

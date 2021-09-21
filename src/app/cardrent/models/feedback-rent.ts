@@ -1,10 +1,10 @@
 export class FeedbackRent {
 	constructor(
-		public titleRent:string,
-		public nickEmitter:string|null,
-		public feedback:number,
-		public emailEmitter:string|null,
+		public nick:string,
+		public email:string|null,
+		public feedback:number,		
 		public text:string,
+		public rentId:string|null
 
 	){ }
 }

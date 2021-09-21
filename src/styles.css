@@ -49,6 +49,9 @@ html,body{
 .mt10{
 	margin-top: 10px;
 }
+.p10{
+	padding: 10px;
+}
 
 .back_green{
 	background-color:#f3ffea;
@@ -56,7 +59,12 @@ html,body{
 .back_brown{
 	background-color: rgba(74,58,58,1);
 }
-
+.back_white{
+	background-color: white;
+}
+.c_black{
+	color: #000000;
+}
 .c_white{
 	color: #FFFFFF;
 }
@@ -70,8 +78,15 @@ html,body{
 	color: blue;
 }
 
+.csrpointer{
+	cursor: pointer;
+}
+
 .w100{
 	width: 100%;
+}
+.w80{
+	width: 80%;
 }
 .w70{
 	width: 70%;

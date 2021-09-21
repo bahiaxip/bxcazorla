@@ -20,13 +20,15 @@ export class CardHeaderComponent implements OnInit {
   //switch para mostrar/ocultar feedback de location
   public switchDivFeedback:any;
   public lastswitchDivFeedback:any;
+  //puntuación de feedback general del alojamiento (Atributo para pre-divlevel)
+  public numLevelFeedback:any=0;
   //switch para mostrar/ocultar feedback de valoraciones
   public switchDivFeedback2:any;
   public lastswitchDivFeedback2:any;
   public selectedCard:any;
   //max-width de bannerp3 para mostrar correctamente el white-space
   public maxWidthBannerp3:any;
-  public levelLocation:number=3;
+  public levelLocation:number=6;
 
   public myHeight:string="0";
   public myHeight2:string="0";
@@ -219,18 +221,25 @@ export class CardHeaderComponent implements OnInit {
       this.bannerp3.nativeElement.style.transform="translateX(0)";
     }
   }
-
+  //permite mostrar/ocultar los 2 divs (rayitas:location, estrellitas:feedback)
   switchDivFeed(data:any){     
     if(data && data.type == "location"){          
       this.switchDivFeedback=data.value;
     }      
-    else if(data && data.type == "feedback"){      
+    else if(data && data.type == "feedback"){
+      //si no viene card o numLevelLocation no viene null asignamos sin asignamos 0     
+      (data.card && data.card.numLevelFeedback) ?
+        this.numLevelFeedback=data.card.numLevelFeedback:this.numLevelFeedback=0;
       this.switchDivFeedback2=data.value;
     }
   }
+  setPanel(side:string){
+    let selectedCard = this._cardService.getSelectedCard();
+    if(side =="left" && !selectedCard){
+      console.log("mensaje debe seleccionar un alojamiento");
+      return;
+    }
+    this._cardService.setPanel(side)
+  }  
 
-  emittWidth(data:string){
-    console.log("hace el emit")
-    this.emitWidth.emit(data);
-  }
 }

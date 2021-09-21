@@ -1,149 +1,112 @@
 <!--<div style="position:relative;height:100%;display:block">-->
 <!--<div style="position: absolute;height:100%;display:block;overflow:hidden" >-->
+<div #slidercardrent style="display:flex;flex-flow:row wrap;height:100%;transition:transform 1s ease-out" [ngStyle]="{'width':firstwidth*3+'px'}">
+<!-- panel feedback -->
+	<div [ngStyle]="{'width':firstwidth+'px','left':'-'+firstwidth+'px'}" style="position:absolute;display:block">		
+		<div style="background-color:#676767;display:flex;position:relative" > 
+			<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute">final</button>
+			<button (click)="misectionHorizontal(firstwidth+'px','1s','center')" style="position:absolute;right:300px">derecha</button>
 
-	<div #slidercardrent style="display:flex;flex-flow:row wrap;height:100%;transition:transform 1s ease-out" [ngStyle]="{'width':firstwidth*3+'px'}">
-	<!-- panel feedback -->
-		<div [ngStyle]="{'width':firstwidth+'px','left':'-'+firstwidth+'px'}" style="position:absolute;display:block">		
-			<div style="background-color:#676767;display:flex;position:relative" > 
-				<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute">final</button>
-				<button (click)="misectionHorizontal(firstwidth+'px','1s','center')" style="position:absolute;right:300px">derecha</button>
-
-					
-					<div class="div_flex_card" style="display:block">
-
-					<div class="flex_header " style="position:relative; color:white;font-weight:bold">
-						<div class="div_flex_item " style="justify-content:center;">
-							<div class="flex_item " style="" >
-								<div class="w15">
-
-								</div>
-								<div style="width:100%;">
-									<!--<div style="display:flex;align-items:center">Feedback</div>-->
-									<p style="margin:auto">Feedback</p>
-									<!--<span style="display:flex;margin:auto">-->
-										<p style="display:block;margin:auto">
-											<pre-divlevel></pre-divlevel>
-										</p>
-									<!--</span>-->
-
-									
-
-
-								<!-- icono valoraciones -->
-									<!--
-									<div style="width:15%;cursor:pointer" class="" >
-										<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
-									</div>
-								
-									<div style="width: 70%;font-weight: bold;">
-										<p class="mauto c_white bannerp1" #bannerp1>Crear nuevo alojamiento</p>
-									</div>
-
-								
-
-									<div style="width:15%;cursor:pointer" class="" >
-										<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
-									</div>
-								-->
-								</div>
-								<div class="w15">
-									<mat-icon class="banner_icon floatR" style="margin-right: 10px" title="Volver a alojamientos" (click)="misectionHorizontal(firstwidth+'px','1s','center')">double_arrow</mat-icon>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="w100 mauto div_card_rent" style="" >
-						<!--<pre-newcard (modal)="setModal($event)"></pre-newcard>-->
-							
-
-							
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- panel rentcard -->
-		<div [ngStyle]="{'width':firstwidth+'px'}">		
-			<div style="background-color:#676767;display:flex;position:relative" > 
-				<button (click)="misectionHorizontal(firstwidth+'px','1s','left')" style="position:absolute">izquierda</button>
-				<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute;right:100px">derecha</button>
-
-					<pre-card (emitWidth)="misectionHorizontal(firstwidth+'px','1s',$event)"></pre-card>
-			</div>
-		</div>
-	<!-- panel create rentcard -->
-		<div [ngStyle]="{'width':firstwidth+'px'}">
-		
-			<div style="background-color:#676767;display:flex;position:relative" >
 				
-				<!-- modal para imagen no válida -->
-				<div style="position:absolute;width:100%;height:100vh;background-color:rgba(0,0,0,.3);display: flex;align-items: center;z-index:110;margin:auto;justify-content:center" *ngIf="switchModal">
-					<div style="background-color:rgba(0,0,0,.8);color:white;padding:0 15px">
-						<p style="font-size:15px">La imagen no es válida</p>
-						<p style="justify-content:center;text-align:center">
-							<button mat-button (click)="setModal(false)">OK</button>						
-						</p>
-					</div>
-
-				</div>
-				<!-- fin modal -->
-
-				<button (click)="misectionHorizontal(firstwidth+'px','1s','center')" style="position:absolute">izquierda</button>
 				<div class="div_flex_card" style="display:block">
 
-					<div class="flex_header " style="position:relative; color:white;font-weight:bold">
-						<div class="div_flex_item " style="justify-content:center;">
-							<div class="flex_item " style="" >
-								<div style="width:100%;display:flex;justify-content:center;vertical-align:middle">
-									<div class="w15">
-										<mat-icon class="banner_icon floatL" style="margin-left: 10px;margin-top: 8px;transform:rotate(180deg);display:flex;align-items:center" title="Volver a alojamientos" (click)="misectionHorizontal(firstwidth+'px','1s','center')">double_arrow</mat-icon>
-									</div>
+				<div class="flex_header " style="position:relative; color:white;font-weight:bold">
+					<div class="div_flex_item " style="justify-content:center;">
+						<pre-feedback></pre-feedback>
+					</div>
+				</div>
 
-									<div class="w70">
-										Nuevo alojamiento
-									</div>
+				<div class="w100 mauto div_card_rent" style="" >
+					<!--<pre-newcard (modal)="setModal($event)"></pre-newcard>-->
+						
 
-									<div class="w15">
+						
+					
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- panel rentcard -->
+	<div [ngStyle]="{'width':firstwidth+'px'}">		
+		<div style="background-color:#676767;display:flex;position:relative" > 
+			<button (click)="misectionHorizontal(firstwidth+'px','1s','left')" style="position:absolute">izquierda</button>
+			<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute;right:100px">derecha</button>
 
-									</div>
+				<pre-card (emitWidth)="misectionHorizontal(firstwidth+'px','1s',$event)"></pre-card>
+		</div>
+	</div>
+<!-- panel create rentcard -->
+	<div [ngStyle]="{'width':firstwidth+'px'}">
+	
+		<div style="background-color:#676767;display:flex;position:relative" >
+			
+			<!-- modal para imagen no válida -->
+			<div style="position:absolute;width:100%;height:100vh;background-color:rgba(0,0,0,.3);display: flex;align-items: center;z-index:110;margin:auto;justify-content:center" *ngIf="switchModal">
+				<div style="background-color:rgba(0,0,0,.8);color:white;padding:0 15px">
+					<p style="font-size:15px">La imagen no es válida</p>
+					<p style="justify-content:center;text-align:center">
+						<button mat-button (click)="setModal(false)">OK</button>						
+					</p>
+				</div>
 
+			</div>
+			<!-- fin modal -->
 
-									
+			<button (click)="misectionHorizontal(firstwidth+'px','1s','center')" style="position:absolute">izquierda</button>
+			<div class="div_flex_card" style="display:block">
 
-
-								<!-- icono valoraciones -->
-									<!--
-									<div style="width:15%;cursor:pointer" class="" >
-										<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
-									</div>
-								
-									<div style="width: 70%;font-weight: bold;">
-										<p class="mauto c_white bannerp1" #bannerp1>Crear nuevo alojamiento</p>
-									</div>
-
-								
-
-									<div style="width:15%;cursor:pointer" class="" >
-										<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
-									</div>
-								-->
+				<div class="flex_header " style="position:relative; color:white;font-weight:bold">
+					<div class="div_flex_item " style="justify-content:center;">
+						<div class="flex_item " style="" >
+							<div style="width:100%;display:flex;justify-content:center;vertical-align:middle">
+								<div class="w15">
+									<mat-icon class="banner_icon floatL" style="margin-left: 10px;margin-top: 8px;transform:rotate(180deg);display:flex;align-items:center" title="Volver a alojamientos" (click)="misectionHorizontal(firstwidth+'px','1s','center')">double_arrow</mat-icon>
 								</div>
+
+								<div class="w70">
+									Nuevo alojamiento
+								</div>
+
+								<div class="w15">
+
+								</div>
+
+
+								
+
+
+							<!-- icono valoraciones -->
+								<!--
+								<div style="width:15%;cursor:pointer" class="" >
+									<mat-icon class="banner_icon " title="Todas las Valoraciones">grade</mat-icon>
+								</div>
+							
+								<div style="width: 70%;font-weight: bold;">
+									<p class="mauto c_white bannerp1" #bannerp1>Crear nuevo alojamiento</p>
+								</div>
+
+							
+
+								<div style="width:15%;cursor:pointer" class="" >
+									<mat-icon class="banner_icon  mr10 floatR"  title="Información">info</mat-icon>
+								</div>
+							-->
 							</div>
 						</div>
 					</div>
-
-					<div class="w100 mauto div_card_rent" style="" >
-						<pre-newcard (modal)="setModal($event)"></pre-newcard>
-							
-
-							
-						
-					</div>
 				</div>
-					<!--<pre-card></pre-card>-->
-			</div>
 
-	</div>
+				<div class="w100 mauto div_card_rent" style="" >
+					<pre-newcard (modal)="setModal($event)"></pre-newcard>
+						
+
+						
+					
+				</div>
+			</div>
+				<!--<pre-card></pre-card>-->
+		</div>
+
+</div>
 <!--</div>-->
 <!--</div>-->

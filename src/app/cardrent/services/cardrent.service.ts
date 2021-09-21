@@ -26,13 +26,26 @@ export class CardrentService {
   public cardRentsSubject = new Subject<void>();
   public cardRents$ = this.cardRentsSubject.asObservable();
 
+  public selectedCardSubject = new Subject<void>();
+  public selectedCard$ = this.selectedCardSubject.asObservable();
+
+  private panelSubject = new Subject<void>();
+  public panel$ = this.panelSubject.asObservable();
+
+  private selFeedsSubject = new Subject<void>();
+  public selFeeds$ = this.selFeedsSubject.asObservable();
+
+  public selectedFeeds:any;
   public selectedCard:any;
   public typeCard:any;
   public banner1:any;
   public banner2:any;
   public images:Array<string>=[];
-  
+  //switch que permite mostrar/ocultar los 2 divs 
+  //(rayitas de nivel de ubicación y estrellitas de nivel de valoraciones)
   public switchFeed:any;
+  //slider de paneles dentro de cardrent
+  private selectedPanel:any;
 
   public formCardRent = new FormGroup({
     name: new FormControl('',[Validators.required]),
@@ -75,8 +88,31 @@ export class CardrentService {
     })
     */
   })
+
+  
   constructor(private _http:HttpClient){
     this.url=Global.url;
+  }
+
+  addFeedback(feedback:any){
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+    return this._http.post(this.url+'feedbackrent',feedback);
+  }
+  setSelectFeeds(feeds:any){
+    this.selectedFeeds = feeds;
+    this.selFeedsSubject.next();
+  }
+  getSelectFeeds(){
+    return this.selectedFeeds;
+  }
+
+  getFeedbacks():Observable<any>{
+    return this._http.get(this.url+"feedbackrents");
+  }
+  getFeedbacksByRentId(id:string):Observable<any>{
+    return this._http.get(this.url+"feedbackrents/"+id);
   }
 
   getSelectedCard(){
@@ -85,6 +121,7 @@ export class CardrentService {
 
   setSelectedCard(card:CardRent){
     this.selectedCard=card;
+    this.selectedCardSubject.next();
   }
   getTypeCard(){
     return this.typeCard;
@@ -107,12 +144,12 @@ export class CardrentService {
   getBanner2(){
     return this.banner2;
   }
-
+  //sirve para los 2 divs (estrellitas-> feedback, rayitas->location)
   setSwitchFeed(data:any){    
     this.switchFeed=data;
     this.switchDivFeed.next();
   }
-
+  //sirve para los 2 divs (estrellitas-> feedback, rayitas->location)
   getSwitchFeed(){
     return this.switchFeed;
   }  
@@ -127,7 +164,7 @@ export class CardrentService {
     return this.formCardRent;
   }
 
-  addCardRent(cardrent:any){
+  addCardRent(cardrent:any):Observable<any>{
     let headers=new HttpHeaders({
       "Content-Type":"application/json"
     });
@@ -155,9 +192,26 @@ export class CardrentService {
   getCardRents():Observable<any>{
     return this._http.get(this.url+'cardrents');
   }
+
+  setPanel(panel:any){
+    this.selectedPanel=panel;
+    this.panelSubject.next();
+  }
+  getPanel(){
+    return this.selectedPanel;
+  }
   
 
+  deleteFeeds():Observable<any>{
+    return this._http.delete(this.url+'feedbacks');
+  }
 
+  deleteCardRents():Observable<any>{
+    return this._http.delete(this.url+'cardrents');
+  }
+  deleteImages():Observable<any>{
+    return this._http.delete(this.url+'images');
+  }
 
   
 }

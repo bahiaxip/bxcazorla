@@ -10,7 +10,7 @@ export var CardRentData ={
 			[2,4,6],
 			[
 				{capacity:2,type:"cabaña",minNights:3,priceBase:210,priceNight:70},
-				{capacity:2,type:"casa",minNights:3,priceBase:240,priceNight:80},
+				{capacity:4,type:"casa",minNights:3,priceBase:240,priceNight:80},
 				{capacity:6,type:"casa",minNights:3,priceBase:285,priceNight:95}
 			],
 			[],

@@ -1,7 +1,7 @@
 <span>
-    <span class="material-icons feed_level">star</span>
-    <span class="material-icons feed_level">star</span>
-    <span class="material-icons feed_level">star</span>
-    <span class="material-icons feed_level">star</span>
-    <span class="material-icons feed_level">star</span>
+    <span class="material-icons feed_level" [ngStyle]="numLevelFeedback >=1 ? {'color': 'lightgreen'}:{'color':'orange'}">star</span>
+    <span class="material-icons feed_level" [ngStyle]="numLevelFeedback >=2 ? {'color': 'lightgreen'}:{'color':'orange'}">star</span>
+    <span class="material-icons feed_level" [ngStyle]="numLevelFeedback >=3 ? {'color': 'lightgreen'}:{'color':'orange'}">star</span>
+    <span class="material-icons feed_level" [ngStyle]="numLevelFeedback >=4 ? {'color': 'lightgreen'}:{'color':'orange'}">star</span>
+    <span class="material-icons feed_level" [ngStyle]="numLevelFeedback >=5 ? {'color': 'lightgreen'}:{'color':'orange'}">star</span>
 </span>

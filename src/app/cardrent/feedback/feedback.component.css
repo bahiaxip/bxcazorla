@@ -1,0 +1,50 @@
+.flex_item{
+	min-height: 50px;
+
+	/*max-height: 100%;*/
+	
+	width:70%;	
+	background-color:rgba(0,0,0,.7);
+	
+	display: flex;
+	padding-top: 5px;
+	
+	margin: auto;
+	border-radius:10px;
+	text-align: center;	
+	box-sizing: border-box;
+	overflow: hidden;
+	user-select: none;
+	
+}
+
+.flex_item .banner_icon{
+	display: flex;
+	font-size:35px;
+	color:orange;
+	cursor:pointer;
+
+	
+}
+
+.feedback_stars{
+	font-size: 35px;
+	margin: auto 10px;	
+}
+
+@media(max-width: 1200px){
+	.feedback_stars{
+		font-size: 25px;
+		margin: auto 5px;	
+	}	
+}
+
+@media(max-width: 650px){
+	.feedback_stars{
+		font-size: 20px;
+		margin: auto ;	
+	}
+	.inputs_formfeed{
+		width: 100%;
+	}
+}
