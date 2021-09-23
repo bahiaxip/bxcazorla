@@ -13,7 +13,7 @@
 	
 }
 .back_image{
-	background-image:  url("../../assets/cerrada_de_elias2.png");
+	background-image:  url("../../assets/cerrada_de_elias2.jpg");
 	background-position: top center;	
 	width: 100%;
 	height: 100%;
@@ -122,59 +122,6 @@
 	position: relative;
 	/*grid-column-start: span 3 !important;*/
 }
-
-
-/*anulado para el responsive, requiere mucho tiempo para establecer un diseño galería
-para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 columnas)
-/*
-.gallery__item:nth-child(2){
-	grid-column-start: span 2;
-}
-.gallery__item:nth-child(4){
-	//grid-column-start: span 2;
-}
-.gallery__item:nth-child(5){
-	//grid-row-start: span 2;
-	//grid-column-start: span 3;
-}
-.gallery__item:nth-child(7){
-	//grid-row-start: span 2;
-	//grid-column-start: span 3;
-}
-*/
-				/* fin gallery grid */
-
-/*
-.flex-container{
-	width: 100%;
-	margin: auto;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
-	background-color: #676767;
-	min-height: 600px;
-	padding: 20px;
-	height: 100vh;
-}
-
-.caja{
-	//background:rgba(0,0,0,0.5);
-	text-align: center;
-	margin: 5px;
-	width: 15%;
-	height: 40vh;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 100%;
-}
-.caja1{
-	background-image: url("../../assets/galeria1.jpg");
-}
-.caja2{
-	background-image: url("../../assets/river.jpg");
-}
-*/
-
 .div_flex{
 	width: 100%;
 	/*display: flex;*/
@@ -433,23 +380,6 @@ para cada resolución (necesario establecer con 1 columna, 2 columnas y con 3 co
 .div_feedback div{
 	/*background-color: orange;*/
 }
-
-
-
-
-
-
-
-
-/*
-.myspan:hover .div_image{
-	width: calc(100% - 10px);
-	height: 100%;
-	overflow: hidden;
-	transform: scale(1.1);
-	transition: transform 1s linear;
-}
-*/
 
 			/*		snow		*/
 .container_snow{
