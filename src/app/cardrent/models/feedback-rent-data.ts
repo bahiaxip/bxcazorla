@@ -12,7 +12,7 @@ export var FeedbackRentData = {
 		new FeedbackRent(
 			"Toni",
 			"toninavarrojimenez@gmail.com",
-			5,			
+			4,			
 			"En general todo muy bien . Las vistas a la montaña me encantaron",
 			null
 		),
@@ -26,7 +26,7 @@ export var FeedbackRentData = {
 		new FeedbackRent(
 			"Guille",
 			"guille2003@gmail.com",
-			5,			
+			4,			
 			"Apartamento muy completo, wifi, aire, parking y piscina y buen precio",
 			null
 		),

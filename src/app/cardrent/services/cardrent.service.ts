@@ -36,6 +36,14 @@ export class CardrentService {
   private selFeedsSubject = new Subject<void>();
   public selFeeds$ = this.selFeedsSubject.asObservable();
 
+  private heightInfoSubject = new Subject<void>();
+  public heightInfo$ = this.heightInfoSubject.asObservable();
+
+    
+
+  //height del panel desplegable de información
+  public heightInfo:any;
+  //feedbacks del alojamiento seleccionado
   public selectedFeeds:any;
   public selectedCard:any;
   public typeCard:any;
@@ -161,7 +169,7 @@ export class CardrentService {
     this.formCardRentSubject.next();
   }
   getFormCardRent(){
-    console.log("pasamos dataos")
+    //console.log("pasamos dataos desde getFormCardRent()")
     return this.formCardRent;
   }
 
@@ -212,6 +220,17 @@ export class CardrentService {
   }
   deleteImages():Observable<any>{
     return this._http.delete(this.url+'images');
+  }
+
+  setHeight(type:string,h:string){
+    if(type=='info'){
+      this.heightInfo = h;
+      this.heightInfoSubject.next();
+    }
+  }
+  getHeight(type:string){
+    if(type=="info")
+      return this.heightInfo;
   }
 
   

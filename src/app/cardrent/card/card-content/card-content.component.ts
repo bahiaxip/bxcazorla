@@ -82,17 +82,17 @@ export class CardContentComponent implements OnInit {
     
     
     //this.feedrentdata=FeedbackRentData.midata;
-    this.pricerentdata = PriceRentData.midata;
+    //this.pricerentdata = PriceRentData.midata;
     
   }
 
   ngOnInit(): void {
     //permite recargar la db de datos reales (limpiar db antes)
     //this.fillDB();
-  this.getCardRents();
+  this.getCardRents()
   this.getFeeds();
 
-  console.log("los ardrents: ",this.cardrentdata)   
+  //console.log("los ardrents: ",this.cardrentdata)   
     this.subscriptionCardRents=this._cardrentService.cardRents$.subscribe(()=> {
       this.getCardRents();
     })    
@@ -125,7 +125,7 @@ export class CardContentComponent implements OnInit {
     this._cardrentService.getFeedbacks().subscribe(
       response => {
         this.feedrentdata=response.feedbacks;
-        console.log("response desde getFeeds(): ",response)
+        //console.log("response desde getFeeds(): ",response)
       },
       error => {
 
@@ -145,13 +145,19 @@ export class CardContentComponent implements OnInit {
     )
   }
 
-  getCardRents(){
+  async getCardRents(){
     this._cardrentService.getCardRents().subscribe(
       response => {
-        console.log("el response :",response)
+        //console.log("el response :",response)
         this.cardrentdata=response.cardrents;
+        if(!this.selectedCard){
+          console.log("no existe selectedCard")
+          this.selectedCard=this.cardrentdata[0];
+          this._cardrentService.setSelectedCard(this.selectedCard);
+          console.log(this.selectedCard)
+        }
         this.cardrentdata.map((rent:any,index:number)=> {
-          console.log(rent)
+          //console.log(rent)
           
           this.selectedPersons[index]=rent.capacities;
           //generamos un índice dinámico para poder omitir la opción
@@ -177,6 +183,7 @@ export class CardContentComponent implements OnInit {
           //this.selectedNights[index]=rent.capacities[0].minNights;
           //console.log(this.selectedPersons[index])
           //console.log(index)
+          
         })
         //this.selectedPerson=this.cardrentdata
         //this.cardrentdata.listImages=this.cardrentdata.capacities;
@@ -283,36 +290,39 @@ export class CardContentComponent implements OnInit {
   //el text puede ser un string o puede ser otra cosa:en feedback es un título,
   //aunque debería ser un id.
   //selectOptionCard(type:string,text:any=null){
-  selectOptionCard(type:string,card:any){
+  selectOptionCard(type:string,card:any){    
     let totalText;
     
     //asignamos botón pulsado
     this.pushedOptionCard=true;
 
     if(card == this.selectedCard && this.selTypeCard != type
-      || card != this.selectedCard || this.selTypeCard == "images"){
+      || card != this.selectedCard || this.selTypeCard == "images" || this.selTypeCard == "info"){
       console.log("entra en selectOptionCard")
       //actualizamos el tipo de botón pulsado
       this._cardrentService.setTypeCard(type);
       this.selTypeCard=type;
       
-      //si el botón pulsado no es ni images ni feedback y el interval
-      //se encuentra activo, limpiamos el interval y el div de valoraciones(estrellitas)
-      if(type != "feedback" && type != "images" ||card !=this.selectedCard && this.selectedCard != null){
+      //si el botón pulsado no es ni images ni feedback ni info y el interval
+      //se encuentra activo, limpiamos el interval y el div de valoraciones(estrellitas),
+      //limpiamos tb el banner2
+  //revisar si incluir "info"
+      if(type != "feedback" && type != "images" && type != "info" ||card !=this.selectedCard && this.selectedCard != null){
         //console.log("es distinta card")
+        
         this.resetFeed2Interval();
         this._cardrentService.setBanner2("");
 
       }
 
-      //si el botón pulsado no es location ni images limpiamos el div de nivel de ubicación(rayitas)
-      if(type != "location" && type != "images"|| type == "images" && card != this.selectedCard){        
+      //si el botón pulsado no es location ni images ni info limpiamos el div de nivel de ubicación(rayitas)
+      if(type != "location" && type != "images" && type!="info"|| type == "images" && card != this.selectedCard){        
         this.swDivFeed(false)
         
       }
       
-      if(type == "feedback" || type == "images"){
-        
+      //if(type == "feedback" || type == "images"){
+        if(type == "feedback" || type == "images" || type =="info"){
         let selectedElement;
         selectedElement=type;        
         if(type == "feedback"){
@@ -364,9 +374,16 @@ export class CardContentComponent implements OnInit {
           
           this._cardrentService.setBanner2({selectedElement,totalText,card});          
         }else if(type == "images"){          
+          console.log("el info desde selectOptioncard: ",totalText)
           selectedElement=type;
           //enviamos un objeto en lugar de un string y detenemos          
           this._cardrentService.setBanner2({selectedElement,totalText,card})          
+        }
+        else if(type=="info"){
+          console.log("el info desde selectOptioncard: ",totalText)
+          selectedElement=type;
+          this._cardrentService.setBanner2({selectedElement,totalText,card})
+          return;
         }
 
       }else{

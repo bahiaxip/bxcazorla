@@ -1,1 +1,151 @@
-<p>card-infoservices works!</p>
+<div class="w100" style="background-color: white;height:0;transition:all 1s linear" [ngStyle]="{'height':myHeightInfo}">
+	<div class="gallery_first" style="cursor:pointer">
+		<mat-icon class="material-icons" style="font-size:25px" (click)="hideImagesCard('images')" >
+			close
+		</mat-icon>
+	</div>
+	<p>Servicios incluidos</p>
+	<div style="background-color: white;display:flex;justify-content: space-around;width:100%;margin:auto">
+		<div class="services" [ngStyle]="selectedCard.services.length<=8 ? {'width':'100%'}:{'width':'auto'}">
+			<div class="subservices" style="" >
+				<div class="title_services">
+					<div style="margin:auto">
+						<div *ngFor="let service of selectedCard.services.slice(0,4);let i=index">
+							<div style="display:flex;align-items:center;font-size:12px;margin:5px auto" *ngIf="i<4">	
+								<mat-icon class="material-icons" >
+									{{iconsService[service]}}
+								</mat-icon>
+								&nbsp;{{service}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="title_services">
+					<div style="margin:auto">
+						<div *ngFor="let service of selectedCard.services.slice(4,8);let i=index">
+							<div style="display:flex;align-items:center;font-size:12px;margin:5px auto" *ngIf="i<4">	
+								<mat-icon class="material-icons" >
+									{{iconsService[service]}}
+								</mat-icon>
+								&nbsp;{{service}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="subservices" style="" *ngIf="selectedCard.services.length>8">
+				<div class="title_services">
+					<div style="margin:auto">
+						<div *ngFor="let service of selectedCard.services.slice(8,12);let i=index">
+							<div style="display:flex;align-items:center;font-size:12px;margin:5px auto" *ngIf="i<4">	
+								<mat-icon class="material-icons" >
+									{{iconsService[service]}}
+								</mat-icon>
+								&nbsp;{{service}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="title_services">
+					<div style="margin:auto">
+						<div *ngFor="let service of selectedCard.services.slice(12,16);let i=index">
+							<div style="display:flex;align-items:center;font-size:12px;margin:5px auto" *ngIf="i<4">	
+								<mat-icon class="material-icons" >
+									{{iconsService[service]}}
+								</mat-icon>
+								&nbsp;{{service}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--
+			<div class="subservices" style="" *ngIf="selectedCard.services.length>8">
+				<div class="title_services"   >
+					<div *ngFor="let service of selectedCard.services.slice(8,12);let i=index">
+						<span style="display:flex;align-items:center;font-size:12px" >	
+							<mat-icon class="material-icons" >
+								{{iconsService[service]}}
+							</mat-icon>
+							&nbsp;{{service}}
+						</span>
+					</div>
+				</div>
+				<div class="title_services"   >
+					<div *ngFor="let service of selectedCard.services.slice(12,16);let i=index">
+						<span style="display:flex;align-items:center;font-size:12px" >	
+							<mat-icon class="material-icons" >
+								{{iconsService[service]}}
+							</mat-icon>
+							&nbsp;{{service}}
+						</span>
+					</div>
+				</div>
+			</div>
+			-->
+			<!--<div class="subservices" style="" *ngFor="let service of selectedCard.services;let i=index">
+				<div class="title_services" style="" *ngIf="i>=8 && i<12" >
+					<span style="display:flex;align-items:center;font-size:12px" >	
+						<mat-icon class="material-icons">
+							{{iconsService[service]}}
+						</mat-icon>
+						&nbsp;{{service}}
+					</span>
+				</div>
+				<div class="title_services" style="" *ngIf="i>=12 && i<16">
+					<span style="display:flex;align-items:center;font-size:12px" >	
+						<mat-icon class="material-icons">
+							{{iconsService[service]}}
+						</mat-icon>
+						&nbsp;{{service}}
+					</span>
+				</div>
+			</div>-->
+		</div>
+		<!--<span style="display:flex;align-items:center">
+			<mat-icon class="material-icons">
+				ac_unit
+			</mat-icon>
+		A/A</span>
+		
+		<span style="display:flex;align-items:center">
+			<mat-icon class="material-icons">
+				home
+			</mat-icon>
+		Calefacción</span>
+		
+		<span style="display:flex;align-items:center">
+			<mat-icon class="material-icons">
+				local_fire_department
+			</mat-icon>							
+			Chimenea
+		</span>
+
+		<span style="display:flex;align-items:center">
+			<mat-icon class="material-icons">
+				pets
+			</mat-icon>
+			Mascotas
+		</span>
+
+		<span style="display:flex;align-items:center">
+			<mat-icon class="material-icons">
+				local_parking
+			</mat-icon>
+			Parking
+		</span>
+
+		<span style="display:flex;align-items:center">
+			<mat-icon class="material-icons">
+				pool
+			</mat-icon>
+			Piscina
+		</span>
+	-->
+	</div>
+	<p>{{selectedCard.title}}</p>
+	<p>
+		<pre-divlevel [numLevelFeedback]="selectedCard.numLevelFeedback"></pre-divlevel>
+	</p>
+	<p>{{selectedCard.text}}</p>
+</div>

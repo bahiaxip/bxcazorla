@@ -10,14 +10,14 @@ export class NewcardServicesComponent implements OnInit {
   changedCheckbox=new EventEmitter<any>();
   public services= new FormGroup({
       wifi:new FormControl(false),
-      mascota:new FormControl(false),
+      mascotas:new FormControl(false),
       parking:new FormControl(false),
       piscina: new FormControl(false),
       spa: new FormControl(false),
-      bar: new FormControl(false),
+      cafetería: new FormControl(false),
       restaurante: new FormControl(false),
       aa:new FormControl(false),
-      sillaruedas:new FormControl(false),
+      accesibilidad:new FormControl(false),
       cuna:new FormControl(false),
       fumar:new FormControl(false)
 

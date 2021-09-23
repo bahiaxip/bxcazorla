@@ -1,0 +1,48 @@
+.services{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.subservices{
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	//margin: auto;
+	
+}
+.title_services{
+	width: 50%;
+	display: flex;
+	flex-flow: column nowrap;
+	margin: auto;
+	justify-content: center;
+}
+
+.title_services div{
+	//margin: auto;
+	display: block;	
+}
+
+@media (max-width: 1000px){
+	.services{
+		display:block
+	}
+}
+
+@media (max-width: 550px){
+	.subservices{
+		display: block;
+	}
+	.title_services{
+		
+	}
+	.title_services div{
+		
+	}
+}
+@media(max-width: 300px){
+	.title_services{
+		margin: 0;
+	}	
+}

@@ -15,7 +15,8 @@ export class CardrentComponent{
   firstwidth:any;
 
   //switch para modal imagen no válida
-  public switchModal:boolean=false;
+  public switchModalNewCard:boolean=false;
+   
   public panelSelected:string='center';
 
   private subscriptionPanel:any;
@@ -46,7 +47,7 @@ export class CardrentComponent{
     window.addEventListener("resize",(e)=>{
       let slidercardrentStyle = this.slidercardrent.nativeElement.style
 
-      console.log("hola: ",slidercardrentStyle.transform)
+      //console.log("hola: ",slidercardrentStyle.transform)
       //this.slidercardrent.nativeElement.scrollTop=0;
 //si no es el de en medio pasamos automáticamente al derecho, necesario cambiar al añadir otro panel
       if(this.panelSelected=='center')        
@@ -119,7 +120,7 @@ export class CardrentComponent{
 
 
   setModal(sw:boolean){
-    this.switchModal=sw;
+    this.switchModalNewCard=sw;
   }
   misectionHorizontal(size:string,duration:string,side:string){
     this.slidercardrent.nativeElement.style.transitionDuration=duration;

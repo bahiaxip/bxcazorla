@@ -131,9 +131,9 @@ export class HomeComponent implements OnInit {
     
     //comprobamos y almacenamos el ancho del section principal
     this.firstWidth=this.section1.nativeElement.clientWidth;
-    console.log(this.firstWidth);
+    //console.log(this.firstWidth);
     this.firstHeight=this.section1.nativeElement.clientHeight;
-    console.log(this.firstHeight);
+    //console.log(this.firstHeight);
     this.setSectionByScroll()
 
     //actualizamos el ancho para los mensajes deslizantes de valoraciones
@@ -159,7 +159,7 @@ export class HomeComponent implements OnInit {
 //revisar si no es necesario
       this.setSectionByScroll();
       this.firstWidth=this.section1.nativeElement.clientWidth;
-      console.log("nuevo firstWidth: ",this.firstWidth)
+      //console.log("nuevo firstWidth: ",this.firstWidth)
       //console.log(this.firstWidth=this.section1.nativeElement.clientWidth)
       this.selectedSection.scrollIntoView();
     })

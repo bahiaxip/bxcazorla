@@ -28,7 +28,7 @@ export class NewcardInputsComponent implements OnInit {
 
   constructor(private _cardrentService:CardrentService ){
     this.formCardRent=_cardrentService.getFormCardRent();
-    console.log("formcardrent: ", this.formCardRent);
+    console.log("- getting formcardrent from newcard-inputs to cardrentService: ", this.formCardRent);
     //creamos lista de las distintas capacidades de personas(del 1 al 10 
     //y convertimos en 9 con shift())
     this.lista=[...Array(10).keys()];    

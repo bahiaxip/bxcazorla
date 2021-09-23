@@ -17,12 +17,14 @@ export class NewcardPricesComponent implements OnInit {
 
   constructor(private _cardrentService:CardrentService) {
     this.formCardRent = _cardrentService.getFormCardRent();
+    console.log("- getting formCardRent from newcard-prices to cardrentService")
     this.listCapacity=this.formCardRent.controls.capacities.controls;
     this.listtypeGroup=this.formCardRent.controls.type.controls;
 
   }
 
   ngOnInit(): void {
+    //suscripción de FormGroup() creado en servicio
     this.subscriptionForm= this._cardrentService.formCardRent$.subscribe(()=> {
       this.formCardRent = this._cardrentService.getFormCardRent();
       this.listCapacity=this.formCardRent.controls.capacities.controls;

@@ -14,7 +14,7 @@
 		<!-- icon edit -->
 				<mat-icon class="banner_icon  mr10 mt10 floatR" style="color:orange"  title="Editar" >edit_note</mat-icon>
 		<!-- icon info -->
-				<mat-icon class="banner_icon  mr10 mt10 floatL" style="color:orange"  title="Información" >info</mat-icon>
+				<mat-icon class="banner_icon  mr10 mt10 floatL" style="color:orange"  title="Información" (click)="selectOptionCard('info',rent)">info</mat-icon>
 
 		<!-- title/subtitle -->
 				<div class="title_renting">
@@ -83,7 +83,7 @@
 							</div>
 
 							<div class="w50 mauto div_visible" >
-								<p class="mauto"> Opiniones</p>
+								<p class="mauto">Valoraciones</p>
 							</div>
 						</div>
 					<!-- capacity -->
@@ -94,7 +94,7 @@
 								</span>
 							</div>
 							<div class="w50 mauto div_visible">
-								<p class="mauto"> 2,4 y 6 personas</p>
+								<p class="mauto"> Capacidad</p>
 							</div>
 						</div>
 					</div>
@@ -104,20 +104,62 @@
 						<div class="w30 div_price_item">
 							<span class="price_item">{{selectedPrice[i]}}€</span>
 						</div>
+						
 					<!-- selection nights/persons -->
 						<div class="w70 price_detail"  style="display:flex">
+						<!-- anulado
+							<div style="width:10%;display:block;position:relative" >
+								<div class="w100">
+									<mat-icon class="material-icons" style="font-size:20px;width: 100%;height:20px;display:flex;justify-content: center;vertical-align:middle;margin-top:10px">home</mat-icon>
+									<div style="width: 100%;display:flex;justify-content:center">
+										<mat-icon class="material-icons-round" style="font-size:15px;bottom:0px;position:absolute;width:100%;display:flex;justify-content:center;align-content:start;height:15px">expand_more</mat-icon>
+									</div>
+								</div>
+							</div>
+
+							<div class="w100" style="height:100%;max-height:200px">
+
+							</div>
+						-->
 						<!-- select persons -->
 							<div class="w50" >
-								<div class="w100" style="display:flex;justify-content:center" (click)="editPrice(1,i)">
+								<div class="w100" style="display:flex;position: relative;justify-content:center" (click)="editPrice(1,i)">
+								<!-- tipo -->
+									<div style="position:absolute;width:100%">
+										<span style="position:relative;width:100%;display: flex;justify-content:flex-end ;font-size:10px;color:#878787">
+										<!-- icono -->
+											<span class="material-icons" style="display: flex;align-items: center;font-size:10px;color:green">
+												{{rent.capacities[indSelPson[i]].type|iconType}}
+											</span>&nbsp;
+										<!-- tipo -->
+											{{rent.capacities[indSelPson[i]].type}}
+
+										</span>
+									</div>
+
 									<p>{{rent.capacities[indSelPson[i]].capacity}} {{rent.capacities[indSelPson[i]].capacity|minimrent:'capacity'}}
 									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
 									</p>
+									<span class="material-icons" style="display:flex;align-items:center;justify-content:flex-end;vertical-align: middle;position:absolute;width:100%;height:100%;font-size:20px">expand_more</span>
 								</div>
-								<div style="position:relative;width:100%;background-color:pink;height:100%;max-height:200px" *ngIf="menu1Active[i]">
+								<div style="position:relative;width:100%;background-color:transparent;height:100%;max-height:200px" *ngIf="menu1Active[i]">
 
 									<div style="position:absolute;width:100%;background-color:orange;display:block"  >
 										<div *ngFor="let person of rent.capacities; let j=index" style="display:flex;justify-content:center" (click)="editPrice(1,i,j)">
-											<div style="" *ngIf="indSelPson[i] != j">
+											<div style="display:flex;justify-content:center" *ngIf="indSelPson[i] != j">
+
+												<div style="position:absolute;width:100%">
+													<span style="position:relative;width:100%;display: flex;justify-content: flex-end;font-size:10px;color:#878787">
+													<!-- icono -->
+														<span class="material-icons" style="display: flex;align-items: center;font-size:10px;color:green">
+															{{person.type|iconType}}
+														</span>&nbsp;
+													<!-- tipo -->
+														{{person.type}}
+
+													</span>
+												</div>
+
 												<p>{{person.capacity}} {{person.capacity|minimrent:'capacity'}}
 													<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
 												</p>
@@ -130,7 +172,9 @@
 
 						<!-- selection nights -->
 							<div class="w50" >
-								<div class="w100" style="display:flex;justify-content:center" (click)="editPrice(2,i)">
+								<div class="w100" style="display:flex;position: relative;justify-content:center" (click)="editPrice(2,i)">
+									
+									
 									<p>{{selectedNights[i]}} {{selectedNights[i]|minimrent:'night'}}
 									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
 									</p>

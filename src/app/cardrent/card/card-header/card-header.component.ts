@@ -15,6 +15,8 @@ export class CardHeaderComponent implements OnInit {
 
   @Output()
   emitWidth=new EventEmitter<any>();
+  @Output()
+  modal = new EventEmitter<any>();
   public lastBannerDom2:any;
   public lastSwitchDivInfo:any;
   //switch para mostrar/ocultar feedback de location
@@ -34,12 +36,13 @@ export class CardHeaderComponent implements OnInit {
 
   public myHeight:string="0";
   public myHeight2:string="0";
-
+  public myHeightInfo:string="0";
 
   private subscriptionBanner1:any;
   private subscriptionBanner2:any;
   private subscriptionDivFeed:any; 
-
+  private subscriptionHeightInfo:any;
+  private subscriptionSelectedCard:any;
 
 
   //section4
@@ -47,7 +50,12 @@ export class CardHeaderComponent implements OnInit {
   @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
   @ViewChild('bannerp3',{static:true}) private bannerp3!:ElementRef;
   constructor(private _cardService:CardrentService) {
-    this.selectedCard=CardRentData.midata[0];
+//esto no sirve, puesto que no hay seleccionada ninguna por defecto, es
+  //necesaria una suscripción
+    this.selectedCard = _cardService.getSelectedCard();
+
+    //this.selectedCard=CardRentData.midata[0];
+    console.log("desde header: ",this.selectedCard)
   }
 
   ngOnInit(): void {    
@@ -64,6 +72,15 @@ export class CardHeaderComponent implements OnInit {
     this.subscriptionDivFeed=this._cardService.switchDivFeed$.subscribe(()=> {      
       this.switchDivFeed(this._cardService.getSwitchFeed());      
     })
+
+    this.subscriptionHeightInfo= this._cardService.heightInfo$.subscribe(()=> {
+      console.log("desde subscr: ",this._cardService.getHeight('info'))
+      this.myHeightInfo=this._cardService.getHeight('info');
+    })
+    this.subscriptionSelectedCard = this._cardService.selectedCard$.subscribe(()=> {
+      this.selectedCard = this._cardService.getSelectedCard();
+    })
+
 
     window.addEventListener("resize",()=> {
       //para que el ancho de bannerp3 se actualice y realice el efecto 
@@ -91,6 +108,7 @@ export class CardHeaderComponent implements OnInit {
     }else{
         this.myHeight2 = "0"
         this.myHeight = "0"
+        this.myHeightInfo="0";
     }
     console.log("type es: ",type)
 
@@ -144,7 +162,8 @@ export class CardHeaderComponent implements OnInit {
 
     //si no es de tipo feedback ni tampoco images, limpiamos el tercer <p> 
     //(orientado a la rotación de mensajes de valoraciones, que van pasando una a una)    
-    if(card.selectedElement && card.selectedElement != "feedback" && card.selectedElement != "images")
+    if(card.selectedElement && card.selectedElement != "feedback" 
+      && card.selectedElement != "images" && card.selectedElement != "info")
       this.bannerp3.nativeElement.innerHTML="";
   //console.log("pasamos a 0 duration y vemos el typecard: ",this._cardService.getTypeCard())
     //
@@ -166,6 +185,11 @@ export class CardHeaderComponent implements OnInit {
       
       this.myHeight="0";
       this.myHeight2="calc(100vh - 90px)";
+    }else if(card.selectedElement && card.selectedElement=="info"){
+      console.log("desde card-header: ",card.selectedElement.numLevelFeedback)
+      this.myHeight="0";
+      this.myHeight2="0";
+      this.myHeightInfo="calc(100vh - 90px)";
     }else if(card.selectedElement && card.selectedElement=="feedback"){
       //limpiamos bannerp2
       this.bannerp2.nativeElement.innerHTML="";        
@@ -237,13 +261,19 @@ export class CardHeaderComponent implements OnInit {
       this.switchDivFeedback2=data.value;
     }
   }
-  setPanel(side:string){
+  //slider de paneles
+  setPanel(side:string){    
     let selectedCard = this._cardService.getSelectedCard();
+    //Para acceder al panel de feedbacks es necesario tener seleccionado 
+    //un alojamiento
     if(side =="left" && !selectedCard){
-      console.log("mensaje debe seleccionar un alojamiento");
+      this.modal.emit("Es necesario seleccionar un alojamiento para acceder al panel de valoraciones");
+      //console.log("mensaje debe seleccionar un alojamiento");
       return;
     }
-    this._cardService.setPanel(side)
+    this._cardService.setPanel(side)  
+    
+    
   }  
 
 }

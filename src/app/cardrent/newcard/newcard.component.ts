@@ -33,8 +33,9 @@ export class NewcardComponent implements OnInit {
   public listCapacity:any;
   public listtypeGroup:any;
   constructor(private _cardrentService:CardrentService) {
+    //obtenemos el objeto FormGroup creado en el servicio
     this.formCardRent=_cardrentService.getFormCardRent(); 
-    console.log("formCardRent desde newcard: ",this.formCardRent)   
+    console.log("- getting formCardRent from newcard.component to cardrentService: ",this.formCardRent)   
     //this.listCapacities = this.formCardRent.controls.capacities;
     this.listCapacity=this.formCardRent.controls.capacities.controls;
     this.listtypeGroup=this.formCardRent.controls.type.controls;
