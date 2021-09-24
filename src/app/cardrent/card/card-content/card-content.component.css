@@ -21,7 +21,8 @@
 	color: white;
 	border-radius: 10px;
 	/*background-color: rgba(74,58,58,1);*/
-	background-color: rgba(44,18,18,.7);
+	/*background-color: rgba(44,18,18,.7);*/
+	background-color: rgba(0,0,0,.7);
 	
 }
 
@@ -80,8 +81,9 @@
 	background-color: rgba(74,58,58,1);
 	*/
 
-	//background-color: green;
-	background-color: rgba(0,131,45,1);
+	background-color: #00c487;
+	/*background-color: rgba(0,131,45,1);*/
+
 	
 	border-bottom-left-radius: 10px;
 	border-top-left-radius: 10px;
@@ -173,7 +175,8 @@
 	display: inline-flex;
 }
 .icon_circle_double{
-	color: #009143;
+	/*color: #009143;*/
+	color: #00c487;
 	font-size: 22px;
 }
 .div_visible{

@@ -9,7 +9,9 @@
 	padding: 0;
 	z-index: 100;
 	overflow: hidden;
+}
 
+.section2{
 	
 }
 .back_image{
@@ -43,7 +45,48 @@
 	animation-name: flash;
 }
 
+				/*** buttons, button-group **/
 
+.button_group{
+	color:#fff;
+	position:fixed;
+	z-index: 300;
+	top:30%;
+	left:5%;
+	background:#ff7500
+}
+
+.btn_slider_section{
+	position: fixed;
+	z-index: 300;	
+	color:#FFF;
+	background: transparent;
+	border:transparent 2px solid;
+	left:50%;
+	transform:translate(-50%,-50%) scale(1.5,1.5);
+	cursor: pointer;
+}
+.btn_slider_section.top{
+	top:20px;
+}
+.btn_slider_section.top .icon{
+	transform:rotate(270deg) scale(1,2);
+	color:#000;
+	margin-bottom:1px;
+}
+
+.btn_slider_section.bottom{
+	bottom:1px;
+}
+
+.btn_slider_section.bottom .icon{
+	transform:rotate(90deg) scale(1,2);
+	color:#000;
+	margin-bottom:1px;
+}
+.btn_slider_section.bottom .icon:hover,.btn_slider_section.top .icon:hover{
+	color: #D3D3D3;
+}
 
 
 @keyframes flash{
@@ -396,6 +439,7 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 	/*
 	height: 100%;
 	transition: opacity 5s linear;

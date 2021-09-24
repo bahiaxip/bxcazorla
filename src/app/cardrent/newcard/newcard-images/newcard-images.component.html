@@ -14,7 +14,8 @@
 				
 			</div>
 			<div style="position:absolute;display: flex;vertical-align: middle;justify-content:center;align-items:center;width:'calc(100% - 48px)';min-height:200px" *ngIf="!existsImg">
-				<button mat-raised-button  style="margin:auto;background-color:rgba(0,0,0,.8);color:white" type="button">No mayor a 2 MBArrastrar imagen aquí</button>
+				<p style="font-size:10px;margin:auto;position:absolute;top:10px">No superiores a 2 MB</p>
+				<button mat-raised-button  style="margin:auto;background-color:rgba(0,0,0,.8);color:white" type="button">Arrastrar imagen aquí</button>
 			</div>
 			<div *ngIf="existsImg" style="display:flex;user-select:none">
 			<!-- añadir display:flex si es más alta que ancha, necesario 

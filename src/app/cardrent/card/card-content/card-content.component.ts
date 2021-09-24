@@ -97,9 +97,60 @@ export class CardContentComponent implements OnInit {
       this.getCardRents();
     })    
   }
-
-  //rellenar base de datos con un array de objetos ya creado
+  
   fillDB(){
+    //lista directa desde card-rent-data        
+    //this.cardrentdata=CardRentData.midata;
+    this._cardrentService.deleteCardRents().subscribe(
+      response => {
+        console.log("response desde deleteCardRents: ",response)
+      },
+      error => {
+
+      }
+    )
+    this._cardrentService.deleteFeeds().subscribe(
+      response => {
+        console.log("feedbacks eliminados: ",response)
+      },
+      error => {
+
+      }
+    )
+    this._cardrentService.deleteImages().subscribe(
+      response => {
+        console.log("imágenes eliminadas: ",response)
+        let list=CardRentData.midata;
+        list.map((cardrent:any)=>{
+          console.log("mi cardrent desde map: ",cardrent)      
+          this._cardrentService.addCardRent(cardrent).subscribe(
+            response => {
+              if(response && response.id){
+                let id=response.id;
+                let listFeedback = FeedbackRentData.midata;
+                listFeedback.map((feedbackrent:any) => {
+                  feedbackrent.rentId=id;
+                  this._cardrentService.addFeedback(feedbackrent).subscribe();
+                })
+              }
+              console.log(response)
+            },
+            error => {
+
+            }
+          );
+        })
+      },
+      error => {
+
+      }
+    )
+    
+    
+  }
+  
+  //rellenar base de datos con un array de objetos ya creado
+  //fillDB(){
     //lista directa desde card-rent-data        
     //this.cardrentdata=CardRentData.midata;
     
@@ -110,7 +161,7 @@ export class CardContentComponent implements OnInit {
       this._cardrentService.addCardRent(cardrent).subscribe();
     })
     */
-  }
+  //}
 
   //creamos un array de nights desde el mínimo de noches a 10 noches
     //a cada uno de los rentcards asociado mediante el índice

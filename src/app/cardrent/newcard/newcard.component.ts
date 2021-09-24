@@ -50,8 +50,8 @@ export class NewcardComponent implements OnInit {
       this.listCapacity=this.formCardRent.controls.capacities.controls;
 
       this.listtypeGroup=this.formCardRent.controls.type;
-      console.log("listtyupeGroup: ",this.listtypeGroup)
-      console.log("desde newcard.component listCapacity: ",this.formCardRent.controls)
+      //console.log("listtyupeGroup: ",this.listtypeGroup)
+      //console.log("desde newcard.component listCapacity: ",this.formCardRent.controls)
       //this.listCapacities = this.formCardRent.controls.capacities;
 
     })
@@ -65,8 +65,8 @@ export class NewcardComponent implements OnInit {
     //seleccionados en el select
   }
 
-  showModal(value:any){
-    this.modal.emit(value);
+  showModal(data:any){    
+    this.modal.emit(data);
   }
   
 
@@ -83,7 +83,12 @@ export class NewcardComponent implements OnInit {
 
   onSubmit(){
 
-    console.log(this.formCardRent)
+    //console.log(this.formCardRent)
+    //comprobamos si existe alguna imagen
+    if(this.getImages().length==0){
+      this.showModal({value:true,text:"Es necesario añadir al menos una imagen"})
+      return
+    }
     this.cardrent={
       title:this.formCardRent.controls.name.value,
       //minPrice:this.formCardRent.controls.capacities.controls[0].controls.priceBase,
@@ -109,14 +114,16 @@ export class NewcardComponent implements OnInit {
     }
     this.cardrent.capacities=this.getCapacities()    
     this.cardrent.services=this.getServices()
-    
+    console.log("se guarda el submit: ",this.getImages())
+    this.createCardRent();
+
     //las imágenes en otro método
     //this.cardrent.images=this.getImages();
     //console.log(this.cardrent.images);
     //if(this.cardrent.capacities && this.cardrent.title && this.cardrent.phone
       //&& this.cardrent.type)  
 
-      //this.createCardRent();    
+          
   }
 
   uploadImages(id:string){    
@@ -172,7 +179,7 @@ export class NewcardComponent implements OnInit {
   }
 
   //crear nuevo rentcard
-  /*
+  
   createCardRent(){
     //console.log("desde createCardrent: ",this.cardrent) 
     this._cardrentService.addCardRent(this.cardrent).subscribe(
@@ -197,7 +204,7 @@ export class NewcardComponent implements OnInit {
       }
     )
   }
-  */
+  
   /* anulado */
   /*
   boton(){

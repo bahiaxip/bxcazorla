@@ -134,7 +134,7 @@ export class NewcardImagesComponent implements OnInit {
         }else{
           //llamamos al modal y mostramos mensaje si no es de formato imagen
           console.log("El archivo no es una imagen válida");
-          this.modal.emit(true);
+          this.modal.emit({value:true,text:"La imagen no es válida"});
         }
       }     
   }

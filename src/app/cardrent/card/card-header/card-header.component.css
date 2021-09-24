@@ -6,7 +6,7 @@
 
 	position: absolute;
 	left: 0;
-	z-index: 300;
+	z-index: 200;
 }
 .flex_header .div_flex_item{
 	width:100%;

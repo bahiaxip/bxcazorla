@@ -42,9 +42,11 @@ export class CardInfoservicesComponent implements OnInit {
 
     }
     console.log("lista desde inforservices: ",this.selectedCard.services)
+    /*
     let list = this.selectedCard.services.map((service:any)=> {
       return {service:service}
     })
+    */
   }
 
   hideImagesCard(data:any){

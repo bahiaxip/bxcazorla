@@ -5,6 +5,7 @@
 }
 .mygallery{
 	height: 100vh;
+	background-color: #676767;
 }
 .g-image-item{
 	/*background-size: 100%  !important;*/
@@ -133,8 +134,12 @@ html,body{
 	margin: auto 2px;
 }
 
+				/***** home component ******/
 
 
+
+
+				/***** fin home component ******/
 
 
 /*keyframes & media*/

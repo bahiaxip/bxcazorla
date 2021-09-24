@@ -8,9 +8,10 @@ import { Title } from '@angular/platform-browser';
 //import { IconPipe } from '../pipes/icon.pipe';
 import { CardRent } from '../models/card-rent';
 import { CardRentData } from '../models/card-rent-data';
+import { FeedbackRentData } from '../models/feedback-rent-data';
 
 //services
-import { CardService } from '../services/card.service';
+import { CardrentService } from '../cardrent/services/cardrent.service';
 
 @Component({
   selector: 'pre-home',
@@ -30,6 +31,10 @@ export class HomeComponent implements OnInit {
   public selectedCard:any;
   
   private selectedSection:any=null;
+  public sectionId:any;
+  //botón de buttongroup
+  public buttonValue:any;
+
   public images2:any;
   panelOpenState=false;
   images: any;
@@ -89,7 +94,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private titleService:Title,
-    private _cardService:CardService,    
+    private _cardrentService:CardrentService,    
   ) {
     this.typeFeedback=true;
     this.titleService.setTitle("Mi titulo");
@@ -97,7 +102,20 @@ export class HomeComponent implements OnInit {
     
     
     //cargamos la primera card para que la transición tome efecto desde la primera vez
-    this.selectedCard=CardRentData.midata[0];
+    //this.selectedCard=CardRentData.midata[0];
+    /*
+    let cardrents=this._cardrentService.getCardRents().subscribe(
+      response => {
+        this.selectedCard=response[0];
+      },
+      error => {
+
+      }
+    );
+    */
+    
+
+
 
     //window.addEventListener("")
     //this.selectedSection=this.section1.nativeElement;
@@ -197,9 +215,7 @@ export class HomeComponent implements OnInit {
     if(this.firstWidth>=1000 && this.firstHeight<=this.firstWidth){
       //anulada animación (poco realista)
       
-      this.animation1();
-      this.animation2()
-      this.rainAuto();
+      
       
 
     }
@@ -245,18 +261,30 @@ export class HomeComponent implements OnInit {
     for(let i=0;i<5;i++){
       if(window.scrollY == sectionSize * i 
         ){
-        //console.log("entra en el loop")
+        console.log("entra en el loop: ",i)
         let sect;        
-          if(i==1)
+          if(i==1){
             this.selectedSection=this.section2.nativeElement;
-          else if(i==2)
+            this.sectionId=i+1;
+            break;            
+          }else if(i==2){
             this.selectedSection=this.section3.nativeElement;
-          else if(i==3)
+            this.sectionId=i+1;
+            break;
+          }else if(i==3){
             this.selectedSection=this.section4.nativeElement;
-          else if(i==4)
+            this.sectionId=i+1;
+            break;
+          }else if(i==4){
             this.selectedSection=this.section4.nativeElement;
-          else 
+            this.sectionId=i+1;
+            break;
+          }
+          else{ 
             this.selectedSection=this.section1.nativeElement;
+            this.sectionId=i+1;
+            break;
+          }
       }else{
         //console.log("NO entra en el loop")
       }
@@ -370,32 +398,36 @@ export class HomeComponent implements OnInit {
     clearInterval(this.rainInterval);
   }
 
-  enviar(id:number){
+  setSection(id:number){
     if(id==1){
       this.selectedSection=this.section1.nativeElement;
+      this.sectionId=1;
+      this.buttonValue="home"
       console.log("al 1")
       this.selectedSection.scrollIntoView({behavior:"smooth"});       
     }else if(id==2){
       this.selectedSection=this.section2.nativeElement;
+      this.sectionId=2;
+      this.buttonValue="places"
       console.log("al 2")
-
-      this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});  
-      //this.section1.nativeElement.style.display="none"
-      //this.section1.nativeElement.style.height="auto";
-      console.log(this.section2.nativeElement.getBoundingClientRect().top)
-      console.log(this.section2.nativeElement.scrollTop);
+      this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});
     }else if(id==3){
       this.selectedSection=this.section3.nativeElement;
+      this.sectionId=3;
+      this.buttonValue="rent"
       console.log("al 3")
-      this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});  
+      this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});
     }
     else if(id==4){
       this.selectedSection=this.section4.nativeElement;
+      this.sectionId=4;
+      this.buttonValue="gallery"
       console.log("al 4")
-      this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});  
-      console.log(this.section4.nativeElement.getBoundingClientRect().top)
+
+      this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});        
       console.log(this.section4.nativeElement.scrollTop);
     }
+    console.log("tipo de botón: ",this.buttonValue)
   }
 
   
@@ -457,4 +489,69 @@ export class HomeComponent implements OnInit {
     return d; // returns the distance in meter
   };
   */
+  //rellenar base de datos con un array de objetos ya creado
+  fillDB(){
+    //lista directa desde card-rent-data        
+    //this.cardrentdata=CardRentData.midata;
+    this._cardrentService.deleteCardRents().subscribe(
+      response => {
+        console.log("response desde deleteCardRents: ",response)
+        this._cardrentService.deleteFeeds().subscribe(
+          response => {
+            console.log("feedbacks eliminados: ",response)
+            this._cardrentService.deleteImages().subscribe(
+              response => {
+                console.log("imágenes eliminadas: ",response)
+                let list=CardRentData.midata;
+                list.map((cardrent:any)=>{
+                  console.log("mi cardrent desde map: ",cardrent)      
+                  this._cardrentService.addCardRent(cardrent).subscribe(
+                    response => {
+                      if(response && response.id){
+                        let id=response.id;
+                        let listFeedback = FeedbackRentData.midata;
+                        listFeedback.map((feedbackrent:any) => {
+                          feedbackrent.rentId=id;
+                          this._cardrentService.addFeedback(feedbackrent).subscribe();
+                        })
+                      }
+                      console.log(response)
+                    },
+                    error => {
+
+                    }
+                  );
+                })
+              },
+              error => {
+
+              }
+            )
+            
+          },
+          error => {
+
+          }
+        )
+      },
+      error => {
+
+      }
+    )
+    
+    
+    
+    
+  }
+
+  setAnimations(){
+    this.animation1();
+    this.animation2()
+    this.rainAuto();
+    setTimeout(()=> {
+      this.flash();
+    },6000)
+  }
+
+
 }
