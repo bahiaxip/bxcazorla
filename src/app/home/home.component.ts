@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit {
     private _cardrentService:CardrentService,    
   ) {
     this.typeFeedback=true;
-    this.titleService.setTitle("Mi titulo");
+    this.titleService.setTitle("Arroyo Frío");
 
     
     
@@ -527,7 +527,7 @@ export class HomeComponent implements OnInit {
 
               }
             )
-            
+
           },
           error => {
 
