@@ -2,8 +2,7 @@ import { Component,Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup,FormControl,Validators, FormArray } from '@angular/forms';
 //import { MatAccordion } from '@angular/material/expansion';
 import { CardrentService } from './services/cardrent.service';
-import { CardRentData } from './models/card-rent-data';
-import { FeedbackRentData } from './models/feedback-rent-data';
+
 
 @Component({
   selector: 'pre-cardrent',
@@ -32,9 +31,7 @@ export class CardrentComponent{
     
   }
 
-  ngOnInit(){
-  //permite recargar la db de datos reales, limpiando la db antes
-    //this.fillDB();
+  ngOnInit(){ 
 
 
     //suscription slider panels
@@ -60,9 +57,6 @@ export class CardrentComponent{
         this.misectionHorizontal(this.firstwidth+'px','0s','center');
     });
   }
-
-  
-
   onSubmit(){
 
   }

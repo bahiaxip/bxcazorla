@@ -77,8 +77,9 @@ export class CardHeaderComponent implements OnInit {
       console.log("desde subscr: ",this._cardService.getHeight('info'))
       this.myHeightInfo=this._cardService.getHeight('info');
     })
-    this.subscriptionSelectedCard = this._cardService.selectedCard$.subscribe(()=> {
+    this.subscriptionSelectedCard = this._cardService.selectedCard$.subscribe(()=> {      
       this.selectedCard = this._cardService.getSelectedCard();
+      console.log("selectedCard desde header con suscription: ",this.selectedCard)
     })
 
 
@@ -266,6 +267,7 @@ export class CardHeaderComponent implements OnInit {
     let selectedCard = this._cardService.getSelectedCard();
     //Para acceder al panel de feedbacks es necesario tener seleccionado 
     //un alojamiento
+    console.log("selectedCard desde setPanel(): ",selectedCard)
     if(side =="left" && !selectedCard){
       this.modal.emit("Es necesario seleccionar un alojamiento para acceder al panel de valoraciones");
       //console.log("mensaje debe seleccionar un alojamiento");

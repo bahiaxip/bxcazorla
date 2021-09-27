@@ -17,6 +17,7 @@ export class CardImagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("desde images: ",this.selectedCard)
   }
 
   hideImagesCard(type:string){

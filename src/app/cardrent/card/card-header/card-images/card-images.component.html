@@ -4,8 +4,9 @@
 		<mat-icon class="material-icons" style="color:white;font-size:25px" (click)="hideImagesCard('images')" >close</mat-icon>
 	</div>
 	
-	<div class="gallery__item" *ngFor="let image of selectedCard.images">
-		<img [src]="'assets/images/'+image" alt="" class="gallery__img">
+	<div class="gallery__item" *ngFor="let image of selectedCard.images" >
+		<img [src]="'assets/images/'+image" alt="" class="gallery__img" *ngIf="selectedCard.image=='original'">
+		<img [src]="'http://localhost:3900/images/'+selectedCard._id+'/'+image" alt="" class="gallery__img" *ngIf="selectedCard.image!='original'">
 		<h2 class="gallery__title">Imagen 1</h2>
 	</div>							
 </div>

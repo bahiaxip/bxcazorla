@@ -95,13 +95,22 @@ var controller = {
 			cardrent.minNights=null;
 			cardrent.minCapacity=null;
 		}
+	//si images contiene algo quiere decir que es uno de los registros de alojamientos
+	//que tenemos creados por defecto en cardrentdata(frontend), con sus imágenes
+	//correspondientes alojadas en assets/images/... (frontend) y sus correspondientes 
+	//feedbacks en feedbackrentdata (frontend), esto nos permite limpiar y recargar la db
+	//mediante el método fillDB() que se encuentra en el servicio (cardrent.service).
 
-			
-		
+//Para asignar la ruta correcta, ya que las imágenes de los registros por defecto
+//son diferentesde las imágenes alojadas en el server establecemos a las que son por defecto
+//el valor original en el campo image y a las del server no asignamos nada
+		if(params.images && params.images.length>0)
+			cardrent.image="original";
+		else
+			cardrent.image=null;
 
 		cardrent.images=params.images;
 		cardrent.logo=null;
-		cardrent.image=null;
 		cardrent.selectedImage=null;		
 		cardrent.thumbnail=null;
 		if(Array.isArray(params.type)){
@@ -138,6 +147,7 @@ var controller = {
 				if(params.images && params.images.length>0){
 					console.log("existen images")
 					let imas=params.images;
+					console.log("las imágenes: ",params.images)
 					imas.map((ima)=>{
 						let imagecardrent = new ImageCardRent();
 						let splitname=path.basename(ima).split('\.');
@@ -219,6 +229,16 @@ var controller = {
 		});
 	},
 
+	getImages(){
+		ImageCardRent.find({},(err,images) => {
+			if(err) return res.status(500).send({message: "Hubo un error al obtener todas las imágenes"});
+			if(!images) return res.status(404).send({message: "No existen imágenes"})
+			return res.status(200).send({
+				images
+			})
+		})
+	},
+
 	getImagesById:function(req,res){
 		let id;
 		if(req.params && req.params.id){
@@ -254,21 +274,30 @@ var controller = {
 			let ext = splitname[1];
 			let type= file.mimetype;
 			//validamos la extensión y peso (máximo 2MB) y 
-	//1048576bytes=1024Kbytes=1MB 
+	//1048576bytes=1024Kbytes=1MB
+			 
 			if(type == "image/jpeg" || type=="image/png" || type=="image/gif"){
 				if(file.size < (1048576 * 2)){
 					let image = new ImageCardRent();
 					image.name=file.filename;
 					image.originalName=file.originalname;					
-					image.path=file.destination;
+					image.path=file.destination+'/'+id+'/';
 					image.ext=ext;
 					image.size=file.size;
 					image.type=type;
 					image.rentId=id;
 
 					image.save((err,imageStored) => {
-						if(err) return res.status(500).send({message: "Error al guardar imagen"})						
+						console.log("llega al save de imágenes: ",id)
+						if(err) return res.status(500).send({message: "Error al guardar imagen"})
+						CardRent.findByIdAndUpdate(id,{$push:{"images":file.filename}},(err,cardrent) => {
+								console.log("guarda la imagen")		
+								if(err) return res.status(500).send({message: "Hubo un error al registrar la imagen almacenada en cardrent"})
+									console.log("cardrent: ",cardrent)
+								//cardrent.images.push(file.destination+file.filename);
+							})
 					})
+
 
 				}else{
 					//establecemos mensaje				

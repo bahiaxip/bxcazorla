@@ -3,7 +3,9 @@
 		<div class="card_image ">	
 		<!-- main image -->					
 			<div class="w100 " style="height:100%;overflow:hidden" (click)="selectOptionCard('images',rent)">
-				<img class="card_img" mat-card-image [src]="'assets/images/'+rent.images[0]" alt="Apartamentos Martín" style=" "/>
+				<img class="card_img" [src]="'assets/images/'+rent.images[0]" alt="Apartamentos Martín" style=" " *ngIf="i<5"/>
+				<img class="card_img" mat-card-image [src]="'http://localhost:3900/images/'+rent._id+'/'+rent.images[0]" alt="{{rent.images[0]}}" style=" " *ngIf="i>=5"/>
+
 			</div>
 		</div >
 			

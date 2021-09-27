@@ -4,6 +4,10 @@ import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
 import { Subject,Observable } from 'rxjs';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Global } from '../../shared/global';
+import { CardRentData } from '../models/card-rent-data';
+import { FeedbackRentData } from '../models/feedback-rent-data';
+import { forkJoin,from, } from 'rxjs';
+import { mergeMap,map,filter } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,6 +49,9 @@ export class CardrentService {
   public heightInfo:any;
   //feedbacks del alojamiento seleccionado
   public selectedFeeds:any;
+  //todos los feedbacks, más adelante serán todos por página
+  public totalFeeds:any;
+  //rentcard seleccionada
   public selectedCard:any;
   public typeCard:any;
   public banner1:any;
@@ -103,23 +110,156 @@ export class CardrentService {
     this.url=Global.url;
   }
 
+  /*
+  fillDB(){
+    //lista directa desde card-rent-data        
+    //this.cardrentdata=CardRentData.midata;
+    this.deleteCardRents().subscribe(
+      response => {
+        console.log("response desde deleteCardRents: ",response)
+      },
+      error => {
+
+      }
+    )
+    this.deleteFeeds().subscribe(
+      response => {
+        console.log("feedbacks eliminados: ",response)
+      },
+      error => {
+
+      }
+    )
+    this.deleteImages().subscribe(
+      response => {
+        console.log("imágenes eliminadas: ",response)
+        let list=CardRentData.midata;        
+          list.map((cardrent:any)=>{
+            console.log("mi cardrent desde map: ",cardrent)      
+            this.addCardRent(cardrent).subscribe(
+              response => {
+                if(response && response.id){
+                  let id=response.id;
+                  let listFeedback = FeedbackRentData.midata;
+                  listFeedback.map((feedbackrent:any) => {
+                    feedbackrent.rentId=id;
+                    this.addFeedback(feedbackrent).subscribe();
+                  })
+                }
+                console.log(response)
+              },
+              error => {
+
+              }
+            );
+          })
+      },
+      error => {
+
+      }
+    )
+  }
+  */
+  
+  fillDB(){    
+  //limpiar db de datos(cardrents,images,feedbacks), 2 posibles métodos  
+    //método 1  
+    /*
+    this.deleteCardRents().pipe(
+      mergeMap(()=> this.deleteFeeds()),
+      mergeMap(()=> this.deleteImages()),
+      
+    ).subscribe(()=>{
+      console.log("borrado")
+    })
+    */
+
+    //método 2
+    forkJoin(
+      this.deleteCardRents(),
+      this.deleteFeeds(),
+      this.deleteImages()
+    ).subscribe((res)=> {
+      //muestra un array con los 3 mensajes
+      console.log(res)
+      //Cargar datos de alojamientos por defecto
+      this.setNewData();
+    })
+  }
+
+  //rellenar datos por defecto (cardrents,images,feedbacks)
+  setNewData(){
+    let list=CardRentData.midata;
+    let listFeedback = FeedbackRentData.midata;
+    from(list).pipe(
+      mergeMap((card)=> this.addCardRent(card)),      
+      mergeMap((res)=> from(listFeedback).pipe(        
+        filter((feed)=>  feed.rentId=res.id)),
+        //no funciona
+        //mergeMap((res2)=> this.addFeedback(res2))
+      )
+    ).subscribe(
+      response=> {
+        if(response){
+          this.addFeedback(response).subscribe(
+            response=>{
+              console.log(response)
+              //damos 5 segundos antes de refrescar
+              setTimeout(()=>{
+                window.location.reload();
+              },5000)
+            },
+            error =>{
+              console.log("Error: ",error)
+            }
+          );
+        }
+      },
+      error => {
+        console.log("Error: ",error)
+      }
+    )
+  }
+
   addFeedback(feedback:any){
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
     });
     return this._http.post(this.url+'feedbackrent',feedback);
   }
+  //establecemos los feeds filtrados por un alojamiento determinado
   setSelectFeeds(feeds:any){
     this.selectedFeeds = feeds;
     this.selFeedsSubject.next();
   }
+  //establecemos todos los feeds devueltos anteriormente de la db
+  setTotalFeeds(feeds:any){
+    this.totalFeeds=feeds;
+  }
+  //todos los feedbacks de un rentcard(alojamiento)
+  selectFeedbackByRent(card:any){
+    //console.log(this.feedrentdata)    
+    let listFeedback:any=[];
+//cambiar por filter
+    this.totalFeeds.map((feed:any)=>{
+      //console.log("card desde selectFeedbackByRent(): ",card);
+      if(feed.rentId==card._id){
+        listFeedback.push(feed);
+        //console.log("listFeedback: ",listFeedback)
+      }
+    })
+    //this._cardrentService.setSelectFeeds(listFeedback)
+    return listFeedback;
+  }
+  //obtenemos todos los feeds 
   getSelectFeeds(){
     return this.selectedFeeds;
   }
-
+  //obtenemos todos los feedbacks de la db
   getFeedbacks():Observable<any>{
     return this._http.get(this.url+"feedbackrents");
   }
+  //feedbacks por id, ahora no se utiliza
   getFeedbacksByRentId(id:string):Observable<any>{
     return this._http.get(this.url+"feedbackrents/"+id);
   }
@@ -183,6 +323,10 @@ export class CardrentService {
     
     
     
+  }
+  //obtenemos todas las imágenes, más adelante serán con paginación
+  getTotalImages(){
+    this._http.get(this.url+'/images');
   }
 
   //recomendable optimizar subiendo o eliminando una a una y no todas 

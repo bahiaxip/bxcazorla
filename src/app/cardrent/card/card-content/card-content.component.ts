@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CardRentData } from '../../models/card-rent-data';
+
 import { CardRent } from '../../models/card-rent';
-import { FeedbackRentData } from '../../models/feedback-rent-data';
-import { FeedbackRent } from '../../models/feedback-rent';
-import { PriceRentData } from '../../models/price-rent-data';
+
 //import { LevelPipePipe, IconTypePipe } from '../../level-pipe.pipe';
 //import { PricePipe } from '../../pipes/price.pipe';
 //import { MinimrentPipe } from '../../pipes/minimrent.pipe';
@@ -86,67 +84,16 @@ export class CardContentComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {
-    //permite recargar la db de datos reales (limpiar db antes)
-    //this.fillDB();
-  this.getCardRents()
-  this.getFeeds();
+  ngOnInit(): void {    
+    
+    //el método getCardRents() establece un selectedCard por defecto
+    this.getCardRents()
+    this.getFeeds();
 
   //console.log("los ardrents: ",this.cardrentdata)   
     this.subscriptionCardRents=this._cardrentService.cardRents$.subscribe(()=> {
       this.getCardRents();
     })    
-  }
-  
-  fillDB(){
-    //lista directa desde card-rent-data        
-    //this.cardrentdata=CardRentData.midata;
-    this._cardrentService.deleteCardRents().subscribe(
-      response => {
-        console.log("response desde deleteCardRents: ",response)
-      },
-      error => {
-
-      }
-    )
-    this._cardrentService.deleteFeeds().subscribe(
-      response => {
-        console.log("feedbacks eliminados: ",response)
-      },
-      error => {
-
-      }
-    )
-    this._cardrentService.deleteImages().subscribe(
-      response => {
-        console.log("imágenes eliminadas: ",response)
-        let list=CardRentData.midata;
-        list.map((cardrent:any)=>{
-          console.log("mi cardrent desde map: ",cardrent)      
-          this._cardrentService.addCardRent(cardrent).subscribe(
-            response => {
-              if(response && response.id){
-                let id=response.id;
-                let listFeedback = FeedbackRentData.midata;
-                listFeedback.map((feedbackrent:any) => {
-                  feedbackrent.rentId=id;
-                  this._cardrentService.addFeedback(feedbackrent).subscribe();
-                })
-              }
-              console.log(response)
-            },
-            error => {
-
-            }
-          );
-        })
-      },
-      error => {
-
-      }
-    )
-    
-    
   }
   
   //rellenar base de datos con un array de objetos ya creado
@@ -170,20 +117,32 @@ export class CardContentComponent implements OnInit {
     lista.splice(0,minNights);    
     return lista;
   }
-  //obtenemos todos los feedbacks y desde el frontend se seleccionan los que tiene el id
-  //del alojamiento pulsado
+  //obtenemos todos los feedbacks de la db y filtramos por rentcard actual,
+  //después será mediante paginación
   getFeeds(){
     this._cardrentService.getFeedbacks().subscribe(
       response => {
+        //obtenemos todos los feeds
         this.feedrentdata=response.feedbacks;
-        //console.log("response desde getFeeds(): ",response)
+        //los asignamos en el servicio y filtramos por rentcard
+        this._cardrentService.setTotalFeeds(response.feedbacks);
+        let feedsByRent=this._cardrentService.selectFeedbackByRent(this.selectedCard);
+        //establecemos los feedbacks filtrados en el servicio para que, a continuación,
+        //mediante la suscripción, el feedback component los actualiza
+        this._cardrentService.setSelectFeeds(feedsByRent);
+        //this._cardrentService.setSelectFeeds(response.feedbacks);
+        console.log("response desde getFeeds(): ",response.feedbacks)
       },
       error => {
 
       }
     )
   }
-  //por id
+
+  getImages(){
+
+  }
+  //por id a la db, no utilizado
   getFeedsByRentId(id:string){
     this._cardrentService.getFeedbacksByRentId(id).subscribe(
       response => {
@@ -207,6 +166,7 @@ export class CardContentComponent implements OnInit {
           this._cardrentService.setSelectedCard(this.selectedCard);
           console.log(this.selectedCard)
         }
+        console.log("en getCardREnts(): ",this.cardrentdata)
         this.cardrentdata.map((rent:any,index:number)=> {
           //console.log(rent)
           
@@ -322,7 +282,8 @@ export class CardContentComponent implements OnInit {
       //array de feedbacks de ese alojamiento y si no crearlo
       console.log("tipo de card desde selectCard: ",this.selTypeCard)
       if(this.selTypeCard != "feedback"){
-        let feed = this.selectFeedbackByRent(card);
+        let feed = this._cardrentService.selectFeedbackByRent(card);
+
         this._cardrentService.setSelectFeeds(feed);
       }
       this._cardrentService.setBanner1(card);      
@@ -342,7 +303,7 @@ export class CardContentComponent implements OnInit {
   //aunque debería ser un id.
   //selectOptionCard(type:string,text:any=null){
   selectOptionCard(type:string,card:any){    
-    let totalText;
+    let totalText="No existen valoraciones";
     
     //asignamos botón pulsado
     this.pushedOptionCard=true;
@@ -400,16 +361,20 @@ export class CardContentComponent implements OnInit {
 //poder disponer de ellos desde el componente feedback
           let feed=this.selectFeedbackByRent(card);
 
-          console.log("feed: ",feed)
-          if(card.title){
+          //console.log("feed: ",feed)
+
+          //comprobamos si existe algún feedback creado asignamos el primero
+          if(card.title && feed && feed.length>0){
+            console.log(card.title)
             //asignamos el primer mensaje antes de iniciar el interval
             totalText='<span style="">'+feed[0].text+'</span>';
           }
         
           //iniciamos el interval con la lista de mensajes, comenzando por el segundo
           //(let num=1) la primera vez, ya que anteriormente hemos asignado el primer mensaje.
+          //además comprobamos si no existe interval y si existe más de un feedback creado(mínimo 2)
           let num=1;
-          if(!this.intervalFeedActive){
+          if(!this.intervalFeedActive && feed.length>1){
             this.intervalFeedActive=true;
             this.intervalFeedText=setInterval(()=>{
               console.log("creado nuevo interval")

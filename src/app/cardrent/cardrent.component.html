@@ -28,7 +28,7 @@
 	</div>
 <!-- panel rentcard -->
 	<div [ngStyle]="{'width':firstwidth+'px'}">		
-		<div style="background-color:#676767;display:flex;position:relative" >
+		<div style="background-color:#676767;display:flex;position:relative;justify-content:center" >
 
 			<!--<button (click)="misectionHorizontal(firstwidth+'px','1s','left')" style="position:absolute">izquierda</button>
 			<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute;right:100px">derecha</button>-->
@@ -39,7 +39,7 @@
 <!-- panel create rentcard -->
 	<div [ngStyle]="{'width':firstwidth+'px'}">
 	
-		<div style="background-color:#676767;display:flex;position:relative" >
+		<div style="background-color:#676767;display:flex;position:relative;" >
 			
 			<!-- modal para imagen no válida -->
 			<div style="position:absolute;width:100%;height:100vh;background-color:rgba(0,0,0,.3);display: flex;align-items: center;z-index:110;margin:auto;justify-content:center" *ngIf="switchModalNewCard">
@@ -54,7 +54,7 @@
 			<!-- fin modal -->
 
 			<!--<button (click)="misectionHorizontal(firstwidth+'px','1s','center')" style="position:absolute">izquierda</button>-->
-			<div class="div_flex_card" style="display:block">
+			<div class="div_flex_card" style="display:block;">
 
 				<div class="flex_header " style="position:relative; color:white;font-weight:bold">
 					<div class="div_flex_item " style="justify-content:center;">

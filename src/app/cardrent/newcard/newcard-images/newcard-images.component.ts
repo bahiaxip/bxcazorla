@@ -88,6 +88,7 @@ export class NewcardImagesComponent implements OnInit {
   showAndStoreFile(file:any){
     var reader = new FileReader();
       if(file){
+        console.log("FILE: ",file)
         //validación de extensión y medida
         //1048576 bytes = 1024 Kbytes = 1Mbytes
         //medida máxima 2MB

@@ -7,8 +7,6 @@ import { Snow } from '../models/snow';
 import { Title } from '@angular/platform-browser';
 //import { IconPipe } from '../pipes/icon.pipe';
 import { CardRent } from '../models/card-rent';
-import { CardRentData } from '../models/card-rent-data';
-import { FeedbackRentData } from '../models/feedback-rent-data';
 
 //services
 import { CardrentService } from '../cardrent/services/cardrent.service';
@@ -491,59 +489,11 @@ export class HomeComponent implements OnInit {
   */
   //rellenar base de datos con un array de objetos ya creado
   fillDB(){
-    //lista directa desde card-rent-data        
-    //this.cardrentdata=CardRentData.midata;
-    this._cardrentService.deleteCardRents().subscribe(
-      response => {
-        console.log("response desde deleteCardRents: ",response)
-        this._cardrentService.deleteFeeds().subscribe(
-          response => {
-            console.log("feedbacks eliminados: ",response)
-            this._cardrentService.deleteImages().subscribe(
-              response => {
-                console.log("imágenes eliminadas: ",response)
-                let list=CardRentData.midata;
-                list.map((cardrent:any)=>{
-                  console.log("mi cardrent desde map: ",cardrent)      
-                  this._cardrentService.addCardRent(cardrent).subscribe(
-                    response => {
-                      if(response && response.id){
-                        let id=response.id;
-                        let listFeedback = FeedbackRentData.midata;
-                        listFeedback.map((feedbackrent:any) => {
-                          feedbackrent.rentId=id;
-                          this._cardrentService.addFeedback(feedbackrent).subscribe();
-                        })
-                      }
-                      console.log(response)
-                    },
-                    error => {
-
-                    }
-                  );
-                })
-              },
-              error => {
-
-              }
-            )
-
-          },
-          error => {
-
-          }
-        )
-      },
-      error => {
-
-      }
-    )
-    
-    
-    
-    
+    this._cardrentService.fillDB();
+    //window.location.reload();
+    console.log("fillDB()")
   }
-
+  
   setAnimations(){
     this.animation1();
     this.animation2()

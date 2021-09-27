@@ -40,6 +40,7 @@ export class FeedbackComponent implements OnInit {
     this.subscriptionSelFeeds = this._cardrentService.selFeeds$.subscribe(()=>{
       this.selectFeeds = this._cardrentService.getSelectFeeds();
       console.log("nueva lista de feedback: ", this.selectFeeds);
+      console.log(this.selectedCard)
     })
     this.subscriptionDivFeed = this._cardrentService.switchDivFeed$.subscribe(() => {
       let param=this._cardrentService.getSwitchFeed();

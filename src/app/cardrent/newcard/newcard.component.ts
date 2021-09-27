@@ -136,11 +136,11 @@ export class NewcardComponent implements OnInit {
       this._cardrentService.uploadImages(fd,id).subscribe(
         response => {        
           if(response){
-            console.log(response)
+            console.log("response de uploadImages: ",response)
             //actualizamos la lista de rentcards (cardrent.component)
             this._cardrentService.cardRentsSubject.next();
-            this.formCardRent.reset();
-            this.listImages=[];
+            //this.formCardRent.reset();
+            //this.listImages=[];
             this._cardrentService.setFormCardRent(this.formCardRent);
           }
         },
