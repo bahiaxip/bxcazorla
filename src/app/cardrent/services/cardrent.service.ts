@@ -175,6 +175,8 @@ export class CardrentService {
     */
 
     //método 2
+    //eliminando todos los registros de alojamientos, todos los registros de
+    //valoraciones y todos los registros de imágenes
     forkJoin(
       this.deleteCardRents(),
       this.deleteFeeds(),
@@ -203,7 +205,7 @@ export class CardrentService {
         if(response){
           this.addFeedback(response).subscribe(
             response=>{
-              console.log(response)
+              console.log(response)              
               //damos 5 segundos antes de refrescar
               setTimeout(()=>{
                 window.location.reload();

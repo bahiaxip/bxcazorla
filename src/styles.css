@@ -20,7 +20,12 @@ html,body{
 	
 
 }
+	/* estilos para mat-spinner */
+.mat-progress-spinner circle, .mat-spinner-circle{
+	stroke: orange;	
+}
 
+	/*fin estilos mat-spinner */
 ::-webkit-scrollbar{
 	display: none;
 }

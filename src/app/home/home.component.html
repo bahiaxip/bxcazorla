@@ -39,6 +39,11 @@
 					<i class="material-icons-round">home</i>
 				</mat-icon>
 			</mat-button-toggle>
+			<div style="background-color:rgba(0,0,0,.9);position:fixed;transform: translate(-50%,-50%);left:50%;top:50%;padding:10px 20px;text-align:center" [ngStyle]="switchModalCardRentDefault ? {'opacity':'1'}:{'opacity':'0'}">
+				<p>Estableciendo alojamientos por defecto</p>
+				<p>Espere unos segundos...</p>
+				<mat-spinner [diameter]="50" style="margin:auto;color:white !important" ></mat-spinner>
+			</div>
 		</mat-button-toggle-group>
 	</div>
 	<div style="width:100%;height:100%;">

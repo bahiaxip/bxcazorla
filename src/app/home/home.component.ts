@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
   public snows2:Snow[]=[];  
   public snow:any;
 
- 
+ public switchModalCardRentDefault:any=false;
 
   //switch para mostrar/ocultar feedback de location
   public switchDivFeedback:any;
@@ -489,7 +489,9 @@ export class HomeComponent implements OnInit {
   */
   //rellenar base de datos con un array de objetos ya creado
   fillDB(){
+    this.switchModalCardRentDefault=true;
     this._cardrentService.fillDB();
+
     //window.location.reload();
     
   }
