@@ -53,7 +53,8 @@ export class HomeComponent implements OnInit {
   public snows2:Snow[]=[];  
   public snow:any;
 
- public switchModalCardRentDefault:any=false;
+  //switch para mostrar el modal de mensaje al restablecer valores por defecto
+   public switchModalCardRentDefault:any=false;
 
   //switch para mostrar/ocultar feedback de location
   public switchDivFeedback:any;
@@ -487,11 +488,17 @@ export class HomeComponent implements OnInit {
     return d; // returns the distance in meter
   };
   */
+
+
   //rellenar base de datos con un array de objetos ya creado
   fillDB(){
     this.switchModalCardRentDefault=true;
     this._cardrentService.fillDB();
-
+    /*
+    setTimeout(()=>{
+      this.switchModalCardRentDefault=false;
+    },3000)
+    */
     //window.location.reload();
     
   }

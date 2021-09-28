@@ -39,10 +39,12 @@
 					<i class="material-icons-round">home</i>
 				</mat-icon>
 			</mat-button-toggle>
-			<div style="background-color:rgba(0,0,0,.9);position:fixed;transform: translate(-50%,-50%);left:50%;top:50%;padding:10px 20px;text-align:center" [ngStyle]="switchModalCardRentDefault ? {'opacity':'1'}:{'opacity':'0'}">
-				<p>Estableciendo alojamientos por defecto</p>
-				<p>Espere unos segundos...</p>
-				<mat-spinner [diameter]="50" style="margin:auto;color:white !important" ></mat-spinner>
+			<div style="position:fixed;transform: translate(-50%,-50%);left:50%;top:50%;text-align:center;" [ngStyle]="switchModalCardRentDefault ? {'width':'300px'}:{'width':'0'}">
+				<div style="background-color:rgba(0,0,0,.9);padding:10px 20px;transition:opacity 0.4s linear" [ngStyle]="switchModalCardRentDefault ? {'padding':'10px 20px','opacity':'1'}:{'padding':'0','opacity':'0'}">
+					<p *ngIf="switchModalCardRentDefault">Estableciendo alojamientos por defecto</p>
+					<p *ngIf="switchModalCardRentDefault">Espere unos segundos...</p>
+					<mat-spinner [diameter]="50" style="margin:auto;" *ngIf="switchModalCardRentDefault"></mat-spinner>
+				</div>
 			</div>
 		</mat-button-toggle-group>
 	</div>
