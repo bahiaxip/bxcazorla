@@ -491,7 +491,7 @@ export class HomeComponent implements OnInit {
   fillDB(){
     this._cardrentService.fillDB();
     //window.location.reload();
-    console.log("fillDB()")
+    
   }
   
   setAnimations(){

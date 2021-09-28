@@ -15,6 +15,8 @@ import { Subscription,Observable } from 'rxjs';
   styleUrls: ['./card-content.component.css']
 })
 export class CardContentComponent implements OnInit {  
+
+  @Output() modal=new EventEmitter<any>();
   
   private subscriptionCardRents:any;
   public switchMenu1:any;
@@ -302,7 +304,12 @@ export class CardContentComponent implements OnInit {
   //el text puede ser un string o puede ser otra cosa:en feedback es un título,
   //aunque debería ser un id.
   //selectOptionCard(type:string,text:any=null){
-  selectOptionCard(type:string,card:any){    
+  selectOptionCard(type:string,card:any){
+  if(type=="delete"){
+    this._cardrentService.setSelectedCard(card);
+    this.modal.emit({card,text:"Está seguro que desea eliminar el alojamiento"})
+    return;
+  }    
     let totalText="No existen valoraciones";
     
     //asignamos botón pulsado
@@ -535,6 +542,8 @@ export class CardContentComponent implements OnInit {
     //si es menor a 1 km : Excelente, si es entre 1 y 2 : muy bueno, si es entre 2 y 3: bueno
     if(card.numLevelLocation){}
   }
+
+  
 
 
 }

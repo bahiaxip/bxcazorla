@@ -19,6 +19,7 @@ export class NewcardImagesComponent implements OnInit {
   //public listImages:any=[];
   //public listFormData:any=[];
   public listFiles:any=[];
+  
   constructor(private _cardrentService:CardrentService){
 
   }
@@ -34,6 +35,8 @@ export class NewcardImagesComponent implements OnInit {
     }
     console.log("arraiba:. ",this.listImages)    
     this.listImages.splice(index,1);
+    this.listFiles.splice(index,1);
+
     if(this.listImages.length==0){
       this.existsImg=false;
     }
@@ -86,6 +89,11 @@ export class NewcardImagesComponent implements OnInit {
   }
   //valida el archivo dataTransfer
   showAndStoreFile(file:any){
+    //si listImages (que es un Input() del padre) es distinto a listFiles 
+    //reseteamos listFiles para que no se mantenga al crear un nuevo alojamiento
+    if(this.listImages.length != this.listFiles.length){
+      this.listFiles=[];
+    }
     var reader = new FileReader();
       if(file){
         console.log("FILE: ",file)
@@ -128,6 +136,7 @@ export class NewcardImagesComponent implements OnInit {
               this.existsImg=true;
             }
             this._cardrentService.setImages(this.listFiles);
+            //this.listFiles=[];
           };
           reader.onerror = function(){
             console.log(reader.error);
@@ -142,11 +151,17 @@ export class NewcardImagesComponent implements OnInit {
 
   removeDragData(ev:any){
     console.log("eliminando drag data")
+    if(ev.dataTransferItemList){
+      console.log("existe itemlist")
+      ev.dataTransferItemList.clear();
+    }
     if(ev.dataTransfer.items){
       //Usamos la la interface DataTransferItemList para eliminar el drag data
       ev.dataTransfer.items.clear();
+      
       console.log("dataTransfer.items")
-    }else{
+    }
+    if(ev.dataTransfer){
       //Usar la interface DataTransfer para eliminar el drag data
       ev.dataTransfer.clearData();
       console.log("dataTransfer")
@@ -155,6 +170,8 @@ export class NewcardImagesComponent implements OnInit {
 
   dragOverHandler(event:any){
     console.log("dragOverHandler");
+    console.log(this.listImages)
+    console.log(this._cardrentService.getImages())
     event.preventDefault();
   }
 

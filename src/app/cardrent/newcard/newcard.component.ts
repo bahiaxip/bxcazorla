@@ -1,8 +1,8 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
 import { CardrentService } from '../services/cardrent.service';
-import { Subscription } from 'rxjs';
-
+import { Subscription,from  } from 'rxjs';
+import { mergeMap,map } from 'rxjs/operators';
 @Component({
   selector: 'pre-newcard',
   templateUrl: './newcard.component.html',
@@ -12,6 +12,9 @@ export class NewcardComponent implements OnInit {
 
   @Output()
   modal=new EventEmitter<any>();
+  
+  //switch para identificar vista de edición de alojamiento
+  public templateEdit:boolean=false;
   
   public selectCapacity:any;
   //creamos listImages aquí en lugar de newcard-images, para poder limpiar
@@ -133,21 +136,45 @@ export class NewcardComponent implements OnInit {
       for(let i=0;i<images.length;i++){
         fd.append("files",images[i]);
       }    
-      this._cardrentService.uploadImages(fd,id).subscribe(
-        response => {        
-          if(response){
-            console.log("response de uploadImages: ",response)
-            //actualizamos la lista de rentcards (cardrent.component)
-            this._cardrentService.cardRentsSubject.next();
-            //this.formCardRent.reset();
-            //this.listImages=[];
-            this._cardrentService.setFormCardRent(this.formCardRent);
-          }
+      from(this._cardrentService.uploadImages(fd,id)).pipe(
+        map(response => console.log(response)),
+      ).subscribe(
+        response=> {
+          
+          console.log("respuesta final")
+          this.formCardRent.reset();
+        //quizás no sea necesario resetear setImages 
+          this._cardrentService.setImages([]); 
+              this.listImages=[];
+
+              this._cardrentService.setFormCardRent(this.formCardRent)
+              //actualizamos la lista de rentcards (cardrent.component) mediante
+              //el servicio y la suscripción de card-component
+              this._cardrentService.cardRentsSubject.next();
         },
         error => {
-          console.log("Error: ",error);
+
         }
-      )  
+      )
+        /*
+        this._cardrentService.uploadImages(fd,id).subscribe(
+          response => {        
+            if(response){
+              console.log("response de uploadImages: ",response)
+              
+              this.formCardRent.reset();
+              this.listImages=[];
+
+              this._cardrentService.setFormCardRent(this.formCardRent)
+              //actualizamos la lista de rentcards (cardrent.component)
+              //this._cardrentService.cardRentsSubject.next();
+            }
+          },
+          error => {
+            console.log("Error: ",error);
+          }
+      )
+      */  
     }
   }
 

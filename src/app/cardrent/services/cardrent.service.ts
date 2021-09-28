@@ -331,8 +331,9 @@ export class CardrentService {
 
   //recomendable optimizar subiendo o eliminando una a una y no todas 
   //cada vez
-  setImages(images:Array<any>){
+  setImages(images:Array<any>){  
     this.images=images;
+    //console.log("estableciendo images en el service: ",this.images)
   }
   getImages(){
     return this.images;
@@ -361,9 +362,12 @@ export class CardrentService {
 
   deleteCardRents():Observable<any>{
     return this._http.delete(this.url+'cardrents');
-  }
+  }  
   deleteImages():Observable<any>{
     return this._http.delete(this.url+'images');
+  }
+  deleteCardRentById(id:string){
+    return this._http.delete(this.url+'image/'+id);
   }
 
   setHeight(type:string,h:string){
