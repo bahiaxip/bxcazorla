@@ -447,6 +447,7 @@ export class HomeComponent implements OnInit {
     
     console.log(data)
   }
+  
   //dirigir al section pasado por parámetro
   setSection(id:number){    
     if(id==1){

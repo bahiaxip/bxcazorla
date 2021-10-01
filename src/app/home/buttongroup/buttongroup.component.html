@@ -1,0 +1,34 @@
+<div class="div_buttongroup" style="">
+	<mat-button-toggle-group  name="matButtonToggleGroup" class="button_group" vertical [value]="buttonValue">
+		<mat-button-toggle (click)="setSection(1)" value="home" class="btn">
+			<mat-icon>info_round</mat-icon>
+		</mat-button-toggle>
+		<mat-button-toggle (click)="setSection(2)" value="places" class="btn">
+			<i class="material-icons material-icons-two-tone">home</i>
+		</mat-button-toggle>
+		<mat-button-toggle (click)="setSection(3)" value="rent" class="btn">
+			<i class="material-icons material-icons-outlined">home</i>
+		</mat-button-toggle>
+		<mat-button-toggle (click)="setSection(4)" value="gallery" class="btn">
+			<i class="material-icons material-icons-sharp">home</i>
+		</mat-button-toggle>
+		<mat-button-toggle (click)="setAnimations()" (dblclick)="fillDB()" class="btn">
+			<mat-icon>
+				<i class="material-icons-round">home</i>
+			</mat-icon>
+		</mat-button-toggle>
+	<!-- modal para recargar valores por defecto -->
+		<div style="position:fixed;transform: translate(-50%,-50%);left:50%;top:50%;text-align:center;" [ngStyle]="switchModalCardRentDefault ? {'width':'300px'}:{'width':'0'}">
+			<div style="background-color:rgba(0,0,0,.9);padding:10px 20px;transition:opacity 0.4s linear" [ngStyle]="switchModalCardRentDefault ? {'padding':'10px 20px','opacity':'1'}:{'padding':'0','opacity':'0'}">
+				<p *ngIf="switchModalCardRentDefault">Estableciendo alojamientos por defecto</p>
+				<p *ngIf="switchModalCardRentDefault">Espere unos segundos...</p>
+				<mat-spinner [diameter]="50" style="margin:auto;" *ngIf="switchModalCardRentDefault"></mat-spinner>
+			</div>
+		</div>
+	</mat-button-toggle-group>
+	<div class="div_btn_mainmenu" style="">
+		<button mat-icon-button style="background-color:orange;color: white;position:relative" (click)="toggleMainMenu()">
+			<mat-icon>menu</mat-icon>
+		</button>
+	</div>
+</div>

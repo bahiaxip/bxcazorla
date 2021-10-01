@@ -89,8 +89,10 @@ export class ActivityComponent implements OnInit {
     //suscripción para dirigir al panel almacenado en el servicio (getPanel()) 
     this.subscriptionPanel = this._cardService.panel$.subscribe(()=> {
       let section=this._cardService.getSection();
+      console.log("el section desde activity: ",section)
 //si se cambia el section cambiar el número 3 por el correspondiente
       if(section==2){
+        console.log("amos")
         let panel = this._cardService.getPanel();
         this.sendToPanel(this.firstwidth+'px','1s',panel)        
       }

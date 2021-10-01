@@ -31,6 +31,8 @@ import { ActivityContentComponent } from './activity/activity-content/activity-c
 
 import { CardrentModule } from './cardrent/cardrent.module';
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
+import { ButtongroupComponent } from './home/buttongroup/buttongroup.component';
+import { FloatheaderComponent } from './home/floatheader/floatheader.component';
 //import { CardHeaderComponent } from './card-header/card-header.component';
 //import { CardContentComponent } from './card-content/card-content.component';
 //import { SharedModule } from './shared/shared.module';
@@ -50,6 +52,8 @@ import { MainmenuComponent } from './mainmenu/mainmenu.component';
     ActivityHeaderComponent,
     ActivityContentComponent,
     MainmenuComponent,
+    ButtongroupComponent,
+    FloatheaderComponent,
   ],
   imports: [
     BrowserModule,

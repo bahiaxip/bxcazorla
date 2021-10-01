@@ -22,41 +22,9 @@
 			double_arrow
 		</mat-icon>
 	</button >
-<!-- div botones lateral -->
-	<div class="div_buttongroup" style="">
-		<mat-button-toggle-group  name="matButtonToggleGroup" class="button_group" vertical [value]="buttonValue">
-			<mat-button-toggle (click)="setSection(1)" value="home" class="btn">
-				<mat-icon>info_round</mat-icon>
-			</mat-button-toggle>
-			<mat-button-toggle (click)="setSection(2)" value="places" class="btn">
-				<i class="material-icons material-icons-two-tone">home</i>
-			</mat-button-toggle>
-			<mat-button-toggle (click)="setSection(3)" value="rent" class="btn">
-				<i class="material-icons material-icons-outlined">home</i>
-			</mat-button-toggle>
-			<mat-button-toggle (click)="setSection(4)" value="gallery" class="btn">
-				<i class="material-icons material-icons-sharp">home</i>
-			</mat-button-toggle>
-			<mat-button-toggle (click)="setAnimations()" (dblclick)="fillDB()" class="btn">
-				<mat-icon>
-					<i class="material-icons-round">home</i>
-				</mat-icon>
-			</mat-button-toggle>
-		<!-- modal para recargar valores por defecto -->
-			<div style="position:fixed;transform: translate(-50%,-50%);left:50%;top:50%;text-align:center;" [ngStyle]="switchModalCardRentDefault ? {'width':'300px'}:{'width':'0'}">
-				<div style="background-color:rgba(0,0,0,.9);padding:10px 20px;transition:opacity 0.4s linear" [ngStyle]="switchModalCardRentDefault ? {'padding':'10px 20px','opacity':'1'}:{'padding':'0','opacity':'0'}">
-					<p *ngIf="switchModalCardRentDefault">Estableciendo alojamientos por defecto</p>
-					<p *ngIf="switchModalCardRentDefault">Espere unos segundos...</p>
-					<mat-spinner [diameter]="50" style="margin:auto;" *ngIf="switchModalCardRentDefault"></mat-spinner>
-				</div>
-			</div>
-		</mat-button-toggle-group>
-		<div class="div_btn_mainmenu" style="">
-			<button mat-icon-button style="background-color:orange;color: white;position:relative" (click)="toggleMainMenu()">
-				<mat-icon>menu</mat-icon>
-			</button>
-		</div>
-	</div>
+<!--grupo de botones (lateral)-->
+	<pre-buttongroup [buttonValue]="buttonValue" (emitClassMainMenu)="toggleMainMenu()"></pre-buttongroup>
+
 <!-- div todo -->	
 	<div class="last_back" style="">
 		<!--<div style="width:100%;height:100vh;position:absolute;top:15%;z-index:300">
@@ -64,46 +32,11 @@
 				<p style="color:orange">Descubre Cazorla desde Arroyo Frío</p>
 			</div>
 		</div>-->
-		<div class="toolbar_header" style="" (mouseover)="showHeader()" (mouseout)="showHeader()">
-			<div class="div_header" style="" [ngStyle]="activeHeader ? {'height':'120%'}:{'height':'0'}" >
-				<div  class="w50 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
-					<!--<div style="margin:auto;background-color:white;" >-->
-						<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
-							<div class="linkedin_icon">
-							</div>														
-						</div>
-						<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
-							<div class="linkedin_icon">
-							</div>														
-						</div>
-						<!--<span style="display:flex;" >
-							<img src="../assets/icons/linkedin_white.svg" />
-						</span>-->
-					<!--</div>-->
-				</div>
-				<div class="w50 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
-					<!--<div style="margin:auto;background-color:white;" >-->
-						<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
-							<div class="linkedin_icon">
-							</div>														
-						</div>
-						<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
-							<div class="linkedin_icon">
-							</div>														
-						</div>
-						<!--<span style="display:flex;" >
-							<img src="../assets/icons/linkedin_white.svg" />
-						</span>-->
-					<!--</div>-->
-				</div>
-			</div>
-			<!-- para que baje el header flotante añadimos un div con un alto -->
-			<div style="width:100%;height:80px"></div>
-			
-			
-		</div>
+		<pre-floatheader></pre-floatheader>
 	<!-- menu principal -->
 		<pre-mainmenu [classMainMenu]="classMainMenu" (emitClassMainMenu)="toggleMainMenu()" (setSection)="sendSection($event)"></pre-mainmenu>
+
+	<!-- imágenes home -->
 		<div style="position:absolute;background-color:rgba(0,0,0,0);width:100%;height:100%;z-index:0">
 
 			<div class="back_image" style="z-index:100" #backimage>
@@ -119,6 +52,7 @@
 		
 		
 	</div>
+<!-- botón inferior -->
 	<button mat-icon-button (click)="setSection(sectionId+1)" class="btn_slider_section bottom">
 			<mat-icon class="icon">
 				double_arrow

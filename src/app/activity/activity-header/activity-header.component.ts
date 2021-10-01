@@ -25,7 +25,7 @@ export class ActivityHeaderComponent implements OnInit {
   }
 
   sendPanel(panel:number){
-    console.log("desde activity-header: ",this.panel)
+    console.log("desde activity-header: ",panel)
     this.switchTransitionFirst=true;
     //this.sendToPanel.emit(panel);
     this._cardService.setPanel(panel)

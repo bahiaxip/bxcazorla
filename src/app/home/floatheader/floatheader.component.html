@@ -1,0 +1,38 @@
+<div class="toolbar_header" style="" (mouseover)="showHeader()" (mouseout)="showHeader()">
+	<div class="div_header" style="" [ngStyle]="activeHeader ? {'height':'120%'}:{'height':'0'}" >
+		<div  class="w50 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
+			<!--<div style="margin:auto;background-color:white;" >-->
+				<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
+					<div class="linkedin_icon">
+					</div>														
+				</div>
+				<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
+					<div class="linkedin_icon">
+					</div>														
+				</div>
+				<!--<span style="display:flex;" >
+					<img src="../assets/icons/linkedin_white.svg" />
+				</span>-->
+			<!--</div>-->
+		</div>
+		<div class="w50 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
+			<!--<div style="margin:auto;background-color:white;" >-->
+				<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
+					<div class="linkedin_icon">
+					</div>														
+				</div>
+				<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
+					<div class="linkedin_icon">
+					</div>														
+				</div>
+				<!--<span style="display:flex;" >
+					<img src="../assets/icons/linkedin_white.svg" />
+				</span>-->
+			<!--</div>-->
+		</div>
+	</div>
+	<!-- para que baje el header flotante añadimos un div con un alto -->
+	<div style="width:100%;height:80px"></div>
+	
+	
+</div>
