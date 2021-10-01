@@ -33,7 +33,9 @@ export class HomeComponent implements OnInit {
   private selectedSection:any=null;
   //id correspondiente al section
   public sectionId:any;
-  //botón de buttongroup
+  //botón de buttongroup 
+  //el buttonValue permite relacionar el botón checkeado en el buttongroup(del grupo de botones lateral)
+  //de Angular Material, tb se pueden modificar el CSS por defecto 
   public buttonValue:any;
 
   public images2:any;
@@ -316,8 +318,10 @@ export class HomeComponent implements OnInit {
           }
       }else{
         //console.log("NO entra en el loop")
-      }
+      }      
     }
+    //establecemos un section al cargar la página    
+    this._cardService.setSection(this.sectionId);
   }
   //animación flash en section-home
   flash(){
@@ -473,6 +477,7 @@ export class HomeComponent implements OnInit {
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});        
       console.log(this.section4.nativeElement.scrollTop);
     }
+    
     console.log("tipo de botón: ",this.buttonValue)
   }
 

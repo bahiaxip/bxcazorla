@@ -17,19 +17,21 @@
 				<div class="w50 mauto d_flex">
 					<div class="mauto">
 						<div class="linkmenu" >
-							<span (click)="sendSection(3,0)" style="cursor:pointer" title="Ir a Lugares">LUGARES</span>
-							<mat-icon class="material-icons icon" (click)="showDetailMenu('places')">chevron_right</mat-icon>
+							<span (click)="sendSection(2,0)" class="link" title="Ir a Lugares">LUGARES</span>
+							<mat-icon class="material-icons icon"  (click)="showDetailMenu('places')">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu" >
-							<span (click)="sendSection(4,0)">ALOJAMIENTO</span>
-							<mat-icon class="material-icons icon" (click)="showDetailMenu('renting')">chevron_right</mat-icon>
+							<span (click)="sendSection(3,1)" class="link">ALOJAMIENTO</span>
+							<mat-icon class="material-icons icon"  (click)="showDetailMenu('renting')">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu">
-							GALERÍA
-							<mat-icon class="material-icons icon" (click)="showDetailMenu('gallery')">chevron_right</mat-icon>
+							<span (click)="sendSection(4,0)" class="link">GALERÍA</span>
+							<mat-icon class="material-icons icon"  (click)="showDetailMenu('gallery')">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu">
-							AJUSTES
+							<span class="link">
+								AJUSTES
+							</span>
 							<mat-icon class="material-icons icon">chevron_right</mat-icon>
 						</div>
 					</div>

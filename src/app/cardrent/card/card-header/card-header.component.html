@@ -5,7 +5,7 @@
 			<div style="width:100%;display:flex;">
 			<!-- icono valoraciones -->
 				<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('')">
-					<mat-icon class="banner_icon " title="Todas las Valoraciones" (click)="setPanel('panel-left')">grade</mat-icon>
+					<mat-icon class="banner_icon " title="Todas las Valoraciones" (click)="setPanel(0)">grade</mat-icon>
 					<!--<mat-icon mat-card-avatar class="banner_icon " style="margin:15px auto;font-size:30px" title="Todas las Valoraciones">person</mat-icon>-->
 				</div>
 							
@@ -45,7 +45,7 @@
 			<!-- icono Info -->
 				<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('')">
 					
-				<mat-icon class="banner_icon  mr10 floatR"  title="Información" (click)="setPanel('right')">add_circle</mat-icon>
+					<mat-icon class="banner_icon  mr10 floatR"  title="Información" (click)="setPanel(2)">add_circle</mat-icon>
 				
 				</div>
 			</div>

@@ -33,7 +33,7 @@
 			<!--<button (click)="misectionHorizontal(firstwidth+'px','1s','left')" style="position:absolute">izquierda</button>
 			<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute;right:100px">derecha</button>-->
 
-				<pre-card (emitWidth)="misectionHorizontal(firstwidth+'px','1s',$event)"></pre-card>
+				<pre-card (emitWidth)="sendToPanel(firstwidth+'px','1s',$event)"></pre-card>
 		</div>
 	</div>
 <!-- panel create rentcard -->
@@ -61,7 +61,7 @@
 						<div class="flex_item " style="" >
 							<div style="width:100%;display:flex;justify-content:center;vertical-align:middle">
 								<div class="w15">
-									<mat-icon class="banner_icon floatL" style="margin-left: 10px;margin-top: 8px;transform:rotate(180deg);display:flex;align-items:center" title="Volver a alojamientos" (click)="misectionHorizontal(firstwidth+'px','1s','center')">double_arrow</mat-icon>
+									<mat-icon class="banner_icon floatL" style="margin-left: 10px;margin-top: 8px;transform:rotate(180deg);display:flex;align-items:center" title="Volver a alojamientos" (click)="sendToPanel(firstwidth+'px','1s',1)">double_arrow</mat-icon>
 								</div>
 
 								<div class="w70">

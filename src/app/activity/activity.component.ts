@@ -90,7 +90,7 @@ export class ActivityComponent implements OnInit {
     this.subscriptionPanel = this._cardService.panel$.subscribe(()=> {
       let section=this._cardService.getSection();
 //si se cambia el section cambiar el número 3 por el correspondiente
-      if(section==3){
+      if(section==2){
         let panel = this._cardService.getPanel();
         this.sendToPanel(this.firstwidth+'px','1s',panel)        
       }
@@ -123,13 +123,12 @@ export class ActivityComponent implements OnInit {
     //this.section3.nativeElement.style.transform="translateX(-"+size+")";
   //solo 2 panels (panel-left,panel-right)
     this.midivslider.nativeElement.style.transitionDuration='1s';
-    if(toPanel==1){
-      this.selectedPanel=1;
-      
-      this.midivslider.nativeElement.style.transform="translateX(-"+size+")";  
-    }else if(toPanel==0){
+    if(toPanel==0){
       this.selectedPanel=0;
       this.midivslider.nativeElement.style.transform="translateX(0px)";
+    }else if(toPanel==1){
+      this.selectedPanel=1;
+      this.midivslider.nativeElement.style.transform="translateX(-"+size+")";  
     }
     console.log(this.selectedPanel)
     

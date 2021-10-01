@@ -1,3 +1,6 @@
+*{
+	user-select: none;
+}
 .mainmenu{	
 	width: 100%;	
 	position: absolute;
@@ -62,6 +65,9 @@
 .mainmenu .menu .linkmenu{
 	display:flex;
 	align-items:center;
+}
+.mainmenu .menu .linkmenu .link{
+	cursor:pointer
 }
 .mainmenu .menu .linkmenu .icon{	
 	/*font-size:25px;*/

@@ -6,8 +6,7 @@ import { CardrentService } from '../services/cardrent.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  @Output()
-  emitWidth=new EventEmitter<any>();
+  @Output() emitWidth=new EventEmitter<any>();
 
   //switch modal para aviso para acceso a panel feedback
   public switchModalCardRent:boolean=false;
@@ -21,7 +20,7 @@ export class CardComponent implements OnInit {
 
   emitir(ev:any){
     console.log("llega a emitir")
-    this.emitWidth.emit(ev)
+    this.emitWidth.emit('1')
   }
   //mostrar modal 
   setModal(data:any){

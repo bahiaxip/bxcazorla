@@ -117,22 +117,24 @@
 	left:4%;
 	padding: 0;
 	border: #A2A2A2 1px solid;
+
 	/*background:#ff7500*/
 	/*background: rgba(0,0,0,.9);*/
+
 	
 }
-.button_group:hover{
-	border: #D3D3D3 1px solid;
-	background-color: rgba(0,0,0,.4);	
+.button_group:hover{	
+	border: #E3E3E3 1px solid;
+	/*background-color: rgba(0,0,0,.4);	*/
 }
 
 .button_group .btn{
-	background-color: transparent;
+	/*background-color: transparent;*/
 	color: #A2A2A2;
 }
 .button_group .btn:hover{
 	/*outline: black 1px solid;*/
-	/*background-color: rgba(0,0,0,.2);*/
+	background-color: rgba(0,0,0,.2);
 	color: white;
 }
 
@@ -148,8 +150,12 @@ mat-button-toggle:hover{
 .mat-button-toggle-checked{
 	background-color: rgba(0,0,0,.3);
 	outline: #D2D2D2 1px solid;
-	color: white;	
+	/*necesario important*/
+	color: #E3E3E3 !important;
+	
 }
+
+
 .btn_slider_section{
 	position: fixed;
 	z-index: 300;	

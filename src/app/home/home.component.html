@@ -127,26 +127,15 @@
 	
 </section>
 <section id="section2" class="section1" #section2>
-	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(0,0,0,0.5);">
-		<gallery [items]="images" fluid class="mygallery" [thumb]="false" ></gallery>
+	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.3)" [ngStyle]="{'width':firstWidth+'px'}" >
+		<pre-activity [firstwidth]="firstWidth"></pre-activity>
 	</div>
-	
 	<!--<div style="width:100%;display:flex;position:absolute">
 		<button class="boton2" (click)="setSection(1)">Botón</button>
 	</div>-->
 </section>
 <section id="section3" class="section1" #section3 class="back_s3" style="transition:transform 2s ease-in-out">
-	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.3)" [ngStyle]="{'width':firstWidth+'px'}" >
-		<pre-activity [firstwidth]="firstWidth"></pre-activity>
-	</div>
 
-
-	
-	<!--<div style="width:100%;display:flex;position:absolute">
-		<button class="boton2" (click)="setSection(1)">Botón</button>
-	</div>-->
-</section>
-<section class="section1" #section4 style="">
 	<div style="height:100vh;display:block;overflow:hidden" [ngStyle]="{'width':firstWidth+'px'}">
 	<pre-cardrent [firstwidth]="firstWidth"></pre-cardrent>
 	</div>
@@ -154,5 +143,16 @@
 		<!--<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(255,255,255,0.7);overflow:scroll">
 			
 		</div>-->
+	
+</section>
+<section class="section1" #section4 style="">
+	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(0,0,0,0.5);">
+		<gallery [items]="images" fluid class="mygallery" [thumb]="false" ></gallery>
+	</div>
+	
+	<!--<div style="width:100%;display:flex;position:absolute">
+		<button class="boton2" (click)="setSection(1)">Botón</button>
+	</div>-->
+	
 	
 </section>

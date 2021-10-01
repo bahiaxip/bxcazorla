@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, ViewChild, ElementRef,EventEmitter } from '@angular/core';
+import { CardService } from '../../../services/card.service';
 import { CardrentService } from '../../services/cardrent.service';
 import { CardRentData } from '../../models/card-rent-data';
 import { CardRent } from '../../models/card-rent';
@@ -49,10 +50,13 @@ export class CardHeaderComponent implements OnInit {
   @ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
   @ViewChild('bannerp2',{static:true}) private bannerp2!:ElementRef;
   @ViewChild('bannerp3',{static:true}) private bannerp3!:ElementRef;
-  constructor(private _cardService:CardrentService) {
+  constructor(
+    private _cardService:CardService,
+    private _cardrentService:CardrentService
+  ) {
 //esto no sirve, puesto que no hay seleccionada ninguna por defecto, es
   //necesaria una suscripción
-    this.selectedCard = _cardService.getSelectedCard();
+    this.selectedCard = _cardrentService.getSelectedCard();
 
     //this.selectedCard=CardRentData.midata[0];
     console.log("desde header: ",this.selectedCard)
@@ -63,22 +67,22 @@ export class CardHeaderComponent implements OnInit {
 //necesario window.addEventListener(resize) para actualizar maxWidthBannerp3
     this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
 
-    this.subscriptionBanner1=this._cardService.observableBanner1$.subscribe(()=> {
-      this.setBanner1(this._cardService.getBanner1());
+    this.subscriptionBanner1=this._cardrentService.observableBanner1$.subscribe(()=> {
+      this.setBanner1(this._cardrentService.getBanner1());
     })
-    this.subscriptionBanner2=this._cardService.banner2$.subscribe(()=> {
-      this.setBanner2(this._cardService.getBanner2());      
+    this.subscriptionBanner2=this._cardrentService.banner2$.subscribe(()=> {
+      this.setBanner2(this._cardrentService.getBanner2());      
     })
-    this.subscriptionDivFeed=this._cardService.switchDivFeed$.subscribe(()=> {      
-      this.switchDivFeed(this._cardService.getSwitchFeed());      
+    this.subscriptionDivFeed=this._cardrentService.switchDivFeed$.subscribe(()=> {      
+      this.switchDivFeed(this._cardrentService.getSwitchFeed());      
     })
 
-    this.subscriptionHeightInfo= this._cardService.heightInfo$.subscribe(()=> {
-      console.log("desde subscr: ",this._cardService.getHeight('info'))
-      this.myHeightInfo=this._cardService.getHeight('info');
+    this.subscriptionHeightInfo= this._cardrentService.heightInfo$.subscribe(()=> {
+      console.log("desde subscr: ",this._cardrentService.getHeight('info'))
+      this.myHeightInfo=this._cardrentService.getHeight('info');
     })
-    this.subscriptionSelectedCard = this._cardService.selectedCard$.subscribe(()=> {      
-      this.selectedCard = this._cardService.getSelectedCard();
+    this.subscriptionSelectedCard = this._cardrentService.selectedCard$.subscribe(()=> {      
+      this.selectedCard = this._cardrentService.getSelectedCard();
       console.log("selectedCard desde header con suscription: ",this.selectedCard)
     })
 
@@ -94,7 +98,7 @@ export class CardHeaderComponent implements OnInit {
     
     
   }
-
+  //oculta el div expandible de card-header en el panel 1
   hideImagesCard(type:string){
     console.log("el type: ",type)
     //this.fixedCloseGal=false;
@@ -111,9 +115,7 @@ export class CardHeaderComponent implements OnInit {
         this.myHeight = "0"
         this.myHeightInfo="0";
     }
-    console.log("type es: ",type)
-
-    
+    //console.log("type es: ",type)
   }
   updateHeight(data:any){
     this.myHeight=data.myHeight;
@@ -126,8 +128,8 @@ export class CardHeaderComponent implements OnInit {
   }
 
   dinamicMethod(){
-    let miType=this._cardService.getTypeCard();
-    let miCard=this._cardService.getSelectedCard();
+    let miType=this._cardrentService.getTypeCard();
+    let miCard=this._cardrentService.getSelectedCard();
     if(this.switchDivFeedback){
       this.setBanner2({selectedElement:"open_maps",card:miCard});
     }
@@ -138,7 +140,7 @@ export class CardHeaderComponent implements OnInit {
 
   setBanner1(card:any){
   //console.log("datos desde SetBanner1: ",card.title)
-    this._cardService.setSelectedCard(card);
+    this._cardrentService.setSelectedCard(card);
     this.bannerp1.nativeElement.innerHTML=card.title;    
     /*
     this.selectedCard=this._cardService.getSelectedCard();
@@ -263,16 +265,16 @@ export class CardHeaderComponent implements OnInit {
     }
   }
   //slider de paneles
-  setPanel(side:string){    
-    let selectedCard = this._cardService.getSelectedCard();
+  setPanel(side:number){    
+    let selectedCard = this._cardrentService.getSelectedCard();
     //Para acceder al panel de feedbacks es necesario tener seleccionado 
     //un alojamiento
     console.log("selectedCard desde setPanel(): ",selectedCard)
-    if(side =="left" && !selectedCard){
+    if(side == 0 && !selectedCard){
       this.modal.emit("Es necesario seleccionar un alojamiento para acceder al panel de valoraciones");
       //console.log("mensaje debe seleccionar un alojamiento");
       return;
-    }
+    }    
     this._cardService.setPanel(side)  
     
     

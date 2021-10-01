@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CardService } from '../../services/card.service';
 import { CardrentService } from '../services/cardrent.service';
 import { Subscription } from 'rxjs';
 
@@ -28,7 +29,10 @@ export class FeedbackComponent implements OnInit {
   public scoreStars:number=0;
   public numLevelFeedback:number=0;
 
-  constructor(private _cardrentService: CardrentService){
+  constructor(
+    private _cardService:CardService,
+    private _cardrentService: CardrentService
+  ){
 
   }
 
@@ -93,8 +97,8 @@ export class FeedbackComponent implements OnInit {
     }
   }
   
-  setPanel(side:string){
-    this._cardrentService.setPanel(side);
+  setPanel(side:number){
+    this._cardService.setPanel(side);
   }
   //asignar puntuación en formulario de nuevo feedback
   setScore(score:number){

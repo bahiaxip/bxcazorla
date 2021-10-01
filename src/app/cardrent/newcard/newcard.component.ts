@@ -1,5 +1,6 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
+//import { CardService } from '../../services/card.service';
 import { CardrentService } from '../services/cardrent.service';
 import { Subscription,from  } from 'rxjs';
 import { mergeMap,map } from 'rxjs/operators';
@@ -35,7 +36,11 @@ export class NewcardComponent implements OnInit {
   public listCapacities:any;
   public listCapacity:any;
   public listtypeGroup:any;
-  constructor(private _cardrentService:CardrentService) {
+  constructor(
+      private _cardrentService:CardrentService,
+      //private _cardService:CardService
+
+    ) {
     //obtenemos el objeto FormGroup creado en el servicio
     this.formCardRent=_cardrentService.getFormCardRent(); 
     console.log("- getting formCardRent from newcard.component to cardrentService: ",this.formCardRent)   

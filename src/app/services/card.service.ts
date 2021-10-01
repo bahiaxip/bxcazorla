@@ -30,6 +30,11 @@ export class CardService {
   public panel:any;
   //sección seleccionada
   public selectedSection:any;
+  
+
+
+
+
   setDetailMenu(type:any){   
     //this.textDetailMenu=[];     
     this.textDetailMenu=this.testType(type);
@@ -38,7 +43,8 @@ export class CardService {
   getDetailMenu(){
     return this.textDetailMenu;
   }
-
+  //asigna el menú de opciones correspondiente al botón de cada section (mainmenu)
+  //método llamado desde setDetailMenu(type)
   testType(type:string){
     let list=[];
     if(type=="places"){
@@ -54,7 +60,7 @@ export class CardService {
       list.push(feedrent);
       list.push(newrent);
     }else if(type=="gallery"){
-      let gallery="Buscador de alojamiento";
+      let gallery="Galería de imágenes";
       list.push(gallery);
     }
     return list;
@@ -62,7 +68,8 @@ export class CardService {
 
   //establecemos section y el panel horizontal
   //el panel pueder entero o cadena si es número se debe convertir a string
-  setPanel(section:number,panel:number){
+  setPanel(panel:number){
+    console.log("llega al servicio")
     let finalPanel=panel;
     //si el panel es número (viene del mainmenu.component.html mediante array ngFor)
     //if(typeof panel=="number"){
@@ -103,7 +110,6 @@ export class CardService {
     this.selectedSection=section;
     this.subjectSection.next();
   }
-
   getSection(){
     return this.selectedSection;
   }

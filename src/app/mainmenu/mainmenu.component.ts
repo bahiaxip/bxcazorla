@@ -48,19 +48,19 @@ export class MainmenuComponent implements OnInit {
 
   }
   //mostrar opciones al pulsar el icono de flecha de uno de los enlaces del menú principal,
-  //asignamos el enlace seleccionado en selectedLink
+  //asignamos el enlace seleccionado en selectedLink (correspondiente al section) 
+  //para poder añadirlo en el template (menú de opciones) 
   showDetailMenu(type:string){
     //pasamos animación a false  
     this.stateAnimation=false;
-    //
+    
     if(type=="places"){
-      this.selectedLink=3;  
+      this.selectedLink=2;  
     }else if(type=="renting"){
+      this.selectedLink=3;
+    }else if(type=="gallery"){
       this.selectedLink=4;
-    }
-    //this.stateAnimation = (this.stateAnimation) ? false:true;
-    //this.stateAnimation=true;
-
+    }    
     //setTimeout para dar un tiempo para realizar correctamente el efecto 
     setTimeout(()=> {
       //establecemos opciones
@@ -76,11 +76,11 @@ export class MainmenuComponent implements OnInit {
   //envía a la sección y panel seleccionados (emit para el section, suscripción para el panel)
   //el panel puede ser con número o con string ('panel-left'|'panel-center'|'panel-right')
   sendSection(section:number,panel:number){
-    console.log(panel)
+    console.log("panel desde mainmenu: ",panel)
     //this._cardService.setPanel(section,panel);
     this._cardService.setSection(section);
     //this.setSection.emit(section);
-    this._cardService.setPanel(section,panel);
+    this._cardService.setPanel(panel);
   }
 
 
