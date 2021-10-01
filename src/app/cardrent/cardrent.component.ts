@@ -48,13 +48,13 @@ export class CardrentComponent{
       //this.slidercardrent.nativeElement.scrollTop=0;
 //si no es el de en medio pasamos automáticamente al derecho, necesario cambiar al añadir otro panel
       if(this.panelSelected=='center')        
-        this.misectionHorizontal(this.firstwidth+'px','0s','center');
+        this.sendToPanel(this.firstwidth+'px','0s','center');
       else if(this.panelSelected=='right')
-        this.misectionHorizontal(this.firstwidth+'px','0s','right');        
+        this.sendToPanel(this.firstwidth+'px','0s','right');        
       else if(this.panelSelected=='left')
-        this.misectionHorizontal(this.firstwidth+'px','0s','left');
+        this.sendToPanel(this.firstwidth+'px','0s','panel-left');
       else
-        this.misectionHorizontal(this.firstwidth+'px','0s','center');
+        this.sendToPanel(this.firstwidth+'px','0s','center');
     });
   }
   onSubmit(){
@@ -66,17 +66,30 @@ export class CardrentComponent{
     this.switchModalNewCard=data.value;
     this.textModal=data.text;
   }
-  misectionHorizontal(size:string,duration:string,side:string){
+
+  sendToPanel(size:string,duration:string,side:string){
     this.slidercardrent.nativeElement.style.transitionDuration=duration;
     //console.log(this.slidercardrent.nativeElement.style.transform);
     this.panelSelected=side;
-    if(side=="left")
+    if(side=="panel-left")
       this.slidercardrent.nativeElement.style.transform="translateX("+size+")";
     else if(side=="center")
       this.slidercardrent.nativeElement.style.transform="translateX(0px)";
     else if(side == "right")
       this.slidercardrent.nativeElement.style.transform="translateX(-"+size+")";
-  }  
+  }
+  misectionHorizontal(size:string,duration:string,side:string){
+    this.slidercardrent.nativeElement.style.transitionDuration=duration;
+    //console.log(this.slidercardrent.nativeElement.style.transform);
+    this.panelSelected=side;
+    if(side=="panel-left")
+      this.slidercardrent.nativeElement.style.transform="translateX("+size+")";
+    else if(side=="center")
+      this.slidercardrent.nativeElement.style.transform="translateX(0px)";
+    else if(side == "right")
+      this.slidercardrent.nativeElement.style.transform="translateX(-"+size+")";
+  }
+  /*  
   misectionHorizontalLeft(size:string,duration:string){
     this.slidercardrent.nativeElement.style.transitionDuration=duration;
     console.log("llega al misectionHorizontal: ",this.slidercardrent.nativeElement.style.transform)
@@ -99,6 +112,7 @@ export class CardrentComponent{
     //console.log(this.midivslider);
     //this.midivslider.nativeElement.style.transform="translateX(-"+size+")";
   }
+  */
 
   
 }

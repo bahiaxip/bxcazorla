@@ -1,0 +1,59 @@
+<div class="mainmenu" [ngClass]="{'visible':classMainMenu}">			
+	<div class="mainmenu_titletop" style="">
+		<p class="mauto" >Arroyo Frío</p>
+
+	</div>
+	<div class="w80 mauto h100v">
+		<div class="mainmenu_content">
+			<div class="content_title">
+				<div class="w100">
+					<p>Descubre Cazorla desde Arroyo Frío</p>
+				</div>
+				<div class="floatR">
+					<mat-icon class="material-icons btn_close " (click)="toggleMainMenu()">close</mat-icon>
+				</div>
+			</div>
+			<div class="menu" >
+				<div class="w50 mauto d_flex">
+					<div class="mauto">
+						<div class="linkmenu" >
+							<span (click)="sendSection(3,0)" style="cursor:pointer" title="Ir a Lugares">LUGARES</span>
+							<mat-icon class="material-icons icon" (click)="showDetailMenu('places')">chevron_right</mat-icon>
+						</div>
+						<div class="linkmenu" >
+							<span (click)="sendSection(4,0)">ALOJAMIENTO</span>
+							<mat-icon class="material-icons icon" (click)="showDetailMenu('renting')">chevron_right</mat-icon>
+						</div>
+						<div class="linkmenu">
+							GALERÍA
+							<mat-icon class="material-icons icon" (click)="showDetailMenu('gallery')">chevron_right</mat-icon>
+						</div>
+						<div class="linkmenu">
+							AJUSTES
+							<mat-icon class="material-icons icon">chevron_right</mat-icon>
+						</div>
+					</div>
+				</div>
+				<div class="w50 h100">
+					<div class="w80 detailmenu" >
+						<div class="w90 mauto" >
+							<!--<p style="display: flex;transform:translate(-90%,0);transition:all 1s linear" [ngClass]="{'detvisible':switchDetailMenu}">{{textDetailMenu}}</p>-->
+							<!--<span *ngFor="let option of textDetailMenu">-->
+								<!--<div class="optionmenu" style=""  [ngClass]="{'detvisible':switchDetailMenu}">
+									{{option}}
+								</div>-->
+								<div style="width: 100%;margin:10px auto;">
+									<div *ngFor="let option of textDetailMenu;let j = index" class="optionmenu" style="" [@switchDetail]="stateAnimation">
+										<span style="margin-left:10px" (click)="sendSection(this.selectedLink,j)">{{option}}</span>
+									</div>
+								</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>	
+		</div>
+		
+	</div>
+	
+</div>

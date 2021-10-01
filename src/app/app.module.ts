@@ -30,6 +30,7 @@ import { ActivityHeaderComponent } from './activity/activity-header/activity-hea
 import { ActivityContentComponent } from './activity/activity-content/activity-content.component';
 
 import { CardrentModule } from './cardrent/cardrent.module';
+import { MainmenuComponent } from './mainmenu/mainmenu.component';
 //import { CardHeaderComponent } from './card-header/card-header.component';
 //import { CardContentComponent } from './card-content/card-content.component';
 //import { SharedModule } from './shared/shared.module';
@@ -48,6 +49,7 @@ import { CardrentModule } from './cardrent/cardrent.module';
     ActivityComponent,
     ActivityHeaderComponent,
     ActivityContentComponent,
+    MainmenuComponent,
   ],
   imports: [
     BrowserModule,

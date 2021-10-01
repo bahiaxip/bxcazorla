@@ -4,41 +4,45 @@
 	<button>boton despues</button>
 </div>-->
 <section class="section1" #section1 >
+<!-- div lluvia -->
 	<div class="container_snow" id="container_snow1" [ngStyle]="{'opacity':switchOpacitySnow}" *ngIf="switchAllOpacitySnow">
 		<div [ngStyle]="{'top':snow.styleTop+'px','left':snow.styleLeft,'animationName':snow.animationName,animationDuration:snow.animationDuration,'animationDelay':snow.animationDelay}" *ngFor="let snow of snows">
 			<img [src]="snow.image.name" [ngStyle]="{'animationName':snow.image.animationName,'animationDuration':snow.image.animationDuration}" />
 		</div>
 	</div>
+<!-- div lluvia 2 -->
 	<div class="container_snow2" [ngStyle]="{'opacity':switchOpacitySnow2}" *ngIf="switchAllOpacitySnow">
 		<div [ngStyle]="{'top':snow.styleTop+'px','left':snow.styleLeft,'animationName':snow.animationName,animationDuration:snow.animationDuration,'animationDelay':snow.animationDelay}" *ngFor="let snow of snows2">
 			<img [src]="snow.image.name" [ngStyle]="{'animationName':snow.image.animationName,'animationDuration':snow.image.animationDuration}" />
 		</div>
 	</div>
-	<!-- botón superior -->
+<!-- botón superior -->
 	<button mat-icon-button (click)="setSection(sectionId-1)" class="btn_slider_section top" *ngIf="sectionId != 1">
 		<mat-icon class="icon">
 			double_arrow
 		</mat-icon>
 	</button >
-	<div style="width:100%;height: 100vh;position:absolute;background-color:rgba(0,0,0,0.5);">
+<!-- div botones lateral -->
+	<div class="div_buttongroup" style="">
 		<mat-button-toggle-group  name="matButtonToggleGroup" class="button_group" vertical [value]="buttonValue">
-			<mat-button-toggle (click)="setSection(1)" value="home">
+			<mat-button-toggle (click)="setSection(1)" value="home" class="btn">
 				<mat-icon>info_round</mat-icon>
 			</mat-button-toggle>
-			<mat-button-toggle (click)="setSection(2)" value="places" >
+			<mat-button-toggle (click)="setSection(2)" value="places" class="btn">
 				<i class="material-icons material-icons-two-tone">home</i>
 			</mat-button-toggle>
-			<mat-button-toggle (click)="setSection(3)" value="rent" >
+			<mat-button-toggle (click)="setSection(3)" value="rent" class="btn">
 				<i class="material-icons material-icons-outlined">home</i>
 			</mat-button-toggle>
-			<mat-button-toggle (click)="setSection(4)" value="gallery">
+			<mat-button-toggle (click)="setSection(4)" value="gallery" class="btn">
 				<i class="material-icons material-icons-sharp">home</i>
 			</mat-button-toggle>
-			<mat-button-toggle (click)="setAnimations()" (dblclick)="fillDB()">
+			<mat-button-toggle (click)="setAnimations()" (dblclick)="fillDB()" class="btn">
 				<mat-icon>
 					<i class="material-icons-round">home</i>
 				</mat-icon>
 			</mat-button-toggle>
+		<!-- modal para recargar valores por defecto -->
 			<div style="position:fixed;transform: translate(-50%,-50%);left:50%;top:50%;text-align:center;" [ngStyle]="switchModalCardRentDefault ? {'width':'300px'}:{'width':'0'}">
 				<div style="background-color:rgba(0,0,0,.9);padding:10px 20px;transition:opacity 0.4s linear" [ngStyle]="switchModalCardRentDefault ? {'padding':'10px 20px','opacity':'1'}:{'padding':'0','opacity':'0'}">
 					<p *ngIf="switchModalCardRentDefault">Estableciendo alojamientos por defecto</p>
@@ -47,12 +51,69 @@
 				</div>
 			</div>
 		</mat-button-toggle-group>
+		<div class="div_btn_mainmenu" style="">
+			<button mat-icon-button style="background-color:orange;color: white;position:relative" (click)="toggleMainMenu()">
+				<mat-icon>menu</mat-icon>
+			</button>
+		</div>
 	</div>
-	<div style="width:100%;height:100%;">
-		<!--<div class="back_image" style="position:absolute"></div>-->
-		<div class="back_image" style="" #backimage></div>
+<!-- div todo -->	
+	<div class="last_back" style="">
+		<!--<div style="width:100%;height:100vh;position:absolute;top:15%;z-index:300">
+			<div style="width:80%;height: 80%;display:flex;justify-content:center;margin:auto;border:white 1px solid">
+				<p style="color:orange">Descubre Cazorla desde Arroyo Frío</p>
+			</div>
+		</div>-->
+		<div class="toolbar_header" style="" (mouseover)="showHeader()" (mouseout)="showHeader()">
+			<div class="div_header" style="" [ngStyle]="activeHeader ? {'height':'120%'}:{'height':'0'}" >
+				<div  class="w50 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
+					<!--<div style="margin:auto;background-color:white;" >-->
+						<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
+							<div class="linkedin_icon">
+							</div>														
+						</div>
+						<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
+							<div class="linkedin_icon">
+							</div>														
+						</div>
+						<!--<span style="display:flex;" >
+							<img src="../assets/icons/linkedin_white.svg" />
+						</span>-->
+					<!--</div>-->
+				</div>
+				<div class="w50 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
+					<!--<div style="margin:auto;background-color:white;" >-->
+						<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
+							<div class="linkedin_icon">
+							</div>														
+						</div>
+						<div style="display:flex;width:24px;transition:all 0.4s linear" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
+							<div class="linkedin_icon">
+							</div>														
+						</div>
+						<!--<span style="display:flex;" >
+							<img src="../assets/icons/linkedin_white.svg" />
+						</span>-->
+					<!--</div>-->
+				</div>
+			</div>
+			<!-- para que baje el header flotante añadimos un div con un alto -->
+			<div style="width:100%;height:80px"></div>
+			
+			
+		</div>
+	<!-- menu principal -->
+		<pre-mainmenu [classMainMenu]="classMainMenu" (emitClassMainMenu)="toggleMainMenu()" (setSection)="sendSection($event)"></pre-mainmenu>
+		<div style="position:absolute;background-color:rgba(0,0,0,0);width:100%;height:100%;z-index:0">
+
+			<div class="back_image" style="z-index:100" #backimage>
+				<div style="position:absolute;width:100%;height:100%;background-color:rgba(0,0,0,.3)"></div>
+			</div>
 		
-		<div class="back_image2" style="opacity:0" #backimage2></div>
+			<div class="back_image2" style="opacity:0;z-index:100" #backimage2></div>
+		</div>
+		<!--<div class="back_image" style="position:absolute"></div>-->
+
 			<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
 			<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
 		
@@ -74,8 +135,8 @@
 		<button class="boton2" (click)="setSection(1)">Botón</button>
 	</div>-->
 </section>
-<section id="section3" class="section1" #section3 style="background-color:#676767;transition:transform 2s ease-in-out">
-	<div style="height:100vh;overflow:hidden;" [ngStyle]="{'width':firstWidth+'px'}">
+<section id="section3" class="section1" #section3 class="back_s3" style="transition:transform 2s ease-in-out">
+	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.3)" [ngStyle]="{'width':firstWidth+'px'}" >
 		<pre-activity [firstwidth]="firstWidth"></pre-activity>
 	</div>
 

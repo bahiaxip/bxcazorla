@@ -240,7 +240,8 @@ export class CardrentService {
   }
   //todos los feedbacks de un rentcard(alojamiento)
   selectFeedbackByRent(card:any){
-    //console.log(this.feedrentdata)    
+    //console.log(this.feedrentdata) 
+    console.log("el feed")   
     let listFeedback:any=[];
 //cambiar por filter
     this.totalFeeds.map((feed:any)=>{

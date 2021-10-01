@@ -1,5 +1,6 @@
 import { Component, OnInit,Input, ViewChild, ElementRef } from '@angular/core';
 import { GalleryPlaces } from '../models/gallery-places';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'pre-activity',
@@ -18,7 +19,11 @@ export class ActivityComponent implements OnInit {
   public imageModal:string="";
   public textModal:string="";
   public titleModal:string="";
-  public selectedPanel:string="panel-left";
+  //public selectedPanel:string="panel-left";
+  public selectedPanel:number=0;
+
+  //suscripción para deslizar por los paneles horizontales
+  public subscriptionPanel:any;
 
   public places:GalleryPlaces[]=[
   {
@@ -74,13 +79,24 @@ export class ActivityComponent implements OnInit {
 
   //section2
   @ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
-  constructor() {
+  constructor(private _cardService:CardService) {
 
     this.textModal="";
     this.titleModal="";
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void { 
+    //suscripción para dirigir al panel almacenado en el servicio (getPanel()) 
+    this.subscriptionPanel = this._cardService.panel$.subscribe(()=> {
+      let section=this._cardService.getSection();
+//si se cambia el section cambiar el número 3 por el correspondiente
+      if(section==3){
+        let panel = this._cardService.getPanel();
+        this.sendToPanel(this.firstwidth+'px','1s',panel)        
+      }
+      
+    })
+
     
     window.addEventListener("resize",(e)=>{
       let midivsliderStyle = this.midivslider.nativeElement.style
@@ -88,33 +104,31 @@ export class ActivityComponent implements OnInit {
       console.log("hola2: ",window.scrollY)
       if(midivsliderStyle.transform && midivsliderStyle!="translateX(0px)"){
 
-        this.sendToPanel(this.firstwidth+'px','0s','panel-left');
+        this.sendToPanel(this.firstwidth+'px','0s',0);
       }
     });
   }
 
-  sendToEmit(panel:string){
+  sendToEmit(panel:number){
     console.log("enviando a :",panel)
     
     this.sendToPanel(this.firstwidth+'px','1s',panel);
     
   }
 
-  sendToPanel(size:string,duration:string,toPanel:string){
-    
-    //this.midivslider.nativeElement.style.transitionDuration=duration;
-    
+  //cambiamos a suscripción , por tanto los hijos que tengan emit sse pueden sustituir
+  //por suscripciones
+  sendToPanel(size:string,duration:string,toPanel:number){    
+    //this.midivslider.nativeElement.style.transitionDuration=duration;    
     //this.section3.nativeElement.style.transform="translateX(-"+size+")";
-    console.log(toPanel);
-
-
+  //solo 2 panels (panel-left,panel-right)
     this.midivslider.nativeElement.style.transitionDuration='1s';
-    if(toPanel=="panel-right"){
-      this.selectedPanel="panel-right";
+    if(toPanel==1){
+      this.selectedPanel=1;
       
       this.midivslider.nativeElement.style.transform="translateX(-"+size+")";  
-    }else if(toPanel=="panel-left"){
-      this.selectedPanel="panel-left";
+    }else if(toPanel==0){
+      this.selectedPanel=0;
       this.midivslider.nativeElement.style.transform="translateX(0px)";
     }
     console.log(this.selectedPanel)

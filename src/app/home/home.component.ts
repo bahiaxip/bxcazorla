@@ -10,6 +10,7 @@ import { CardRent } from '../models/card-rent';
 
 //services
 import { CardrentService } from '../cardrent/services/cardrent.service';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'pre-home',
@@ -27,8 +28,10 @@ export class HomeComponent implements OnInit {
   public banner3:any;
   public cardrentdata:any;
   public selectedCard:any;
-  
+
+//elemento DOM del section seleccionado
   private selectedSection:any=null;
+  //id correspondiente al section
   public sectionId:any;
   //botón de buttongroup
   public buttonValue:any;
@@ -38,11 +41,11 @@ export class HomeComponent implements OnInit {
   images: any;
   private selectActivity:any;
   
+  //height para card-header
   public myHeight:string="0";
-  
   public myHeight2:string="0";
   
-  
+  //width de window para establecer al cargar y redimensionar
   public firstWidth:any;
   public firstHeight:any;
   //snow
@@ -52,7 +55,7 @@ export class HomeComponent implements OnInit {
   public snows:Snow[]=[];  
   public snows2:Snow[]=[];  
   public snow:any;
-
+  //fin snow
   //switch para mostrar el modal de mensaje al restablecer valores por defecto
    public switchModalCardRentDefault:any=false;
 
@@ -63,19 +66,38 @@ export class HomeComponent implements OnInit {
 
   public swDivFeedback:any;
   public swDivFeedback2:any;
+  //puntuación de ubicación
   public levelLocation:number=5;
   
-
   public feedbytitle:any;
-
   public typeFeedback:any;
   public switchDivMaps:any;
 
   //max-width de bannerp3 para mostrar correctamente el white-space
   public maxWidthBannerp3:any;
   public textbanner:any;
+  //interval de lluvia
   private rainInterval:any;
   
+//header flotante
+  //switch para mostrar ocultar banner ([ngStyle])
+  public activeHeader:any=false;
+
+//menú principal (mainmenu)
+  //switch para mostrar/ocultar de menú principal ([ngClass])
+  public classMainMenu:boolean=false;
+  //text mainmenu detail
+  public textDetailMenu:Array<string>=[];
+  //switch detalle menú principal
+  public switchDetailMenu:any=false;  
+  //suscripción a detailmenu
+  public subscriptionDetailMenu:any;
+//fin menú principal
+
+  //suscripción para actualizar el section
+  public subscriptionSection:any;
+//número de section (comprobar si se puede sintetizar con sectionId)
+  //public section:any;
 
   @ViewChild('section1',{static:true}) private section1!:ElementRef;
   @ViewChild('section2',{static:true}) private section2!:ElementRef;
@@ -93,7 +115,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private titleService:Title,
-    private _cardrentService:CardrentService,    
+    private _cardrentService:CardrentService,
+    private _cardService:CardService    
   ) {
     this.typeFeedback=true;
     this.titleService.setTitle("Arroyo Frío");
@@ -213,11 +236,18 @@ export class HomeComponent implements OnInit {
     this.switchAllOpacitySnow=true;
     if(this.firstWidth>=1000 && this.firstHeight<=this.firstWidth){
       //anulada animación (poco realista)
-      
-      
-      
-
     }
+    //suscripción detailMenu
+    this.subscriptionDetailMenu = this._cardService.detailMenu$.subscribe(()=> {
+        //console.log("suscripción home.component");
+        this.textDetailMenu=this._cardService.getDetailMenu();
+    })
+    //suscripción section
+    this.subscriptionSection = this._cardService.section$.subscribe(()=> {        
+        let section=this._cardService.getSection();
+        this.setSection(section);
+    })
+
     //set default card
     //this._cardService.setSelectedCard(this.cardrentdata[0])
     //this.selectedCard=this.cardrentdata[0];
@@ -397,7 +427,24 @@ export class HomeComponent implements OnInit {
     clearInterval(this.rainInterval);
   }
 
-  setSection(id:number){
+  sendSection(data:any){
+    this.toggleMainMenu();
+    setTimeout(()=> {
+      this.setSection(data);
+    },300)
+    
+    /*
+    if(data.firstwidth){
+      //this.firstWidth=data.firstwidth;
+      this.setSection(data.section);
+      
+    }
+    */
+    
+    console.log(data)
+  }
+  //dirigir al section pasado por parámetro
+  setSection(id:number){    
     if(id==1){
       this.selectedSection=this.section1.nativeElement;
       this.sectionId=1;
@@ -511,6 +558,27 @@ export class HomeComponent implements OnInit {
       this.flash();
     },6000)
   }
+  showHeader(){
+    //console.log("pasa por setHeader()")
+    if(this.activeHeader)
+      this.activeHeader=false;
+    else
+      this.activeHeader=true;
+  }
+
+  toggleMainMenu(){
+
+    if(this.classMainMenu){
+      this.classMainMenu=false;
+      this._cardService.setDetailMenu([]);
+    }
+    else
+      this.classMainMenu=true;
+    //console.log(this.classMainMenu)
+  }
+
+  
+
 
 
 }

@@ -30,6 +30,12 @@ html,body{
 	display: none;
 }
 
+			/***** home ***/
+
+
+
+
+			/***** fin home ***/
 			/******* genéricos *********/
 
 .floatL{
@@ -91,6 +97,12 @@ html,body{
 .w100{
 	width: 100%;
 }
+.w90{
+	width: 90%;
+}
+.w85{
+	width: 85%;
+}
 .w80{
 	width: 80%;
 }
@@ -118,6 +130,9 @@ html,body{
 
 .h100{
 	height: 100%;
+}
+.h100v{
+	height: 100vh;
 }
 
 .d_flex{
@@ -181,6 +196,15 @@ html,body{
 		width:60%
 	}
 }
+
+@media(max-width: 1200px){
+	.back_image,.back_image2{
+		background-position:center center !important;
+	}
+}
+
+
+
 @media (max-width: 900px){
 	.flex_item{
 		width: 100%;		
@@ -190,14 +214,7 @@ html,body{
 	}
 }
 
-@media(max-width: 1200px){
-	.back_image{
-		
-		
-		background-position:center center !important;		
-	}
 
-}
 
 /*original*/
 

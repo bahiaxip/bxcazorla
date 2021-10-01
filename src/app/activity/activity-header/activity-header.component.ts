@@ -23,7 +23,7 @@ export class ActivityHeaderComponent implements OnInit {
 
   }
 
-  sendPanel(panel:string){
+  sendPanel(panel:number){
     this.switchTransitionFirst=true;
     this.sendToPanel.emit(panel);
   }
