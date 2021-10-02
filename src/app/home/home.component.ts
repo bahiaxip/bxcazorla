@@ -474,7 +474,9 @@ export class HomeComponent implements OnInit {
 
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});        
       console.log(this.section4.nativeElement.scrollTop);
-    }
+    }    
+    //si se realiza el section desde los botones de flecha se actualiza tb el section del servicio
+    this._cardService.selectedSection=this.sectionId;
     
     console.log("tipo de botón: ",this.buttonValue)
   }

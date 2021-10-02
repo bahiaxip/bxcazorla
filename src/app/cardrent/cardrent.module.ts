@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardInfoservicesComponent } from './card/card-header/card-infoservices/card-infoservices.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ModalComponent } from './modal/modal.component';
+import { NewcardHeaderComponent } from './newcard/newcard-header/newcard-header.component';
 @NgModule({
   declarations: [
     CardrentComponent,
@@ -47,7 +48,8 @@ import { ModalComponent } from './modal/modal.component';
     NewcardPricesComponent,
     CardInfoservicesComponent,
     FeedbackComponent,
-    ModalComponent
+    ModalComponent,
+    NewcardHeaderComponent
   ],
   imports: [
     CommonModule,    
