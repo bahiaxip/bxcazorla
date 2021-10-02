@@ -38,6 +38,7 @@ export class MainmenuComponent implements OnInit {
   //mostrar/ocultar menu principal
   toggleMainMenu(){
     this.emitClassMainMenu.emit();
+    /*
     if(this.classMainMenu){
       this._cardService.setDetailMenu([])
       this.classMainMenu=false;
@@ -45,6 +46,7 @@ export class MainmenuComponent implements OnInit {
     else
       this.classMainMenu=true;
     //console.log(this.classMainMenu)
+    */
 
   }
   //mostrar opciones al pulsar el icono de flecha de uno de los enlaces del menú principal,

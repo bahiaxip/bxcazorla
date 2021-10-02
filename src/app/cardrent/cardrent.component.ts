@@ -33,9 +33,7 @@ export class CardrentComponent{
   ) {
     
   }
-
   ngOnInit(){ 
-
 
     //suscription slider panels
     this.subscriptionPanel = this._cardService.panel$.subscribe(()=> {

@@ -16,12 +16,9 @@ import { CardService } from '../services/card.service';
   selector: 'pre-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  
-
-
 })
-export class HomeComponent implements OnInit {
 
+export class HomeComponent implements OnInit {
 
   public banner1:any;
   public banner2:any;
@@ -544,18 +541,13 @@ export class HomeComponent implements OnInit {
 
 
   //rellenar base de datos con un array de objetos ya creado
+  //pasado a buttongroup
+  /*
   fillDB(){
     this.switchModalCardRentDefault=true;
-    this._cardrentService.fillDB();
-    /*
-    setTimeout(()=>{
-      this.switchModalCardRentDefault=false;
-    },3000)
-    */
-    //window.location.reload();
-    
+    this._cardrentService.fillDB();        
   }
-  
+  */
   setAnimations(){
     this.animation1();
     this.animation2()
@@ -564,6 +556,9 @@ export class HomeComponent implements OnInit {
       this.flash();
     },6000)
   }
+
+  //pasado a floatheader component
+  /*
   showHeader(){
     //console.log("pasa por setHeader()")
     if(this.activeHeader)
@@ -571,7 +566,9 @@ export class HomeComponent implements OnInit {
     else
       this.activeHeader=true;
   }
+  */
 
+  
   toggleMainMenu(){
 
     if(this.classMainMenu){
