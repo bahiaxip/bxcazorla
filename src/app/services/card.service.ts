@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CardRent } from '../models/card-rent';
-import { Subject } from 'rxjs';
+import { Subject,Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,15 @@ export class CardService {
   //sección seleccionada
   public selectedSection:any;
   
+  constructor(private _http:HttpClient){}
 
+  getWeather():Observable<any>{
+    let headers = {
+      'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
+      'x-rapidapi-key' : '0e6d580fefmsh1b8736e3bdcfa1bp1e366bjsn7f9020d9f44c'
+    }
+    return this._http.get('https://community-open-weather-map.p.rapidapi.com/weather/',{params:{q:'Cazorla,es'},headers:headers});
+  }
 
 
 
