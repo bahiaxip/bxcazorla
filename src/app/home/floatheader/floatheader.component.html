@@ -26,12 +26,17 @@
 					</div>														
 				</a>-->
 
-				<div style="display:flex;width:48px;color:white;transition:all 0.4s linear;" [ngStyle]="activeHeader ? {'max-height':'48px'}:{'max-height':'0px'}" *ngIf="iconWeather" title="Tiempo en Cazorla">
+				<div style="display:flex;color:white;transition:all 0.4s linear;cursor:pointer" [ngStyle]="activeHeader ? {'max-height':'48px'}:{'max-height':'0px'}" *ngIf="iconWeather" [title]="infoWeather">
 					<img [src]="'../../../assets/icons/icons_weather_svg/'+iconWeather+'.png'" width="48"/>					
 				</div>
-				<span style="color:white;display:flex;transition:all 0.4s linear;" [ngStyle]="activeHeader ? {'font-size':'16px'}:{'font-size':'0px'}">
-					<p>{{tempWeather}}ºC</p>
-				</span>
+				<div style="margin-left:3px">
+					<div style="color:lightgreen;display:flex;transition:all 0.4s linear;font-weight:bold;cursor:pointer" [ngStyle]="activeHeader ? {'font-size':'14px'}:{'font-size':'0px'}" [title]="'Temperatura: '+tempWeather+'ºC'" *ngIf="tempWeather">
+						{{tempWeather}}ºC
+					</div>
+					<div style="color:lightgreen;display:flex;transition:all 0.4s linear;font-weight:bold;cursor:pointer" [ngStyle]="activeHeader ? {'font-size':'14px'}:{'font-size':'0px'}" [title]="'Humedad:'+humidityWeather+'%'" *ngIf="humidityWeather">
+						{{humidityWeather}}%
+					</div>
+				</div>
 
 				<!--<span style="display:flex;" class="miimage">
 					<img src="../assets/icons/linkedin_white.svg" style="color: orange"/>

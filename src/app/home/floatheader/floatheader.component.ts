@@ -12,7 +12,10 @@ export class FloatheaderComponent implements OnInit {
   public activeHeader:any=false;
   public weather:any;
   public tempWeather:any;
+  public humidityWeather:any;
   public iconWeather:any;
+  public infoWeather:any;
+
   constructor(private _cardService:CardService) { }
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class FloatheaderComponent implements OnInit {
     else
       this.activeHeader=true;
   }
+
   callWeather(){
     //Fórmula Kelvin a Cesius -> C = K -273,15
     this._cardService.getWeather().subscribe(
@@ -34,11 +38,15 @@ export class FloatheaderComponent implements OnInit {
           this.weather=response;
           this.tempWeather=this.getTempCelsius(response.main.temp);
           this.iconWeather=response.weather[0].icon;
-          console.log("eiii:",response.weather[0].icon)
+          let infoWeather=response.weather[0].main;
+          this.infoWeather=this.getSpanishInfoWeather(infoWeather);
+          this.humidityWeather=response.main.humidity
+          console.log("eiii:",response.main.humidity)
 
         }else{
           this.tempWeather="N/A"
           this.iconWeather="unknown"
+          this.humidityWeather="N/A"
         }
         console.log("response de weather: ",response)
         console.log(response.main.temp)
@@ -55,4 +63,34 @@ export class FloatheaderComponent implements OnInit {
     return tempCelsius;
   }
 
+  getSpanishInfoWeather(info:string){
+    let spanishInfo="";
+    switch(info){
+      case 'Clouds':
+        spanishInfo="Nublado";
+        break;
+      case 'Rain':
+        spanishInfo="Lluvia";
+        break;
+      case 'Clear':
+        spanishInfo="Despejado";
+        break;
+      case 'Drizzle':
+        spanishInfo="Llovizna";
+        break;
+      case 'Snow':
+        spanishInfo="Nieve";
+        break;
+      case 'Thunderstorm':
+        spanishInfo="Tormenta";
+        break;
+      case 'Snow':
+        spanishInfo="Nieve";
+        break;
+      default:
+        spanishInfo="N/A";
+        break;
+    }
+    return spanishInfo
+  }
 }
