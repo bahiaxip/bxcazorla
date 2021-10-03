@@ -56,7 +56,13 @@ export class CardService {
   //método llamado desde setDetailMenu(type)
   testType(type:string){
     let list=[];
-    if(type=="places"){
+    if(type=="arroyofrio"){
+      console.log("arroyofrio")
+      let arroyofrio=`Arroyo Frío es un municipio ubicado en el parque natural de Cazorla (Jaén),
+        `;
+        list.push(arroyofrio)
+    }
+    else if(type=="places"){
       let nearPlaces="Lugares cercanos a Arroyo Frío";
       let proxPlaces = "Lugares próximos a Arroyo Frío"
       list.push(nearPlaces);

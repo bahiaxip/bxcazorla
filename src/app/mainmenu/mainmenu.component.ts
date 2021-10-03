@@ -55,8 +55,10 @@ export class MainmenuComponent implements OnInit {
   showDetailMenu(type:string){
     //pasamos animación a false  
     this.stateAnimation=false;
-    
-    if(type=="places"){
+    if(type=="arroyofrio"){
+      this.selectedLink=1;
+    }
+    else if(type=="places"){
       this.selectedLink=2;  
     }else if(type=="renting"){
       this.selectedLink=3;

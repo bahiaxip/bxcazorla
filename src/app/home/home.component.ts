@@ -170,6 +170,7 @@ export class HomeComponent implements OnInit {
     
     //comprobamos y almacenamos el ancho del section principal
     this.firstWidth=this.section1.nativeElement.clientWidth;
+    console.log("primer firstWidth: ",this.firstWidth);
     //console.log(this.firstWidth);
     this.firstHeight=this.section1.nativeElement.clientHeight;
     //console.log(this.firstHeight);

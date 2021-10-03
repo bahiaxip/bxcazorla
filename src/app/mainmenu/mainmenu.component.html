@@ -16,6 +16,10 @@
 				<div class="w50 mauto d_flex">
 					<div class="mauto">
 						<div class="linkmenu" >
+							<span class="link" title="Ir a Lugares">ARROYO FRÍO</span>
+							<!--<mat-icon class="material-icons icon"  (click)="showDetailMenu('arroyofrio')">chevron_right</mat-icon>-->
+						</div>
+						<div class="linkmenu" >
 							<span (click)="sendSection(2,0)" class="link" title="Ir a Lugares">LUGARES</span>
 							<mat-icon class="material-icons icon"  (click)="showDetailMenu('places')">chevron_right</mat-icon>
 						</div>
@@ -45,7 +49,7 @@
 								</div>-->
 								<div style="width: 100%;margin:10px auto;">
 									<div *ngFor="let option of textDetailMenu;let j = index" class="optionmenu" style="" [@switchDetail]="stateAnimation">
-										<span style="margin-left:10px" (click)="sendSection(this.selectedLink,j)">{{option}}</span>
+										<span style="margin-left:10px;" (click)="sendSection(this.selectedLink,j)" class="spanmenu" [attr.data-hover]="option"></span>
 									</div>
 								</div>
 						</div>
