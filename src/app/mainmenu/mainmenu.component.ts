@@ -86,6 +86,9 @@ export class MainmenuComponent implements OnInit {
     //this.setSection.emit(section);
     this._cardService.setPanel(panel);
   }
+  animation(){
+    this._cardService.setAnimation();
+  }
 
 
   /*pasado al servicio

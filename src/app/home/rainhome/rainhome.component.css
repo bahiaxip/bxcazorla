@@ -1,0 +1,90 @@
+/*		snow		*/
+.container_snow{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	/*
+	height: 100%;
+	*/
+	overflow: hidden;
+	
+}
+.container_snow2{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	/*
+	height: 100%;
+	transition: opacity 5s linear;
+	*/
+}
+.div_snow>div>img{}
+.div_snow>div{
+	position: absolute;
+	width: auto;
+	height: 100%;
+	z-index: 900;
+}
+.container_snow>div{
+	/* al haber 2 animaciones en animation-name si se indican 2 parámetros 
+	en los otros animations(animation-duration,animation-iteration-count,...)
+	se asocian en el mismo orden del animation-name*/	
+	animation-iteration-count: 8, 8;
+	animation-direction: normal normal;
+	animation-timing-function: linear, ease-in;	
+}
+.container_snow2>div{
+	animation-iteration-count: 5, 5;
+	animation-direction: normal normal;
+	animation-timing-function: linear, ease-in;		
+}
+.div_snow>div>img{
+	position: absolute;
+	width: auto;
+	height: auto;
+}
+.container_snow>div>img{
+	
+	animation-iteration-count: 10;
+	animation-direction:  alternate;
+	animation-timing-function:  ease-in-out;	
+}
+.container_snow2>div>img{
+	animation-iteration-count: 5;
+	animation-direction:  alternate;
+	animation-timing-function:  ease-in-out;	
+}
+
+/*
+la animación1 genera un aleatorio que puede ser fade o drop, la animación2
+genera una animación que puede ser fade,drop3, mientras que la animación de viento
+es el mismo para las 2 animaciones y puede ser clockwiseSpin o counterclockwiseSpinAndFlip.
+
+/*animación1 y animación2 (para el div)*/
+@keyframes fade{
+	0% {opacity: 1;}
+	95% {opacity: 1;}
+	100% {opacity: 0;}
+}
+/*animación1 (para el div)*/
+@keyframes drop {
+	0% {transform:  translate(-0px,-50px);}
+	100% {transform: translate(0px,120%);}
+}
+/*animación2 (para el div)*/
+@keyframes drop3 {
+	0% {transform:  translate(0px,-50px);}
+	100% {transform: translate(0px,120%);}
+}
+/*animación1 y animación2 (para la imagen)*/
+@keyframes clockwiseSpin{
+	0% {transform:scale(0.8,0.8) rotate(120deg);}
+	100% {transform:scale(0.8,0.8) rotate(120deg);}
+}
+/*animación1 y animación2  */
+@keyframes counterclockwiseSpinAndFlip{
+	0% {transform:  scale(0.5,0.5) rotate(120deg);}
+
+	100% {transform:  scale(0.5,0.5) rotate(120deg)}
+}

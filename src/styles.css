@@ -154,41 +154,7 @@ html,body{
 	margin: auto 2px;
 }
 
-				/***** home component ******/
 
-
-
-
-				/***** fin home component ******/
-
-
-/*keyframes & media*/
-
-@keyframes fade{
-	0% {opacity: 1;}
-	95% {opacity: 1;}
-	100% {opacity: 0;}
-}
-/*original*/
-@keyframes drop2 {
-	0% {transform:  translate(0px,-50px);}
-	100% {transform: translate(0px,100%);}
-	
-}
-
-
-@keyframes drop {
-	0% {transform:  translate(-0px,-50px);}
-	100% {transform: translate(0px,120%);}
-	
-}
-@keyframes drop3 {
-	0% {transform:  translate(0px,-50px);}
-	100% {transform: translate(0px,120%);}
-	
-}
-
-	/* media queries */
 
 /*presente en cardrent.component, activity-header.component, card-header.component */
 @media (min-width:1400px) {
@@ -203,8 +169,6 @@ html,body{
 	}
 }
 
-
-
 @media (max-width: 900px){
 	.flex_item{
 		width: 100%;		
@@ -215,31 +179,7 @@ html,body{
 }
 
 
-
-/*original*/
-
-/*
-@keyframes clockwiseSpin2{
-	0% {transform: rotate(-50deg);}
-	100% {transform: rotate(50deg);}
-}
-
-@keyframes clockwiseSpin{
-	0% {transform:scale(0.8,0.8) rotate(120deg);}
-	100% {transform:scale(0.8,0.8) rotate(120deg);}
-}
-
-@keyframes counterclockwiseSpinAndFlip{
-	0% {transform:  scale(0.5,0.5) rotate(120deg);}
-
-	100% {transform:  scale(0.5,0.5) rotate(120deg)}
-}
-
-@keyframes counterclockwiseSpinAndFlip2{
-	0% {transform:  scale(-1,1) rotate(50deg);}
-
-	100% {transform:  scale(-1,1) rotate(50deg)}
-}
+/* media queries */
 
 
 @media (max-width: 1450px){
@@ -268,7 +208,7 @@ html,body{
 		grid-auto-rows: 200px;
 
 	}
-	//boton de cierre (siempre centrado, ocupa x columnas según resolución)
+	/*boton de cierre (siempre centrado, ocupa x columnas según resolución)*/
 	.gallery-container .gallery_first{
 		grid-column-start:span 2;
 	}
@@ -328,7 +268,7 @@ html,body{
 	.gallery-container{
 		grid-template-columns: repeat(1, 1fr);
 	}
-	//boton de cierre (siempre centrado, ocupa x columnas según resolución)
+	/*boton de cierre (siempre centrado, ocupa x columnas según resolución)*/
 	.gallery-container .gallery_first{
 		grid-column-start: span 1;
 	}
@@ -373,6 +313,65 @@ html,body{
 	}
 
 }
+				/***** home component ******/
+
+
+
+
+				/***** fin home component ******/
+
+
+/*keyframes & media*/
+/*
+@keyframes fade{
+	0% {opacity: 1;}
+	95% {opacity: 1;}
+	100% {opacity: 0;}
+}
+*/
+/*original*/
+/*
+@keyframes drop2 {
+	0% {transform:  translate(0px,-50px);}
+	100% {transform: translate(0px,100%);}	
+}
+*/
+/*
+@keyframes drop {
+	0% {transform:  translate(-0px,-50px);}
+	100% {transform: translate(0px,120%);}
+}
+@keyframes drop3 {
+	0% {transform:  translate(0px,-50px);}
+	100% {transform: translate(0px,120%);}
+}
+*/
+
+/*original*/
+/*
+@keyframes clockwiseSpin2{
+	0% {transform: rotate(-50deg);}
+	100% {transform: rotate(50deg);}
+}
+
+@keyframes clockwiseSpin{
+	0% {transform:scale(0.8,0.8) rotate(120deg);}
+	100% {transform:scale(0.8,0.8) rotate(120deg);}
+}
+
+@keyframes counterclockwiseSpinAndFlip{
+	0% {transform:  scale(0.5,0.5) rotate(120deg);}
+	100% {transform:  scale(0.5,0.5) rotate(120deg)}
+}
+
+@keyframes counterclockwiseSpinAndFlip2{
+	0% {transform:  scale(-1,1) rotate(50deg);}
+	100% {transform:  scale(-1,1) rotate(50deg)}
+}
+	
+
+
+
 
 .card_rent{
 	max-width:60%;
@@ -494,7 +493,9 @@ html,body{
 	cursor: pointer;
 }
 
-*/
+
+
+
 /*
 .myspan:hover .div_image{
 	width: calc(100% - 10px);

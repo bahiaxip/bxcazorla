@@ -23,14 +23,20 @@ export class CardService {
   private subjectPanel = new Subject<void>();
   public panel$ = this.subjectPanel.asObservable();
 
-
   //observable para establecer y moverse entre los sections
   private subjectSection = new Subject<void>();
   public section$ = this.subjectSection.asObservable();
+
+  //iniciar animación de lluvia
+  private subjectRainAnimation = new Subject<void>();
+  public rainAnimation$ = this.subjectRainAnimation.asObservable();
+
   //posición del panel (panel-left,center,panel-right)
   public panel:any;
   //sección seleccionada
   public selectedSection:any;
+  //switch animación de lluvia
+  public rainAnimation:any;
   
   constructor(private _http:HttpClient){}
 
@@ -129,6 +135,10 @@ export class CardService {
     return this.selectedSection;
   }
 
+  setAnimation(){
+    this.rainAnimation=true;
+    this.subjectRainAnimation.next();
+  }
 
   
 

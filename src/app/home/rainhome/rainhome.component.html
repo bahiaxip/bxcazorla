@@ -1,0 +1,13 @@
+<button (click)="endAnimations()">Hola</button>
+<!-- div lluvia -->
+	<div class="div_snow container_snow" id="container_snow1" *ngIf="switchAllOpacitySnow" >
+		<div [ngStyle]="{'top':snow.styleTop+'px','left':snow.styleLeft,'animationName':snow.animationName,animationDuration:snow.animationDuration,'animationDelay':snow.animationDelay}" *ngFor="let snow of snows" (event)="evAnimation1($event)">
+			<img [src]="snow.image.name" [ngStyle]="{'animationName':snow.image.animationName,'animationDuration':snow.image.animationDuration}" />
+		</div>
+	</div>
+<!-- div lluvia 2 -->
+	<div class="div_snow container_snow2"  *ngIf="switchAllOpacitySnow">
+		<div [ngStyle]="{'top':snow.styleTop+'px','left':snow.styleLeft,'animationName':snow.animationName,animationDuration:snow.animationDuration,'animationDelay':snow.animationDelay}" *ngFor="let snow of snows2">
+			<img [src]="snow.image.name" [ngStyle]="{'animationName':snow.image.animationName,'animationDuration':snow.image.animationDuration}" (event)="evAnimation1($event)"/>
+		</div>
+	</div>
