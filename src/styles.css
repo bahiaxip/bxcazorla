@@ -29,6 +29,23 @@ html,body{
 ::-webkit-scrollbar{
 	display: none;
 }
+/* media query a buttongroup de angular material*/
+@media(max-width:750px){
+	.button_group .btn>button>span{		
+		padding:0 5px;
+		line-height: 30px ;
+	}
+}
+@media(max-width: 350px){
+	.div_buttongroup .div_btn_mainmenu button>span{
+		display: flex;
+		justify-content: center;
+		/*
+		vertical-align: middle;
+		
+		*/
+	}
+}
 
 			/***** home ***/
 
@@ -53,6 +70,9 @@ html,body{
 }
 .mauto_imp{
 	margin: auto !important;
+}
+.ml10{
+	margin-left: 10px;
 }
 
 .mr10{

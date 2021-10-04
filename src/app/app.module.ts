@@ -34,6 +34,7 @@ import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ButtongroupComponent } from './home/buttongroup/buttongroup.component';
 import { FloatheaderComponent } from './home/floatheader/floatheader.component';
 import { RainhomeComponent } from './home/rainhome/rainhome.component';
+import { ArroyofrioComponent } from './home/arroyofrio/arroyofrio.component';
 //import { CardHeaderComponent } from './card-header/card-header.component';
 //import { CardContentComponent } from './card-content/card-content.component';
 //import { SharedModule } from './shared/shared.module';
@@ -56,6 +57,7 @@ import { RainhomeComponent } from './home/rainhome/rainhome.component';
     ButtongroupComponent,
     FloatheaderComponent,
     RainhomeComponent,
+    ArroyofrioComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,9 +16,14 @@
 	margin:auto;
 	display:flex;
 	justify-content:center;
-	font-size:50px;
+	font-size:40px;
 	color:white;
 	font-weight:bold;
+}
+.mainmenu_divcontent{
+	width: 80%;
+	height: 100%;
+	margin: auto;
 }
 
 .mainmenu .mainmenu_content{
@@ -28,6 +33,7 @@
 	margin:auto;
 	border:white 1px solid;
 	background-color: rgba(0,0,0,.5);
+	overflow: auto;
 }
 .mainmenu .content_title{
 	width:100%;
@@ -38,7 +44,7 @@
 .mainmenu .content_title p{
 	color:lightgreen;
 	font-family:Quicksand;
-	font-size:40px;
+	font-size:50px;
 	font-weight: bold;
 }
 .mainmenu .btn_close{
@@ -68,6 +74,13 @@
 	line-height: 60px;
 	letter-spacing: 5px;
 }
+.mainmenu .menulinks{	
+	width: 50%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	transition: transform 0.5s linear, opacity 0.5s linear;
+}
 .mainmenu .menu .linkmenu{
 	display:flex;
 	align-items:center;
@@ -96,7 +109,8 @@
 	background-color: transparent;
 	background-position: center;
 	background-image: radial-gradient(circle,transparent 1%, lightgreen 1%);
-	transition: background 0.6s linear,color 0.6s linear;
+	/*transition: background 0.6s linear,color 0.6s linear;*/
+	transition: background 0.6s linear;
 	background-size: 12000%;
 }
 /* anulado para realizar el efecto de material (círculo que se expande al pulsar)*/
@@ -113,6 +127,12 @@
 	color: black;
 	
 }
+.mainmenu .menudetails{
+	width: 50%;
+	height: 100%;
+	transition: transform 0.5s linear, opacity 0.5s linear;
+
+}
 .mainmenu .menu .detailmenu{
 	height:100%;
 	border:white 1px solid;
@@ -121,6 +141,7 @@
 	font-size:20px;
 	overflow:hidden;
 	display: flex;
+	margin: auto;
 }
 
 .mainmenu .menu .optionmenu{
@@ -137,10 +158,12 @@
 }
 .mainmenu .menu .optionmenu:hover{
 	color: lightgreen;
+	/*
 	background-image: url('../../assets/img/fondo_boton2.jpg');
 	background-position: center right;	
 	background-size: 100%;
 	background-repeat: no-repeat;
+	*/
 	box-shadow:10px 10px 25px #000 inset,-10px -10px 25px #000 inset;
 	transition: background 1s linear;
 	transform: rotate(180deg);
@@ -152,6 +175,7 @@
 .spanmenu{
 	position: relative;
 	left: 0;
+	margin-left: 10px;
 	//transition: color 1s ease-in
 }
 .spanmenu:hover{
@@ -184,6 +208,113 @@
 	transform: translate(0px,0) !important;	
 }
 */
+
+@media (max-width: 1100px){
+	.mainmenu .content_title p{
+		font-size: 45px;
+	}
+	.mainmenu .menu{
+		font-size: 40px;
+		line-height: 50px;
+	}
+	.mainmenu_divcontent{
+		
+	}
+	.mainmenu .menu .detailmenu{
+		width: 95%;
+	}
+}
+@media (max-width: 900px){
+	.mainmenu_titletop p{
+		font-size: 40px;
+	}
+	.mainmenu .content_title p{
+		font-size: 38px;
+	}
+	.mainmenu .menu{
+		font-size: 35px;
+		line-height: 50px;
+	}
+	.mainmenu .menu .detailmenu{
+		line-height: 30px;
+	}
+	
+}
+@media (max-width: 750px){
+
+	.mainmenu_divcontent{
+		width: 75%;
+	}
+	.mainmenu .menu{
+		font-size: 35px;
+		line-height: 40px;
+	}
+	.mainmenu .menu .detailmenu{
+		
+	}
+	.mainmenu .menulinks{
+		width: 80%;
+	}
+	.mainmenu .menu{
+		/*display: block;*/
+	}
+	.mainmenu .menudetails{
+		position: absolute;
+		width: 70%;
+		height: 60%;
+
+		
+		/*width: 100%;*/
+	}
+}
+
+@media (max-width: 600px){
+	.mainmenu{
+		top: 30px;
+	}
+	.mainmenu_titletop p{
+		font-size: 30px;
+	}
+
+}
+
+@media (max-width: 500px){
+	.mainmenu_titletop p{
+		font-size: 20px;
+	}
+	.mainmenu .menu .linkmenu .link{
+		font-size: 30px;
+	}
+
+}
+@media (max-width: 400px){
+	/*.mainmenu .content_title p{
+		font-size: 38px;
+	}*/
+	.mainmenu .menu{
+
+	}
+	.mainmenu .content_title p{
+		font-size: 30px;
+	}
+	.mainmenu .menu .linkmenu .link{
+		font-size: 24px;
+		letter-spacing: 2px;
+		
+	}
+	.content_title .icon_inside{
+		display: none;
+	}
+	.mainmenu .menu .linkmenu .icon{
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+	.mainmenu .menu .optionmenu{
+		line-height: 32px;
+	}
+	
+}
 
 
 

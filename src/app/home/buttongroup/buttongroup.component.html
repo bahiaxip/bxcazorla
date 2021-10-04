@@ -1,20 +1,26 @@
+<div style="position:relative">
 <div class="div_buttongroup" style="">
 	<mat-button-toggle-group  name="matButtonToggleGroup" class="button_group" vertical [value]="buttonValue">
 		<mat-button-toggle (click)="setSection(1)" value="home" class="btn">
-			<mat-icon>home</mat-icon>
+			<mat-icon *ngIf="firstwidth>750">home</mat-icon>
+			<mat-icon *ngIf="firstwidth<750" class="icongroup_min">circle</mat-icon>
 		</mat-button-toggle>
 		<mat-button-toggle (click)="setSection(2)" value="places" class="btn">
-			<i class="material-icons material-icons-two-tone">nature_people</i>
+			<i class="material-icons material-icons-two-tone" *ngIf="firstwidth>750">nature_people</i>
+			<mat-icon *ngIf="firstwidth<750" class="icongroup_min">circle</mat-icon>
 		</mat-button-toggle>
 		<mat-button-toggle (click)="setSection(3)" value="rent" class="btn">
-			<i class="material-icons material-icons-outlined">bedroom_parent</i>
+			<i class="material-icons material-icons-outlined" *ngIf="firstwidth>750">bedroom_parent</i>
+			<mat-icon *ngIf="firstwidth<750" class="icongroup_min">circle</mat-icon>
 		</mat-button-toggle>
 		<mat-button-toggle (click)="setSection(4)" value="gallery" class="btn">
-			<i class="material-icons material-icons-sharp">photo_library</i>
+			<i class="material-icons material-icons-sharp" *ngIf="firstwidth>750">photo_library</i>
+			<mat-icon *ngIf="firstwidth<750" class="icongroup_min">circle</mat-icon>
 		</mat-button-toggle>
 		<mat-button-toggle (click)="setAnimations()" (dblclick)="fillDB()" class="btn">
 			<mat-icon>
-				<i class="material-icons-round">home</i>
+				<i class="material-icons-round" *ngIf="firstwidth>750">home</i>
+				<mat-icon *ngIf="firstwidth<750" class="icongroup_min">circle</mat-icon>
 			</mat-icon>
 		</mat-button-toggle>
 	<!-- modal para recargar valores por defecto -->
@@ -26,9 +32,10 @@
 			</div>
 		</div>
 	</mat-button-toggle-group>
-	<div class="div_btn_mainmenu" style="">
+	<div class="div_btn_mainmenu" style="" *ngIf="panel">
 		<button mat-icon-button style="background-color:orange;color: white;position:relative" (click)="toggleMainMenu()">
-			<mat-icon>menu</mat-icon>
+			<mat-icon class="icon">menu</mat-icon>
 		</button>
 	</div>
+</div>
 </div>

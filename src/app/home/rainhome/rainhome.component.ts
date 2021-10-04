@@ -168,13 +168,4 @@ export class RainhomeComponent implements OnInit {
     
   }
 
-  endAnimations(){
-    console.log("finaliza el interval")
-    clearInterval(this.rainInterval)
-  }
-
-  evAnimation1(ev:any){
-    console.log("event: ",ev)
-  }
-
 }

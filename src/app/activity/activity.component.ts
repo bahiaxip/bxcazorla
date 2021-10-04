@@ -117,7 +117,8 @@ export class ActivityComponent implements OnInit {
     this.sendToPanel(this.firstwidth+'px','1s',panel);
     
   }
-
+//llevarlo al servicio y este método y compartirlo con todos, sobre todo por la 
+//duración de la transición, es necesaria para el event resize
   //cambiamos a suscripción , por tanto los hijos que tengan emit sse pueden sustituir
   //por suscripciones
   sendToPanel(size:string,duration:string,toPanel:number){    

@@ -3,67 +3,71 @@
 <!--<div >
 	<button>boton despues</button>
 </div>-->
-<section class="section1" #section1 >	
-	<pre-rainhome [firstwidth]="firstWidth" (emitFlash)="flash()"></pre-rainhome>
-<!--
-	<div class="container_snow" id="container_snow1" [ngStyle]="{'opacity':switchOpacitySnow}" *ngIf="switchAllOpacitySnow">
-		<div [ngStyle]="{'top':snow.styleTop+'px','left':snow.styleLeft,'animationName':snow.animationName,animationDuration:snow.animationDuration,'animationDelay':snow.animationDelay}" *ngFor="let snow of snows">
-			<img [src]="snow.image.name" [ngStyle]="{'animationName':snow.image.animationName,'animationDuration':snow.image.animationDuration}" />
-		</div>
-	</div>
-
-	<div class="container_snow2" [ngStyle]="{'opacity':switchOpacitySnow2}" *ngIf="switchAllOpacitySnow">
-		<div [ngStyle]="{'top':snow.styleTop+'px','left':snow.styleLeft,'animationName':snow.animationName,animationDuration:snow.animationDuration,'animationDelay':snow.animationDelay}" *ngFor="let snow of snows2">
-			<img [src]="snow.image.name" [ngStyle]="{'animationName':snow.image.animationName,'animationDuration':snow.image.animationDuration}" />
-		</div>
-	</div>
--->
-<!-- botón superior -->
+<section class="section1" #section1 >
+	<!--botón superior -->	
 	<button mat-icon-button (click)="setSection(sectionId-1)" class="btn_slider_section top" *ngIf="sectionId != 1">
 		<mat-icon class="icon">
 			double_arrow
 		</mat-icon>
 	</button >
-<!--grupo de botones (lateral)-->
-	<pre-buttongroup [buttonValue]="buttonValue" (emitClassMainMenu)="toggleMainMenu()"></pre-buttongroup>
+	<pre-buttongroup  [firstwidth]="firstWidth" [buttonValue]="buttonValue" (emitClassMainMenu)="toggleMainMenu()"></pre-buttongroup>
 
-<!-- div todo -->	
-	<div class="last_back" style="">
-		<!--<div style="width:100%;height:100vh;position:absolute;top:15%;z-index:300">
-			<div style="width:80%;height: 80%;display:flex;justify-content:center;margin:auto;border:white 1px solid">
-				<p style="color:orange">Descubre Cazorla desde Arroyo Frío</p>
-			</div>
-		</div>-->
-		<pre-floatheader></pre-floatheader>
-	<!-- menu principal -->
-		<pre-mainmenu [classMainMenu]="classMainMenu" (emitClassMainMenu)="toggleMainMenu()" (setSection)="sendSection($event)"></pre-mainmenu>
-
-	<!-- imágenes home -->
-		<div style="position:absolute;background-color:rgba(0,0,0,0);width:100%;height:100%;z-index:0">
-
-			<div class="back_image" style="z-index:100" #backimage>
-				<div style="position:absolute;width:100%;height:100%;background-color:rgba(0,0,0,.3)"></div>
-			</div>
-		
-			<div class="back_image2" style="opacity:0;z-index:100" #backimage2></div>
-		</div>
-		<!--<div class="back_image" style="position:absolute"></div>-->
-
-			<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
-			<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
-		
-		
-	</div>
-<!-- botón inferior -->
-	<button mat-icon-button (click)="setSection(sectionId+1)" class="btn_slider_section bottom">
-			<mat-icon class="icon">
-				double_arrow
-			</mat-icon>
-		</button >
 	
+	<!--div -->
+	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.3)" [ngStyle]="{'width':firstWidth+'px'}" >
+		<div #divsection1  style="height:100%;display:flex;flex-flow:row wrap;transition:transform 1s linear" [ngStyle]="{'width':firstWidth*2+'px'}" >
+
+			<div [ngStyle]="{'width':firstWidth+'px'}"  style="overflow:hidden"  >
+			<!-- animación lluvia -->
+				<pre-rainhome [firstwidth]="firstWidth" (emitFlash)="flash()"></pre-rainhome>
+				<!--grupo de botones (lateral)-->
+	
+				
+			
+
+			<!-- div todo -->	
+				<div class="last_back" style="">
+					<!--<div style="width:100%;height:100vh;position:absolute;top:15%;z-index:300">
+						<div style="width:80%;height: 80%;display:flex;justify-content:center;margin:auto;border:white 1px solid">
+							<p style="color:orange">Descubre Cazorla desde Arroyo Frío</p>
+						</div>
+					</div>-->
+					<pre-floatheader></pre-floatheader>
+				<!-- menu principal -->
+					<pre-mainmenu [firstwidth]="firstWidth" [classMainMenu]="classMainMenu" (emitClassMainMenu)="toggleMainMenu()" (setSection)="sendSection($event)"></pre-mainmenu>
+
+				<!-- imágenes home -->
+					<div style="position:absolute;background-color:rgba(0,0,0,0);width:100%;height:100%;z-index:0">
+
+						<div class="back_image" style="z-index:100" #backimage>
+							<div style="position:absolute;width:100%;height:100%;background-color:rgba(0,0,0,.3)"></div>
+						</div>
+					
+						<div class="back_image2" style="opacity:0;z-index:100" #backimage2></div>
+					</div>
+					<!--<div class="back_image" style="position:absolute"></div>-->
+
+						<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
+						<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
+				</div>
+			
+				
+			</div>
+			<div [ngStyle]="{'width':firstWidth+'px'}" >
+				<div style="width:100%" >
+					<pre-arroyofrio></pre-arroyofrio>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- botón inferior -->
+	<button mat-icon-button (click)="setSection(sectionId+1)" class="btn_slider_section bottom">
+		<mat-icon class="icon">double_arrow</mat-icon>
+	</button>
+
 </section>
 <section id="section2" class="section1" #section2>
-	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.3)" [ngStyle]="{'width':firstWidth+'px'}" >
+	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.7)" [ngStyle]="{'width':firstWidth+'px'}" >
 		<pre-activity [firstwidth]="firstWidth"></pre-activity>
 	</div>
 	<!--<div style="width:100%;display:flex;position:absolute">

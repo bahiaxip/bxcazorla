@@ -20,7 +20,7 @@
 	position:fixed;
 	z-index: 300;
 	top:35%;
-	left:4%;
+	left:2%;
 	padding: 0;
 	border: #A2A2A2 1px solid;
 
@@ -43,6 +43,11 @@
 	background-color: rgba(0,0,0,.2);
 	color: white;
 }
+.button_group .btn .icongroup_min{
+	font-size:10px;
+	line-height:20px;
+	vertical-align: middle;
+}
 
 		/* modificar el color de buttongroup de Angular Material */
 
@@ -60,3 +65,18 @@ mat-button-toggle:hover{
 	color: #E3E3E3 !important;
 	
 }
+
+@media(max-width:500px){
+	.div_buttongroup .div_btn_mainmenu{
+		right: 0px;
+	}
+}
+@media(max-width:350px){
+	.div_buttongroup .div_btn_mainmenu button{
+		width: 35px;
+		height: 35px;
+	}
+	
+}
+
+

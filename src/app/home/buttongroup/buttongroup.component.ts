@@ -7,7 +7,7 @@ import { CardrentService } from '../../cardrent/services/cardrent.service';
   styleUrls: ['./buttongroup.component.css']
 })
 export class ButtongroupComponent implements OnInit {
-
+  @Input() firstwidth:any;
   @Input() buttonValue:any;
   @Output() emitClassMainMenu=new EventEmitter<any>();
 
@@ -17,12 +17,23 @@ export class ButtongroupComponent implements OnInit {
   //el buttonValue permite relacionar el botón checkeado en el buttongroup(del grupo de botones lateral)
   //de Angular Material, tb se pueden modificar el CSS por defecto 
   //public buttonValue:any;
+  public panel:any=true;
+  public subscriptionPanel:any;
+
   constructor(
     private _cardService:CardService,
     private _cardrentService:CardrentService
   ) { }
 
   ngOnInit(): void {
+    this.subscriptionPanel=this._cardService.panel$.subscribe(()=> {
+      let section = this._cardService.getSection();
+      let panel=this._cardService.getPanel();
+      if(section==1 && panel==1)
+        this.panel=false
+      else
+        this.panel=true;        
+    })
   }
 
   setSection(section:number){

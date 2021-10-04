@@ -95,13 +95,18 @@ export class HomeComponent implements OnInit {
 
   //suscripción para actualizar el section
   public subscriptionSection:any;
+  //suscripción para actualizar el panel
+  public subscriptionPanel:any;
 //número de section (comprobar si se puede sintetizar con sectionId)
   //public section:any;
-
+  public selectedPanel:any;
   @ViewChild('section1',{static:true}) private section1!:ElementRef;
   @ViewChild('section2',{static:true}) private section2!:ElementRef;
   @ViewChild('section3',{static:true}) private section3!:ElementRef;
   @ViewChild('section4',{static:true}) private section4!:ElementRef;
+
+  //section1
+  @ViewChild('divsection1',{static:true}) private divsection1!:ElementRef;
   //section2
   //@ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
   //section1
@@ -169,13 +174,13 @@ export class HomeComponent implements OnInit {
     
     
     //comprobamos y almacenamos el ancho del section principal
-    this.firstWidth=this.section1.nativeElement.clientWidth;
+    this.firstWidth=this.section1.nativeElement.clientWidth;    
     console.log("primer firstWidth: ",this.firstWidth);
     //console.log(this.firstWidth);
     this.firstHeight=this.section1.nativeElement.clientHeight;
     //console.log(this.firstHeight);
     this.setSectionByScroll()
-
+    this.selectedPanel=0;
     //actualizamos el ancho para los mensajes deslizantes de valoraciones
 
     //establecemos overflow hidden genérico a la etiqueta html para que no se pueda
@@ -202,6 +207,7 @@ export class HomeComponent implements OnInit {
       //console.log("nuevo firstWidth: ",this.firstWidth)
       //console.log(this.firstWidth=this.section1.nativeElement.clientWidth)
       this.selectedSection.scrollIntoView();
+      this.sendToPanel(this.selectedPanel)
     })
 
       
@@ -240,12 +246,26 @@ export class HomeComponent implements OnInit {
     //suscripción detailMenu
     this.subscriptionDetailMenu = this._cardService.detailMenu$.subscribe(()=> {
         //console.log("suscripción home.component");
-        this.textDetailMenu=this._cardService.getDetailMenu();
+        this.textDetailMenu=this._cardService.getDetailMenu();        
     })
     //suscripción section
     this.subscriptionSection = this._cardService.section$.subscribe(()=> {        
         let section=this._cardService.getSection();
+        /*
+        if(section==1){                  
+          this.sendToPanel(this._cardService.getPanel())
+          console.log("llega al suscription de home: ",this._cardService.getPanel())
+        }*/
         this.setSection(section);
+    })
+    this.subscriptionPanel= this._cardService.panel$.subscribe(()=> {
+      let section=this._cardService.getSection();
+      if(section==1){
+        let panel=this._cardService.getPanel();
+        this.selectedPanel=panel;
+        this.sendToPanel(panel);  
+      }
+      
     })
 
     //set default card
@@ -480,6 +500,18 @@ export class HomeComponent implements OnInit {
     this._cardService.selectedSection=this.sectionId;
     
     console.log("tipo de botón: ",this.buttonValue)
+  }
+
+  sendToPanel(panel:any){
+    console.log("llega al sendToPanel: ",panel)
+    if(panel==0){
+      console.log("llega al 0")
+      this.divsection1.nativeElement.style.transform='translateX(0)';    
+    }else if(panel == 1){
+      console.log("llega al 1")
+      this.divsection1.nativeElement.style.transform='translateX(-'+this.firstWidth+'px)';  
+    }
+    
   }
 
   

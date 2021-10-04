@@ -1,0 +1,102 @@
+.back_arroyofrio{
+	width: 100%;
+	height: 100vh;
+	background-image: url('../../../assets/arroyofrio_aldea3.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	position: relative;
+	
+}
+.arroyofrio{
+	position:relative;
+	display:flex;
+	align-items:flex-end;
+}
+
+.div_mask{
+	width:100%;
+	height:100%;
+	position:absolute;
+	background-color:rgba(0,0,0,.3);
+}
+
+.div_arroyofrio{
+	
+	background-color: rgba(0,0,0,.7);
+	margin:60px auto;
+	color:white;
+	position:relative;	
+	overflow: auto;
+	
+}
+
+.div_iconreturn{
+	position: relative;
+	top: 50%;
+	float:left;
+	left: 10px;
+	transform:translate(0,-50%) rotate(180deg);
+	padding:3px;
+	border:#E3E3E3 1px solid;
+	border-radius:50%;
+}
+.div_iconflag{
+	float:right;
+	position:relative;
+	top:50%;
+	right:10px;
+	transform:translate(0%,-50%);
+}
+.div_img{
+	margin:auto;
+	width:100%;
+	display:flex;
+	align-items: flex-end;
+	height:300px;
+	justify-content:center
+}
+.img_arroyofrio{
+	margin-top: 20px;
+}
+
+.text_arroyofrio{
+	display: flex;
+	margin:20px  auto;
+	width: 80%;
+	font-size: 20px;
+	font-family: Quicksand;
+	font-weight: bold;
+	line-height: 25px;
+	display: block;
+}
+.text_arroyofrio h2{
+	width:100%;
+	margin:10px auto;
+	display: flex;
+	justify-content: center;
+}
+
+/*** media queries ***/
+@media (max-width: 800px){
+	.text_arroyofrio{
+		font-size: 18px;
+	}
+	.div_iconreturn {
+		top: 6%;
+		transform: translate(0,0),rotate(180deg);
+	}
+	.div_iconflag{
+		top: 1%;
+		transform: translate(0,0);
+	}
+
+}
+@media(max-width: 500px){
+	.text_arroyofrio{
+		font-size: 16px;
+	}
+	.arroyofrio{
+		align-items: normal;
+	}	
+}
