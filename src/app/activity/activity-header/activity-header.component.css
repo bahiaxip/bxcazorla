@@ -51,7 +51,7 @@
 .flex_item .icon_left{	
 	float:left;
 	font-size:35px;
-	color:orange;
+	color:lightgreen;
 	transform:rotate(180deg);
 	margin-top:8px;
 	margin-left:10px;
@@ -63,7 +63,7 @@
 .flex_item .icon_right{	
 	float:right;
 	font-size:35px;
-	color:orange;
+	color:lightgreen;
 	margin-right:10px;	
 	cursor: pointer;
 	align-items: center;

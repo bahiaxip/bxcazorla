@@ -10,7 +10,7 @@
 	<div class="div_box" *ngFor="let place of places">
 		<span class="box_image" (click)="hideFilter(0)">
 			<div class="clone_div_image" ></div>
-			<div class="div_image">
+			<div class="div_image" >
 				<div class="title_image">
 					<mat-icon class="icon_image" (click)="showModal(place)" title="Más información">info</mat-icon>
 					<p class="text_title" >{{place.title}}</p>

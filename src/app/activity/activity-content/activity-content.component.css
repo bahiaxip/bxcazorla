@@ -98,6 +98,11 @@
 	overflow: hidden;
 	
 }
+/*
+.box_image .div_image:hover{
+	border:#D3D3D3 1px solid
+}
+*/
 .box_image .div_image .title_image{
 	/*visibility: hidden;*/
 	opacity: 0;
@@ -134,7 +139,6 @@
 	right: 10px;
 	font-size:30px;
 	color:#ff7500;
-	
 	margin-top:8px
 }
 
@@ -191,7 +195,13 @@
 
 @media (max-width: 1200px){
 	.box_image .div_image .title_image .text_title{
-		font-size: 12px;
+		font-size: 14px;
+
+	}
+}
+@media (max-width: 600px){
+	.box_image .div_image .title_image .text_title{
+		font-size: 13px;
 
 	}
 }
