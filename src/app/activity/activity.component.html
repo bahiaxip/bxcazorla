@@ -10,9 +10,9 @@
 			
 			<div class="div_flex">
 
-				<pre-activity-header titleProximity="Lugares cercanos a Arroyo Frío" [panel]="selectedPanel" ></pre-activity-header>
+				<pre-activity-header  titleProximity="Lugares cercanos a Arroyo Frío" [panel]="selectedPanel" ></pre-activity-header>
 				
-				<pre-activity-content></pre-activity-content>
+				<pre-activity-content [places]="places"></pre-activity-content>
 			</div>	
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 
 				<pre-activity-header titleProximity="Lugares próximos a Arroyo Frío" [panel]="selectedPanel" ></pre-activity-header>
 
-				<pre-activity-content></pre-activity-content>
+				<pre-activity-content [places]="places2"></pre-activity-content>
 			</div>
 		</div>
 	</div>

@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { GalleryPlaces } from '../../models/gallery-places';
-import { Places } from '../places';
+//import { Places } from '../places';
 @Component({
   selector: 'pre-activity-content',
   templateUrl: './activity-content.component.html',
   styleUrls: ['./activity-content.component.css']
 })
 export class ActivityContentComponent implements OnInit {
-
+  @Input() places:any;
+  @Input() places2:any;
   public switchModal:boolean=false;
   public switchModal2:boolean=false;
   public imageModal:string="";
   public textModal:string="";
   public titleModal:string="";
   //lista de lugares tipo GalleryPlaces (title,image, detail)
-  public places:Array<GalleryPlaces>;
+  //public places:Array<GalleryPlaces>;
   constructor() {
-    this.places=Places;
+    //this.places=Places;
   }
 
   ngOnInit(): void {

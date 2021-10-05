@@ -41,11 +41,19 @@ export class CardService {
   constructor(private _http:HttpClient){}
 
   getWeather():Observable<any>{
+    //directamente con la api de openweather en lugar de a través de la comunidad
+    let api = '115491eb971d67e5e92089df423d40fb';
+    //con la comunidad x-rapidapi-host es necesario el header y la api
+    /*
     let headers = {
       'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
       'x-rapidapi-key' : '0e6d580fefmsh1b8736e3bdcfa1bp1e366bjsn7f9020d9f44c'
+        
     }
     return this._http.get('https://community-open-weather-map.p.rapidapi.com/weather/',{params:{q:'Cazorla,es'},headers:headers});
+    */
+    
+    return this._http.get('http://api.openweathermap.org/data/2.5/weather?q=Cazorla,es&appid='+api)
   }
 
 

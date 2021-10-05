@@ -134,7 +134,7 @@
 
 }
 .mainmenu .menu .detailmenu{
-	height:100%;
+	height:90%;
 	border:white 1px solid;
 	/*detecta los saltos de línea (\n\r) pero no trabaja el flex*/
 	/*white-space:pre;*/

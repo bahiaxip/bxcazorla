@@ -14,7 +14,7 @@
 .flex_item{
 	min-height: 50px;
 	/*max-height: 100%;*/
-	width:70%;	
+	width:80%;	
 	background-color:rgba(0,0,0,.7);
 	display: flex;
 	padding: 5px;
@@ -31,9 +31,12 @@
 .flex_item .div_center{
 	display: flex;
 	vertical-align:middle;
+	
+
 }
 .flex_item .div_center p{
-	font-size: 18px;
+	font-family: Quicksand;
+	font-size: 20px;
 	font-weight: bold;
 }
 .icon_novisible{
@@ -55,6 +58,7 @@
 	display:flex;
 	align-items:center;
 	cursor: pointer;
+	align-items: center;
 }
 .flex_item .icon_right{	
 	float:right;
@@ -62,20 +66,37 @@
 	color:orange;
 	margin-right:10px;	
 	cursor: pointer;
+	align-items: center;
+
 }
 
 @media (max-width: 900px){
 	.flex_item{
-		width: 80%;
+		width: 100%;
 	}
 	.flex_item .div_center p{
-		font-size: 16px;
+		font-size: 20px;
+	}
+	
+	.div_iconright{
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.div_iconleft{
+		
+
+	}
+	.flex_item .icon_right,.flex_item .icon_left{
+		display: flex;
+		font-size: 30px;
 	}
 }
 @media(max-width: 777px){
 	.div_flex_item{
 		width: 100%;
 	}
+
 		
 }
 @media(max-width: 550px){
@@ -83,6 +104,6 @@
 		width: 100%;
 	}
 	.flex_item .div_center p{
-		font-size: 15px;
+		font-size: 16px;
 	}
 }
