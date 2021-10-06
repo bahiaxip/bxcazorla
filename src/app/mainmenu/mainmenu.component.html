@@ -1,18 +1,19 @@
 <div class="mainmenu" [ngClass]="{'visible':classMainMenu}">			
 	<div class="mainmenu_titletop" style="">
-		<p class="mauto" >Parque Natural de Cazorla</p>
+		<p class="mauto" style="cursor:pointer" (dblclick)="animation()">Parque Natural de Cazorla</p>
 	</div>
 	<div class=" mainmenu_divcontent">
 		<div class="mainmenu_content">
 			<div class="content_title">
-				<div class="floatL icon_inside">
-					<mat-icon class="material-icons btn_close left " (click)="animation()">close</mat-icon>
+				<!--<div class="floatL icon_inside">
+					<mat-icon class="material-icons btn_close left " (dblclick)="animation()">play_arrow</mat-icon>
 				</div>
+				-->
 				<div class="w100">
 					<p>Turismo rural en Arroyo Frío</p>
 				</div>
 				<div class="floatR icon_inside">
-					<mat-icon class="material-icons btn_close right" (click)="toggleMainMenu()">close</mat-icon>
+					<mat-icon class="material-icons btn_close right" (click)="toggleMainMenu()" >close</mat-icon>
 				</div>
 			</div>
 			<div class="menu" >

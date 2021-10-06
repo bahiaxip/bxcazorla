@@ -1,10 +1,13 @@
 <!--modal --> 
-<div style="width:100%;height:100%;position:absolute;background-color:rgba(0,0,0,.4);cursor:pointer" *ngIf="switchModalCardRent" (click)="handlerModal(paramModal)">
-	<div style="position:absolute;top: 50%;left: 50%;transform:translate(-50%,-50%);background-color: rgba(0,0,0,.8);padding:10px 20px">
-		<p style="color:white;font-size:15px">
-			{{textModal}}
-		</p>
-		<button mat-raised-button (click)="handlerModal(paramModal)">Ok</button> 
+<div style="width:0%;height:0%;position:absolute;background-color:rgba(0,0,0,.4);cursor:pointer;z-index:300;transition:all 0.5s linear;opacity:0" [ngStyle]="switchModalCardRent ? {'width':'100%','height':'100%','opacity':'1'}:{'width':'0','height':'0','opacity':'0'}" (click)="handlerModal(null)">
+	<div style="position:absolute;top: 50%;left: 50%;transform:translate(-50%,-50%);background-color: rgba(0,0,0,.8);padding:10px 20px;"  >
+		<div style="position:relative;" >
+			<p style="color:white;font-size:15px;font-weight:bold">
+				{{textModal}}
+			</p>
+			<button class="floatL" mat-raised-button (click)="handlerModal(paramModal)">Ok</button> 
+			<button class="floatR" mat-raised-button (click)="handlerModal(null)">Cancelar</button> 
+		</div>
 	</div>
 </div>
 <!-- fin modal -->

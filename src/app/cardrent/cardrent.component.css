@@ -52,6 +52,15 @@
 	font-size:35px;
 	color:orange;
 	cursor:pointer;
+}
 
+.back_card{
 	
+}
+.div_card{
+	/*background-color:#676767;*/
+	/*background-color: rgba(0,0,0,.5);*/
+	display:flex;
+	position:relative;
+	justify-content:center
 }
