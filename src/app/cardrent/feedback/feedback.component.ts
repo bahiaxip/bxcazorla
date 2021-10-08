@@ -48,6 +48,7 @@ export class FeedbackComponent implements OnInit {
     })
     this.subscriptionDivFeed = this._cardrentService.switchDivFeed$.subscribe(() => {
       let param=this._cardrentService.getSwitchFeed();
+      console.log("param: ",param);
       if(param && param.card){
         this.numLevelFeedback=param.card.numLevelFeedback;
       }else{

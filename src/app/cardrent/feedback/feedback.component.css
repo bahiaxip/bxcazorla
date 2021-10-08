@@ -1,10 +1,15 @@
+.back_feedback{
+	width:100%;
+	display:flex;
+	justify-content:center;
+}
 .flex_item{
 	min-height: 50px;
 
 	/*max-height: 100%;*/
 	
 	width:70%;	
-	background-color:rgba(0,0,0,.7);
+	background-color:rgba(0,0,0,.8);
 	
 	display: flex;
 	padding-top: 5px;
@@ -15,16 +20,60 @@
 	box-sizing: border-box;
 	overflow: hidden;
 	user-select: none;
+	transition:all 1s linear;
+	position:absolute;
+	z-index:100;
 	
 }
 
 .flex_item .banner_icon{
 	display: flex;
 	font-size:35px;
-	color:orange;
+	color:lightgreen;
 	cursor:pointer;
+}
+.div_newfeedback{
+	width:100%;
+	margin-top:20px;
+	transition:all 1s linear;
+}
+.newfeedback{
+	width:100%;
+	transition:all 1s linear;
+	border-radius:10px;
+}
 
-	
+.inputs_formfeed{
+
+}
+.b_detailfeed{
+	background-color:transparent;
+	display:block;
+	clear:left;
+	position:relative;
+	margin:75px auto 0 auto;
+}
+.detailfeed{
+	background-color:rgba(0,0,0,.85);
+	width:80%;
+	margin:10px auto;
+	border-radius:10px;
+}
+.detailfeed p{
+	padding:0;
+	margin:8px auto;
+}
+.detailfeed_divimg{
+	margin:auto 20px;
+	width:40px;
+	height:40px;
+	display:flex;
+	align-self:center;
+}
+.detailfeed_img{
+	width: 100%;
+	border-radius:50%;
+	min-width:40px;
 }
 
 .feedback_stars{
