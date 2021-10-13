@@ -58,6 +58,18 @@ export class CardrentService {
   //height del panel desplegable de maps
   public heightImages:any;
 
+  //modal (activable desde card-header y card-component)
+  private modalSubject = new Subject<void>();
+  public modal$ = this.modalSubject.asObservable();
+  //datos modal
+  public dataModal:any;
+
+  //modal (activable desde card-header y card-component)
+  private globalModalSubject = new Subject<void>();
+  public globalModal$ = this.globalModalSubject.asObservable();
+  //datos modal
+  public dataGlobalModal:any;
+
   //feedbacks del alojamiento seleccionado
   public selectedFeeds:any;
   //todos los feedbacks, más adelante serán todos por página
@@ -412,5 +424,21 @@ export class CardrentService {
       return this.heightMaps;
     else if(type=="images")
       return this.heightImages;
+  }
+
+  setGlobalModal(type:string,data:any){
+    this.dataGlobalModal=data;
+    this.globalModalSubject.next();
+  }
+  getGlobalModal(){
+    return this.dataGlobalModal
+  }
+  setModal(data:any){
+
+    this.dataModal=data;
+    this.modalSubject.next();
+  }
+  getModal(){
+    return this.dataModal;
   }
 }

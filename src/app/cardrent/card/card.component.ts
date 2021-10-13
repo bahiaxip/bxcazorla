@@ -5,58 +5,21 @@ import { CardrentService } from '../services/cardrent.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
-  @Output() emitWidth=new EventEmitter<any>();
+export class CardComponent implements OnInit {  
 
   //switch modal para aviso para acceso a panel feedback
   public switchModalCardRent:boolean=false;
   public textModal:string="";
   public paramModal:any=null;
 
+  private subscriptionModal:any;
+
   constructor(private _cardrentService:CardrentService) { }
 
   ngOnInit(): void {
+    //suscripción de modal
+    this.subscriptionModal = this._cardrentService.modal$.subscribe(() => {
+      //this.setModal(this._cardrentService.getModal());
+    })
   }
-
-  emitir(ev:any){
-    console.log("llega a emitir")
-    this.emitWidth.emit('1')
-  }
-  //mostrar modal 
-  setModal(data:any){
-  if(typeof data == "string"){    
-     this.textModal=data;
-  }else if(typeof data == "object"){
-    this.paramModal=data.card;
-    this.textModal=data.text;
-    
-    console.log("llega al setModal")
-  }
-    
-   
-    this.switchModalCardRent=true;
-    
-  }
-
-  handlerModal(card:any=null){
-    if(card){
-      this._cardrentService.deleteCardRentById(card._id).subscribe(
-        response => {
-          console.log("eliminado: ",response)
-          this.paramModal=null;
-          //actualizamos la lista de rentcards (cardrent.component) mediante
-          //el servicio y la suscripción de card-component
-          this._cardrentService.cardRentsSubject.next();
-        },
-        error => {
-
-        }
-      );
-    }else if(this.paramModal)
-      this.paramModal=null;
-    //ocultamos modal      
-    this.switchModalCardRent=false
-    
-  }
-
 }

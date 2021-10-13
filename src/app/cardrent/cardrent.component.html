@@ -2,7 +2,10 @@
 <!--<div style="position: absolute;height:100%;display:block;overflow:hidden" >-->
 <div #slidercardrent style="display:flex;flex-flow:row wrap;height:100%;transition:transform 1s ease-out" [ngStyle]="{'width':firstwidth*3+'px'}">
 <!-- panel feedback -->
-	<div [ngStyle]="{'width':firstwidth+'px','left':'-'+firstwidth+'px'}" style="position:absolute;display:block">		
+	<div [ngStyle]="{'width':firstwidth+'px','left':'-'+firstwidth+'px'}" style="position:absolute;display:block">	
+	
+		
+
 		<div style="display:flex;position:relative" > 
 			<!--<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute">final</button>
 			<button (click)="misectionHorizontal(firstwidth+'px','1s','center')" style="position:absolute;right:300px">derecha</button>-->
@@ -24,13 +27,26 @@
 		</div>
 	</div>
 <!-- panel rentcard -->
-	<div [ngStyle]="{'width':firstwidth+'px'}" class="back_card">		
+	<div [ngStyle]="{'width':firstwidth+'px'}" class="back_card">
+		<!--modal --> 
+		<div style="width:100%;height:100%;position:absolute;background-color:rgba(0,0,0,.4);cursor:pointer;z-index:300;transition:all 0.3s linear;opacity:0" [ngStyle]="switchModalCardRent ? {'z-index':'300','opacity':'1'}:{'z-index':'0','opacity':'0'}" (click)="handlerModal(null)">
+			<div style="position:absolute;top: 50%;left: 50%;transform:translate(-50%,-50%);background-color: rgba(0,0,0,.8);padding:10px 20px;"  >
+				<div style="position:relative;transition:all 0.5s linear" >
+					<p style="color:white;font-size:15px;font-weight:bold">
+						{{textModal}}
+					</p>
+					<button class="floatL" mat-raised-button (click)="handlerModal(dataModal)">Ok</button> 
+					<button class="floatR" mat-raised-button (click)="handlerModal(null)">Cancelar</button> 
+				</div>
+			</div>
+		</div>
+	<!-- fin modal -->		
 		<div class="div_card"  >
 
 			<!--<button (click)="misectionHorizontal(firstwidth+'px','1s','left')" style="position:absolute">izquierda</button>
 			<button (click)="misectionHorizontal(firstwidth+'px','1s','right')" style="position:absolute;right:100px">derecha</button>-->
 
-				<pre-card (emitWidth)="sendToPanel(firstwidth+'px','1s',$event)"></pre-card>
+				<pre-card></pre-card>
 		</div>
 	</div>
 <!-- panel create rentcard -->
@@ -55,7 +71,7 @@
 
 				<div class="w100 mauto div_card_rent" style="" >
 
-					<pre-newcard (modal)="setModal($event)"></pre-newcard>
+					<pre-newcard></pre-newcard>
 					
 				</div>
 			</div>

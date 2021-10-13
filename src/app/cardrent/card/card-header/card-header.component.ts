@@ -4,8 +4,7 @@ import { CardrentService } from '../../services/cardrent.service';
 import { CardRentData } from '../../models/card-rent-data';
 import { CardRent } from '../../models/card-rent';
 //import { LevelPipePipe, IconTypePipe } from '../../level-pipe.pipe';
-
-import { Subscription } from 'rxjs';
+//import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'pre-card-header',
@@ -13,11 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./card-header.component.css']
 })
 export class CardHeaderComponent implements OnInit {
-
-  @Output()
-  emitWidth=new EventEmitter<any>();
-  @Output()
-  modal = new EventEmitter<any>();
+  
   public lastBannerDom2:any;
   public lastSwitchDivInfo:any;
   //switch para mostrar/ocultar feedback de location
@@ -34,9 +29,6 @@ export class CardHeaderComponent implements OnInit {
   //max-width de bannerp3 para mostrar correctamente el white-space
   public maxWidthBannerp3:any;
   
-
-  public myHeight:string="0";
-  public myHeight2:string="0";
   public myHeightInfo:string="0";
 
   private subscriptionBanner1:any;
@@ -76,20 +68,13 @@ export class CardHeaderComponent implements OnInit {
     this.subscriptionDivFeed=this._cardrentService.switchDivFeed$.subscribe(()=> {      
       this.switchDivFeed(this._cardrentService.getSwitchFeed());      
     })
-
-    /*
-    this.subscriptionHeightInfo= this._cardrentService.heightInfo$.subscribe(()=> {
-      console.log("desde subscr: ",this._cardrentService.getHeight('info'))
-      this.myHeightInfo=this._cardrentService.getHeight('info');
-    })
-    */
+    
     this.subscriptionSelectedCard = this._cardrentService.selectedCard$.subscribe(()=> {      
       let card=this.selectedCard;
       this.selectedCard = this._cardrentService.getSelectedCard();
       
       console.log("selectedCard desde header con suscription: ",this.selectedCard)
     })
-
 
     window.addEventListener("resize",()=> {
       //para que el ancho de bannerp3 se actualice y realice el efecto 
@@ -98,11 +83,7 @@ export class CardHeaderComponent implements OnInit {
       this.maxWidthBannerp3=800;
     })
   }
-
-  ngOnChanges(){
-    
-    
-  }
+  
   //oculta todos los divs expandibles de card-header
   hideImagesCard(type:string){   
     this._cardrentService.setHeight("all","0");    
@@ -126,15 +107,8 @@ export class CardHeaderComponent implements OnInit {
   setBanner1(card:any){
   //console.log("datos desde SetBanner1: ",card.title)
     this._cardrentService.setSelectedCard(card);
-    this.bannerp1.nativeElement.innerHTML=card.title;    
-    /*
-    this.selectedCard=this._cardService.getSelectedCard();
-    console.log(this.selectedCard); 
-    this.bannerp1.nativeElement.innerHTML=title;
-    this.myHeight="calc(100vh - 90px)";
-    */
+    this.bannerp1.nativeElement.innerHTML=card.title;
   }
-
   //en setBanner2() no especificamos el tipo CardRent, al añadir otra propiedad y agruparla
   //en un nuevo objeto (el emit solo acepta un parámetro), esto es solo para
   //identificar si el botón pulsado es la imagen de la card. (recomendable 
@@ -142,43 +116,29 @@ export class CardHeaderComponent implements OnInit {
   setBanner2(card:any){
 
     //si el card es vacío (se ha pulsado el genérico un card distinto) limpiamos los 2 banners
-    if(card == ""){
-      console.log("es blanco")
+    if(card == ""){      
       this.bannerp2.nativeElement.innerHTML="";
       this.bannerp3.nativeElement.innerHTML="";      
     }
-
     //si no es de tipo feedback, ni images, ni info limpiamos el tercer <p> 
     //(orientado a la rotación de mensajes de valoraciones, que van pasando una a una)    
     if(card.selectedElement && card.selectedElement != "feedback" 
       && card.selectedElement != "images" && card.selectedElement != "info" 
      // && card.selectedElement != "open_maps"
      )
-      this.bannerp3.nativeElement.innerHTML="";
-  //console.log("pasamos a 0 duration y vemos el typecard: ",this._cardService.getTypeCard())
-    //
+      this.bannerp3.nativeElement.innerHTML="";  
 
-    //si el objeto trae la propiedad selectedElement y es images mostramos imágenes
+    //comprobamos si es un objeto con propiedad selectedElement
     if(card.selectedElement  && card.selectedElement=="images"){
 
       //asignamos el card.card en lugar de utilizar el método getSelectedCard del servicio 
       //porque el emit se ejecuta antes(método selectOptionCard) y el card se establece 
       //después(método selectCard) mediante setSelectedCard() del servicio.      
       this.selectedCard=card.card;  
-      //console.log("el card: ",this.selectedCard)    
-      
-      //this.myHeight2="0";
-      //this.myHeight="calc(100vh - 90px)";
       this._cardrentService.setHeight("images","calc(100vh - 90px)");
     }else if(card.selectedElement && card.selectedElement=="open_maps"){
-      //console.log("perfect");
-      this.myHeight="0";
-      //this.myHeight2="calc(100vh - 90px)";
       this._cardrentService.setHeight("maps","calc(100vh - 90px)");
     }else if(card.selectedElement && card.selectedElement=="info"){
-      console.log("desde card-header: ",card.selectedElement.numLevelFeedback)
-      //this.myHeight="0";
-      //this.myHeight2="0";      
       this._cardrentService.setHeight("info","calc(100vh - 90px)");
     }else if(card.selectedElement && card.selectedElement=="feedback"){
       //limpiamos bannerp2
@@ -190,7 +150,7 @@ export class CardHeaderComponent implements OnInit {
       //o si está continuando el ciclo del interval (otra posible opción)
 
       if(this.bannerp3.nativeElement.innerHTML=="" || this.selectedCard != card.card){
-        //console.log("PRIMERA VEZ interval");        
+        //PRIMERA VEZ interval;
         this.selectedCard=card.card;
         this.animationFeedback('hide',card);
         setTimeout(()=>{
@@ -200,27 +160,21 @@ export class CardHeaderComponent implements OnInit {
           }
         },1000)  
       }else{
-        //console.log("SEGUNDA VEZ")
-        this.bannerp3.nativeElement.style.transform="translateX(-"+(this.maxWidthBannerp3+200)+"px)";
-        
+        //SEGUNDA VEZ
+        this.bannerp3.nativeElement.style.transform="translateX(-"+(this.maxWidthBannerp3+200)+"px)";        
         setTimeout(()=> {
           this.animationFeedback('hide',card);
-             
           setTimeout(()=> {
             //para que no se mantenga el setTimeout() una vez seleccionado otro botón
             if(this.bannerp2.nativeElement.innerHTML==""){
               this.animationFeedback('visible');
             }
           },800)
-
         },800)
       }
-
-    }else{
-      console.log("pasa por aquí : ",card)     
+    }else{      
       this.bannerp2.nativeElement.innerHTML=card;  
-    }
-    console.log("hace un setbanner2")
+    }    
   }
 
   //animación de mensajes deslizantes de valoraciones
@@ -254,15 +208,12 @@ export class CardHeaderComponent implements OnInit {
     let selectedCard = this._cardrentService.getSelectedCard();
     //Para acceder al panel de feedbacks es necesario tener seleccionado 
     //un alojamiento
-    console.log("selectedCard desde setPanel(): ",selectedCard)
+    //console.log("selectedCard desde setPanel(): ",selectedCard)
+  //al establecer el primero de la lista por defecto no es necesario este modal
     if(side == 0 && !selectedCard){
-      this.modal.emit("Es necesario seleccionar un alojamiento para acceder al panel de valoraciones");
-      //console.log("mensaje debe seleccionar un alojamiento");
+      this._cardrentService.setModal("Es necesario seleccionar un alojamiento para acceder al panel de valoraciones");
       return;
     }    
-    this._cardService.setPanel(side)  
-    
-    
-  }  
-
+    this._cardService.setPanel(side);
+  }
 }

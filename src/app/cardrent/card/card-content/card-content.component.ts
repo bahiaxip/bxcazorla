@@ -16,7 +16,7 @@ import { Subscription,Observable } from 'rxjs';
 })
 export class CardContentComponent implements OnInit {  
 
-  @Output() modal=new EventEmitter<any>();
+  //@Output() modal=new EventEmitter<any>();
   
   private subscriptionCardRents:any;
   //public switchMenu1:any;
@@ -240,7 +240,7 @@ export class CardContentComponent implements OnInit {
   //mostramos modal de advertencia
   if(type=="delete"){
     this._cardrentService.setSelectedCard(card);
-    this.modal.emit({card,text:"Está seguro que desea eliminar el alojamiento"})
+    this._cardrentService.setModal({card,text:"Está seguro que desea eliminar el alojamiento"});    
     return;
   }    
     let totalText="No existen valoraciones";    
@@ -373,8 +373,7 @@ export class CardContentComponent implements OnInit {
     //si existe el parámetro selectedOption el botón pulsado pertenece a alguno
     //de los botones del menu1 o menu2 si no, es alguno de los 2 botones 
     //que activan el menú
-    if(selectedOption!==null){
-      console.log("hola desde editPrice")
+    if(selectedOption!==null){      
       if(num==1){
       //actualizamos el índice para disponer siempre de la opción seleccionada 
       //de cada rentcard y para no repetir la opción seleccionada dentro del menú

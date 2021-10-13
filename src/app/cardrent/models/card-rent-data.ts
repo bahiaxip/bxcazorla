@@ -87,7 +87,7 @@ export var CardRentData ={
 			"80",
 			1,
 			2,
-			[2,4,6],
+			[2,4,6,8,12],
 			[
 				{capacity:2,type:"casa",minNights:2,priceBase:80,priceNight:150},
 				{capacity:5,type:"casa",minNights:2,priceBase:110,priceNight:200},
@@ -121,7 +121,7 @@ export var CardRentData ={
 			"220",
 			3,
 			2,
-			[2,4,6],
+			[4],
 			[
 				{capacity:4,type:"bungalow",minNights:5,priceBase:675,priceNight:120},
 			],
@@ -154,7 +154,7 @@ export var CardRentData ={
 			"306",
 			3,
 			2,
-			[2,4,6],
+			[4],
 			[
 				{capacity:4,type:"apartamento",minNights:2,priceBase:170,priceNight:80},
 			],

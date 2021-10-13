@@ -20,6 +20,12 @@ export class CardrentComponent{
 
   private subscriptionPanel:any;
 
+  private subscriptionModal:any;
+  //switch modal (destinado a card-header y card-conent)
+  public switchModalCardRent:any=false;
+  //datos reasignables en modal
+  public dataModal:any=null;
+
   public formFeed = new FormGroup({
     nick:new FormControl('',Validators.required),
     email:new FormControl('',[Validators.required,Validators.email]),
@@ -47,6 +53,11 @@ export class CardrentComponent{
         this.sendToPanel(this.firstwidth+'px','1s',panel);      
       }      
     })
+    //suscription modal
+    this.subscriptionModal = this._cardrentService.modal$.subscribe(() => {
+      console.log("llega al suscription de cardrent")
+      this.setModal2(this._cardrentService.getModal());  
+    })
     //resize
     window.addEventListener("resize",(e)=>{
       let slidercardrentStyle = this.slidercardrent.nativeElement.style
@@ -64,7 +75,7 @@ export class CardrentComponent{
         this.sendToPanel(this.firstwidth+'px','0s',1);
     });
   }
-
+  
   setModal(data:any){
     this.switchModalNewCard=data.value;
     this.textModal=data.text;
@@ -80,6 +91,39 @@ export class CardrentComponent{
       this.slidercardrent.nativeElement.style.transform="translateX(0px)";
     else if(side ==2)
       this.slidercardrent.nativeElement.style.transform="translateX(-"+size+")";
+  }
+  setModal2(data:any){
+    //card-header (string)
+    if(typeof data == "string"){    
+       this.textModal=data;
+       //card-content (object)
+    }else if(typeof data == "object"){
+      this.dataModal=data.card;
+      this.textModal=data.text;
+    }
+    this.switchModalCardRent=true;
+    console.log("el switch es :",this.switchModalCardRent);    
+  }
+// falta loading
+  handlerModal(card:any=null){
+    if(card){
+      this._cardrentService.deleteCardRentById(card._id).subscribe(
+        response => {
+          console.log("eliminado: ",response)
+          this.dataModal=null;
+          //actualizamos la lista de rentcards (cardrent.component) mediante
+          //el servicio y la suscripción de card-component
+          this._cardrentService.cardRentsSubject.next();
+        },
+        error => {
+
+        }
+      );
+    }else if(this.dataModal)
+      this.dataModal=null;
+    //ocultamos modal      
+    this.switchModalCardRent=false
+    
   }
   /*
   misectionHorizontal(size:string,duration:string,side:string){

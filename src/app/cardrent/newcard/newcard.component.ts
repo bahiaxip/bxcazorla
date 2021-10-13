@@ -11,8 +11,7 @@ import { mergeMap,map } from 'rxjs/operators';
 })
 export class NewcardComponent implements OnInit {
 
-  @Output()
-  modal=new EventEmitter<any>();
+  
   
   //switch para identificar vista de edición de alojamiento
   public templateEdit:boolean=false;
@@ -74,7 +73,7 @@ export class NewcardComponent implements OnInit {
   }
 
   showModal(data:any){    
-    this.modal.emit(data);
+  
   }
   
 
@@ -94,7 +93,7 @@ export class NewcardComponent implements OnInit {
     //console.log(this.formCardRent)
     //comprobamos si existe alguna imagen
     if(this.getImages().length==0){
-      this.showModal({value:true,text:"Es necesario añadir al menos una imagen"})
+      this._cardrentService.setGlobalModal("newcard","Es necesario añadir al menos una imagen")
       return
     }
     this.cardrent={

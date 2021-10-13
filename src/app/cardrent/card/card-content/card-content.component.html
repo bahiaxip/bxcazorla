@@ -157,8 +157,12 @@
 
 									<p>{{rent.capacities[indSelPson[i]].capacity}} {{rent.capacities[indSelPson[i]].capacity|minimrent:'capacity'}}
 									<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
-									</p>
-									<span class="material-icons expand" >expand_more</span>
+									</p>									
+									<span class="expand" *ngIf="rent.capacities.length>1">
+										<span class="material-icons" [ngClass]="{'turned':menu1Active[i] }">
+											expand_more
+										</span>
+									</span>
 								</div>
 								<!-- menu -->
 								<div class="menu" [ngStyle]="menu1Active[i] ? {'height':'100%'}:{'height':'0'}">
@@ -197,7 +201,11 @@
 										<p>{{selectedNights[i]}} {{selectedNights[i]|minimrent:'night'}}
 										<!--<span class="fsize_10">(Mínimo {{rent.minNight}} noches)</span>-->
 										</p>
-										<span class="material-icons expand" style="">expand_more</span>
+										<span class="expand" >
+											<span class="material-icons" [ngClass]="{'turned':menu2Active[i] }">
+												expand_more
+											</span>
+									</span>
 									</div>
 								</div>
 								
