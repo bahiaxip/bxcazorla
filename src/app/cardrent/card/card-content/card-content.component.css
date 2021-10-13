@@ -1,5 +1,7 @@
 .card_rent{
-	max-width:60%;	
+	max-width:60%;
+	/*añadimos min-width pk si solo existen 1 o 2 alojamientos se pueden mostrar muy reducidos*/
+	min-width: 800px;
 	display:flex;
 	flex-flow:column wrap;
 	margin:10px auto;
@@ -32,7 +34,14 @@
 	margin:10px;
 
 }
-.card_rent .card_image .card_img{
+.card_rent .card_image .div_cardimg{
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+
+
+.card_rent .card_image .cardimg{
 	display: block;
 	min-width:75px;
 	width:100%;
@@ -42,11 +51,38 @@
 	border-radius:10px;
 	
 }
+.card_rent .card_image .link_images{
+	position:absolute;
+	width:35px;
+	background-color:rgba(0,0,0,.8);
+	bottom:-50px;
+	height:35px;
+	
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	transition: all 0.5s ease-out;
+	cursor: pointer;
+	border-top-left-radius: 5px;
+}
+.card_rent .card_image .link_images.left{
+	left: 0px;
+}
+.card_rent .card_image .link_images.right{
+	right:0px;
+}
+.card_rent .card_image .div_cardimg:hover .link_images{
+	bottom: 0px;
+
+}
 .card_rent .card_content{
 	width: 70%;
 	color: #000;
-
-
+}
+.card_rent .card_content .banner_icon{	
+	margin-top: 10px;
+	color:#C3C3C3;
+	cursor:pointer;
 }
 
 .content_renting{
@@ -63,7 +99,7 @@
 .content_renting .price{
 	width:90%;
 	display:flex;
-	border:#676767 1px solid;
+	border:#D3D3D3 1px solid;
 	margin:2px auto;
 	/*padding: 0 2px;*/
 	/*border-radius:10px;*/
@@ -283,9 +319,11 @@ div llamado first*/
 .subtitle_renting_text{
 	margin: 2px 5px;
 	font-size: 13px;
-	color: orange;
+	color: #C3C3C3;
 	font-weight: bold;
 	text-transform: capitalize;
+	display: flex;	
+	align-items: center;
 }
 .bannerp1{
 	font-size: 18px;
@@ -315,8 +353,10 @@ div llamado first*/
 }
 .icon_circle_double{
 	/*color: #009143;*/
-	color: #00c487;
+	/*color: #00c487;*/
+	color: green;
 	font-size: 22px;
+	display: flex;
 }
 .div_visible{
 	width: 100%;
@@ -337,8 +377,9 @@ div llamado first*/
 
 @media (max-width: 900px){	
 	.card_rent{
-		max-width: 100%;		
-	}
+		max-width: 100%;
+		min-width: 500px;		
+	}	
 }
 
 @media (max-width: 600px){
@@ -348,6 +389,10 @@ div llamado first*/
 		display: none;
 	}
 	*/
+	.card_rent{
+		max-width: 100%;
+		min-width: 0px;		
+	}
 	.icon_circle{
 		font-size: 14px;
 	}
@@ -371,7 +416,7 @@ div llamado first*/
 		width: 100%;
 		margin: auto;
 	}
-	.card_rent .card_image .card_img{
+	.card_rent .card_image .cardimg{
 		border-bottom-left-radius: 0px;
 		border-bottom-right-radius: 0px;
 	}
@@ -401,11 +446,5 @@ div llamado first*/
 	}
 	.price .price_detail{
 		font-size: 12px !important;		
-	}
-}
-
-@media (max-width: 900px){
-	.card_rent{
-		max-width: 100%;		
 	}
 }

@@ -1,42 +1,40 @@
-<mat-accordion >
-	<mat-expansion-panel>
-		<mat-expansion-panel-header>
-			<mat-panel-title style="width:100%">
-				<p style="margin: auto">Imágenes</p>
-			</mat-panel-title>
-			<!--<mat-panel-description>
-				<input type="file" placeholder="Subir archivos">
-			</mat-panel-description>-->
-		</mat-expansion-panel-header>
+<div class="m10">
+	<mat-accordion >
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<p class="mauto">Imágenes</p>
+				</mat-panel-title>
+				<!--<mat-panel-description>
+					<input type="file" placeholder="Subir archivos">
+				</mat-panel-description>-->
+			</mat-expansion-panel-header>
 
-		<div style="width:100%;height: 200px;display:flex;vertical-align:middle;overflow:auto;" (drop)="dropHandler($event)" (dragover)="dragOverHandler($event)">
-			<div class="div_absolute" style="position:absolute;height:200px;outline:#676767 1px solid;display:flex;margin:auto;/*box-shadow:1px 1px 1px black, -1px 1px 1px black,1px 1px 15px black inset;*/">
-				
-			</div>
-			<div style="position:absolute;display: flex;vertical-align: middle;justify-content:center;align-items:center;width:'calc(100% - 48px)';min-height:200px" *ngIf="!existsImg">
-				<p style="font-size:10px;margin:auto;position:absolute;top:10px">No superiores a 2 MB</p>
-				<button mat-raised-button  style="margin:auto;background-color:rgba(0,0,0,.8);color:white" type="button">Arrastrar imagen aquí</button>
-			</div>
-			<div *ngIf="existsImg" style="display:flex;user-select:none">
-			<!-- añadir display:flex si es más alta que ancha, necesario 
-				para que se vea el icono close en ese tipo de imágenes-->
-				<div  style="display: flex;width:150px;position:relative;overflow:hidden;align-items:center;margin:5px" *ngFor="let images of listImages;let j=index">
-					<span style="width:100%;height:auto">
-						<div  style="width: 100%;height: 100%;overflow:hidden;object-fit: cover;display:flex;justify-content:center" >
-							<img [src]="images" style="width:auto;height:auto;overflow:hidden"/>
-							<div style="position:absolute;right: 0;background-color:white" (click)="deleteTransfer(j)">
-								<mat-icon class="material-icons">
-									close
-								</mat-icon>
+			<div class="back_upload" style="" (drop)="dropHandler($event)" (dragover)="dragOverHandler($event)">
+				<div class="box" style="/*box-shadow:1px 1px 1px black, -1px 1px 1px black,1px 1px 15px black inset;*/">
+					
+				</div>
+				<div class="info_upload" *ngIf="!existsImg">
+					<p class="text" >No superiores a 2 MB</p>
+					<button class="btn" mat-raised-button type="button">Arrastrar imagen aquí</button>
+				</div>
+				<div class="back_images" *ngIf="existsImg" >
+				<!-- añadir display:flex si es más alta que ancha, necesario 
+					para que se vea el icono close en ese tipo de imágenes-->
+					<div class="box_images" *ngFor="let images of listImages;let j=index">
+						<span class="w100">
+							<div class="div_images">
+								<img [src]="images" class="images" />
+								<div class="delete_images" (click)="deleteTransfer(j)">
+									<mat-icon class="material-icons">
+										close
+									</mat-icon>
+								</div>
 							</div>
-						</div>
-						
-					</span>	
+						</span>	
+					</div>
 				</div>
 			</div>
-			
-			
-		</div>
-
-	</mat-expansion-panel>
-</mat-accordion>
+		</mat-expansion-panel>
+	</mat-accordion>
+</div>

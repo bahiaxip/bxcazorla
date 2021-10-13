@@ -1,8 +1,15 @@
+.title_span{
+	position:absolute;
+	font-size:10px;
+	color:red
+}
+
 .inputsprice{
 	display:flex;
 	justify-content:space-around;
 	flex-flow: row wrap;
 }
+
 
 @media(max-width: 650px){	
 	.inputsprice{

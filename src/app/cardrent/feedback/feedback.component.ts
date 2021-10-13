@@ -42,7 +42,10 @@ export class FeedbackComponent implements OnInit {
     })
     //lista de feedbacks asociados al cardrent seleccionado
     this.subscriptionSelFeeds = this._cardrentService.selFeeds$.subscribe(()=>{
+      //establecemos feedbacks      
       this.selectFeeds = this._cardrentService.getSelectFeeds();
+      //establecemos numLevelFeedback
+      this.numLevelFeedback=this.selectedCard.numLevelFeedback;
       console.log("nueva lista de feedback: ", this.selectFeeds);
       console.log(this.selectedCard)
     })

@@ -8,6 +8,17 @@
 	width: 50%;
 	margin: auto 5px;
 }
+.inputrent .div_form{
+	background-color:#F3F3F3;
+	text-align:center;
+	display: flex;
+	justify-content: center;
+}
+.inputrent .div_form .form{
+	/*color:#ff7500;*/
+	margin-top:4px;
+}
+
 
 @media(max-width: 650px){
 	.inputsrent{		

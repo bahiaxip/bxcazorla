@@ -1,29 +1,22 @@
 .flex_header{
-
 	height:70px;
 	width:100%;
-
 	position: relative;
 	z-index: 300;
 }
 .flex_header .div_flex_item{
 	width:100%;
 	margin:30px auto;
-
-	
+	justify-content: center;
 }
 
 .flex_item{
 	min-height: 50px;
-
-	/*max-height: 100%;*/
-	
+	/*max-height: 100%;*/	
 	width:70%;	
-	background-color:rgba(0,0,0,.7);
-	
+	background-color:rgba(0,0,0,.7);	
 	display: flex;
-	padding: 5px;
-	
+	padding: 5px;	
 	margin: auto;
 	border-radius:10px;
 	text-align: center;	
@@ -31,12 +24,21 @@
 	overflow: hidden;
 	user-select: none;	
 }
+.flex_item header{
+	width:100%;
+	display:flex;
+	justify-content:center;
+	vertical-align:middle
+}
 
 .flex_item .banner_icon{
 	display: flex;
 	font-size:35px;
-	color:orange;
+	color:lightgreen;
 	cursor:pointer;
-
-	
+	margin-left: 10px;
+	margin-top: 8px;
+	transform:rotate(180deg);
+	display:flex;
+	align-items:center;
 }

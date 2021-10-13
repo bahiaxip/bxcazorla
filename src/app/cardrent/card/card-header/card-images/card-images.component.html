@@ -1,7 +1,7 @@
-<div class="gallery-container" style="overflow:auto;transition:all 0.5s linear" [ngStyle]="{'height':myHeight}"  >
+<div class="gallery-container" style="overflow:auto;transition:all 0.5s linear" [ngStyle]="{'height':heightImages}"  >
 	<!--<div style="" class="gallery_first" [ngStyle]="fixedCloseGal ? {'position':'fixed','top':'10%','left':'50%','transform':'translateX(-50%)'}:{'position':'relative'}">-->
 	<div class="gallery_first" style="cursor:pointer">
-		<mat-icon class="material-icons" style="color:white;font-size:25px" (click)="hideImagesCard('images')" >close</mat-icon>
+		<mat-icon class="material-icons" style="color:white;font-size:25px" (click)="hideImagesCard()" >close</mat-icon>
 	</div>
 	
 	<div class="gallery__item" *ngFor="let image of selectedCard.images" >

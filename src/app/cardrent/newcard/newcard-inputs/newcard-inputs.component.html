@@ -1,9 +1,9 @@
 <div [formGroup]="formCardRent">
 	<div class="inputsrent" >
+	<!-- input name -->
 		<div class="inputrent" >
-			<div style="background-color:#f3ffea;text-align:center;margin:10px auto">
-						
-				<mat-form-field style="color:orange;margin-top:4px">
+			<div class="div_form">						
+				<mat-form-field class="form">
 					<mat-label>Nombre</mat-label>
 					<input matInput placeholder="Apartamentos Martín" formControlName="name">
 					<mat-icon matSuffix>title</mat-icon>
@@ -14,32 +14,32 @@
 				<p></p>
 			</div>
 		</div>
+	<!-- input phone -->
 		<div class="inputrent">
-			<div style="background-color:#f3ffea;text-align:center;">
-				<p style="background-color:#f3ffea;text-align:center">
-					<mat-form-field style="color:orange;margin-top:4px">
-						<mat-label>Teléfono</mat-label>
-						<span matPrefix>+34 &nbsp;</span>
-						<input matInput type="tel" placeholder="626050505" formControlName="phone" type="number">
-						<mat-icon matSuffix>phone</mat-icon>
-						<mat-hint *ngIf="!formCardRent.controls.phone.value && formCardRent.controls.phone.touched;else hint" style="color:red">
-							Introduzca un teléfono 
+			<div class="div_form">
+				<mat-form-field class="form">
+					<mat-label>Teléfono</mat-label>
+					<span matPrefix>+34 &nbsp;</span>
+					<input matInput type="tel" placeholder="626050505" formControlName="phone" type="number">
+					<mat-icon matSuffix>phone</mat-icon>
+					<mat-hint *ngIf="!formCardRent.controls.phone.value && formCardRent.controls.phone.touched;else hint" style="color:red">
+						Introduzca un teléfono 
+					</mat-hint>
+					<ng-template #hint>
+						<mat-hint *ngIf="formCardRent.controls.phone.value && formCardRent.controls.phone.touched && !formCardRent.controls.phone.valid" style="color:red">
+							Introduzca un número válido
 						</mat-hint>
-						<ng-template #hint>
-							<mat-hint *ngIf="formCardRent.controls.phone.value && formCardRent.controls.phone.touched && !formCardRent.controls.phone.valid" style="color:red">
-								Introduzca un número válido
-							</mat-hint>
-						</ng-template>
-					</mat-form-field>
-				</p>
+					</ng-template>
+				</mat-form-field>
 			</div>
 		</div>
 	</div>
 	  
 	<div class="inputsrent">
+	<!-- input web -->
 		<div class="inputrent">
-			<p style="background-color:#f3ffea;text-align:center">
-				<mat-form-field style="color:black;margin-top:4px">
+			<div class="div_form">
+				<mat-form-field class="form">
 					<mat-label>Web</mat-label>
 					<input matInput placeholder="http://www.midominio.es" type="url" formControlName="web">
 					<mat-icon matSuffix>web</mat-icon>
@@ -47,11 +47,12 @@
 						Introduzca una dirección válida
 					</mat-hint>
 				</mat-form-field>
-			</p>
+			</div>
 		</div>
+	<!-- input maps -->
 		<div class="inputrent">
-			<p style="background-color:#f3ffea;text-align:center">
-				<mat-form-field style="color:black;margin-top:4px">
+			<div class="div_form">
+				<mat-form-field class="form">
 					<mat-label>Dirección maps</mat-label>
 					<input matInput placeholder="https://www.google.es/maps/..." type="url" formControlName="maps">
 					<mat-icon matSuffix>location_on</mat-icon>
@@ -60,14 +61,15 @@
 						Introduzca una dirección válida 
 					</mat-hint>
 				</mat-form-field>
-			</p>							
+			</div>							
 		</div>
 	</div>
 
 	<div class="inputsrent">
+	<!-- input type rent -->
 	  	<div class="inputrent">
-			<p style="text-align:center;background-color:#f3ffea;">
-				<mat-form-field style="color:black;margin-top:4px;">
+			<div class="div_form">
+				<mat-form-field class="form">
 					<mat-label>Tipo</mat-label>
 					<mat-select [formControl]="type" multiple (selectionChange)="updateType()">
 						<mat-select-trigger>
@@ -84,11 +86,12 @@
 						Seleccione un tipo de alojamiento 
 					</mat-hint>
 				</mat-form-field>	
-			</p>
-		</div>							  
+			</div>
+		</div>
+	<!-- input capacity rent -->							  
 		<div class="inputrent">
-			<div style="background-color:#f3ffea;text-align:center;">
-				<mat-form-field style="color:black;margin-top:4px;" >
+			<div class="div_form">
+				<mat-form-field class="form">
 					<mat-label>Capacidad</mat-label>
 					<mat-select [formControl]="capacity" multiple (selectionChange)="createFormArray()">
 						<mat-select-trigger>

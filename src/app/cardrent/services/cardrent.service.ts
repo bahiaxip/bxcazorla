@@ -40,13 +40,24 @@ export class CardrentService {
   private selFeedsSubject = new Subject<void>();
   public selFeeds$ = this.selFeedsSubject.asObservable();
 
+  //height de info-services
   private heightInfoSubject = new Subject<void>();
   public heightInfo$ = this.heightInfoSubject.asObservable();
-
-    
-
   //height del panel desplegable de información
   public heightInfo:any;
+
+  //height de maps
+  private heightMapsSubject = new Subject<void>();
+  public heightMaps$ = this.heightMapsSubject.asObservable();
+  //height del panel desplegable de maps
+  public heightMaps:any;
+
+  //height de maps
+  private heightImagesSubject = new Subject<void>();
+  public heightImages$ = this.heightImagesSubject.asObservable();
+  //height del panel desplegable de maps
+  public heightImages:any;
+
   //feedbacks del alojamiento seleccionado
   public selectedFeeds:any;
   //todos los feedbacks, más adelante serán todos por página
@@ -240,8 +251,9 @@ export class CardrentService {
   }
   //todos los feedbacks de un rentcard(alojamiento)
   selectFeedbackByRent(card:any){
+    console.log("valor de card antes del error del ._id: ",card)
     //console.log(this.feedrentdata) 
-    console.log("el feed")   
+    console.log("el feed: ",this.totalFeeds)   
     let listFeedback:any=[];
 //cambiar por filter
     this.totalFeeds.map((feed:any)=>{
@@ -374,15 +386,31 @@ export class CardrentService {
   }
 
   setHeight(type:string,h:string){
-    if(type=='info'){
+    if(type=="all"){
       this.heightInfo = h;
       this.heightInfoSubject.next();
+      this.heightMaps=h;
+      this.heightMapsSubject.next();
+      this.heightImages=h;
+      this.heightImagesSubject.next();
+    }else if(type=='info'){
+      this.heightInfo = h;
+      this.heightInfoSubject.next();
+    }else if(type=="maps"){
+      this.heightMaps=h;
+      this.heightMapsSubject.next();
+    }else if(type=="images"){
+      this.heightImages=h;
+      this.heightImagesSubject.next();
     }
   }
+
   getHeight(type:string){
     if(type=="info")
       return this.heightInfo;
+    else if(type=="maps")
+      return this.heightMaps;
+    else if(type=="images")
+      return this.heightImages;
   }
-
-  
 }

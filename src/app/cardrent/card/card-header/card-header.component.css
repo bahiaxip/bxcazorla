@@ -2,46 +2,47 @@
 
 	height:70px;
 	width:100%;
-
-
 	position: absolute;
 	left: 0;
 	z-index: 200;
 }
+
 .flex_header .div_flex_item{
 	width:100%;
 	margin:30px auto;
-
-	
 }
 
 .flex_item{
 	min-height: 50px;
-
 	/*max-height: 100%;*/
-	
 	width:70%;	
 	background-color:rgba(0,0,0,.8);
-	
 	display: flex;
 	padding: 5px;
-	
 	margin: auto;
 	border-radius:10px;
 	text-align: center;	
 	box-sizing: border-box;
 	overflow: hidden;
 	user-select: none;
-	
 }
 
 .flex_item .banner_icon{
 	display: flex;
 	font-size:35px;
-	color:orange;
+	color:lightgreen;
 	cursor:pointer;
+}
 
-	
+.banners{
+	display:inline-flex;
+	margin:auto;
+	vertical-align: middle;
+}
+.banners .banner2{	
+	cursor:pointer;
+	font-size:14px;
+	clear:left;
 }
 
 .div_feedback div{
@@ -65,4 +66,3 @@
 	/*clear:left;*/
 	transition:transform 1s ease-in-out
 }
-

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { CardrentService } from '../../../services/cardrent.service';
 @Component({
   selector: 'pre-card-images',
   templateUrl: './card-images.component.html',
@@ -8,34 +8,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CardImagesComponent implements OnInit {
 
   @Input()
-  selectedCard:any;
-  @Input()
-  myHeight:any;
-  @Input()
-  myHeight2:any;
-  @Output() emitHeight=new EventEmitter<any>();
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log("desde images: ",this.selectedCard)
+  selectedCard:any;    
+  constructor(private _cardrentService:CardrentService) { }
+  public heightImages:any;
+  public subscriptionImages:any; 
+  
+  ngOnInit(): void {    
+    this.subscriptionImages = this._cardrentService.heightImages$.subscribe(() => {
+      this.heightImages = this._cardrentService.getHeight("images");
+    })
   }
 
-  hideImagesCard(type:string){
-    //this.fixedCloseGal=false;
-    if(type=="images"){
-      if(this.myHeight != "0")
-        this.myHeight="0";
-      if(this.myHeight2 != "0")
-        this.myHeight2 = "0";
-    }else if(type == "open_maps"){
-      if(this.myHeight2 != "0")
-        this.myHeight2="0";        
-    }
-    console.log("antes del emit")
-    this.emitHeight.emit({myHeight:this.myHeight,myHeight2:this.myHeight2})
-    console.log("type es: ",type)
-    console.log("myHeight: ",this.myHeight)
-    console.log("myHeight2: ",this.myHeight2)
+  hideImagesCard(){
+    this.heightImages="0";
+    this._cardrentService.setHeight("images","0");
   }
 
   

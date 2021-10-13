@@ -3,20 +3,21 @@
 }
 .mat-button.mat-success:hover,
 .mat-stroked-button.mat-success{
-	background-color: rgba(0,0,0,.9);
+	background-color: rgba(0,0,0,.7);
 }
 .mat-raised-button.mat-success,
 .mat-flat-button.mat-success,
 .mat-fab.mat-success,
 .mat-mini-fab.mat-success{
-	color: #FFF;
+	color: lightgreen;
 	background-color:rgba(0,0,0,.9);
+
 }
 .mat-icon-button.mat-success{
 	color: #FFF;
 }
 .mat-button-disabled.mat-success{
-	background-color: transparent;
+	background-color: rgba(170,170,170,.9);
 	color: #D3D3D3;
 	/*box-shadow: -10px 10px 2px rgba(0,0,0,.5) inset,-10px -10px 2px rgba(0,0,0,.4) inset, 5px -5px 2px rgba(0,0,0,.4) inset;*/
 	box-shadow: 10px 10px 10px 2px rgba(0,0,0,.4) inset,-10px -10px 10px 2px rgba(0,0,0,.4) inset;
@@ -41,6 +42,11 @@
 .inputprice{
 	
 }
+.div_textarea{
+	background-color:#F3F3F3;	
+	margin:10px;
+}
+
 
 
 

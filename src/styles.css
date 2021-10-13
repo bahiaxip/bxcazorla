@@ -13,7 +13,8 @@
 /* añadimos los estilos del textarea de newcard ya que en local no toma efecto
 los estilos propios de angular material */
 .mat_textarea span.mat-form-field-label-wrapper{
-	margin-top: 5px;	
+	margin-top: 5px;
+	display: block;	
 }
 html,body{
 	margin: 0;
@@ -61,6 +62,12 @@ html,body{
 .floatR{
 	float: right;
 }
+.m5_auto{
+	margin: 5px auto;
+}
+.m10{
+	margin: 10px;
+}
 .m10_auto{
 	margin: 10px auto;
 }
@@ -71,6 +78,7 @@ html,body{
 .mauto_imp{
 	margin: auto !important;
 }
+
 .ml10{
 	margin-left: 10px;
 }
@@ -78,11 +86,20 @@ html,body{
 .mr10{
 	margin-right: 10px;
 }
+.mr5{
+	margin-right: 5px;
+}
+.mt100{
+	margin-top: 100px;
+}
 .mt10{
 	margin-top: 10px;
 }
 .mt5{
 	margin-top: 5px;
+}
+.mt2{
+	margin-top: 2px;
 }
 .p10{
 	padding: 10px;
@@ -157,13 +174,22 @@ html,body{
 .h100v{
 	height: 100vh;
 }
+.h30{
+	height: 30px;
+}
 
 .d_flex{
 	display: flex;
 }
+.d_block{
+	display: block;
+}
 
 .t_center{
 	text-align: center;
+}
+.fbold{
+	font-weight: bold;
 }
 
 .fsize_10{
@@ -305,10 +331,12 @@ html,body{
 	.card_rent{
 		max-width: 90%;
 	}
+	/*
 	.card_rent .card_image{
 		width: 100%;
 		margin: auto;
 	}
+	*/
 	.card_rent .card_content{		
 		width: 90%;
 		margin: auto;
@@ -412,7 +440,7 @@ html,body{
 	margin:10px;
 
 }
-.card_rent .card_image .card_img{
+.card_rent .card_image .cardimg{
 	min-width:75px;
 	width:100%;
 	height: 100%;

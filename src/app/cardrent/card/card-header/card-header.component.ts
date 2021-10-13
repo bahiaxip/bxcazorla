@@ -77,12 +77,16 @@ export class CardHeaderComponent implements OnInit {
       this.switchDivFeed(this._cardrentService.getSwitchFeed());      
     })
 
+    /*
     this.subscriptionHeightInfo= this._cardrentService.heightInfo$.subscribe(()=> {
       console.log("desde subscr: ",this._cardrentService.getHeight('info'))
       this.myHeightInfo=this._cardrentService.getHeight('info');
     })
+    */
     this.subscriptionSelectedCard = this._cardrentService.selectedCard$.subscribe(()=> {      
+      let card=this.selectedCard;
       this.selectedCard = this._cardrentService.getSelectedCard();
+      
       console.log("selectedCard desde header con suscription: ",this.selectedCard)
     })
 
@@ -90,7 +94,8 @@ export class CardHeaderComponent implements OnInit {
     window.addEventListener("resize",()=> {
       //para que el ancho de bannerp3 se actualice y realice el efecto 
       //white-space actualizamos maxWidthBannerp3 
-      this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
+      //this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
+      this.maxWidthBannerp3=800;
     })
   }
 
@@ -98,30 +103,10 @@ export class CardHeaderComponent implements OnInit {
     
     
   }
-  //oculta el div expandible de card-header en el panel 1
-  hideImagesCard(type:string){
-    console.log("el type: ",type)
-    //this.fixedCloseGal=false;
-    if(type=="images"){
-      if(this.myHeight != "0")
-        this.myHeight="0";
-      if(this.myHeight2 != "0")
-        this.myHeight2 = "0";
-    }else if(type == "open_maps"){
-      if(this.myHeight2 != "0")
-        this.myHeight2="0";        
-    }else{
-        this.myHeight2 = "0"
-        this.myHeight = "0"
-        this.myHeightInfo="0";
-    }
-    //console.log("type es: ",type)
-  }
-  updateHeight(data:any){
-    this.myHeight=data.myHeight;
-    this.myHeight2=data.myHeight2;
-    console.log("desde updateHeight: ",data)
-  }
+  //oculta todos los divs expandibles de card-header
+  hideImagesCard(type:string){   
+    this._cardrentService.setHeight("all","0");    
+  }  
 
   showTooltip(card:any){
     console.log("dato");
@@ -163,10 +148,12 @@ export class CardHeaderComponent implements OnInit {
       this.bannerp3.nativeElement.innerHTML="";      
     }
 
-    //si no es de tipo feedback ni tampoco images, limpiamos el tercer <p> 
+    //si no es de tipo feedback, ni images, ni info limpiamos el tercer <p> 
     //(orientado a la rotación de mensajes de valoraciones, que van pasando una a una)    
     if(card.selectedElement && card.selectedElement != "feedback" 
-      && card.selectedElement != "images" && card.selectedElement != "info")
+      && card.selectedElement != "images" && card.selectedElement != "info" 
+     // && card.selectedElement != "open_maps"
+     )
       this.bannerp3.nativeElement.innerHTML="";
   //console.log("pasamos a 0 duration y vemos el typecard: ",this._cardService.getTypeCard())
     //
@@ -178,21 +165,21 @@ export class CardHeaderComponent implements OnInit {
       //porque el emit se ejecuta antes(método selectOptionCard) y el card se establece 
       //después(método selectCard) mediante setSelectedCard() del servicio.      
       this.selectedCard=card.card;  
-      console.log("el card: ",this.selectedCard)    
+      //console.log("el card: ",this.selectedCard)    
       
-      this.myHeight2="0";
-      this.myHeight="calc(100vh - 90px)";
-      console.log("myHeight desde setBanner2: ",this.myHeight)
-      console.log("myHeight2 desde setBanner2: ",this.myHeight2)      
+      //this.myHeight2="0";
+      //this.myHeight="calc(100vh - 90px)";
+      this._cardrentService.setHeight("images","calc(100vh - 90px)");
     }else if(card.selectedElement && card.selectedElement=="open_maps"){
-      
+      //console.log("perfect");
       this.myHeight="0";
-      this.myHeight2="calc(100vh - 90px)";
+      //this.myHeight2="calc(100vh - 90px)";
+      this._cardrentService.setHeight("maps","calc(100vh - 90px)");
     }else if(card.selectedElement && card.selectedElement=="info"){
       console.log("desde card-header: ",card.selectedElement.numLevelFeedback)
-      this.myHeight="0";
-      this.myHeight2="0";
-      this.myHeightInfo="calc(100vh - 90px)";
+      //this.myHeight="0";
+      //this.myHeight2="0";      
+      this._cardrentService.setHeight("info","calc(100vh - 90px)");
     }else if(card.selectedElement && card.selectedElement=="feedback"){
       //limpiamos bannerp2
       this.bannerp2.nativeElement.innerHTML="";        
@@ -203,11 +190,9 @@ export class CardHeaderComponent implements OnInit {
       //o si está continuando el ciclo del interval (otra posible opción)
 
       if(this.bannerp3.nativeElement.innerHTML=="" || this.selectedCard != card.card){
-
         //console.log("PRIMERA VEZ interval");        
         this.selectedCard=card.card;
-        this.animationFeedback('hide',card);        
-        
+        this.animationFeedback('hide',card);
         setTimeout(()=>{
           //para que no se mantenga el setTimeout() una vez seleccionado otro botón
           if(this.bannerp2.nativeElement.innerHTML=="" ){

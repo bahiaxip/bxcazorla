@@ -1,10 +1,21 @@
 <div class="card_rent" (click)="selectCard(rent)" *ngFor="let rent of cardrentdata;let i=index">				
 	<div class="subcard" >
 		<div class="card_image ">	
-		<!-- main image -->					
-			<div class="w100 " style="height:100%;overflow:hidden" (click)="selectOptionCard('images',rent)">
-				<img class="card_img" [src]="'assets/images/'+rent.images[0]" alt="Apartamentos Martín" style=" " *ngIf="i<5"/>
-				<img class="card_img" mat-card-image [src]="'http://localhost:3900/images/'+rent._id+'/'+rent.images[0]" alt="{{rent.images[0]}}" style=" " *ngIf="i>=5"/>
+		<!-- main image -->
+<!-- es necesario asignar el largo de los cards que existen por defecto 
+	para sustituir por el número directo en el ngIf de <img> -->
+			<div class="w100 div_cardimg" style="" >				
+				<img class="cardimg" [src]="'assets/images/'+rent.images[0]" alt="Apartamentos Martín" style=" " *ngIf="i<5"/>
+				<img class="cardimg" mat-card-image [src]="'http://localhost:3900/images/'+rent._id+'/'+rent.images[0]" alt="{{rent.images[0]}}" style=" " *ngIf="i>=5"/>
+			<!--
+				<div class="link_images left" (click)="selectOptionCard('images',rent)">
+					<span class="material-icons" style="font-size:20px;color:lightgreen">map</span>
+				</div>
+			-->
+				<div class="link_images right" (click)="selectOptionCard('images',rent)">
+					<span class="material-icons" style="font-size:20px;color:lightgreen">photo_library</span>
+					
+				</div>
 
 			</div>
 		</div >
@@ -13,10 +24,10 @@
 		<!-- central -->
 			<div class="w100 t_center" >
 		
-		<!-- icon edit -->
-				<mat-icon class="banner_icon  mr10 mt10 floatR" style="color:lightgreen;cursor:pointer"  title="Eliminar" (click)="selectOptionCard('delete',rent)">delete</mat-icon>
+		<!-- icon delete -->
+				<mat-icon class="banner_icon  mr5 floatR" title="Eliminar" (click)="selectOptionCard('delete',rent)">delete</mat-icon>
 		<!-- icon info -->
-				<mat-icon class="banner_icon  mr10 mt10 floatL" style="color:orange;cursor:pointer"  title="Información" (click)="selectOptionCard('info',rent)">info</mat-icon>
+				<mat-icon class="banner_icon  mr10 floatL" title="Información" (click)="selectOptionCard('info',rent)">info</mat-icon>
 
 		<!-- title/subtitle -->
 				<div class="title_renting">

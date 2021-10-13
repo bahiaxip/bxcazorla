@@ -2,29 +2,28 @@
 				
 	<div class="div_flex_item " style="justify-content:center;">
 		<div class="flex_item " style="" >
-			<div style="width:100%;display:flex;">
+			<div class="w100 d_flex" >
 			<!-- icono valoraciones -->
-				<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('')">
+				<div class="w15 csrpointer" (click)="hideImagesCard('')">
 					<mat-icon class="banner_icon " title="Todas las Valoraciones" (click)="setPanel(0)">grade</mat-icon>
 					<!--<mat-icon mat-card-avatar class="banner_icon " style="margin:15px auto;font-size:30px" title="Todas las Valoraciones">person</mat-icon>-->
 				</div>
 							
-				<div style="width: 70%;font-weight: bold;">
+				<div class="w70 fbold" >
 				<!-- bannerp1 -->
 					<p class="mauto c_white bannerp1" #bannerp1>Alojamiento en Arroyo Frío</p>
 				
 				<!-- gráfica puntuación general de valoraciones -->
-					<p style="display:block;width: 100%;margin:auto;margin-top:5px" *ngIf="switchDivFeedback2">
+					<p  class="w100 m5_auto" *ngIf="switchDivFeedback2">
 						<pre-divlevel [numLevelFeedback]="numLevelFeedback"></pre-divlevel>
 		            </p>
 						        
 				<!-- gráfica puntuación de ubicación -->
-					<span style="display:inline-flex;margin:auto;vertical-align: middle;"  >						
+					<span class="banners" style=""  >						
 						<pre-divlevel2 [levelLocation]="numLevelLocation" *ngIf="switchDivFeedback"></pre-divlevel2>
 						<!--<span [innerHTML]="textbanner"></span>-->
 				<!-- bannerp2 -->
-						<p class="mauto c_white" #bannerp2  style="
-						cursor:pointer;font-size:14px;clear:left;" (click)="dinamicMethod()"  >
+						<p class="mauto c_white banner2" #bannerp2  style="" (click)="dinamicMethod()"  >
 						</p>
 				<!-- bannerp3 -->
 						<p class="mauto c_white bannerp3" #bannerp3  style="transition:transform 1s ease-out" [ngStyle]="{'max-width':maxWidthBannerp3+'px'}"
@@ -33,17 +32,17 @@
 						<!--<p>valoración</p>-->
 					</span>
 				<!-- div (imágenes y maps) -->
-					<div class="" style="width:100%;"  *ngIf="selectedCard" >
+					<div class="w100" *ngIf="selectedCard" >
 					<!-- maps -->
-						<pre-cardmaps [maxWidthBannerp3]="maxWidthBannerp3" [myHeight]="myHeight" [myHeight2]="myHeight2" (emitHeight)="updateHeight($event)"></pre-cardmaps>
+						<pre-cardmaps [maxWidthBannerp3]="maxWidthBannerp3"></pre-cardmaps>
 					<!-- images -->	
-						<pre-card-images [selectedCard]="selectedCard" [myHeight]="myHeight" [myHeight2]="myHeight2" (emitHeight)="updateHeight($event)"></pre-card-images>
+						<pre-card-images [selectedCard]="selectedCard"></pre-card-images>
 					<!-- info -->
-						<pre-card-infoservices [myHeightInfo]="myHeightInfo" [selectedCard]="selectedCard"></pre-card-infoservices>
+						<pre-card-infoservices [selectedCard]="selectedCard"></pre-card-infoservices>
 					</div>
 				</div>
-			<!-- icono Info -->
-				<div style="width:15%;cursor:pointer" class="" (click)="hideImagesCard('')">
+			<!-- icono Add (new card) -->
+				<div class="w15 csrpointer" (click)="hideImagesCard('')">
 					
 					<mat-icon class="banner_icon  mr10 floatR"  title="Información" (click)="setPanel(2)">add_circle</mat-icon>
 				

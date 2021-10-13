@@ -30,7 +30,7 @@ export var CardRentData ={
 			"953 72 71 06",
 			"numLevelFeedback",
 			5,
-			"https://www.google.com/maps/@37.946471,-2.919678,14z?hl=es",
+			`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233.85519134428822!2d-2.9211114054571503!3d37.94519552117723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6f081eef9117dd%3A0x159f702ce3131be7!2sApartamentos%20Mart%C3%ADn!5e0!3m2!1ses!2sus!4v1633715429667!5m2!1ses!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`,
 			`Apartamentos Martín se encuentra ubicado en Arroyo Frío, en el parque natural 
 			de Cazorla,dispone de apartamentos, casas rurales y cabañas. Los alojamientos están equipados
 			con lavadora, frigorífico, microondas, televisión, aire acondicionado, además de los
@@ -67,7 +67,7 @@ export var CardRentData ={
 			"953 72 71 77",
 			"numLevelFeedback",
 			4,
-			"https://www.google.com/maps/place/Hotel+Balneario+%E2%80%93+Spa+Parque+de+Cazorla/@37.946285,-2.922209,15z/data=!4m8!3m7!1s0x0:0x5bb7433b49d19775!5m2!4m1!1i2!8m2!3d37.9463021!4d-2.9221835?hl=es-ES",
+			`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.243986209853!2d-2.9232137842531114!3d37.94808867972833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6f081937697db5%3A0x2cb434b0492ec5f8!2sResidencial%20Los%20Robles!5e0!3m2!1ses!2ses!4v1633715319631!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`,
 			`Residencial Los Robles es un complejo turístico compuesto por casas rurales y 
 			apartamentos. 
 			- Casa rural: 
@@ -114,7 +114,7 @@ export var CardRentData ={
 			"953 72 71 10",
 			"numLevelFeedback",
 			3,
-			"https://www.google.com/maps?ll=37.95023,-2.920942&z=14&t=m&hl=es&gl=ES&mapclient=embed&cid=15040096026846025184",
+			`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d786.5439443235771!2d-2.921674582836118!3d37.949681493641904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5b6029e56856cd9c!2sApartamentos%20Los%20Enebros%20-%20Caba%C3%B1as%20de%20Madera!5e0!3m2!1ses!2ses!4v1633715586908!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`,
 			"texto"),
 		new CardRent(
 			"Los pinos",
@@ -143,7 +143,7 @@ export var CardRentData ={
 			"953 72 70 07",
 			"numLevelFeedback",
 			5,
-			"https://www.google.es/maps/place/Caba%C3%B1as+de+Madera+Los+Pinos/@37.9442854,-2.9495387,15z/data=!4m9!1m2!2m1!1sCaba%C3%B1as+de+Madera+Arroyo+Fr%C3%ADo!3m5!1s0xd6f081ebb72ec31:0xe1dc14a5d2c701ee!5m2!4m1!1i2!15sCh9DYWJhw7FhcyBkZSBNYWRlcmEgQXJyb3lvIEZyw61vkgEXbGVnYWxseV9kZWZpbmVkX2xvZGdpbmc",
+			`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.304064728463!2d-2.9239682846773865!3d37.946685679728546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6f081ebb72ec31%3A0xe1dc14a5d2c701ee!2sCaba%C3%B1as%20de%20Madera%20Los%20Pinos!5e0!3m2!1ses!2ses!4v1633715634057!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`,
 			`Cabañas de madera Los pinos ofrece cabañas de madera para 4 personas.
 			Estas cabañas están compuestas de 2 dormitorios, salón con cocina americana y baño.
 			Acceso a aparcamiento, barbacoa y piscina.`
@@ -175,7 +175,7 @@ export var CardRentData ={
 			"608 02 69 64",
 			"numLevelFeedback",
 			5,
-			"https://www.google.es/maps/place/alojamiento+valeria/@37.9461625,-2.923922,17z/data=!4m12!1m6!3m5!1s0xd6f09ae733c8ff9:0x8f476a24eb109bce!2salojamiento+valeria!8m2!3d37.9461548!4d-2.9217339!3m4!1s0xd6f09ae733c8ff9:0x8f476a24eb109bce!8m2!3d37.9461548!4d-2.9217339",
+			`<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.304064728463!2d-2.9239682846773865!3d37.946685679728546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6f081ebb72ec31%3A0xe1dc14a5d2c701ee!2sCaba%C3%B1as%20de%20Madera%20Los%20Pinos!5e0!3m2!1ses!2ses!4v1633715634057!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`,
 			`Alojamiento Valeria dispone de 2 dormitorios,  baño, salón y cocina.
 			Este apartamento cuenta con chimenea de leña, piscina, televisión, acceso a wifi, Play Station y acceso a Amazon Prime.`
 		),

@@ -19,8 +19,8 @@ export class CardContentComponent implements OnInit {
   @Output() modal=new EventEmitter<any>();
   
   private subscriptionCardRents:any;
-  public switchMenu1:any;
-  public switchMenu2:any;
+  //public switchMenu1:any;
+  //public switchMenu2:any;
   public listNights:any=[];
   //índice del array capacities seleccionado de los 2 menúes 
   //(indSelPson: de personas y indSeldNIght: de noches)
@@ -36,7 +36,7 @@ export class CardContentComponent implements OnInit {
   
   public feedrentdata:any;
   public cardrentdata:any;
-  public pricerentdata:any;
+  //public pricerentdata:any;
  
   //card seleccionada
   public selectedCard!:CardRent;
@@ -46,8 +46,8 @@ export class CardContentComponent implements OnInit {
   public selTypeCard:any;
   //tipo de card seleccionada en la selección anterior a la actual para poder mantener
   //el divFeedback cuando se pulsa imágenes
-  public oldTypeCard:any;
-  public fixedCloseGal:boolean=false;
+  //public oldTypeCard:any;
+  //public fixedCloseGal:boolean=false;
   //switchImages sustituido por myHeight
   
   //array valoracion localización
@@ -75,42 +75,17 @@ export class CardContentComponent implements OnInit {
 
   constructor(
     private _cardrentService:CardrentService,
-  ) {
-    
-    
-    
-    
-    
-    //this.feedrentdata=FeedbackRentData.midata;
-    //this.pricerentdata = PriceRentData.midata;
-    
-  }
+  ) { }
 
-  ngOnInit(): void {    
-    
+  ngOnInit(): void {
     //el método getCardRents() establece un selectedCard por defecto
     this.getCardRents()
     this.getFeeds();
 
-  //console.log("los ardrents: ",this.cardrentdata)   
     this.subscriptionCardRents=this._cardrentService.cardRents$.subscribe(()=> {
       this.getCardRents();
     })    
   }
-  
-  //rellenar base de datos con un array de objetos ya creado
-  //fillDB(){
-    //lista directa desde card-rent-data        
-    //this.cardrentdata=CardRentData.midata;
-    
-    /*
-    let list=CardRentData.midata;
-    list.map((cardrent:any)=>{
-      console.log("mi cardrent desde map: ",cardrent)      
-      this._cardrentService.addCardRent(cardrent).subscribe();
-    })
-    */
-  //}
 
   //creamos un array de nights desde el mínimo de noches a 10 noches
     //a cada uno de los rentcards asociado mediante el índice
@@ -120,55 +95,40 @@ export class CardContentComponent implements OnInit {
     return lista;
   }
   //obtenemos todos los feedbacks de la db y filtramos por rentcard actual,
-  //después será mediante paginación
+  //más adelante, habrá que realizarlo mediante paginación
   getFeeds(){
     this._cardrentService.getFeedbacks().subscribe(
       response => {
         //obtenemos todos los feeds
         this.feedrentdata=response.feedbacks;
-        //los asignamos en el servicio y filtramos por rentcard
+        //los asignamos en el servicio 
         this._cardrentService.setTotalFeeds(response.feedbacks);
+        //filtramos por rentcard seleccionada
         let feedsByRent=this._cardrentService.selectFeedbackByRent(this.selectedCard);
         //establecemos los feedbacks filtrados en el servicio para que, a continuación,
-        //mediante la suscripción, el feedback component los actualiza
+        //mediante la suscripción, el feedback component los actualice
         this._cardrentService.setSelectFeeds(feedsByRent);
-        //this._cardrentService.setSelectFeeds(response.feedbacks);
-        console.log("response desde getFeeds(): ",response.feedbacks)
       },
       error => {
-
+        console.log("Error: ",error);
       }
     )
   }
 
-  getImages(){
-
-  }
-  //por id a la db, no utilizado
-  getFeedsByRentId(id:string){
-    this._cardrentService.getFeedbacksByRentId(id).subscribe(
-      response => {
-        this.feedrentdata=response.feedbacks;
-        console.log("response desde getFeeds(): ",response)
-      },
-      error => {
-
-      }
-    )
-  }
-
+  
   async getCardRents(){
     this._cardrentService.getCardRents().subscribe(
-      response => {
-        //console.log("el response :",response)
+      response => {        
         this.cardrentdata=response.cardrents;
+        //comprobamos si selectedCard no tiene aun ningún valor, por tanto,
+        //es la primera vez que carga la página y establecemos uno por defecto
         if(!this.selectedCard){
-          console.log("no existe selectedCard")
+          //console.log("no existe selectedCard")
+        //establecemos el primero de la lista
           this.selectedCard=this.cardrentdata[0];
-          this._cardrentService.setSelectedCard(this.selectedCard);
-          console.log(this.selectedCard)
+          this._cardrentService.setSelectedCard(this.selectedCard);          
         }
-        console.log("en getCardREnts(): ",this.cardrentdata)
+        
         this.cardrentdata.map((rent:any,index:number)=> {
           //console.log(rent)
           
@@ -191,70 +151,39 @@ export class CardContentComponent implements OnInit {
           this.selectedNights[index]=this.listNights[index][0];
 
           this.menu1Active[index]=false;
-          this.menu2Active[index]=false;
-          //console.log(this.selectedPersons[index])
+          this.menu2Active[index]=false;          
           //this.selectedNights[index]=rent.capacities[0].minNights;
-          //console.log(this.selectedPersons[index])
-          //console.log(index)
-          
         })
-        //this.selectedPerson=this.cardrentdata
-        //this.cardrentdata.listImages=this.cardrentdata.capacities;
-        
       },
       error => {
-
+        console.log("Error: ",error);
       }
     )
   }
 
-  selectFeedbackByRent(card:any){
-
-    console.log(card," hola")
-    //console.log(this.feedrentdata)    
+  selectFeedbackByRent(card:any){    
     let listFeedback:any=[];
     this.feedrentdata.map((feed:any)=>{
       if(feed.rentId==card._id){
-        listFeedback.push(feed);
-        //console.log("listFeedback: ",listFeedback)
+        listFeedback.push(feed);        
       }
-    })
-    //this._cardrentService.setSelectFeeds(listFeedback)
+    })    
     return listFeedback;
   }
-
-  sendDataToExpansion(){
-
-  }
-  /*
-  showImagesCard(card:CardRent){
-    this.fixedCloseGal=true;
-    this.selectedCard=card;
-    console.log(card.listImages);
-    //this.switchImages=true;
-  }
-  */
-  //mostrar/ocultar div de feedback de location(rayitas) en home.component
+  
+  //mostrar/ocultar div de feedback de location(rayitas)
   swDivFeed(value:boolean,card:any=null){
-    console.log("update swDivFeed")
+    //console.log("update swDivFeed")
     let data={type:'location',value:value,card:null};
-    if(card){        
-      data.card=card;
-    }
-    this._cardrentService.setSwitchFeed(data)    
+    if(card)        
+      data.card=card;    
+    this._cardrentService.setSwitchFeed(data);
   }
   //mostrar/ocultar div de feedback de feedbacks(estrellitas) en home.component
-  swDivFeed2(value:boolean,card:any=null){
-      console.log("update swDivFeed2")
-      if(card){
-        console.log("llega el card")
-      }else{
-        console.log("no llega el card")
-      }
+  swDivFeed2(value:boolean,card:any=null){      
       let data={type:'feedback',value:value,card:null};
-      if(card){        
-        data.card=card;
-      }
+      if(card)
+        data.card=card;      
       this._cardrentService.setSwitchFeed(data)      
   }
 
@@ -263,16 +192,22 @@ export class CardContentComponent implements OnInit {
   resetFeed2Interval(){
     if(this.intervalFeedActive){        
       this.swDivFeed2(false);
-      this.intervalFeedActive=false;
-      //console.log("cerraado interval")
+      this.intervalFeedActive=false;      
       clearInterval(this.intervalFeedText)        
     }
   }
   
   
   selectCard(card:CardRent){  
-    console.log("llega a selectCard")
-    if(card != this.selectedCard){
+    //establecemos la condición: si el tipo de card es undefined, de esta forma sabemos
+    //si es la primera vez que se selecciona, ya que, al seleccionar la primera vez
+    // se establece en null o en alguno de los tipos específicos
+    if(this.selTypeCard===undefined){
+      console.log("es undefined")
+    }else if(this.selTypeCard===null){
+      console.log("es null");
+    }
+    if(card != this.selectedCard || this.selTypeCard === undefined){
       if(!this.pushedOptionCard){        
         this.selTypeCard=null;        
         this.swDivFeed(false);
@@ -282,39 +217,35 @@ export class CardContentComponent implements OnInit {
       }
       //podríamos comprobar si el tipo es feedback, ya que en ese caso ya dispondría del
       //array de feedbacks de ese alojamiento y si no crearlo
-      console.log("tipo de card desde selectCard: ",this.selTypeCard)
+      //console.log("tipo de card desde selectCard: ",this.selTypeCard)
       if(this.selTypeCard != "feedback"){
         let feed = this._cardrentService.selectFeedbackByRent(card);
-
         this._cardrentService.setSelectFeeds(feed);
       }
       this._cardrentService.setBanner1(card);      
     }
+    //console.log("card: ",this.selectedCard);
     //actualizamos card
     this._cardrentService.setSelectedCard(card);
     this.selectedCard=card;  
     if(this.pushedOptionCard){      
       this.pushedOptionCard=false;
     }
-
     //this._cardrentService.setSelectedCard(card);
   }
 
-
   //el text puede ser un string o puede ser otra cosa:en feedback es un título,
-  //aunque debería ser un id.
-  //selectOptionCard(type:string,text:any=null){
+  //aunque debería ser un id.  
   selectOptionCard(type:string,card:any){
+  //mostramos modal de advertencia
   if(type=="delete"){
     this._cardrentService.setSelectedCard(card);
     this.modal.emit({card,text:"Está seguro que desea eliminar el alojamiento"})
     return;
   }    
-    let totalText="No existen valoraciones";
-    
+    let totalText="No existen valoraciones";    
     //asignamos botón pulsado
     this.pushedOptionCard=true;
-
     if(card == this.selectedCard && this.selTypeCard != type
       || card != this.selectedCard || this.selTypeCard == "images" || this.selTypeCard == "info"){
       console.log("entra en selectOptionCard")
@@ -325,23 +256,22 @@ export class CardContentComponent implements OnInit {
       //si el botón pulsado no es ni images ni feedback ni info y el interval
       //se encuentra activo, limpiamos el interval y el div de valoraciones(estrellitas),
       //limpiamos tb el banner2
-  //revisar si incluir "info"
-      if(type != "feedback" && type != "images" && type != "info" ||card !=this.selectedCard && this.selectedCard != null){
-        //console.log("es distinta card")
+  
+      if(type != "feedback" && type != "images" && type != "info" 
+        || card !=this.selectedCard && this.selectedCard != null){
         
         this.resetFeed2Interval();
         this._cardrentService.setBanner2("");
-
       }
 
       //si el botón pulsado no es location ni images ni info limpiamos el div de nivel de ubicación(rayitas)
-      if(type != "location" && type != "images" && type!="info"|| type == "images" && card != this.selectedCard){        
+      if(type != "location" && type != "images" && type!="info"
+        || type == "images" && card != this.selectedCard){
+
         this.swDivFeed(false)
-        
       }
       
-      //if(type == "feedback" || type == "images"){
-        if(type == "feedback" || type == "images" || type =="info"){
+      if(type == "feedback" || type == "images" || type =="info"){
         let selectedElement;
         selectedElement=type;        
         if(type == "feedback"){
@@ -367,16 +297,11 @@ export class CardContentComponent implements OnInit {
 //tanto si pulsamos valoraciones como si pulsamos en el card(selectCard()), para luego 
 //poder disponer de ellos desde el componente feedback
           let feed=this.selectFeedbackByRent(card);
-
-          //console.log("feed: ",feed)
-
           //comprobamos si existe algún feedback creado asignamos el primero
-          if(card.title && feed && feed.length>0){
-            console.log(card.title)
+          if(card.title && feed && feed.length>0){            
             //asignamos el primer mensaje antes de iniciar el interval
             totalText='<span style="">'+feed[0].text+'</span>';
-          }
-        
+          }        
           //iniciamos el interval con la lista de mensajes, comenzando por el segundo
           //(let num=1) la primera vez, ya que anteriormente hemos asignado el primer mensaje.
           //además comprobamos si no existe interval y si existe más de un feedback creado(mínimo 2)
@@ -396,19 +321,18 @@ export class CardContentComponent implements OnInit {
           }
           
           this._cardrentService.setBanner2({selectedElement,totalText,card});          
-        }else if(type == "images"){          
-          console.log("el info desde selectOptioncard: ",totalText)
+        }else if(type == "images"){  
           selectedElement=type;
           //enviamos un objeto en lugar de un string y detenemos          
           this._cardrentService.setBanner2({selectedElement,totalText,card})          
         }
         else if(type=="info"){
-          console.log("el info desde selectOptioncard: ",totalText)
+          //console.log("el info desde selectOptioncard: ",totalText)
           selectedElement=type;
+          //console.log("selectedElement: ",totalText)
           this._cardrentService.setBanner2({selectedElement,totalText,card})
-          return;
+          
         }
-
       }else{
         if(type=="capacity"){
           totalText='<span style="color:orange">Capacidad: </span><span style="font-size:16px;margin-left:10px">'+card.capacity+' personas</span>';
@@ -502,46 +426,62 @@ export class CardContentComponent implements OnInit {
       //this.indexSelRent=num2;
       this.toggleMenus(num,num2);
   }
-
+  //se oculta el menú del elemento correspondiente del array menu1Active
   hideMenu(index:number){
     this.menu1Active[index]=false;
     this.menu2Active[index]=false;
   }
   //efecto toggle menú1 y menú2
   toggleMenus(menu:number,index:number){
-    //num==1 es el menú 1(personas), num==2 es el menú 2(noches)      
-    
-      if(menu==1){
+    //num==1 es el menú 1(personas), num==2 es el menú 2(noches) 
+      if(menu==1)
         this.menu1Active[index] = (this.menu1Active[index]) ? false:true;
-      }else if(menu==2){
-        this.menu2Active[index]= (this.menu2Active[index]) ? false:true;        
-      }
+      else if(menu==2)
+        this.menu2Active[index]= (this.menu2Active[index]) ? false:true;
   }
-
 
   divPrice(){
     if(!this.pushedPrice){
       this.menu1Active=false;
       this.menu2Active=false;
-    }else{
+    }else
       this.pushedPrice=false;
-    }
   }
 
-  updatePrice(){
-    console.log("edit")
+  updatePrice(){    
     this.pushedPrice=true;
-
   }
-
-  miPrueba(){
-    console.log("prueba de mostrar mapa")
-  }
+  /*
   getLevelLocationString(card:any){
     //obtenemos una media de la localización... 
     //si es menor a 1 km : Excelente, si es entre 1 y 2 : muy bueno, si es entre 2 y 3: bueno
     if(card.numLevelLocation){}
   }
+*/
+
+
+//por id a la db, no utilizado
+/*
+getFeedsByRentId(id:string){
+  this._cardrentService.getFeedbacksByRentId(id).subscribe(
+    response => {
+      this.feedrentdata=response.feedbacks;
+      console.log("response desde getFeeds(): ",response)
+    },
+    error => {
+
+    }
+  )
+}
+*/
+/*
+  showImagesCard(card:CardRent){
+    this.fixedCloseGal=true;
+    this.selectedCard=card;
+    console.log(card.listImages);
+    //this.switchImages=true;
+  }
+  */
 
   
 

@@ -1,29 +1,26 @@
 <div class="newcard_content">		
 	<div class="newcard_form" >
-		<form [formGroup]="formCardRent" (ngSubmit)="onSubmit()" style="display:block;width:100%">
+		<form [formGroup]="formCardRent" (ngSubmit)="onSubmit()" class="w100" >
 		
 		  	<pre-newcard-inputs></pre-newcard-inputs>
-		  
-		  	<p style="margin:10px">
-				<pre-newcard-prices></pre-newcard-prices>
-		  	</p>
-		
+			
+			<pre-newcard-prices></pre-newcard-prices>			
+			
 			<pre-newcard-services (changedCheckbox)="updateServices($event)"></pre-newcard-services>
 
-			<p style="margin:10px">
-				<pre-newcard-images (modal)="showModal($event)" [listImages]="listImages" ></pre-newcard-images>
-			</p>
+			<pre-newcard-images (modal)="showModal($event)" [listImages]="listImages" ></pre-newcard-images>
+			
 
-			<p style="background-color:#f3ffea;text-align:center;margin:10px;display:block">
-				<mat-form-field style="color:black;display:block" class="mat_textarea">
+			<div class="div_textarea">
+				<mat-form-field style="display: block;" class="mat_textarea">
 					<mat-label>Detalle</mat-label>
 					<textarea matInput placeholder="Escribe aquí" formControlName="text"></textarea>
 				</mat-form-field>
-			</p>
+			</div>
 	
-			<button mat-button style="background-color:rgba(0,0,0,.9);color:white;display:block;width:100%" type="submit">Guardar</button>		
-			<button mat-raised-button color="" style="width:100%" type="submit" [disabled]="!formCardRent.valid || !formCardRent.controls.type.value || formCardRent.controls.capacities.value.length==0 || formCardRent.controls.capacities.status=='INVALID'">Guardar</button>
-			<div style="width:100%;height:30px">
+			<!--<button mat-button style="background-color:rgba(0,0,0,.9);color:white;display:block;width:100%" type="submit">Guardar</button>-->
+			<button mat-raised-button color="success" class="w100 m10_auto" type="submit" [disabled]="!formCardRent.valid || !formCardRent.controls.type.value || formCardRent.controls.capacities.value.length==0 || formCardRent.controls.capacities.status=='INVALID'">Guardar</button>
+			<div class="w100 h30">
 			</div>
 		</form>
 	</div>

@@ -7,11 +7,11 @@ import { CardrentService } from '../../../services/cardrent.service'
 })
 export class CardInfoservicesComponent implements OnInit {
 
-  private subscriptionHeight:any;
-  @Input() myHeightInfo:any;
+  private subscriptionHeight:any;  
   @Input() selectedCard:any;
   public iconsService:any;
   public styleBlockActive:any;
+  public heightInfo:string="0";
   constructor(private _cardrentService: CardrentService) { }
 
   ngOnInit(): void {
@@ -33,14 +33,11 @@ export class CardInfoservicesComponent implements OnInit {
       'spa':'spa',
       'cuna':'crib'
 
-
-
-
-
-
-
-
     }
+    this.subscriptionHeight = this._cardrentService.heightInfo$.subscribe(()=> {
+      console.log("Suscription desde info");
+      this.heightInfo = this._cardrentService.getHeight("info");
+    })
     console.log("lista desde inforservices: ",this.selectedCard.services)
     /*
     let list = this.selectedCard.services.map((service:any)=> {
@@ -49,11 +46,9 @@ export class CardInfoservicesComponent implements OnInit {
     */
   }
 
-  hideImagesCard(data:any){
-    console.log("desde hideImagesCard: ",this.selectedCard)
-    console.log(this.selectedCard.numLevelFeedback)
-    this.myHeightInfo=0;
-    this._cardrentService.setHeight('info',"0");
+  hideImagesCard(){    
+    this.heightInfo='0';
+    this._cardrentService.setHeight('info',this.heightInfo);
   }
 
 }

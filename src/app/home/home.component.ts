@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   public banner2:any;
   public banner3:any;
   public cardrentdata:any;
-  public selectedCard:any;
+  //public selectedCard:any;
 
 //elemento DOM del section seleccionado
   private selectedSection:any=null;

@@ -1,8 +1,10 @@
 <div class="back_feedback" style="">
+
+<!-- header feedback -->
 	<div class="flex_item " style=""  >
 		<div class="w15 csrpointer" >			
-			<mat-icon class="banner_icon floatL mr10" title="Volver a alojamientos" (click)="switchForm()" *ngIf="switchHeightForm">close</mat-icon>
-			<mat-icon class="banner_icon floatL mr10" title="Volver a alojamientos" (click)="switchForm(true)" *ngIf="!switchHeightForm">add_circle</mat-icon>
+			<mat-icon class="banner_icon floatL mr10 mt2" title="Volver a alojamientos" (click)="switchForm()" *ngIf="switchHeightForm">close</mat-icon>
+			<mat-icon class="banner_icon floatL mr10 mt2" title="Volver a alojamientos" (click)="switchForm(true)" *ngIf="!switchHeightForm">add_circle</mat-icon>
 			<div class="w100 h100" (click)="switchForm()">
 			</div>
 
@@ -15,8 +17,9 @@
 				<pre-divlevel [numLevelFeedback]="numLevelFeedback"></pre-divlevel>
 			</p>
 
-			<!--</span>-->
-		<!-- formulario de registro de feedback -->
+	
+	
+	<!-- formulario de registro de feedback -->
 			<div class="c_black div_newfeedback" style="" >
 				<form [formGroup] = "formFeed" (ngSubmit)="onSubmit()" >
 					<div [ngStyle]="{'height':heightPanel}" class="back_white newfeedback">
@@ -68,9 +71,8 @@
 						</div>
 					</div>
 				</form>
-
-
 			</div>
+	<!-- fin formulario de registro de feedback -->
 
 			
 			
@@ -98,10 +100,10 @@
 			<mat-icon class="banner_icon floatR" style="margin-right: 10px" title="Volver a alojamientos" (click)="setPanel(1)">double_arrow</mat-icon>
 		</div>
 
-
 	</div>
-</div>
-<div class="w80 b_detailfeed">
+<!-- fin header feedback -->
+<!-- feedbacks -->
+	<div class="w80 b_detailfeed">
 		<div class="detailfeed" *ngFor="let feed of selectFeeds">			
 			<div class="w100 d_flex" >
 				<div class="detailfeed_divimg">
@@ -139,3 +141,5 @@
 			</div>
 		</div>-->
 	</div>
+<!-- fin feedbacks -->
+</div>
