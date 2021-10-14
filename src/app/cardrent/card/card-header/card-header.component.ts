@@ -26,6 +26,11 @@ export class CardHeaderComponent implements OnInit {
   public switchDivFeedback2:any;
   public lastswitchDivFeedback2:any;
   public selectedCard:any;
+  
+  //switch para mostrar/ocultar icono phone
+  public switchDivContact:any;
+  //switch para mostrar/ocultar icono capacity
+  public switchDivCapacity:any;
   //max-width de bannerp3 para mostrar correctamente el white-space
   public maxWidthBannerp3:any;
   
@@ -72,15 +77,12 @@ export class CardHeaderComponent implements OnInit {
     this.subscriptionSelectedCard = this._cardrentService.selectedCard$.subscribe(()=> {      
       let card=this.selectedCard;
       this.selectedCard = this._cardrentService.getSelectedCard();
-      
-      console.log("selectedCard desde header con suscription: ",this.selectedCard)
     })
 
     window.addEventListener("resize",()=> {
       //para que el ancho de bannerp3 se actualice y realice el efecto 
-      //white-space actualizamos maxWidthBannerp3 
-      //this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;
-      this.maxWidthBannerp3=800;
+      //white-space actualizamos maxWidthBannerp3 mediante el width del div padre (padre del padre)      
+      this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;      
     })
   }
   
@@ -189,6 +191,8 @@ export class CardHeaderComponent implements OnInit {
       this.bannerp3.nativeElement.style.transform="translateX(0)";
     }
   }
+
+//optimizar los 2 terniarios
   //permite mostrar/ocultar los 2 divs (rayitas:location, estrellitas:feedback)
   switchDivFeed(data:any){     
     if(data && data.type == "location"){
@@ -201,6 +205,13 @@ export class CardHeaderComponent implements OnInit {
       (data.card && data.card.numLevelFeedback) ?
         this.numLevelFeedback=data.card.numLevelFeedback:this.numLevelFeedback=0;
       this.switchDivFeedback2=data.value;
+    }
+    else if(data && data.type == "phone"){
+      //si no viene card o numLevelLocation no viene null asignamos sin asignamos 0                 
+      this.switchDivContact=data.value;
+    }
+    else if(data && data.type == "capacity"){
+      this.switchDivCapacity=data.value;
     }
   }
   //slider de paneles

@@ -30,6 +30,12 @@
 	justify-content:center;
 	vertical-align:middle
 }
+.flex_item header .new_title{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+}
 
 .flex_item .banner_icon{
 	display: flex;
@@ -41,4 +47,25 @@
 	transform:rotate(180deg);
 	display:flex;
 	align-items:center;
+}
+
+@media (max-width: 900px){
+	.flex_item{
+		width: 100%;
+	}
+}
+@media (max-width: 600px){
+	
+	.flex_item header .new_title{
+		font-size: 15px;
+	}
+	.flex_item .banner_icon{
+		font-size: 30px;
+	}
+
+}
+@media (max-width: 400px){
+	.flex_item header .new_title{
+		font-size: 14px;
+	}
 }

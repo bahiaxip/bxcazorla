@@ -186,6 +186,18 @@ export class CardContentComponent implements OnInit {
         data.card=card;      
       this._cardrentService.setSwitchFeed(data)      
   }
+  swDivFeed3(value:boolean,card:any=null){      
+      let data={type:'phone',value:value,card:null};
+      if(card)
+        data.card=card;      
+      this._cardrentService.setSwitchFeed(data)      
+  }
+  swDivFeed4(value:boolean,card:any=null){      
+      let data={type:'capacity',value:value,card:null};
+      if(card)
+        data.card=card;      
+      this._cardrentService.setSwitchFeed(data)      
+  }
 
   //limpiar interval de rotación de mensajes de feedback (mostrado en 
   //card-header.component), tb oculta el div de estrellitas
@@ -211,7 +223,10 @@ export class CardContentComponent implements OnInit {
       if(!this.pushedOptionCard){        
         this.selTypeCard=null;        
         this.swDivFeed(false);
-        this.swDivFeed2(false,card);
+        //anulado, ya lo hace resetFeed2Interval()        
+        //this.swDivFeed2(false,card);
+        this.swDivFeed3(false,card);
+        this.swDivFeed4(false,card);
         this.resetFeed2Interval();
         this._cardrentService.setBanner2("");        
       }
@@ -265,10 +280,17 @@ export class CardContentComponent implements OnInit {
       }
 
       //si el botón pulsado no es location ni images ni info limpiamos el div de nivel de ubicación(rayitas)
-      if(type != "location" && type != "images" && type!="info"
+      if(type != "images" && type!="info"
         || type == "images" && card != this.selectedCard){
 
-        this.swDivFeed(false)
+        if(type != "location"){
+          this.swDivFeed(false);
+        }
+        if(type != "phone"){
+          this.swDivFeed3(false);
+        }
+        if(type != "capacity")
+          this.swDivFeed4(false);
       }
       
       if(type == "feedback" || type == "images" || type =="info"){
@@ -335,13 +357,19 @@ export class CardContentComponent implements OnInit {
         }
       }else{
         if(type=="capacity"){
-          totalText='<span style="color:orange">Capacidad: </span><span style="font-size:16px;margin-left:10px">'+card.capacity+' personas</span>';
+          this.swDivFeed4(true,card);
+          totalText='<span style="margin-left:10px"><span style="font-size:10px">Max.</span> '+Math.max(...card.capacity)+' personas</span>';
+          //totalText='<span style="color:orange">Capacidad: </span><span style="margin-left:10px">'+card.capacity+' personas</span>';          
         }else if(type == "phone"){
-          totalText='<span style="color:orange">Teléfono de contacto: </span><span style="font-size:16px;margin-left:10px">'+card.phone+'</span>';
+          
+          //totalText='<span style="color:orange">Teléfono de contacto: </span><span style="font-size:16px;margin-left:10px">'+card.phone+'</span>';
+          this.swDivFeed3(true,card);
+          totalText='<span style="margin-left:10px">'+card.phone+'</span>';
+
         }else if(type == "location"){
           this.levelLocation = card.numLevelLocation;
           this.swDivFeed(true,card);
-          totalText='<span style="color:orange;font-size:10px;user-select:none">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle">share_location</span>';
+          totalText='<span style="color:orange;font-size:10px;user-select:none">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle;">share_location</span>';
         }        
         this._cardrentService.setBanner2(totalText)        
       }      

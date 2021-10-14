@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
 //fin menú principal
 
   //suscripción para actualizar el section
-  public subscriptionSection:any;
+  private subscriptionSection:any;
   //suscripción para actualizar el panel
   public subscriptionPanel:any;
 //número de section (comprobar si se puede sintetizar con sectionId)
@@ -170,15 +170,25 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    
-    
     //comprobamos y almacenamos el ancho del section principal
     this.firstWidth=this.section1.nativeElement.clientWidth;    
     console.log("primer firstWidth: ",this.firstWidth);
     //console.log(this.firstWidth);
     this.firstHeight=this.section1.nativeElement.clientHeight;
-    //console.log(this.firstHeight);
+    
+    //suscripción section
+    this.subscriptionSection = this._cardService.section$.subscribe(()=> {
+
+        
+        let section=this._cardService.getSection();
+        /*
+        if(section==1){                  
+          this.sendToPanel(this._cardService.getPanel())
+          console.log("llega al suscription de home: ",this._cardService.getPanel())
+        }*/
+        console.log("entra en suscripcion section: ",section);
+        this.setSection(section);
+    })
     this.setSectionByScroll()
     this.selectedPanel=0;
     //actualizamos el ancho para los mensajes deslizantes de valoraciones
@@ -202,7 +212,7 @@ export class HomeComponent implements OnInit {
       //console.log("se esta moviendo:",e);      
       this.hideSnow();
 //revisar si no es necesario
-      this.setSectionByScroll();
+      //this.setSectionByScroll();
       this.firstWidth=this.section1.nativeElement.clientWidth;
       //console.log("nuevo firstWidth: ",this.firstWidth)
       //console.log(this.firstWidth=this.section1.nativeElement.clientWidth)
@@ -221,9 +231,7 @@ export class HomeComponent implements OnInit {
     //let sn=new Snow({name:"sdf",animationName:12,animationDuration:12},0,600,"",12,12);
     */
     
-    
-    //window.removeEventListener("scroll",disableScroll);
-    
+//pasar a .ts
     this.images=[
       new ImageItem({
         src:'./assets/river.jpg',thumb:'./assets/id_unity.jpeg'
@@ -237,8 +245,10 @@ export class HomeComponent implements OnInit {
       new ImageItem({
         src:'./assets/salto_organos.jpg',thumb:'./assets/id_unity.jpg'
       }),
-
     ];
+
+
+    
     this.switchAllOpacitySnow=true;
     if(this.firstWidth>=1000 && this.firstHeight<=this.firstWidth){
       //anulada animación (poco realista)
@@ -247,17 +257,9 @@ export class HomeComponent implements OnInit {
     this.subscriptionDetailMenu = this._cardService.detailMenu$.subscribe(()=> {
         //console.log("suscripción home.component");
         this.textDetailMenu=this._cardService.getDetailMenu();        
-    })
-    //suscripción section
-    this.subscriptionSection = this._cardService.section$.subscribe(()=> {        
-        let section=this._cardService.getSection();
-        /*
-        if(section==1){                  
-          this.sendToPanel(this._cardService.getPanel())
-          console.log("llega al suscription de home: ",this._cardService.getPanel())
-        }*/
-        this.setSection(section);
-    })
+    });
+    
+    
     this.subscriptionPanel= this._cardService.panel$.subscribe(()=> {
       let section=this._cardService.getSection();
       if(section==1){
@@ -302,44 +304,53 @@ export class HomeComponent implements OnInit {
   setSectionByScroll(){
     //alto total del scroll (por si recarga la página detectar y seleccionar el section)    
     let scrollY=window.scrollY;
-    //console.log("desde setSectionByScroll(): ",scrollY)    
+    console.log("desde setSectionByScroll(): ",scrollY)    
     //alto de cada section
     let sectionSize=window.innerHeight;
     //console.log("desde setSectionByScroll(): ",sectionSize)
     //seleccionamos el section seleccionado por si se recarga la página
-    for(let i=0;i<5;i++){
-      if(window.scrollY == sectionSize * i 
-        ){
-        console.log("entra en el loop: ",i)
-        let sect;        
-          if(i==1){
-            this.selectedSection=this.section2.nativeElement;
-            this.sectionId=i+1;
-            break;            
-          }else if(i==2){
-            this.selectedSection=this.section3.nativeElement;
-            this.sectionId=i+1;
-            break;
-          }else if(i==3){
-            this.selectedSection=this.section4.nativeElement;
-            this.sectionId=i+1;
-            break;
-          }else if(i==4){
-            this.selectedSection=this.section4.nativeElement;
-            this.sectionId=i+1;
-            break;
-          }
-          else{ 
-            this.selectedSection=this.section1.nativeElement;
-            this.sectionId=i+1;
-            break;
-          }
-      }else{
-        //console.log("NO entra en el loop")
-      }      
+    if(scrollY ==  0 || scrollY < sectionSize){
+        this.selectedSection=this.section2.nativeElement;
+        this.sectionId=1;
+    }else{
+      for(let i=1;i<5;i++){
+        //console.log("section * "+i+ ": ",sectionSize);
+    //revisar este método
+
+        if(window.scrollY == sectionSize * i){
+          console.log(window.scrollY)
+        //if(scrollY >=sectionSize *i && scrollY < sectionSize*(i+1)){
+          console.log("entra");
+          console.log("entra en el loop: ",i)
+          let sect;        
+            if(i==1){
+              this.selectedSection=this.section2.nativeElement;
+              this.sectionId=i+1;
+              break;            
+            }else if(i==2){
+              this.selectedSection=this.section3.nativeElement;
+              this.sectionId=i+1;
+              break;
+            }else if(i==3){
+              this.selectedSection=this.section4.nativeElement;
+              this.sectionId=i+1;
+              break;
+            }else if(i==4){
+              this.selectedSection=this.section4.nativeElement;
+              this.sectionId=i+1;
+              break;
+            }
+            else{ 
+              this.selectedSection=this.section1.nativeElement;
+              this.sectionId=i+1;
+              break;
+            }
+        }
+      }    
     }
+    console.log("enviamos a servicio: ",this.sectionId);
     //establecemos un section al cargar la página    
-    this._cardService.setSection(this.sectionId);
+    this.setSection(this.sectionId);
   }
   //animación flash en section-home
   flash(){
@@ -467,7 +478,8 @@ export class HomeComponent implements OnInit {
   }
   
   //dirigir al section pasado por parámetro
-  setSection(id:number){    
+  setSection(id:number){ 
+    console.log("desde setSection: ",id);   
     if(id==1){
       this.selectedSection=this.section1.nativeElement;
       this.sectionId=1;
@@ -478,6 +490,8 @@ export class HomeComponent implements OnInit {
       this.selectedSection=this.section2.nativeElement;
       this.sectionId=2;
       this.buttonValue="places"
+      let restScrollY=window.scrollY - this.firstHeight*(this.sectionId-1);
+
       console.log("al 2")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});
     }else if(id==3){

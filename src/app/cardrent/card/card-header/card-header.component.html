@@ -18,15 +18,20 @@
 						<pre-divlevel [numLevelFeedback]="numLevelFeedback"></pre-divlevel>
 		            </p>
 						        
-				<!-- gráfica puntuación de ubicación -->
-					<span class="banners" style=""  >						
+				
+					<span class="banners" >
+						<!-- gráfica puntuación de ubicación -->
 						<pre-divlevel2 [levelLocation]="numLevelLocation" *ngIf="switchDivFeedback"></pre-divlevel2>
-						<!--<span [innerHTML]="textbanner"></span>-->
+						<span class="material-icons icon" *ngIf="switchDivContact">
+						settings_phone</span>
+						<span class="material-icons icon" *ngIf="switchDivCapacity">
+						group</span>
+						
 				<!-- bannerp2 -->
-						<p class="mauto c_white banner2" #bannerp2  style="" (click)="dinamicMethod()"  >
+						<p class="mauto c_white banner2" #bannerp2   (click)="dinamicMethod()"  >
 						</p>
 				<!-- bannerp3 -->
-						<p class="mauto c_white bannerp3" #bannerp3  style="transition:transform 1s ease-out" [ngStyle]="{'max-width':maxWidthBannerp3+'px'}"
+						<p class="mauto c_white bannerp3" #bannerp3  [ngStyle]="{'max-width':maxWidthBannerp3+'px'}"
 						 (click)="dinamicMethod()"  >
 						</p>
 						<!--<p>valoración</p>-->

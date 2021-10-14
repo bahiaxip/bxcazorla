@@ -48,10 +48,10 @@
 							</span>-->
 						</div>
 					<!-- text subtitle -->
-						<p class="subtitle_renting_text" >
+						<p class="subtitle_renting_text" *ngIf="rent.type.length<3">
 
 							<span *ngFor="let type of rent.type;let i=index">
-								<span *ngIf="i!=0">/</span>
+								<span *ngIf="i!=0 ">/</span>
 								{{type}}
 							</span>
 						</p>

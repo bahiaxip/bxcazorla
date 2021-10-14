@@ -41,8 +41,20 @@
 }
 .banners .banner2{	
 	cursor:pointer;
-	font-size:14px;
+	font-size:18px;
 	clear:left;
+	color: lightgreen;
+	display: flex;
+	align-items: center;
+}
+
+.banners .icon{
+	color:lightgreen;
+	font-size:18px;
+	border:white 1px solid;
+	border-radius:50%;
+	padding:3px;
+	background-color:#000;
 }
 
 .div_feedback div{
@@ -59,10 +71,37 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	//max-width: 100ch;
+	/*max-width: 100ch;*/
 	cursor:pointer;
 	/*margin-left:5px;*/
 	font-size:14px;
 	/*clear:left;*/
-	transition:transform 1s ease-in-out
+	transition:transform 1s ease-in-out;
+	/*display: flex; anula el ellipsis*/
+}
+
+
+@media (min-width:1400px) {
+	.flex_item{
+		width:60%
+	}
+}
+@media (max-width: 900px){
+	.flex_item{
+		width: 100%;		
+	}	
+}
+@media (max-width: 600px){
+	.flex_item .banner_icon{
+		font-size: 30px;
+	}
+	.banners .banner2{
+		font-size: 16px;
+	}
+	.banners .icon{
+		font-size: 16px;
+	}
+
+}
+@media (max-width: 500px){	
 }

@@ -23,7 +23,7 @@ export class CardService {
   private subjectPanel = new Subject<void>();
   public panel$ = this.subjectPanel.asObservable();
 
-  //observable para establecer y moverse entre los sections
+  //observable para establecer y deslizarse entre los sections
   private subjectSection = new Subject<void>();
   public section$ = this.subjectSection.asObservable();
 
@@ -133,6 +133,7 @@ export class CardService {
   */
 
   setSection(section:number){
+    console.log("entra en el servicio setSection(): ",section);
     this.selectedSection=section;
     this.subjectSection.next();
   }

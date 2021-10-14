@@ -61,7 +61,7 @@ export var CardRentData ={
 			"imagen",
 			"",
 			[
-				"casa","apartamento","parking"
+				"casa","apartamento","cabaña"
 			],
 			"https://www.residenciallosrobles.com/",
 			"953 72 71 77",
