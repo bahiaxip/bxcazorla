@@ -198,22 +198,40 @@ export class HomeComponent implements OnInit {
     //2 o 3 veces la rueda y cambiar de section, aunque solo podría ser en algunos sections
     //pk existe scrolling en div internos en algunos de los sections
     document.getElementsByTagName("html")[0].style.overflow="hidden";
+
     
     
     window.addEventListener("resize",(e)=>{
+      console.log("scrollY: ",window.scrollY);
+      console.log("scrollTop section 3: ",this.section3.nativeElement.scrollTop);
+      console.log("scrollHeight de section 1: ",this.section1.nativeElement.scrollHeight);
       //console.log(this.section4.nativeElement.getBoundingClientRect().top)
     //evitamos scrollear a 0 si no es necesario
-      
+      console.log("selectedSection: ",this.selectedSection);
       //console.log(window.scrollY)
       //this.selectedSection.styletop=0
       //console.log(this.selectedSection.scrollTop)
 //probamos al final
-      //this.selectedSection.scrollIntoView();
+      
       //console.log("se esta moviendo:",e);      
-      this.hideSnow();
+      //this.hideSnow();
 //revisar si no es necesario
       //this.setSectionByScroll();
       this.firstWidth=this.section1.nativeElement.clientWidth;
+
+      //this.selectedSection.scrollIntoViewIfNeeded();
+      
+      /*
+      window.scroll({
+        top:this.selectedSection.offsetTop,
+        behavior:"smooth",
+
+      })
+      */
+      
+      //this.selectedSection.parentNode.scrollTop=this.selectedSection.offsetTop-this.selectedSection.parentNode.offsetTop;
+      //this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"})
+      //this.selectedSection.scrollTop=0;
       //console.log("nuevo firstWidth: ",this.firstWidth)
       //console.log(this.firstWidth=this.section1.nativeElement.clientWidth)
       this.selectedSection.scrollIntoView();
@@ -307,20 +325,22 @@ export class HomeComponent implements OnInit {
     console.log("desde setSectionByScroll(): ",scrollY)    
     //alto de cada section
     let sectionSize=window.innerHeight;
-    //console.log("desde setSectionByScroll(): ",sectionSize)
+    console.log("sectionSize: ",sectionSize)
     //seleccionamos el section seleccionado por si se recarga la página
+    /*
     if(scrollY ==  0 || scrollY < sectionSize){
+      console.log("entra en el if");
         this.selectedSection=this.section2.nativeElement;
         this.sectionId=1;
-    }else{
-      for(let i=1;i<5;i++){
+    }
+    */
+    
+      for(let i=0;i<5;i++){
         //console.log("section * "+i+ ": ",sectionSize);
     //revisar este método
 
-        if(window.scrollY == sectionSize * i){
-          console.log(window.scrollY)
-        //if(scrollY >=sectionSize *i && scrollY < sectionSize*(i+1)){
-          console.log("entra");
+        if(window.scrollY == sectionSize * i){          
+        //if(scrollY >=sectionSize *i && scrollY < sectionSize*(i+1)){          
           console.log("entra en el loop: ",i)
           let sect;        
             if(i==1){
@@ -328,10 +348,11 @@ export class HomeComponent implements OnInit {
               this.sectionId=i+1;
               break;            
             }else if(i==2){
+              console.log("va hacia el section 3");
               this.selectedSection=this.section3.nativeElement;
               this.sectionId=i+1;
               break;
-            }else if(i==3){
+            }else if(i==3){              
               this.selectedSection=this.section4.nativeElement;
               this.sectionId=i+1;
               break;
@@ -347,9 +368,9 @@ export class HomeComponent implements OnInit {
             }
         }
       }    
-    }
-    console.log("enviamos a servicio: ",this.sectionId);
-    //establecemos un section al cargar la página    
+    
+    //console.log("enviamos a servicio: ",this.sectionId);
+    //establecemos un section al cargar la página y resize   
     this.setSection(this.sectionId);
   }
   //animación flash en section-home
@@ -506,8 +527,8 @@ export class HomeComponent implements OnInit {
       this.sectionId=4;
       this.buttonValue="gallery"
       console.log("al 4")
-
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});        
+     //this.selectedSection.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"});        
       console.log(this.section4.nativeElement.scrollTop);
     }    
     //si se realiza el section desde los botones de flecha se actualiza tb el section del servicio

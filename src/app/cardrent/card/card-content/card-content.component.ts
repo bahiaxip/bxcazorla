@@ -220,7 +220,9 @@ export class CardContentComponent implements OnInit {
       console.log("es null");
     }
     if(card != this.selectedCard || this.selTypeCard === undefined){
-      if(!this.pushedOptionCard){        
+      console.log("aqui entra")
+      if(!this.pushedOptionCard){
+              console.log("aqui entra2")
         this.selTypeCard=null;        
         this.swDivFeed(false);
         //anulado, ya lo hace resetFeed2Interval()        
