@@ -17,7 +17,7 @@
 			<i class="material-icons material-icons-sharp" *ngIf="firstwidth>750">photo_library</i>
 			<mat-icon *ngIf="firstwidth<750" class="icongroup_min">circle</mat-icon>
 		</mat-button-toggle>
-		<mat-button-toggle (click)="setAnimations()" (dblclick)="fillDB()" class="btn">
+		<mat-button-toggle (click)="setSection(5)" value="entertainment" (dblclick)="fillDB()" class="btn">
 			<mat-icon>
 				<i class="material-icons-round" *ngIf="firstwidth>750">home</i>
 				<mat-icon *ngIf="firstwidth<750" class="icongroup_min">circle</mat-icon>

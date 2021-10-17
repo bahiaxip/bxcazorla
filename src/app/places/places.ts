@@ -106,7 +106,7 @@ export const Places2:GalleryPlaces[]=
   {
     _id:"",
     title:"Cueva del Agua",
-    image: "assets/images/cazorla/galeria8.jpg",
+    image: "assets/images/cazorla/cuevadelagua.jpg",
     detail:"Esta cueva esta ubicada en el municipio de Quesada y denominada Monumento Natural por la Junta de Andalucía, "+
     " cuenta con 15 metros de longitud, un salto de agua de 20 metros de altura y adornada por estalagtitas y estalagmitas. " +
     "La Cueva del Agua se encuentra a 1 hora y 30 minutos en coche desde Arroyo Frío."

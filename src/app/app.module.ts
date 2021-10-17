@@ -35,6 +35,10 @@ import { ButtongroupComponent } from './home/buttongroup/buttongroup.component';
 import { FloatheaderComponent } from './home/floatheader/floatheader.component';
 import { RainhomeComponent } from './home/rainhome/rainhome.component';
 import { ArroyofrioComponent } from './home/arroyofrio/arroyofrio.component';
+import { PlacesComponent } from './places/places.component';
+
+import { PlacesHeaderComponent } from './places/places-header/places-header.component';
+import { PlacesContentComponent } from './places/places-content/places-content.component';
 //import { CardHeaderComponent } from './card-header/card-header.component';
 //import { CardContentComponent } from './card-content/card-content.component';
 //import { SharedModule } from './shared/shared.module';
@@ -58,6 +62,9 @@ import { ArroyofrioComponent } from './home/arroyofrio/arroyofrio.component';
     FloatheaderComponent,
     RainhomeComponent,
     ArroyofrioComponent,
+    PlacesComponent,
+    PlacesHeaderComponent,
+    PlacesContentComponent,
   ],
   imports: [
     BrowserModule,

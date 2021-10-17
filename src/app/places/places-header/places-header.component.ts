@@ -1,11 +1,11 @@
 import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 import { CardService } from '../../services/card.service';
 @Component({
-  selector: 'pre-activity-header',
-  templateUrl: './activity-header.component.html',
-  styleUrls: ['./activity-header.component.css']
+  selector: 'pre-places-header',
+  templateUrl: './places-header.component.html',
+  styleUrls: ['./places-header.component.css']
 })
-export class ActivityHeaderComponent implements OnInit {
+export class PlacesHeaderComponent implements OnInit {
   
   
   @Input()
@@ -29,6 +29,6 @@ export class ActivityHeaderComponent implements OnInit {
     this.switchTransitionFirst=true;
     //this.sendToPanel.emit(panel);
     this._cardService.setPanel(panel)
-  }  
+  }
 
 }

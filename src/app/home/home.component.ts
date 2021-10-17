@@ -104,6 +104,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('section2',{static:true}) private section2!:ElementRef;
   @ViewChild('section3',{static:true}) private section3!:ElementRef;
   @ViewChild('section4',{static:true}) private section4!:ElementRef;
+  @ViewChild('section5',{static:true}) private section5!:ElementRef;
 
   //section1
   @ViewChild('divsection1',{static:true}) private divsection1!:ElementRef;
@@ -311,6 +312,9 @@ export class HomeComponent implements OnInit {
 //console.log("data desde switchDivFeed: ",data)
   }  
   
+  sendPanel(data:number){
+    console.log(data)
+  }
   
   
 
@@ -360,7 +364,12 @@ export class HomeComponent implements OnInit {
               this.selectedSection=this.section4.nativeElement;
               this.sectionId=i+1;
               break;
+            }else if(i==5){
+              this.selectedSection=this.section5.nativeElement;
+              this.sectionId=i+1;
+              break;
             }
+
             else{ 
               this.selectedSection=this.section1.nativeElement;
               this.sectionId=i+1;
@@ -518,19 +527,28 @@ export class HomeComponent implements OnInit {
     }else if(id==3){
       this.selectedSection=this.section3.nativeElement;
       this.sectionId=3;
-      this.buttonValue="rent"
+      this.buttonValue="entertainment"
       console.log("al 3")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});
     }
     else if(id==4){
       this.selectedSection=this.section4.nativeElement;
       this.sectionId=4;
-      this.buttonValue="gallery"
+      this.buttonValue="rent"
       console.log("al 4")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});        
      //this.selectedSection.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"});        
       console.log(this.section4.nativeElement.scrollTop);
-    }    
+    }
+    else if(id==5){
+      this.selectedSection=this.section5.nativeElement;
+      this.sectionId=5;
+      this.buttonValue="gallery"
+      console.log("al 5")
+      this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});
+      
+    }
+
     //si se realiza el section desde los botones de flecha se actualiza tb el section del servicio
     this._cardService.selectedSection=this.sectionId;
     

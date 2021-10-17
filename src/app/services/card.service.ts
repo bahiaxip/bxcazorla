@@ -78,6 +78,11 @@ export class CardService {
       let proxPlaces = "Lugares próximos a Arroyo Frío"
       list.push(nearPlaces);
       list.push(proxPlaces);
+    }else if(type=="entertainment"){
+      let activities="Actividades";
+      let leisure = "Ocio"
+      list.push(activities);
+      list.push(leisure);
     }else if(type=="renting"){
       let rents="Buscador de alojamiento";
       let feedrent = "Valoraciones de alojamiento";

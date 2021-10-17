@@ -68,12 +68,14 @@ export class MainmenuComponent implements OnInit {
     }
     else if(type=="places"){
       this.selectedLink=2;  
+    }else if(type=="entertainment"){
+      this.selectedLink=3;  
     }else if(type=="renting"){
-      this.selectedLink=3;
-    }else if(type=="gallery"){
       this.selectedLink=4;
+    }else if(type=="gallery"){
+      this.selectedLink=5;
     }    
-    //setTimeout para dar un tiempo para realizar correctamente el efecto 
+    //setTimeout para dar un tiempo para realizar correctamente el efecto de deslizamiento 
     setTimeout(()=> {
       //establecemos opciones
       this._cardService.setDetailMenu(type);

@@ -66,15 +66,34 @@
 	</button>
 
 </section>
-<section id="section2" class="section1" #section2>
-	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.7)" [ngStyle]="{'width':firstWidth+'px'}" >
-		<pre-activity [firstwidth]="firstWidth"></pre-activity>
+<section id="section2" class="section1 back_s2" #section2>
+	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.6)" [ngStyle]="{'width':firstWidth+'px'}" >
+		<pre-places [firstwidth]="firstWidth"></pre-places>
 	</div>
 	<!--<div style="width:100%;display:flex;position:absolute">
 		<button class="boton2" (click)="setSection(1)">Botón</button>
 	</div>-->
 </section>
-<section id="section3" class="section1 back_s3" #section3  style="">
+<section id="section3" class="section1 back_s3" #section3>
+	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.6)" [ngStyle]="{'width':firstWidth+'px'}" >
+		
+		<pre-activity></pre-activity>		
+		<!--</div>-->
+		
+		<!--<div [ngStyle]="{'width':firstWidth+'px'}"   >-->
+			<!--<div style="width:90%;height: 100vh;position: relative;background-color:transparent;margin:auto;display:flex;" >-->	
+		
+			
+				
+			
+		
+		<!--</div>-->
+	</div>
+	<!--<div style="width:100%;display:flex;position:absolute">
+		<button class="boton2" (click)="setSection(1)">Botón</button>
+	</div>-->
+</section>
+<section id="section4" class="section1 back_s4" #section4  style="">
 
 	<div style="height:100vh;display:block;overflow:hidden" [ngStyle]="{'width':firstWidth+'px'}">
 		<pre-cardrent [firstwidth]="firstWidth"></pre-cardrent>
@@ -85,7 +104,7 @@
 		</div>-->
 	
 </section>
-<section class="section1 back_s3" #section4 style="">
+<section class="section1 back_s3" #section5 style="">
 	<div style="width: 100%;height: 100vh;background-color:rgba(0,0,0,0.5);position:absolute;background-position:center;overflow:hidden;display:flex" >
 		<gallery [items]="images" fluid class="mygallery" [thumb]="false" ></gallery>
 	</div>

@@ -1,23 +1,35 @@
-<div class="flex_content">
-<!-- modal -->
-	<div class="modal_detail" [ngStyle]="switchModal ? {'transform':'scale(1)'}:{'transform':'scale(0)'}">					
-		<mat-icon style="color:white;position:absolute;right:2%;top:2%;cursor:pointer" (click)="switchModal=false;">close</mat-icon>		
-		<h2 class="modal_title" >{{titleModal}}</h2>
-		<img class="modal_image" src="{{imageModal}}" />
-		<p class="modal_text">{{textModal}}</p>
+<div style="width:100%;margin:auto;display:flex;flex-flow:row wrap;overflow:auto">					
+	<!--<div style="width:20%;max-width:300px;overflow:hidden;margin:2px auto;display: flex;align-items: center;vertical-align: middle;position:relative">
+		<div class="div_activity" style="" >
+			<div class="activity" style="">							
+				<img class="image" src="./assets/images/cazorla/barranquismo_3.jpg"/>
+			</div>		
+		</div>
 	</div>
-<!-- fin modal -->
-	<div class="div_box" *ngFor="let place of places">
-		<span class="box_image" (click)="hideFilter(0)">
-			<div class="clone_div_image" ></div>
-			<div class="div_image" >
-				<div class="title_image">
-					<mat-icon class="icon_image" (click)="showModal(place)" title="Más información">info</mat-icon>
-					<p class="text_title" >{{place.title}}</p>
-				</div>
-				<img src="{{place.image}}" alt="" class="div_ima">
-			<!--<h2 class="image_title">Imagen 1</h2>-->
+-->
+	<div class="div_mainimage" style="">
+		<div class="div_ocio" style="" >
+			<div class="ocio">							
+				<img class="image" src="../../assets/images/cazorla/galeria6.jpg"/>
 			</div>
-		</span>
-	</div>				
+			
+		</div>
+	</div>
+
+	<div class="div_thumbs" style="">
+		<div class="thumbs">
+			<div class="div_activity" style="" >
+				<div class="activity" style="">							
+					<img class="image" src="../../assets/images/cazorla/barranquismo_3.jpg"/>
+					<img class="image" src="../../assets/images/cazorla/rafting.jpg"/>
+					<img class="image" src="../../assets/images/cazorla/barranquismo_3.jpg"/>
+					<img class="image" src="../../assets/images/cazorla/rafting.jpg"/>
+					<img class="image" src="../../assets/images/cazorla/barranquismo_3.jpg"/>
+					<img class="image" src="../../assets/images/cazorla/rafting.jpg"/>
+					<!--<img class="image" src="./assets/images/cazorla/barranquismo_3.jpg"/>-->
+					<!--<img class="image" src="./assets/images/cazorla/barranquismo_3.jpg"/>-->
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
