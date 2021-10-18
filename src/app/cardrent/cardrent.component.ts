@@ -47,7 +47,7 @@ export class CardrentComponent{
 //cambiar número si se cambia el section
       console.log(section)
       console.log("llega al suscription en cardrent")
-      if(section==3){
+      if(section==4){
         //let selectedPanel = this._cardrentService.getPanel();
         let panel=this._cardService.getPanel();
         this.sendToPanel(this.firstwidth+'px','1s',panel);      

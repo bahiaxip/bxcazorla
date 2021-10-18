@@ -48,6 +48,8 @@
 .icon_transitionActive{
 	transition: opacity 1s linear;
 }
+/* pasado al nuevo activity-header */
+
 .flex_item .icon_left{	
 	float:left;
 	font-size:35px;

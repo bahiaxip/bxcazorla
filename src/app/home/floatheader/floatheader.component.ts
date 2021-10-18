@@ -19,7 +19,7 @@ export class FloatheaderComponent implements OnInit {
   constructor(private _cardService:CardService) { }
 
   ngOnInit(): void {
-    //this.callWeather();
+    this.callWeather();
   }
 
   showHeader(){
