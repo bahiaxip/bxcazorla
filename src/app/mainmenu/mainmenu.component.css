@@ -7,16 +7,19 @@
 	top: 50px;
 	transform: scale(0,0);
 	transition: all .5s ease-out;	
-	z-index: 290;	
+	z-index: 290;
+
+	/*overflow:auto;*/
+	height:100%;	
 }
 
 .visible{ transform: scale(1,1) !important;	}
 
 .mainmenu .mainmenu_titletop{
-	margin:auto;
+	margin:10px auto;
 	display:flex;
 	justify-content:center;
-	font-size:40px;
+	font-size:30px;
 	color:white;
 	font-weight:bold;
 }
@@ -28,53 +31,77 @@
 
 .mainmenu .mainmenu_content{
 	width: 100%;
-	height: 80%;
+	/*height: 80%;*/
 	display: block;
 	margin:auto;
-	border:white 1px solid;
-	background-color: rgba(0,0,0,.5);
-	overflow: auto;
+	/*border:white 1px solid;*/
+	border:#353535 1px solid;
+	background-color: rgba(0,0,0,.6);
+	/*background-color:rgba(185,151,108,.5);*/
+	/*overflow: auto;*/
+	padding-bottom:20px;
 }
 .mainmenu .content_title{
 	width:100%;
 	text-align:center;
 	display:flex;
-	justify-content:center
+	justify-content:center;
+	position:relative;
 }
 .mainmenu .content_title p{
-	color:lightgreen;
-	font-family:Quicksand;
-	font-size:50px;
+	color:#37e369;
+	font-family:Daniela;
+	font-size:60px;
 	font-weight: bold;
+	margin:35px auto;
+	letter-spacing: 5px;
+}
+.mainmenu .content_title p span{
+	color:#FFF;
 }
 .mainmenu .btn_close{
-	background-color: orange;	
+	background-color: transparent;	
+	color:#D3D3D3;
+	font-size:30px;
 	cursor: pointer;
-	margin-top:10px;
+
+}
+.mainmenu  .icon_inside{
+	position:absolute;
+	right:5px;
+	top:5px;
 }
 .mainmenu .btn_close.left{
 	margin-left:10px;	
 	float: left;
 }
 .mainmenu .btn_close.right{
-	margin-right:10px;	
-	float: right;
+	margin-top:0px;
+	margin-right:5px;
+}
+.mainmenu .btn_close.right:hover{
+	color:#FFF;
 }
 
 .mainmenu .menu{
 	width:100%;
-	height: 50vh;
+	/*height: 50vh;*/
 	display:flex;
 	justify-content: space-around;
-	align-items:flex-end;
-	font-size:45px;
+	/*align-items:flex-end;*/
+	font-size:42px;
 	color:white;
 	margin:auto;
-	font-family: Harabara;
+	
 	line-height: 60px;
-	letter-spacing: 5px;
+	
+	position:relative;
 }
-.mainmenu .menulinks{	
+.mainmenu .menulinks{
+	font-size:42px;
+	font-family:OtariBold;
+	letter-spacing: 2px;
+	position:relative;
 	width: 50%;
 	margin: auto;
 	display: flex;
@@ -94,7 +121,8 @@
 }
 
 .mainmenu .menu .linkmenu .link:hover{
-	color: lightgreen;
+	/*color: #00c341;*/
+	color:#37e369;
 	transition: color 0.3s ease-in-out
 	
 }
@@ -128,14 +156,18 @@
 	
 }
 .mainmenu .menudetails{
+	font-family: TitanOne;
 	width: 50%;
 	height: 100%;
 	transition: transform 0.5s linear, opacity 0.5s linear;
 
 }
 .mainmenu .menu .detailmenu{
+	min-height: 250px;
+	line-height: 30px;
 	height:90%;
-	border:white 1px solid;
+	border:#696969 1px solid;
+	box-shadow:50px 50px 250px rgba(69,46,0,.2) inset,-100px -100px 250px rgba(69,46,0,.2) inset;
 	/*detecta los saltos de línea (\n\r) pero no trabaja el flex*/
 	/*white-space:pre;*/
 	font-size:20px;
@@ -146,13 +178,15 @@
 
 .mainmenu .menu .optionmenu{
 	width:100%;
-	border: #B2B2B2 1px solid;
+	border: #353535 1px solid;
 	letter-spacing: 2px;
-	line-height: 50px;
+	
 	background-color:rgba(0,0,0,.5);
 	cursor: pointer;
 	transform:translate(-110%,0);
-	transition:all 0.4s linear;
+	/* este transition realiza una doble animación en Firefox, lo anulamos*/
+	/*transition:all 0.4s linear;*/
+	transition: box-shadow 1s linear;
 	display:flex;	
 	background-position: bottom center;
 }
@@ -165,7 +199,7 @@
 	background-repeat: no-repeat;
 	*/
 	box-shadow:10px 10px 25px #000 inset,-10px -10px 25px #000 inset;
-	transition: background 1s linear;
+	
 	transform: rotate(180deg);
 	
 }
@@ -173,6 +207,7 @@
 /* cambiar texto de color de izquierda a derecha con pseudoelementos*/
 /*spanmenu es el span dentro del optionmenu*/
 .spanmenu{
+	padding:10px 0px;
 	position: relative;
 	left: 0;
 	margin-left: 10px;
@@ -184,7 +219,7 @@
 }
 .spanmenu:before{
 	content: attr(data-hover);
-	color: white;
+	color: #D3D3D3;
 	//transition: color 1s ease-in;
 }
 .spanmenu:after{
@@ -247,7 +282,11 @@
 	}
 	.mainmenu .menu{
 		font-size: 35px;
-		line-height: 40px;
+		/*display: block;*/	
+	}
+	.mainmenu .menu .optionmenu span{
+		padding:10px 0px;
+		line-height: 25px;
 	}
 	.mainmenu .menu .detailmenu{
 		
@@ -255,9 +294,7 @@
 	.mainmenu .menulinks{
 		width: 80%;
 	}
-	.mainmenu .menu{
-		/*display: block;*/
-	}
+	
 	.mainmenu .menudetails{
 		position: absolute;
 		width: 70%;
@@ -315,6 +352,7 @@
 	}
 	
 }
+
 
 
 

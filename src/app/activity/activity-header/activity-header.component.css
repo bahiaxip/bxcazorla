@@ -39,11 +39,13 @@
 	font-weight: bold;
 }
 .flex_item .icon_left{	
-	float:left;
+	/*float:left;*/
+	display:flex;
+	align-items:center;
 	font-size:35px;
 	color:lightgreen;
 	transform:rotate(180deg);
-	margin-top:8px;
+	/*margin-top:8px;*/
 	margin-left:10px;
 	display:flex;
 	align-items:center;
@@ -51,11 +53,23 @@
 	align-items: center;
 }
 .flex_item .icon_right{	
-	float:right;
+	/*float:right;*/
+	display:flex;
+	align-items:center;
 	font-size:35px;
 	color:lightgreen;
 	margin-right:10px;	
 	cursor: pointer;
 	align-items: center;
 
+}
+.div_iconleft{
+	display:flex;
+	align-items:center;
+	justify-content:flex-start;
+}
+.div_iconright{
+	display:flex;
+	align-items:center;
+	justify-content:flex-end;
 }

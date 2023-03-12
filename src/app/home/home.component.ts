@@ -20,6 +20,9 @@ import { CardService } from '../services/card.service';
 
 export class HomeComponent implements OnInit {
 
+  //temporal probando child_active
+  public childActive:boolean=false;
+
   public banner1:any;
   public banner2:any;
   public banner3:any;
@@ -125,7 +128,7 @@ export class HomeComponent implements OnInit {
   ) {
     this.typeFeedback=true;
     this.titleService.setTitle("Arroyo Frío");
-
+    //this.child_active = ""
     
     
     //cargamos la primera card para que la transición tome efecto desde la primera vez
@@ -492,6 +495,7 @@ export class HomeComponent implements OnInit {
 
   sendSection(data:any){
     this.toggleMainMenu();
+
     setTimeout(()=> {
       this.setSection(data);
     },300)
@@ -658,7 +662,8 @@ export class HomeComponent implements OnInit {
 
   
   toggleMainMenu(){
-
+      //this.childActive = true;
+      
     if(this.classMainMenu){
       this.classMainMenu=false;
       this._cardService.setDetailMenu([]);

@@ -37,14 +37,14 @@
 					<pre-mainmenu [firstwidth]="firstWidth" [classMainMenu]="classMainMenu" (emitClassMainMenu)="toggleMainMenu()" (setSection)="sendSection($event)"></pre-mainmenu>
 
 				<!-- imágenes home -->
-					<div style="position:absolute;background-color:rgba(0,0,0,0);width:100%;height:100%;z-index:0">
+					<!-- <div style="position:absolute;background-color:rgba(0,0,0,0);width:100%;height:100%;z-index:0">
 
 						<div class="back_image" style="z-index:100" #backimage>
 							<div style="position:absolute;width:100%;height:100%;background-color:rgba(0,0,0,.3)"></div>
 						</div>
 					
 						<div class="back_image2" style="opacity:0;z-index:100" #backimage2></div>
-					</div>
+					</div> -->
 					<!--<div class="back_image" style="position:absolute"></div>-->
 
 						<!--<img src="./assets/cerrada_de_elias.jpg" style="width:100%;overflow:hidden;z-index:300"/>-->
@@ -67,7 +67,7 @@
 
 </section>
 <section id="section2" class="section1 back_s2" #section2>
-	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.6)" [ngStyle]="{'width':firstWidth+'px'}" >
+	<div class="div_s2"   [ngStyle]="{'width':firstWidth+'px'}" >
 		<pre-places [firstwidth]="firstWidth"></pre-places>
 	</div>
 	<!--<div style="width:100%;display:flex;position:absolute">
@@ -75,7 +75,7 @@
 	</div>-->
 </section>
 <section id="section3" class="section1 back_s3" #section3>
-	<div  style="height:100vh;background-color:rgba(0,0,0,.1)" [ngStyle]="{'width':firstWidth+'px'}" >
+	<div  class="div_s3" [ngStyle]="{'width':firstWidth+'px'}" >
 		
 		<pre-activity [firstwidth]="firstWidth"></pre-activity>		
 		<!--</div>-->
@@ -95,7 +95,7 @@
 </section>
 <section id="section4" class="section1 back_s4" #section4  style="">
 
-	<div style="height:100vh;display:block;overflow:hidden" [ngStyle]="{'width':firstWidth+'px'}">
+	<div class="div_s4"  [ngStyle]="{'width':firstWidth+'px'}">
 		<pre-cardrent [firstwidth]="firstWidth"></pre-cardrent>
 	</div>
 		

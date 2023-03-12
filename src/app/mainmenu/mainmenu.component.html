@@ -10,7 +10,7 @@
 				</div>
 				-->
 				<div class="w100">
-					<p>Turismo rural en Arroyo Frío</p>
+					<p><span>Turismo rural en</span> Arroyo Frío</p>
 				</div>
 				<div class="floatR icon_inside">
 					<mat-icon class="material-icons btn_close right" (click)="toggleMainMenu()" >close</mat-icon>
@@ -20,26 +20,26 @@
 				<div class="menulinks " [ngStyle]="firstwidth <750 && switchMenuDetailsAbsolute ? {'opacity':0,'transform':'scale(0)'}:{'opacity':1,'transform':'scale(1)'}">
 					<div class="mauto">
 						<div class="linkmenu" >
-							<span class="link" title="Ir a Lugares" (click)="sendSection(1,1)">ARROYO FRÍO</span>
-							<mat-icon class="material-icons icon"  (click)="showDetailMenu('arroyofrio')">chevron_right</mat-icon>
+							<span class="link" title="Ir a Lugares" (click)="showDetailMenu('arroyofrio')">ARROYO FRÍO</span>
+							<mat-icon class="material-icons icon"  (click)="sendSection(1,1)">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu" >
-							<span (click)="sendSection(2,0)" class="link" title="Ir a Lugares">LUGARES</span>
-							<mat-icon class="material-icons icon"  (click)="showDetailMenu('places')">chevron_right</mat-icon>
+							<span (click)="showDetailMenu('places')" class="link" title="Ir a Lugares">LUGARES</span>
+							<mat-icon class="material-icons icon"  (click)="sendSection(2,0)">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu" >
-							<span (click)="sendSection(3,1)" class="link">OCIO</span>
-							<mat-icon class="material-icons icon"  (click)="showDetailMenu('entertainment')">chevron_right</mat-icon>
+							<span (click)="showDetailMenu('entertainment')" class="link">OCIO</span>
+							<mat-icon class="material-icons icon"  (click)="sendSection(3,1)">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu">
-							<span (click)="sendSection(4,0)" class="link">ALOJAMIENTO</span>
-							<mat-icon class="material-icons icon"  (click)="showDetailMenu('renting')">chevron_right</mat-icon>
+							<span (click)="showDetailMenu('renting')" class="link">ALOJAMIENTO</span>
+							<mat-icon class="material-icons icon"  (click)="sendSection(4,0)">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu">
-							<span (click)="sendSection(5,0)" class="link">
+							<span (click)="showDetailMenu('gallery')" class="link">
 								GALERÍA
 							</span>
-							<mat-icon class="material-icons icon" (click)="showDetailMenu('gallery')">chevron_right</mat-icon>
+							<mat-icon class="material-icons icon" (click)="sendSection(5,0)">chevron_right</mat-icon>
 						</div>
 					</div>
 				</div>
@@ -55,8 +55,8 @@
 									{{option}}
 								</div>-->
 								<div class="w100 m10_auto" >
-									<div *ngFor="let option of textDetailMenu;let j = index" class="optionmenu" style="" [@switchDetail]="stateAnimation">
-										<span class="ml10" (click)="sendSection(this.selectedLink,j)" class="spanmenu" [attr.data-hover]="option"></span>
+									<div *ngFor="let option of textDetailMenu;let j = index" class="optionmenu" style="" [@switchDetail]="stateAnimation"(click)="sendSection(this.selectedLink,j)">
+										<span class="ml10"  class="spanmenu" [attr.data-hover]="option"></span>
 									<!-- para realizar el efecto rellenar color de texto de izquierda
 										a derecha es necesario el atributo data-hover-->
 										<!-- anulado para el efecto de relleno de texto -->

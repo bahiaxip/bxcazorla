@@ -77,6 +77,7 @@ export class MainmenuComponent implements OnInit {
     }    
     //setTimeout para dar un tiempo para realizar correctamente el efecto de deslizamiento 
     setTimeout(()=> {
+      
       //establecemos opciones
       this._cardService.setDetailMenu(type);
       //pasamos animación a true

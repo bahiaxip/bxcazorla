@@ -45,8 +45,8 @@ export const slider =
 export const slider2 = 
 	trigger("switchDetail",[
 			//state('true',style({opacity:0})),
-			state('true',style({transform:'translate(0,0)'})),
-			state('false',style({transform:'translate(-110%,0)'})),
+			state('true',style({transform:'translateX(0)'})),
+			state('false',style({transform:'translateX(-110%)'})),
 
 			//state('false',style({opacity:1})),
 			//transition('*<=>true',animate(300)),

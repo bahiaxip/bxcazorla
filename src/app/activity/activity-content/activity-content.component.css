@@ -19,6 +19,8 @@
 .ocio{
 	width: 100%;
 	height: 100%;
+	display:flex;
+	justify-content: center;
 		
 }
 .ocio .image{
@@ -88,6 +90,7 @@
 
 }
 .activity .image{
+	cursor:pointer;
 	width: 100%;
 	max-width: 210px;
 	height: 140px;
@@ -95,13 +98,13 @@
 	//transform: rotateY(20deg);
 	//transform: rotate3d(0.5,1,-0.2,17deg);
 	object-fit: cover;
-	border: #676767 5px solid;
+	border: #696969 1px solid;
 	border-radius: 10px;
-	margin: 5px;
+	margin: 8px;
 	transition: all 0.2s linear;
 }
 .activity .image:hover{
-	border: #D3D3D3 5px solid;
+	border: white 2px solid;
 	transform: scale(1.12);
 }
 @media(max-width: 1600px){
