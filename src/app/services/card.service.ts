@@ -70,10 +70,11 @@ export class CardService {
     let list=[];
     if(type=="arroyofrio"){
       console.log("arroyofrio")
-      let arroyofrio='Arroyo Frío';
+      let arroyofrio='¿Qué es Arroyo Frío?';
+      let infoArroyofrio='Más sobre Arroyo Frío';
       list.push(arroyofrio)
-    }
-    else if(type=="places"){
+      list.push(infoArroyofrio);
+    }else if(type=="places"){
       let nearPlaces="Lugares cercanos a Arroyo Frío";
       let proxPlaces = "Lugares próximos a Arroyo Frío"
       list.push(nearPlaces);
@@ -98,7 +99,7 @@ export class CardService {
   }
 
   //establecemos section y el panel horizontal
-  //el panel pueder entero o cadena si es número se debe convertir a string
+  //el panel puede ser entero o cadena si es número se debe convertir a string
   setPanel(panel:number){
     console.log("llega al servicio")
     let finalPanel=panel;
@@ -108,6 +109,7 @@ export class CardService {
       //finalPanel=this.getPanelFromNum(section,panel);
     //}
     //establecemos el panel a mostrar
+    console.log(finalPanel)
     this.panel=finalPanel;    
     this.subjectPanel.next();
   }
@@ -150,10 +152,6 @@ export class CardService {
     this.rainAnimation=true;
     this.subjectRainAnimation.next();
   }
-
-  
-
-
 
 
 

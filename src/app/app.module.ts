@@ -39,6 +39,7 @@ import { PlacesComponent } from './places/places.component';
 
 import { PlacesHeaderComponent } from './places/places-header/places-header.component';
 import { PlacesContentComponent } from './places/places-content/places-content.component';
+import { InfoArroyoFrioComponent } from './home/info-arroyo-frio/info-arroyo-frio.component';
 //import { CardHeaderComponent } from './card-header/card-header.component';
 //import { CardContentComponent } from './card-content/card-content.component';
 //import { SharedModule } from './shared/shared.module';
@@ -65,6 +66,7 @@ import { PlacesContentComponent } from './places/places-content/places-content.c
     PlacesComponent,
     PlacesHeaderComponent,
     PlacesContentComponent,
+    InfoArroyoFrioComponent,
   ],
   imports: [
     BrowserModule,

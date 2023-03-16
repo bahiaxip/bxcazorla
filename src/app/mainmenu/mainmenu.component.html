@@ -54,8 +54,9 @@
 								<!--<div class="optionmenu" style=""  [ngClass]="{'detvisible':switchDetailMenu}">
 									{{option}}
 								</div>-->
+								<!-- establecemos el condicional ternario para diferenciar el contador j del section 1 con el resto, ya que el section 1 tiene los paneles desde 0px en adelante, no tiene paneles en negativo-->
 								<div class="w100 m10_auto" >
-									<div *ngFor="let option of textDetailMenu;let j = index" class="optionmenu" style="" [@switchDetail]="stateAnimation"(click)="sendSection(this.selectedLink,j)">
+									<div *ngFor="let option of textDetailMenu;let j = index" class="optionmenu" style="" [@switchDetail]="stateAnimation" (click)="(this.selectedLink == 1) ? sendSection(this.selectedLink,j+1) : sendSection(this.selectedLink,j)">
 										<span class="ml10"  class="spanmenu" [attr.data-hover]="option"></span>
 									<!-- para realizar el efecto rellenar color de texto de izquierda
 										a derecha es necesario el atributo data-hover-->

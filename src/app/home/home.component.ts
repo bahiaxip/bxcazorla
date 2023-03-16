@@ -194,7 +194,8 @@ export class HomeComponent implements OnInit {
         this.setSection(section);
     })
     this.setSectionByScroll()
-    this.selectedPanel=0;
+    this.selectedPanel=1;
+    
     //actualizamos el ancho para los mensajes deslizantes de valoraciones
 
     //establecemos overflow hidden genérico a la etiqueta html para que no se pueda
@@ -272,6 +273,7 @@ export class HomeComponent implements OnInit {
 
     
     this.switchAllOpacitySnow=true;
+    //anulado
     if(this.firstWidth>=1000 && this.firstHeight<=this.firstWidth){
       //anulada animación (poco realista)
     }
@@ -281,11 +283,14 @@ export class HomeComponent implements OnInit {
         this.textDetailMenu=this._cardService.getDetailMenu();        
     });
     
-    
+    //al iniciar se suscribe al servicio panel en cardservice
     this.subscriptionPanel= this._cardService.panel$.subscribe(()=> {
       let section=this._cardService.getSection();
       if(section==1){
+        //desde home si el section es el 1
+        console.log("desde home si el section es el 1");
         let panel=this._cardService.getPanel();
+        console.log(panel)
         this.selectedPanel=panel;
         this.sendToPanel(panel);  
       }
@@ -559,15 +564,36 @@ export class HomeComponent implements OnInit {
     console.log("tipo de botón: ",this.buttonValue)
   }
 
+  //solo se ejecuta desde section1 ???
   sendToPanel(panel:any){
+    console.log("sectionwowowwowow: ",this.selectedSection);
     console.log("llega al sendToPanel: ",panel)
     if(panel==0){
       console.log("llega al 0")
-      this.divsection1.nativeElement.style.transform='translateX(0)';    
+      this.divsection1.nativeElement.style.transform='translateX(0)';  
+      //this.divsection1.nativeElement.style.transform='translateX(-'+this.firstWidth+'px)'; 
     }else if(panel == 1){
       console.log("llega al 1")
-      this.divsection1.nativeElement.style.transform='translateX(-'+this.firstWidth+'px)';  
+      this.divsection1.nativeElement.style.transform='translateX(-'+this.firstWidth+'px)'; 
+      
+      
     }
+    else if(panel == 2){
+      console.log("llega al 2")
+      this.divsection1.nativeElement.style.transform='translateX(-'+this.firstWidth*2+'px)';  
+    }
+    /*if(panel==0){
+      console.log("llega al 0")
+      this.divsection1.nativeElement.style.transform='translateX('+this.firstWidth+'px)'; 
+    }else if(panel == 1){
+      console.log("llega al 1")
+      this.divsection1.nativeElement.style.transform='translateX(0)'; 
+      //this.divsection1.nativeElement.style.transform='translateX(-'+this.firstWidth+'px)';  
+    }
+    else if(panel == 2){
+      console.log("llega al 2")
+      this.divsection1.nativeElement.style.transform='translateX(-'+this.firstWidth+'px)';  
+    }*/
     
   }
 
@@ -660,8 +686,8 @@ export class HomeComponent implements OnInit {
   }
   */
 
-  
-  toggleMainMenu(){
+  //activar/desactivar menu de opciones(sections y paneles)
+  toggleMainMenu(){    
       //this.childActive = true;
       
     if(this.classMainMenu){

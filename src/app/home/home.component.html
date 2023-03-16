@@ -15,8 +15,8 @@
 	
 	<!--div -->
 	<div  style="height:100vh;overflow:hidden;background-color:rgba(0,0,0,.3)" [ngStyle]="{'width':firstWidth+'px'}" >
-		<div #divsection1  style="height:100%;display:flex;flex-flow:row wrap;transition:transform 1s linear" [ngStyle]="{'width':firstWidth*2+'px'}" >
-
+		<div #divsection1  style="height:100%;display:flex;flex-flow:row wrap;transition:transform 1s linear" [ngStyle]="{'width':firstWidth*3+'px'}" >
+			
 			<div [ngStyle]="{'width':firstWidth+'px'}"  style="overflow:hidden"  >
 			<!-- animación lluvia -->
 				<pre-rainhome [firstwidth]="firstWidth" (emitFlash)="flash()"></pre-rainhome>
@@ -58,6 +58,12 @@
 					<pre-arroyofrio></pre-arroyofrio>
 				</div>
 			</div>
+			<div [ngStyle]="{'width':firstWidth+'px'}" >
+				<div style="width:100%" >
+					<pre-info-arroyo-frio></pre-info-arroyo-frio>
+				</div>
+			</div>
+
 		</div>
 	</div>
 	<!-- botón inferior -->

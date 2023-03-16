@@ -210,14 +210,14 @@ mat-button-toggle:hover{
 }
 .back_s3{
 	background-color:white;
-	/*background-image: url('../../assets/cazorla.jpg');
+	background-image: url('../../assets/cazorla.jpg');
 	background-size: cover;	
 	background-position: center;
-	background-repeat: no-repeat;*/		
+	background-repeat: no-repeat;
 }
 .div_s3{
-	/*background-color:rgba(53,53,53,.7);*/
-	background-color:rgba(53,53,53,1);
+	background-color:rgba(53,53,53,.8);
+	/*background-color:rgba(53,53,53,1);*/
 	height:100vh;	
 }
 .back_s4{
@@ -228,7 +228,7 @@ mat-button-toggle:hover{
 	background-repeat: no-repeat;
 }
 .div_s4{
-	background-color:rgba(53,53,53,1);
+	background-color:rgba(53,53,53,.5);
 	height:100vh;
 	display:block;
 	overflow:hidden
@@ -703,6 +703,18 @@ mat-button-toggle:hover{
 @font-face{
 	font-family: "Daniela";
 	src: url('../../assets/fonts/daniela.ttf');
+}
+@font-face{
+	font-family: "ComfortaaR";
+	src: url('../../assets/fonts/Comfortaa/Comfortaa-Regular.ttf');
+}
+@font-face{
+	font-family: "ComfortaaB";
+	src: url('../../assets/fonts/Comfortaa/Comfortaa-Bold.ttf');
+}
+@font-face{
+	font-family: "Palermo";
+	src: url('../../assets/fonts/Palermo-Regular.ttf');
 }
 /*@font-face{
 	font-family: "RaspoutineDemiBold";

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CardService } from '../../services/card.service';
 
 @Component({
-  selector: 'pre-arroyofrio',
-  templateUrl: './arroyofrio.component.html',
-  styleUrls: ['./arroyofrio.component.css']
+  selector: 'pre-info-arroyo-frio',
+  templateUrl: './info-arroyo-frio.component.html',
+  styleUrls: ['./info-arroyo-frio.component.css']
 })
-export class ArroyofrioComponent implements OnInit {
+export class InfoArroyoFrioComponent implements OnInit {
 
   constructor(private _cardService:CardService) { }
 
@@ -14,7 +14,7 @@ export class ArroyofrioComponent implements OnInit {
   }
 
   sendPanel(panel:number){ 
-    console.log("pasa x arroyofrio.component,panel: ",panel)   
+    console.log("pasa x info-arroyofrio.component")   
     this._cardService.setPanel(panel);
     this._cardService.setSection(1)
   }

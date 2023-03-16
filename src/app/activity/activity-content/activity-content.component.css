@@ -83,7 +83,7 @@
 .activity{	
 	
 	text-align: center;
-	justify-content: center;	
+	/*justify-content: center;*/	
 	//perspective: 400px;
 	//transform-origin: 100px 100px;
 	//transform: rotateY(20deg);

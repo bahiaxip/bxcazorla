@@ -55,7 +55,7 @@ export class MainmenuComponent implements OnInit {
     */
 
   }
-  //mostrar opciones al pulsar el icono de flecha de uno de los enlaces del menú principal,
+  //mostrar opciones al pulsar el título de los enlaces del menú principal,
   //asignamos el enlace seleccionado en selectedLink (correspondiente al section) 
   //para poder añadirlo en el template (menú de opciones) 
   showDetailMenu(type:string){
@@ -65,8 +65,7 @@ export class MainmenuComponent implements OnInit {
     this.stateAnimation=false;
     if(type=="arroyofrio"){
       this.selectedLink=1;
-    }
-    else if(type=="places"){
+    }else if(type=="places"){
       this.selectedLink=2;  
     }else if(type=="entertainment"){
       this.selectedLink=3;  
@@ -77,7 +76,6 @@ export class MainmenuComponent implements OnInit {
     }    
     //setTimeout para dar un tiempo para realizar correctamente el efecto de deslizamiento 
     setTimeout(()=> {
-      
       //establecemos opciones
       this._cardService.setDetailMenu(type);
       //pasamos animación a true
@@ -94,23 +92,33 @@ export class MainmenuComponent implements OnInit {
   //envía a la sección y panel seleccionados (emit para el section, suscripción para el panel)
   //el panel puede ser con número o con string ('panel-left'|'panel-center'|'panel-right')
   sendSection(section:number,panel:number){
-    
     //Asignamos primero el setPanel() antes que el setSection(), en lugar de al revés,
     //ya que, algunos componentes están suscritos al subjectPanel, pero únicamente el home está suscrito
     //al setSection() y la suscripción del section llega antes de que el panel se haya establecido,
     //si es la primera vez, no se puede enviar al panel ya que tiene un valor undefined, por ello,
     //si el section es el 1, se intercambia el orden
-      if(section==1 && panel==0){
+    //modificado al añadir infoArroyofrio
+
+
+      /*if(section==1 && panel==0){
+        console.log("es el section 1")
         panel=1;
+      }*/
+      if(section==1){
+        /*if(panel == 0){
+          panel=1;
+        }else if(panel == 1){
+          panel = 2;
+        }*/
+        console.log("el section es el 1")
+        //return;
       }
       this._cardService.setSection(section);
       this._cardService.setPanel(panel);
-    
   }
   animation(){
     this._cardService.setAnimation();
   }
-
 
   /*pasado al servicio
   getPanelFromNum(num:number){

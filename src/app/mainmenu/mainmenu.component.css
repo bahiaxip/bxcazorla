@@ -92,6 +92,8 @@
 	font-size:42px;
 	color:white;
 	margin:auto;
+	letter-spacing: 10px;
+
 	
 	line-height: 60px;
 	
@@ -99,7 +101,8 @@
 }
 .mainmenu .menulinks{
 	font-size:42px;
-	font-family:OtariBold;
+	font-family:TitanOne;
+	
 	letter-spacing: 2px;
 	position:relative;
 	width: 50%;
@@ -122,7 +125,8 @@
 
 .mainmenu .menu .linkmenu .link:hover{
 	/*color: #00c341;*/
-	color:#37e369;
+	/*color:#37e369;*/
+	color:lightgreen;
 	transition: color 0.3s ease-in-out
 	
 }
@@ -132,6 +136,7 @@
 	border:white 1px solid;
 	border-radius:50%;
 	padding:2px;
+	margin-top:5px;
 	margin-left:5px;
 	cursor:pointer;
 	background-color: transparent;
@@ -243,7 +248,9 @@
 	transform: translate(0px,0) !important;	
 }
 */
+@media (max-width: 1200px){
 
+}
 @media (max-width: 1100px){
 	.mainmenu .content_title p{
 		font-size: 45px;
@@ -257,6 +264,9 @@
 	}
 	.mainmenu .menu .detailmenu{
 		width: 95%;
+	}
+	.mainmenu .menulinks{
+		font-size:33px;
 	}
 }
 @media (max-width: 900px){
