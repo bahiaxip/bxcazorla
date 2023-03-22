@@ -8,14 +8,55 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class ActivityContentComponent implements OnInit {
   
-  
+  @Input() activities:any;
+  @Input() activities2:any;
+  //No es necesario decorador Input
+  //@Input() panel:any;
+
+  public selectedImage:string;
+  public selectedImage2:string;
+  //directiva panel que distingue panel1 de panel2
+  public panel:any;
+  public image:string;
+  public image2:string;
+  public active:boolean=true;
   constructor() {
+    this.selectedImage="";
+    this.selectedImage2="";
+    this.image = '../../assets/activities/galeria6.jpg';
+    this.image2 = '../../assets/activities/ocio/labolera.jpg';
+
     //this.places=Places;
   }
 
   ngOnInit(): void {
+    if(this.active){
+      //this.selectedImage=this.image;
+      //this.selectedImage2=this.image2;
+      console.log("es true");
+    }
 
+  }
 
+  setImage(image:string){
+    if(this.panel=='panel1'){
+      this.selectedImage='../../'+image;  
+      console.log("selectedImage:",image)
+    }else{
+      this.selectedImage2='../../'+image;
+      console.log("selectedImage2:",image)
+    }
+    this.active=false;
+    
+    //console.log("setimage:",image)
+  }
+  //@HostListener('transitionend', ['$event'])
+  onTransitionEnd(e:Event){
+    console.log("klasdlfkasjdfñ",e)
+    this.image = this.selectedImage;
+    this.image2 = this.selectedImage2;
+    this.active=true;
+    console.log("yeadd: e")
   }
   //efecto de seguimiento del cursor que va descubriendo y moviendo la imagen,
   //necesario evento mousemove y mouseout
@@ -48,4 +89,5 @@ export class ActivityContentComponent implements OnInit {
     console.log("adios")
   } 
   */
+
 }

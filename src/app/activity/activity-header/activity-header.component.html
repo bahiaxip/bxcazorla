@@ -6,7 +6,11 @@
 				<mat-icon class="icon_left"  (click)="sendPanel(0)" >double_arrow</mat-icon>
 			</div>
 			<div class="w70 div_center" style="">
-				<p class="mauto c_white">Actividades multiaventura</p>	
+
+				<p class="mauto c_white" *ngIf="panel == 'panel1';else elseBlock">Actividades multiaventura</p>
+				<ng-template #elseBlock>
+					<p class="mauto c_white">Servicios Arroyo Frío</p>
+				</ng-template>
 			</div>
 			<div class="w15 div_iconright">
 			<!-- condition en ngClass método2 -->

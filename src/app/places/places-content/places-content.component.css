@@ -47,6 +47,7 @@
 	margin:20px auto;
 	display: flex;
 	justify-content: center;
+	font-family:Quicksand;
 }
 .flex_content .modal_detail p.modal_text, .flex_content .modal_detail2 p.modal_text{
 	width: 80%;
@@ -56,9 +57,10 @@
 	justify-content: center;
 	z-index: 103;
 	color: white;
+	font-family:Quicksand;
 	font-weight: bold;
 	font-size: 18px;
-
+	padding:20px 0px 40px 0px; 
 }
 
 .div_box{

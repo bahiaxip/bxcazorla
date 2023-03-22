@@ -256,18 +256,47 @@ export class HomeComponent implements OnInit {
     
 //pasar a .ts
     this.images=[
+      
       new ImageItem({
-        src:'./assets/river.jpg',thumb:'./assets/id_unity.jpeg'
+        src:'./assets/gallery/rio_borosa.jpg',thumb:'./assets/id_unity.jpg'
       }),
       new ImageItem({
-        src:'./assets/rio_borosa.jpg',thumb:'./assets/id_unity.jpg'
+        src:'./assets/gallery/cerrada-de-utrero.jpg',thumb:'./assets/id_unity.jpg'
       }),
       new ImageItem({
-        src:'./assets/rio_cazorla.jpg',thumb:'./assets/id_unity.jpg'
+        src:'./assets/gallery/zorro.jpg',thumb:'./assets/id_unity.jpg'
+      }),
+
+      
+      new ImageItem({
+        src:'./assets/gallery/cazorla_nieve.jpg',thumb:'./assets/id_unity.jpg'
       }),
       new ImageItem({
-        src:'./assets/salto_organos.jpg',thumb:'./assets/id_unity.jpg'
+        src:'./assets/gallery/carretera_arroyofrio.jpg',thumb:'./assets/id_unity.jpg'
       }),
+      new ImageItem({
+        src:'./assets/gallery/nacimiento.jpg',thumb:'./assets/id_unity.jpg'
+      }),
+      /*new ImageItem({
+        src:'./assets/gallery/salto_organos.jpg',thumb:'./assets/id_unity.jpg'
+      }),*/
+      new ImageItem({
+        src:'./assets/gallery/rio_arroyofrio.jpg',thumb:'./assets/id_unity.jpg'
+      }),
+      
+      new ImageItem({
+        src:'./assets/gallery/ciervos.jpg',thumb:'./assets/id_unity.jpg'
+      }),
+      new ImageItem({
+        src:'./assets/gallery/river.jpg',thumb:'./assets/id_unity.jpeg'
+      }),
+      new ImageItem({
+        src:'./assets/gallery/rio_cazorla3.jpg',thumb:'./assets/id_unity.jpg'
+      }),
+      /*new ImageItem({
+        src:'./assets/gallery/rio_cazorla2.jpg',thumb:'./assets/id_unity.jpg'
+      }),*/
+
     ];
 
 

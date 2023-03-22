@@ -2,11 +2,11 @@
 	<div [ngStyle]="{'width':firstwidth+'px'}"   >
 		<div class="box_activity" >
 			<div class="div_activityheader" >		
-				<pre-activity-header></pre-activity-header>
+				<pre-activity-header panel = 'panel1' ></pre-activity-header>
 			</div>
 			<div class="div_activitycontent">
 				<div style="width:90%;height: auto;margin:auto;/*position:absolute;z-index:1*/">
-					<pre-activity-content></pre-activity-content>
+					<pre-activity-content [activities]="activities" panel='panel1'></pre-activity-content>
 				</div>
 				<!-- <div style="top:0;left:0;position:absolute;width:100%;height:100%;background-image:url('../assets/images/cazorla/galeria6.jpg');background-repeat:no-repeat;z-index:0;background-position:center center">
 					
@@ -16,13 +16,14 @@
 		</div>
 	</div>
 	<div [ngStyle]="{'width':firstwidth+'px'}"   >
-		<div style="width:100%;height: 100%;margin:auto;overflow:hidden">
-			<div style="width:90%;margin:auto">		
-				<pre-activity-header></pre-activity-header>
+		<div class="box_activity">
+			<div class="div_activityheader">		
+				<pre-activity-header panel = 'panel2'></pre-activity-header>
 			</div>
-			<div style="width:100%;height: 70vh;margin:auto;padding: 25px ;background-color: rgba(0,0,0,.8);overflow:auto;border: #676767 1px solid;">
+			<!-- <div style="width:100%;height: 70vh;margin:auto;padding: 25px ;background-color: rgba(0,0,0,.8);overflow:auto;border: #676767 1px solid;"> -->
+			<div class="div_activitycontent">
 				<div style="width:90%;height: auto;margin:auto;">
-					<pre-activity-content></pre-activity-content>
+					<pre-activity-content [activities]="activities2" panel='panel2'></pre-activity-content>
 				</div>
 			</div>
 		</div>

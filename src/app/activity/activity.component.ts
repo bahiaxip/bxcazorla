@@ -1,6 +1,9 @@
 import { Component, OnInit,Input, ViewChild, ElementRef } from '@angular/core';
 //import { GalleryPlaces } from '../models/gallery-places';
+import { GalleryActivities } from '../models/gallery-activities';
+import { Activities,Activities2 } from  './activities';
 import { CardService } from '../services/card.service';
+
 @Component({
   selector: 'pre-activity',
   templateUrl: './activity.component.html',
@@ -16,6 +19,9 @@ export class ActivityComponent implements OnInit {
   //suscripción para deslizar por los paneles horizontales
   public subscriptionPanel:any;
 
+  public activities:Array<GalleryActivities>=Activities;
+  public activities2:Array<GalleryActivities>=Activities2;
+  //public panel:string;
   @ViewChild('activity',{static:true}) private activity!:ElementRef;
   constructor(private _cardService:CardService){}
 

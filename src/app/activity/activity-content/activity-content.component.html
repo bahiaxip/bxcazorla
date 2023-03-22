@@ -2,7 +2,7 @@
 	<!--<div style="width:20%;max-width:300px;overflow:hidden;margin:2px auto;display: flex;align-items: center;vertical-align: middle;position:relative">
 		<div class="div_activity" style="" >
 			<div class="activity" style="">							
-				<img class="image" src="./assets/images/cazorla/barranquismo_3.jpg"/>
+				<img class="image" src="./assets/activities/barranquismo_3.jpg"/>
 			</div>		
 		</div>
 	</div>
@@ -11,7 +11,18 @@
 		<div class="div_ocio" style="" >
 			<div class="ocio">
 				<!--<div class="image"></div>-->
-				<img class="image" src="../../assets/images/cazorla/galeria6.jpg"/>
+				<!-- panel 1 (actividad multiaventura -->
+				<img *ngIf="panel=='panel1';else elseBlock" class="image" [src]="image" [ngClass]='{"active":active}' (transitionend)="onTransitionEnd($event)"/>
+				<!-- panel 2 (ocio)-->
+				<ng-template #elseBlock>
+					<img class="image" [ngClass]='{"active":active}' [src]="image2" (transitionend)="onTransitionEnd($event)"/>	
+				</ng-template>
+				
+				<div style="position:absolute;width:60%;height:30px;background-color:rgba(53,53,53,.9);bottom:50px;border-radius:10px;display:flex;transition:all .3s linear;opacity:1;">
+					<p style="color:white;margin:auto;font-size:20px;">Platos típicos</p>
+				</div>
+					
+				
 			</div>
 			
 		</div>
@@ -20,15 +31,17 @@
 	<div class="div_thumbs" style="">
 		<div class="thumbs">
 			<div class="div_activity" style="" >
-				<div class="activity" style="">							
-					<img class="image" src="../../assets/images/cazorla/kayak.jpg"/>
-					<img class="image" src="../../assets/images/cazorla/rafting.jpg"/>
-					<img class="image" src="../../assets/images/cazorla/barranquismo_3.jpg"/>
-					<img class="image" src="../../assets/images/cazorla/caballos.jpg"/>
-					<img class="image" src="../../assets/images/cazorla/pasarelas.jpg"/>
-					<img class="image" src="../../assets/images/cazorla/descensos.jpg"/>
-					<!--<img class="image" src="./assets/images/cazorla/barranquismo_3.jpg"/>-->
-					<!--<img class="image" src="./assets/images/cazorla/barranquismo_3.jpg"/>-->
+				<div class="activity" style="">
+					<span *ngFor="let activity of activities">
+						<img class="image" src="{{activity.image}}" (click)="setImage(activity.image)"/>
+					</span>
+					<!-- <img class="image" src="../../assets/activities/rafting.jpg"/>
+					<img class="image" src="../../assets/activities/barranquismo_3.jpg"/>
+					<img class="image" src="../../assets/activities/caballos.jpg"/>
+					<img class="image" src="../../assets/activities/pasarelas.jpg"/>
+					<img class="image" src="../../assets/activities/descensos.jpg"/> -->
+					<!--<img class="image" src="./assets/activities/barranquismo_3.jpg"/>-->
+					<!--<img class="image" src="./assets/activities/barranquismo_3.jpg"/>-->
 				</div>
 			</div>
 		</div>
