@@ -81,9 +81,9 @@ export class CardService {
       list.push(proxPlaces);
     }else if(type=="entertainment"){
       let activities="Actividades";
-      let leisure = "Ocio"
+      let services = "Servicios";
       list.push(activities);
-      list.push(leisure);
+      list.push(services);
     }else if(type=="renting"){
       let rents="Buscador de alojamiento";
       let feedrent = "Valoraciones de alojamiento";

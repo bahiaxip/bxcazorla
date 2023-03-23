@@ -1,7 +1,21 @@
 <div class="back_arroyofrio" >	
 	<div class="back_header_arroyofrio">
-		<div class="header_arroyofrio">
-			<div class="nav_arroyofrio">
+		<!-- <div class="header_arroyofrio"> -->
+		<div class="nav_header">
+			<div class="header">
+				<div class="div_iconmove left" (click)="sendPanel(0)">
+					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
+				</div>
+				<div class="nav_title">
+					<p>Arroyo Frío</p>
+				</div>
+				<div class="div_iconmove right" (click)="sendPanel(2)">
+					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
+				</div>
+			
+			</div>
+			
+			<!-- <div class="nav_arroyofrio">
 				<div class="div_iconmove left" (click)="sendPanel(0)">
 					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
 				</div>
@@ -11,15 +25,17 @@
 				<div class="div_iconmove right" (click)="sendPanel(2)">
 					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
 				</div>
-			</div>	
+			</div>	 -->
 		</div>
 		
 	</div>
 	<div class=" w100 h100 arroyofrio" style="">
 		<div class=" w80 div_arroyofrio">
-			<div style="position:absolute;width:100%;height:100%">
-				<div class="div_iconreturn" (click)="sendPanel(0)">
-					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
+			<div class="icons">
+				<div class="div_iconreturn" (click)="closePanel()" [ngClass]="{'active': panelActive}">
+					<!-- en lugar de flecha verde asignamos icono de cierre de ventana -->
+					<mat-icon style="margin:10px 10px;" >close</mat-icon>
+					<!-- <mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon> -->
 				</div>
 				<div class="div_iconflag">
 					<img src="../../../assets/bandera_espana.png" width="30" style="margin: 5px auto;display: block"/>

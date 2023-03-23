@@ -13,14 +13,15 @@
 	height:70px;
 	width:100%;
 }
-.header_arroyofrio{
+/*.header_arroyofrio{
 	align-items:center;
 	display:flex;
 	height:100%;
 	margin:auto;
 	width:80%;
-}
-.nav_arroyofrio{
+}*/
+/* anulado */
+/*.nav_arroyofrio{
 	align-items:center;
 	border-radius:15px;
 	background-color:rgba(0,0,0,.8);
@@ -28,15 +29,11 @@
 	height:40px;
 	justify-content:space-between;
 	width:100%;
-}
+}*/
 /*botones de ir a anterior o siguiente panel */
-.div_iconmove{
+/*.div_iconmove{
 	position: relative;
-	cursor:pointer;	
-	
-	/*padding:3px;
-	border:#D3D3D3 1px solid;
-	border-radius:50%;*/
+	cursor:pointer;
 	width:10%;
 }
 .div_iconmove.left{
@@ -55,7 +52,7 @@
 }
 .nav_title{
 	width:80%;
-}
+}*/
 .arroyofrio{
 	position:relative;
 	display:flex;
@@ -78,7 +75,11 @@
 	color:white;
 	position:relative;	
 	overflow: auto;
-	
+}
+.div_arroyofrio .icons{
+	height:100%;
+	position:absolute;
+	width:100%;
 }
 
 /*.div_iconreturn{
@@ -92,9 +93,18 @@
 	border:#D3D3D3 1px solid;
 	border-radius:50%;
 }*/
+.div_iconreturn{
+	display:none;
+}
+.div_iconreturn.active{
+	display:block;
 
-.div_iconreturn:hover{
-	border:#37e369 1px solid;
+}
+.div_iconreturn mat-icon{
+	color:orange;
+}
+.div_iconreturn mat-icon:hover{
+	color:#37e369;
 }
 .div_iconflag{
 	float:right;

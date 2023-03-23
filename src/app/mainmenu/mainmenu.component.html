@@ -1,7 +1,7 @@
 <div class="mainmenu" [ngClass]="{'visible':classMainMenu}">			
-	<div class="mainmenu_titletop" style="">
+	<!-- <div class="mainmenu_titletop" style="">
 		<p class="mauto" style="cursor:pointer" (dblclick)="animation()">Parque Natural de Cazorla</p>
-	</div>
+	</div> -->
 	<div class=" mainmenu_divcontent">
 		<div class="mainmenu_content">
 			<div class="content_title">
@@ -20,24 +20,24 @@
 				<div class="menulinks " [ngStyle]="firstwidth <750 && switchMenuDetailsAbsolute ? {'opacity':0,'transform':'scale(0)'}:{'opacity':1,'transform':'scale(1)'}">
 					<div class="mauto">
 						<div class="linkmenu" >
-							<span class="link" title="Ir a Lugares" (click)="showDetailMenu('arroyofrio')">ARROYO FRÍO</span>
+							<span class="link" title="Ir a Lugares" (click)="showDetailMenu('arroyofrio')">Arroyo Frío</span>
 							<mat-icon class="material-icons icon"  (click)="sendSection(1,1)">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu" >
-							<span (click)="showDetailMenu('places')" class="link" title="Ir a Lugares">LUGARES</span>
+							<span (click)="showDetailMenu('places')" class="link" title="Ir a Lugares">Lugares</span>
 							<mat-icon class="material-icons icon"  (click)="sendSection(2,0)">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu" >
-							<span (click)="showDetailMenu('entertainment')" class="link">OCIO</span>
+							<span (click)="showDetailMenu('entertainment')" class="link">Aventura</span>
 							<mat-icon class="material-icons icon"  (click)="sendSection(3,1)">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu">
-							<span (click)="showDetailMenu('renting')" class="link">ALOJAMIENTO</span>
+							<span (click)="showDetailMenu('renting')" class="link">Alojamiento</span>
 							<mat-icon class="material-icons icon"  (click)="sendSection(4,0)">chevron_right</mat-icon>
 						</div>
 						<div class="linkmenu">
 							<span (click)="showDetailMenu('gallery')" class="link">
-								GALERÍA
+								Galería
 							</span>
 							<mat-icon class="material-icons icon" (click)="sendSection(5,0)">chevron_right</mat-icon>
 						</div>

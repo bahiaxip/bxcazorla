@@ -4,6 +4,7 @@
 	z-index:301;
 }
 .toolbar_header .div_header{
+	color:#FFF;
 	position: absolute;
 	width:100%;
 	background-color: rgba(0,0,0,.9);
@@ -16,7 +17,17 @@
 	justify-content:center;
 	margin:auto;
 	align-items:center;
-	transition:all 0.4s linear;
+	transition:height 0.4s linear,font-size 0s ease-out;
+	overflow:hidden;
+}
+.toolbar_header .div_header .header p{
+	font-family:Daniela;
+	font-size:30px;
+	font-weight:bold;
+	letter-spacing: 3px;
+}
+.toolbar_header .div_header .header p span{
+	color:#37e369;
 }
 .div_icon_header{
 	margin-left: 2px;

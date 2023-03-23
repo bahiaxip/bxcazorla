@@ -7,10 +7,12 @@ import { CardService } from '../../services/card.service';
   styleUrls: ['./arroyofrio.component.css']
 })
 export class ArroyofrioComponent implements OnInit {
+  public panelActive:boolean = true;
 
   constructor(private _cardService:CardService) { }
 
   ngOnInit(): void {
+    this.panelActive = true;
   }
 
   sendPanel(panel:number){ 
@@ -19,4 +21,8 @@ export class ArroyofrioComponent implements OnInit {
     this._cardService.setSection(1)
   }
 
+  closePanel(){
+    //this.panelActive=false;
+
+  }
 }

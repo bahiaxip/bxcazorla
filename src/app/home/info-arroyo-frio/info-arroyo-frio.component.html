@@ -16,25 +16,44 @@
 			<!--</div>	
 		</div>
 	</div>-->
-	<div class="flex_header">
-	<div class="div_flex_item" style="" >
-
-		<div class="flex_item" >
-			<div class="w15 div_iconleft">
-				<mat-icon class="icon_left"  style="" (click)="sendPanel(1)"  >double_arrow</mat-icon>
-			<!-- condition en ngClass método1 -->
-				<!-- <mat-icon class="icon_left"  style="" (click)="sendPanel(0)" [ngClass]="{'icon_visible':panel=='1','icon_novisible':panel!='1','icon_transitionActive':switchTransitionFirst}" >double_arrow</mat-icon> -->
-			</div>
-			<div class="w70 div_center" style="">
-				<p class="mauto c_white">Más sobre ArroyoFrío</p>	
-			</div>
-			<div class="w15 div_iconright">
-			<!-- condition en ngClass método2 -->
-				<!-- <mat-icon class="icon_right"  style="" (click)="sendPanel(1)" [ngClass]="(panel=='0' ? 'icon_visible':'icon_novisible')+' '+(switchTransitionFirst==true ? 'icon_transitionActive':'')">double_arrow</mat-icon> -->
+	<div class="back_header_arroyofrio">
+		<div class="nav_header">
+			<div class="header">
+				<div class="div_iconmove left" (click)="sendPanel(1)">
+					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
+				</div>
+				<div class="nav_title">
+					<p>Más sobre ArroyoFrío</p>
+				</div>
+				<div class="div_iconmove right">
+					
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	<!-- <div class="flex_header">
+		<div class="div_flex_item" style="" >
+
+			<div class="flex_item" >
+				<div class="w15 div_iconleft">
+					<mat-icon class="icon_left"  style="" (click)="sendPanel(1)"  >double_arrow</mat-icon>
+				-->
+				<!-- condition en ngClass método1 -->
+					<!-- <mat-icon class="icon_left"  style="" (click)="sendPanel(0)" [ngClass]="{'icon_visible':panel=='1','icon_novisible':panel!='1','icon_transitionActive':switchTransitionFirst}" >double_arrow</mat-icon> -->
+				<!--
+				</div>
+				<div class="w70 div_center" style="">
+					<p class="mauto c_white">Más sobre ArroyoFrío</p>	
+				</div>
+				<div class="w15 div_iconright">
+				-->
+				<!-- condition en ngClass método2 -->
+					<!-- <mat-icon class="icon_right"  style="" (click)="sendPanel(1)" [ngClass]="(panel=='0' ? 'icon_visible':'icon_novisible')+' '+(switchTransitionFirst==true ? 'icon_transitionActive':'')">double_arrow</mat-icon> -->
+				<!--
+				</div>
+			</div>
+		</div> 
+	</div>-->
 	<section class="back_articles" style="">
 		<div class="box_article">
 			<article class="article end">

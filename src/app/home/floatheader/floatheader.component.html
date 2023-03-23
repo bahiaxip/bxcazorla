@@ -1,6 +1,6 @@
 <div class="toolbar_header" style="" (mouseover)="showHeader()" (mouseout)="showHeader()">
-	<div class="div_header" style="" [ngStyle]="activeHeader ? {'height':'120%'}:{'height':'0'}" >
-		<div  class="w50 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
+	<div class="div_header" style="" [ngStyle]="activeHeader ? {'height':'120%'}:{'height':'25px'}" >
+		<div  class="w20 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'25px'}">
 			<!--<div style="margin:auto;background-color:white;" >-->
 				<a href="http://www.linkedin.com" target="__blank" class="div_icon_header" [ngStyle]="activeHeader ? {'height':'24px'}:{'height':'0px'}">
 					<div class="icon linkedin_icon">
@@ -19,7 +19,10 @@
 				</span>-->
 			<!--</div>-->
 		</div>
-		<div class="w50 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
+		<div class="w60 header" [ngStyle]="activeHeader ? {'height':'100%','font-size':'20px'}:{'height':'0'}" >
+			<p [ngClass]="activeHeader ? 'fontActive':''">Parque Natural de Cazorla</p>
+		</div>
+		<div class="w20 header" style="" [ngStyle]="activeHeader ? {'height':'100%'}:{'height':'0'}">
 			<!--<div style="margin:auto;background-color:white;" >-->
 				<!--<a class="div_icon_header" [ngStyle]="activeHeader ? {'height':'30px'}:{'height':'0px'}" (click)="callWeather()">
 					<div class="icon twitter_icon">
