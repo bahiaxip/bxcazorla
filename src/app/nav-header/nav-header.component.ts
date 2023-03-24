@@ -8,22 +8,29 @@ import { CardService } from '../services/card.service';
 export class NavHeaderComponent implements OnInit {
   @Input() icons:any;
   @Input() title:any;
-  public left:any;
-  public right:any;
+  //public left:any;
+  //public right:any;
   //public icons:any;
   constructor(private _cardService:CardService) { }
 
   ngOnInit(): void {    
-    if(this.icons){
-      if(this.icons=='full'){
-        this.left = true;
-        this.right = true;
-      }else if(this.icons == 'left'){
-        this.left = true;
-      }else if(this.icons == 'right'){
+    /*if(this.icons && this.icons.status){
+      if(this.icons.status=='full'){
+        this.icons.left = true;
+        this.icons.right = true;
+      }else if(this.icons.status == 'left'){
+        this.icons.left = true;
+      }else if(this.icons.status == 'right'){
         this.right = true;
       }
+    }*/
+    //asignamos valores a left y right por defecto
+    /*if(!this.icons.left){
+      this.icons.left=0;
     }
+    if(!this.icons.right){
+      this.icons.left=2;
+    }*/
   }
 
   sendPanel(panel:number){

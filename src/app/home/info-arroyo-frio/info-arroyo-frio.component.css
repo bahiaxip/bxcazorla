@@ -56,7 +56,7 @@
 	justify-content:flex-start;
 	margin-right:10px;
 }*/
-.header_arroyofrio{
+/*.header_arroyofrio{
 	align-items:center;
 	display:flex;
 	height:100%;
@@ -71,18 +71,14 @@
 	height:40px;
 	justify-content:space-between;
 	width:100%;
-}
+}*/
 /*botones de ir a anterior o siguiente panel */
-.div_iconmove{
+/*.div_iconmove{
 	position: relative;
 	cursor:pointer;	
-	
-	/*padding:3px;
-	border:#D3D3D3 1px solid;
-	border-radius:50%;*/
 	width:10%;
-}
-.div_iconmove.left{
+}*/
+/*.div_iconmove.left{
 	display:flex;
 	justify-content:flex-start;
 	margin-left:10px;
@@ -98,7 +94,7 @@
 }
 .nav_title{
 	width:80%;
-}
+}*/
 .back_articles{
 	background-color:#353535;
 	height:100%;
@@ -204,7 +200,7 @@
 }
 /* pasado al nuevo activity-header */
 
-.flex_item .icon_left{	
+/*.flex_item .icon_left{	
 	float:left;
 	font-size:35px;
 	color:lightgreen;
@@ -224,4 +220,4 @@
 	cursor: pointer;
 	align-items: center;
 
-}
+}*/
