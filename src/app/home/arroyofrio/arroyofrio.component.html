@@ -1,32 +1,7 @@
 <div class="back_arroyofrio" >	
 	<div class="back_header_arroyofrio">
 		<!-- <div class="header_arroyofrio"> -->
-		<div class="nav_header">
-			<div class="header">
-				<div class="div_iconmove left" (click)="sendPanel(0)">
-					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
-				</div>
-				<div class="nav_title">
-					<p>Arroyo Frío</p>
-				</div>
-				<div class="div_iconmove right" (click)="sendPanel(2)">
-					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
-				</div>
-			
-			</div>
-			
-			<!-- <div class="nav_arroyofrio">
-				<div class="div_iconmove left" (click)="sendPanel(0)">
-					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
-				</div>
-				<div class="nav_title">
-					Arroyo Frío
-				</div>
-				<div class="div_iconmove right" (click)="sendPanel(2)">
-					<mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon>
-				</div>
-			</div>	 -->
-		</div>
+		<pre-nav-header [icons]="'full'" [title] = "headerTitle" ></pre-nav-header>
 		
 	</div>
 	<div class=" w100 h100 arroyofrio" style="">

@@ -8,6 +8,7 @@ import { CardService } from '../../services/card.service';
 })
 export class ArroyofrioComponent implements OnInit {
   public panelActive:boolean = true;
+  public headerTitle:string = 'Arroyo Frío';
 
   constructor(private _cardService:CardService) { }
 
