@@ -69,16 +69,19 @@
 	margin:auto;
 	opacity:0;
 	visibility: hidden;
-	color:lightgreen;
+	color:#37E369;
 	position:absolute;
 	bottom:100px;
 	left:100px;
-	transition:all 0.5s linear;
+	transition:opacity 0.5s linear,visibility 0.5s linear;
 	height:50px;
 	width:50px;
 }
 .box_arroyofrio .link_showpanel:hover{
-	color:#D3D3D3;
+	color:#FFF;
+}
+.box_arroyofrio .link_showpanel:active{
+	color:#37E369
 }
 .box_arroyofrio .link_showpanel.active{
 	opacity:1;
@@ -135,7 +138,10 @@
 	cursor:pointer;
 }
 .div_iconreturn .icon:hover{
-	color:#D3D3D3;
+	color:#FFF;
+}
+.div_iconreturn .icon:active{
+	color:#37E369;
 }
 .div_iconflag{
 	float:right;
