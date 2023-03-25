@@ -39,6 +39,9 @@
 .nav_header .header .div_iconmove .mat-icon:hover{
 	color:#D3D3D3;
 }
+.nav_header .header .div_iconmove .mat-icon:active{
+	color:#37E369;
+}
 
 .div_iconmove .mat-icon{
 	align-items:center;
