@@ -34,8 +34,9 @@ export class NavHeaderComponent implements OnInit {
   }
 
   sendPanel(panel:number){
-         
+         console.log("llega a nav-header")
     this._cardService.setPanel(panel);
-    this._cardService.setSection(1)
+    console.log("el iconssection es: ",this.icons)
+    //this._cardService.setSection(this.icons.section)
   }
 }

@@ -16,17 +16,18 @@ export class ArroyofrioComponent implements OnInit {
   ngOnInit(): void {
     this.panelActive = true;
     this.icons = {
+      
       //status:'full',
       left: '0',
       right:'2'
     }
   }
 
-  sendPanel(panel:number){ 
+  /*sendPanel(panel:number){ 
     console.log("pasa x arroyofrio.component,panel: ",panel)   
     this._cardService.setPanel(panel);
     this._cardService.setSection(1)
-  }
+  }*/
 
   closePanel(){
     //this.panelActive=false;

@@ -11,11 +11,12 @@ import { CardService } from '../../services/card.service';
 export class InfoArroyoFrioComponent implements OnInit {
 
   public headerTitle:any='Más sobre ArroyoFrío';
-  public icons:any;
+  public dataHeader:any;
   constructor(private _cardService:CardService) { }
 
   ngOnInit(): void {
-    this.icons={      
+    this.dataHeader={      
+      section:1,
       left : 1
     }
   }

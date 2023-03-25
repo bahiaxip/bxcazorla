@@ -21,11 +21,22 @@ export class ActivityComponent implements OnInit {
 
   public activities:Array<GalleryActivities>=Activities;
   public activities2:Array<GalleryActivities>=Activities2;
+
+  public icons:any;
+  public icons2:any;
+  public headerTitle:string = "Actividades multiaventura";
+  public headerTitle2:string = "Servicios";
   //public panel:string;
   @ViewChild('activity',{static:true}) private activity!:ElementRef;
   constructor(private _cardService:CardService){}
 
   ngOnInit(){
+    this.icons = {
+      right:'1'
+    }
+    this.icons2 = {
+      left:'0'
+    }
     //suscripción para dirigir al panel almacenado en el servicio (getPanel()) 
     this.subscriptionPanel = this._cardService.panel$.subscribe(()=> {
       let section=this._cardService.getSection();

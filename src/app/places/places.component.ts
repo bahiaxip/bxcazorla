@@ -27,6 +27,10 @@ export class PlacesComponent implements OnInit {
   public places:Array<GalleryPlaces>=Places; 
   public places2:Array<GalleryPlaces>=Places2; 
 
+  public headerTitle:string = "Lugares cercanos a Arroyo Frío";
+  public headerTitle2:string = "Lugares próximos a Arroyo Frío";
+  public icons:any;
+  public icons2:any;
   //section2
   @ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
   constructor(private _cardService:CardService) {
@@ -35,14 +39,21 @@ export class PlacesComponent implements OnInit {
     this.titleModal="";
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
+  this.icons = {
+    //section:2,    
+    right:'1'
+  }
+  this.icons2 = {
+    //section:2,
+    left:'0',
+  } 
     //suscripción para dirigir al panel almacenado en el servicio (getPanel()) 
     this.subscriptionPanel = this._cardService.panel$.subscribe(()=> {
       let section=this._cardService.getSection();
-      console.log("el section desde activity: ",section)
-//si se cambia el section cambiar el número 3 por el correspondiente
+      //console.log("el section desde activity: ",section)
+//si se cambia el section cambiar el número 2 por el correspondiente
       if(section==2){
-        console.log("amos")
         let panel = this._cardService.getPanel();
         this.sendToPanel(this.firstwidth+'px','1s',panel)        
       }

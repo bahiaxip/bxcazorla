@@ -10,13 +10,13 @@ export class ActivityContentComponent implements OnInit {
   
   @Input() activities:any;
   @Input() activities2:any;
-  //No es necesario decorador Input
-  //@Input() panel:any;
+  //Necesario decorador Input para directiva (sin corchetes al ser un string directo)
+  @Input() panel:any;
 
   public selectedImage:string;
   public selectedImage2:string;
   //directiva panel que distingue panel1 de panel2
-  public panel:any;
+  //public panel:any;
   public image:string;
   public image2:string;
   public active:boolean=true;

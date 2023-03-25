@@ -2,7 +2,10 @@
 	<div [ngStyle]="{'width':firstwidth+'px'}"   >
 		<div class="box_activity" >
 			<div class="div_activityheader" >		
-				<pre-activity-header panel = 'panel1' ></pre-activity-header>
+				<!-- <pre-activity-header panel = 'panel1' ></pre-activity-header> -->
+				<div class="back_header_arroyofrio">
+					<pre-nav-header [icons] = "icons" [title]="headerTitle"></pre-nav-header>
+				</div>
 			</div>
 			<div class="div_activitycontent">
 				<div style="width:90%;height: auto;margin:auto;/*position:absolute;z-index:1*/">
@@ -17,9 +20,12 @@
 	</div>
 	<div [ngStyle]="{'width':firstwidth+'px'}"   >
 		<div class="box_activity">
-			<div class="div_activityheader">		
-				<pre-activity-header panel = 'panel2'></pre-activity-header>
+			<div class="back_header_arroyofrio">
+				<pre-nav-header [icons] = "icons2" [title]="headerTitle2"></pre-nav-header>
 			</div>
+			<!-- <div class="div_activityheader">		
+				<pre-activity-header panel = 'panel2'></pre-activity-header>
+			</div> -->
 			<!-- <div style="width:100%;height: 70vh;margin:auto;padding: 25px ;background-color: rgba(0,0,0,.8);overflow:auto;border: #676767 1px solid;"> -->
 			<div class="div_activitycontent">
 				<div style="width:90%;height: auto;margin:auto;">

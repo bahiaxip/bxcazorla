@@ -9,8 +9,11 @@
 			<!--<button (click)="sendToPanel(firstwidth+'px','1s','panel-left')" style="position:absolute">ñlaskjdf</button>-->
 			
 			<div class="div_flex">
-
-				<pre-places-header  titleProximity="Lugares cercanos a Arroyo Frío" [panel]="selectedPanel" ></pre-places-header>
+				<div class="back_header_arroyofrio">
+					<pre-nav-header [icons]="icons" [title]="headerTitle"></pre-nav-header>	
+				</div>
+				
+				<!-- <pre-places-header  titleProximity="Lugares cercanos a Arroyo Frío" [panel]="selectedPanel" ></pre-places-header> -->
 				
 				<pre-places-content [places]="places"></pre-places-content>
 			</div>	
@@ -22,8 +25,10 @@
 			<!--<button (click)="sendToPanel(firstwidth+'px','1s','panel-right')" style="position:absolute">ñlaskjdf</button>-->
 			
 			<div class="div_flex">
-
-				<pre-places-header titleProximity="Lugares próximos a Arroyo Frío" [panel]="selectedPanel" ></pre-places-header>
+				<div class="back_header_arroyofrio">
+					<pre-nav-header [icons]="icons2" [title]="headerTitle2"></pre-nav-header>
+				</div>	
+				<!-- <pre-places-header titleProximity="Lugares próximos a Arroyo Frío" [panel]="selectedPanel" ></pre-places-header> -->
 
 				<pre-places-content [places]="places2"></pre-places-content>
 			</div>

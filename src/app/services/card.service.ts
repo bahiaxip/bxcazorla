@@ -101,7 +101,7 @@ export class CardService {
   //establecemos section y el panel horizontal
   //el panel puede ser entero o cadena si es número se debe convertir a string
   setPanel(panel:number){
-    console.log("llega al servicio")
+    console.log("llega al servicio, método setPanel() con panel:",panel)
     let finalPanel=panel;
     //si el panel es número (viene del mainmenu.component.html mediante array ngFor)
     //if(typeof panel=="number"){

@@ -12,15 +12,15 @@
 			<div class="ocio">
 				<!--<div class="image"></div>-->
 				<!-- panel 1 (actividad multiaventura -->
-				<img *ngIf="panel=='panel1';else elseBlock" class="image" [src]="image" [ngClass]='{"active":active}' (transitionend)="onTransitionEnd($event)"/>
+				<img *ngIf="panel=='panel1';else elseBlock" class="image aa" [src]="image" [ngClass]='{"active":active}' (transitionend)="onTransitionEnd($event)"/>
 				<!-- panel 2 (ocio)-->
 				<ng-template #elseBlock>
 					<img class="image" [ngClass]='{"active":active}' [src]="image2" (transitionend)="onTransitionEnd($event)"/>	
 				</ng-template>
 				
-				<div style="position:absolute;width:60%;height:30px;background-color:rgba(53,53,53,.9);bottom:50px;border-radius:10px;display:flex;transition:all .3s linear;opacity:1;">
+				<!-- <div style="position:absolute;width:60%;height:30px;background-color:rgba(53,53,53,.9);bottom:50px;border-radius:10px;display:flex;transition:all .3s linear;opacity:1;">
 					<p style="color:white;margin:auto;font-size:20px;">Platos típicos</p>
-				</div>
+				</div> -->
 					
 				
 			</div>
