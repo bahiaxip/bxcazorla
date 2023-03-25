@@ -4,14 +4,19 @@
 		<pre-nav-header [icons]="icons" [title] = "headerTitle" ></pre-nav-header>
 		
 	</div>
-	<div class=" w100 h100 arroyofrio" style="">
-		<div class=" w80 div_arroyofrio">
+	<div class=" w100 h100 box_arroyofrio" style="">
+		<div class="link_showpanel" (click)="switchPanel()" [ngClass]="{'active':!panelActive}">
+			<mat-icon class="icon">visibility</mat-icon>
+		</div>
+		<div class=" w80 div_arroyofrio" [ngClass]="{'active': panelActive}">
 			<div class="icons">
-				<div class="div_iconreturn" (click)="closePanel()" [ngClass]="{'active': panelActive}">
+			<!-- botón de cierre -->
+				<div class="div_iconreturn" (click)="switchPanel()" >
 					<!-- en lugar de flecha verde asignamos icono de cierre de ventana -->
-					<mat-icon style="margin:10px 10px;" >close</mat-icon>
+					<mat-icon class="icon" >visibility_off</mat-icon>
 					<!-- <mat-icon style="vertical-align: middle;color:#37e369">double_arrow</mat-icon> -->
 				</div>
+			<!-- imágenes banderas -->
 				<div class="div_iconflag">
 					<img src="../../../assets/bandera_espana.png" width="30" style="margin: 5px auto;display: block"/>
 					<img src="../../../assets/bandera_andalucia.png" width="30" style="margin: 5px auto;display: block"/>
@@ -21,16 +26,13 @@
 			<!--<div class="div_img" style="">
 				<img class="img_arroyofrio" src="../../../assets/ciervos.jpg" />
 			</div>-->
+			<!-- texto definicón de Arroyo Frío -->
 			<div class="text_arroyofrio">
 				<h2 style="">Arroyo Frío</h2>
 				<p class="mauto">
 					Arroyo Frío es un pequeño municipio ubicado en el parque natural de Cazorla, Segura y Las Villas, en la provincia de Jaén(España). Aun con su baja población de tan solo 244 habitantes y con una infraestructura limitada, su ubicación y su entorno ha permitido a este espacio convertirse en uno de los lugares idóneos por los amantes de la naturaleza y el entorno rural para pernoctar. Arroyo Frío es unos de los lugares más demandados de turismo rural de España, situándose como el lugar más buscado en 2020. 
 				</p>
 			</div>
-			
-				
-			
-			
 		</div>
 		
 	</div>

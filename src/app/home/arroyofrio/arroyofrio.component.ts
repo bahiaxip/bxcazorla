@@ -29,8 +29,10 @@ export class ArroyofrioComponent implements OnInit {
     this._cardService.setSection(1)
   }*/
 
-  closePanel(){
-    //this.panelActive=false;
-
+  switchPanel(){
+    if(!this.panelActive)
+      this.panelActive=true;
+    else  
+      this.panelActive=false;
   }
 }
