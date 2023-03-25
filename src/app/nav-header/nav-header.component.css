@@ -17,7 +17,7 @@
 }
 .nav_header .header .div_iconmove{
 	position:relative;
-	cursor:pointer;
+	
 	width:10%;
 }
 .nav_header .header .div_iconmove.left{
@@ -26,8 +26,18 @@
 	justify-content:flex-start;
 	margin-left:10px;
 }
+
 .nav_header .header .div_iconmove.left .mat-icon{
 	transform:rotate(180deg);
+	
+}
+/*estilos a los botnes de componente de navegación laterales(flechas que permiten desplazarse en el eje X)*/
+.nav_header .header .div_iconmove .mat-icon{
+	color:#37e369;
+	cursor:pointer;
+}
+.nav_header .header .div_iconmove .mat-icon:hover{
+	color:#D3D3D3;
 }
 
 .div_iconmove .mat-icon{
