@@ -4,7 +4,7 @@ export const Activities:GalleryActivities[] = [
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/galeria6.jpg",
+		image: "assets/activities/senderismo.jpg",
 		detail:""
 	},
 	{
@@ -22,7 +22,7 @@ export const Activities:GalleryActivities[] = [
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/barranquismo_3.jpg",
+		image: "assets/activities/ruta_rio.jpg",
 		detail:""
 	},
 	{
@@ -34,7 +34,7 @@ export const Activities:GalleryActivities[] = [
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/descensos.jpg",
+		image: "assets/activities/descenso.jpg",
 		detail:""
 	},
 	/*{
@@ -49,37 +49,37 @@ export const Activities2:GalleryActivities[] = [
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/ocio/elmeson.jpeg",
+		image: "assets/activities/servicios/supermercado.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/ocio/labolera.jpg",
+		image: "assets/activities/servicios/labolera.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/ocio/laforchetta.jpg",
+		image: "assets/activities/servicios/laforchetta.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/ocio/rincon.jpg",
+		image: "assets/activities/servicios/bardecopas.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/ocio/spa.jpg",
+		image: "assets/activities/servicios/spa.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/ocio/labolera2.jpg",
+		image: "assets/activities/servicios/heladeria.jpg",
 		detail:""
 	},
 	

@@ -23,8 +23,8 @@ export class ActivityContentComponent implements OnInit {
   constructor() {
     this.selectedImage="";
     this.selectedImage2="";
-    this.image = '../../assets/activities/galeria6.jpg';
-    this.image2 = '../../assets/activities/ocio/labolera.jpg';
+    this.image = '../../assets/activities/senderismo.jpg';
+    this.image2 = '../../assets/activities/servicios/labolera.jpg';
 
     //this.places=Places;
   }
