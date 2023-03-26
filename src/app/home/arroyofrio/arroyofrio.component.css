@@ -67,13 +67,12 @@
 	display:flex;
 	justify-content:center;
 	margin:auto;
-	opacity:0;
-	visibility: hidden;
+	transform:translate(0,100%);	
 	color:#37E369;
 	position:absolute;
 	bottom:100px;
-	left:100px;
-	transition:opacity 0.5s linear,visibility 0.5s linear;
+	left:100px;	
+	transition:transform 0.5s linear;
 	height:50px;
 	width:50px;
 }
@@ -83,9 +82,8 @@
 .box_arroyofrio .link_showpanel:active{
 	color:#37E369
 }
-.box_arroyofrio .link_showpanel.active{
-	opacity:1;
-	visibility: visible;
+.box_arroyofrio .link_showpanel.active{	
+	transform:translate(0,0);
 	cursor:pointer;
 }
 .box_arroyofrio .link_showpanel .icon{
@@ -100,9 +98,8 @@
 	background-color:rgba(0,0,0,.3);
 }
 
-.div_arroyofrio{
-	opacity:0;
-	visibility:hidden;
+.div_arroyofrio{	
+	transform:translate(0,100%);
 	/*background-color: rgba(0,0,0,.7);*/
 	background-color: rgba(40,40,40,.7);
 	margin:60px auto;
@@ -111,9 +108,8 @@
 	overflow: auto;
 	transition:all 0.5s linear;
 }
-.div_arroyofrio.active{
-	opacity:1;
-	visibility:visible;
+.div_arroyofrio.active{	
+	transform:translate(0,0);
 }
 .div_arroyofrio .icons{
 	height:100%;
