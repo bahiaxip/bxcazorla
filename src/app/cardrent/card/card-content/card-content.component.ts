@@ -360,18 +360,18 @@ export class CardContentComponent implements OnInit {
       }else{
         if(type=="capacity"){
           this.swDivFeed4(true,card);
-          totalText='<span style="margin-left:10px"><span style="font-size:10px">Max.</span> '+Math.max(...card.capacity)+' personas</span>';
+          totalText='<span style="margin-left:10px;display:flex;align-items:center"><span style="font-size:10px">Max.</span> '+Math.max(...card.capacity)+' personas</span>';
           //totalText='<span style="color:orange">Capacidad: </span><span style="margin-left:10px">'+card.capacity+' personas</span>';          
         }else if(type == "phone"){
           
           //totalText='<span style="color:orange">Teléfono de contacto: </span><span style="font-size:16px;margin-left:10px">'+card.phone+'</span>';
           this.swDivFeed3(true,card);
-          totalText='<span style="margin-left:10px">'+card.phone+'</span>';
+          totalText='<span style="margin-left:10px;display:flex;align-items:center">'+card.phone+'</span>';
 
         }else if(type == "location"){
           this.levelLocation = card.numLevelLocation;
           this.swDivFeed(true,card);
-          totalText='<span style="color:orange;font-size:10px;user-select:none">Mostrar mapa </span>'+' <span class="material-icons" style="vertical-align:middle;">share_location</span>';
+          totalText='<span style="color:orange;font-size:10px;user-select:none;display:flex;align-items:center">Mostrar mapa </span>'+' <span class="material-icons" style="display:flex;align-items:center;">share_location</span>';
         }        
         this._cardrentService.setBanner2(totalText)        
       }      

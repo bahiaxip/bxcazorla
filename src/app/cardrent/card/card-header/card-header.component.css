@@ -1,3 +1,6 @@
+.dflex{
+	display:flex;
+}
 .flex_header{
 
 	height:70px;
@@ -13,10 +16,11 @@
 }
 
 .flex_item{
-	min-height: 50px;
+	/*box-shadow:50px 50px 250px rgba(69,46,0,.2) inset,-100px -100px 250px rgba(69,46,0,.2) inset;*/
+	min-height: 78px;
 	/*max-height: 100%;*/
 	width:70%;	
-	background-color:rgba(0,0,0,.8);
+	background-color:rgba(0,0,0,.9);
 	display: flex;
 	padding: 5px;
 	margin: auto;
@@ -26,25 +30,51 @@
 	overflow: hidden;
 	user-select: none;
 }
+.flex_item .div_icon{
+	display:flex;
+	align-items:center;
+}
+.flex_item .div_icon.left{
+	justify-content: flex-start;
+}
+.flex_item .div_icon.right{
+	justify-content: flex-end;
+}
 
 .flex_item .banner_icon{
+	align-items:center;
 	display: flex;
-	font-size:35px;
+	font-size:28px;
 	color:lightgreen;
 	cursor:pointer;
+	position:absolute;
+	top:45px;
+}
+.flex_item .banner_icon.left{
+	margin:auto 10px;
+	transform:rotate(180deg);
+}
+.flex_item .bannerp1{
+	margin:6px auto;
+	font-size:18px;
+	font-family:Quicksand;
 }
 
 .banners{
-	display:inline-flex;
-	margin:auto;
+	/*display:inline-flex;
+	margin:auto;*/
+	display:flex;
+	justify-content:center;
+	min-height:30px;
 	vertical-align: middle;
 }
-.banners .banner2{	
+.banners .banner2{
+	display:contents;
 	cursor:pointer;
 	font-size:18px;
 	clear:left;
-	color: lightgreen;
-	display: flex;
+	color: #FFF;
+	/*display: flex;*/
 	align-items: center;
 }
 
@@ -68,6 +98,7 @@
 }
 
 .bannerp3{
+	display:flex;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
