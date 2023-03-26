@@ -6,13 +6,19 @@
 
 }
 .div_buttongroup .div_btn_mainmenu{
+	opacity:0;
+	visibility: hidden;
 	position: absolute;
 	display: flex;
 	right: 20px;
 	top:100px;
+	transition:all .5s linear;
 	z-index:300;
 }
-
+.div_buttongroup .div_btn_mainmenu.active{
+	opacity:1;
+	visibility: visible;
+}
 				/*** buttons, button-group **/
 
 .button_group{

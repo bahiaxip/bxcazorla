@@ -17,9 +17,8 @@ export class ButtongroupComponent implements OnInit {
   //el buttonValue permite relacionar el botón checkeado en el buttongroup(del grupo de botones lateral)
   //de Angular Material, tb se pueden modificar el CSS por defecto 
   //public buttonValue:any;
-  public panel:any=true;
   public subscriptionPanel:any;
-
+  public btnMainmenuVisible:boolean=true;
   constructor(
     private _cardService:CardService,
     private _cardrentService:CardrentService
@@ -28,11 +27,11 @@ export class ButtongroupComponent implements OnInit {
   ngOnInit(): void {
     this.subscriptionPanel=this._cardService.panel$.subscribe(()=> {
       let section = this._cardService.getSection();
-      let panel=this._cardService.getPanel();
-      if(section==1 && panel==1)
-        this.panel=false
+      let panel=this._cardService.getPanel();      
+      if(section==1 && panel==1 || section==1 && panel==2)
+        this.btnMainmenuVisible=false
       else
-        this.panel=true;        
+        this.btnMainmenuVisible=true;        
     })
   }
 
