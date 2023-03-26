@@ -47,7 +47,7 @@ html,body{
 }
 .nav_header .header .div_iconmove{
 	position:relative;
-	cursor:pointer;
+	/*cursor:pointer;*/
 	width:10%;
 }
 .nav_header .header .div_iconmove.left{

@@ -15,9 +15,9 @@
 	justify-content: space-between;
 	width:100%;
 }
+/* OPTIMIZAR CÓDIGO CON STYLES.CSS PARA EVITAR CRUCES(SOBREESCRITURA) */
 .nav_header .header .div_iconmove{
 	position:relative;
-	
 	width:10%;
 }
 .nav_header .header .div_iconmove.left{
