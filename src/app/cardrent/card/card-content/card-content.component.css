@@ -24,6 +24,7 @@
 	
 	border-radius: 10px;
 	background-color:#353535;
+
 	/*background-color: rgba(74,58,58,1);*/
 	/*background-color: rgba(44,18,18,.7);*/
 	/*background-color:rgba(53,53,53,1);*/
@@ -88,6 +89,12 @@
 	color:#C3C3C3;
 	cursor:pointer;
 }
+.card_rent .card_content .banner_icon:hover{
+	color:white;
+}
+.card_rent .card_content .banner_icon.delete{	
+	font-size:22px;
+}
 
 .content_renting{
 	font-size: 16px;
@@ -146,15 +153,12 @@
 	*/
 	color: #FFF;
 	display:flex;
-	
 	align-items: center;
-	
 	margin: auto;
 }
 
 
 .content_renting .price .price_detail{
-	
 	font-size:15px;
 	color: #000
 }
@@ -213,7 +217,9 @@ div llamado first*/
 	
 }
 .content_renting .price .price_detail .persons .selected .div_type{
-	position:absolute;width:100%
+	position:absolute;
+	right:8px;
+	width:100%
 }
 .content_renting .price .price_detail .persons .selected .div_type .span_type{
 	position:relative;
@@ -230,7 +236,7 @@ div llamado first*/
 	color:green
 }
 .content_renting .price .price_detail .persons .selected:hover .div_type .span_type .type
-{ color: lightgreen;}
+{ color: #37E369;}
 .content_renting .price .price_detail .persons .selected:hover .div_type .span_type{
 	color: white;
 }
@@ -286,7 +292,8 @@ div llamado first*/
 }
 */
 .content_renting .price .price_detail .persons .menu .option .span_type{
-	position:relative;width:100%;display: flex;justify-content: flex-end;font-size:10px;color:#878787
+	position:relative;width:100%;display: flex;justify-content: flex-end;font-size:10px;color:#878787;
+	right:8px;
 }
 .content_renting .price .price_detail .persons .menu .option .span_type .type{
 	display: flex;align-items: center;font-size:10px;color:green
@@ -358,11 +365,13 @@ div llamado first*/
 
 	border: #676767 1px solid;	
 	border-radius: 50%;	
-	color: #009143;
+	/*color: #009143;*/
+	color:#37E369;
 	padding: 8px;
 	font-size: 18px;
 	/*background-color: rgba(74,58,58,1);*/
 	background-color:#353535;
+
 	/*background-color: rgba(0,0,0,.9);*/
 	margin: 5px auto;
 }
@@ -372,7 +381,7 @@ div llamado first*/
 .icon_circle_double{
 	/*color: #009143;*/
 	/*color: #00c487;*/
-	color: green;
+	color: #37E369;
 	font-size: 22px;
 	display: flex;
 }

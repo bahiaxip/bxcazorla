@@ -32,6 +32,8 @@ export class CardrentComponent{
     text:new FormControl('',[Validators.required,Validators.minLength(3)]),
   })
   
+  
+
   @ViewChild('slidercardrent',{static:true}) private slidercardrent!:ElementRef; 
   constructor(
     private _cardrentService:CardrentService,
@@ -97,7 +99,7 @@ export class CardrentComponent{
     if(typeof data == "string"){    
        this.textModal=data;
        //card-content (object)
-    }else if(typeof data == "object"){
+    }else if(typeof data == "object"){      
       this.dataModal=data.card;
       this.textModal=data.text;
     }
