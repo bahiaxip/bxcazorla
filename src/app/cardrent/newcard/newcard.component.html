@@ -19,7 +19,9 @@
 			</div>
 	
 			<!--<button mat-button style="background-color:rgba(0,0,0,.9);color:white;display:block;width:100%" type="submit">Guardar</button>-->
-			<button mat-raised-button color="success" class="w100 m10_auto" type="submit" [disabled]="!formCardRent.valid || !formCardRent.controls.type.value || formCardRent.controls.capacities.value.length==0 || formCardRent.controls.capacities.status=='INVALID'">Guardar</button>
+			<div class="div_btn_newcard">
+				<button mat-raised-button color="success" class="btn_newcard" type="submit" [disabled]="!formCardRent.valid || !formCardRent.controls.type.value || formCardRent.controls.capacities.value.length==0 || formCardRent.controls.capacities.status=='INVALID'">Guardar</button>
+			</div>
 			<div class="w100 h30">
 			</div>
 		</form>

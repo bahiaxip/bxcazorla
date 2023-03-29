@@ -2,16 +2,19 @@
 
 <!-- header feedback -->
 	<div class="flex_item " style=""  >
-		<div class="w15 csrpointer" >			
+		<div class="w15 csrpointer div_icon left" >			
 			<mat-icon class="banner_icon left floatL " title="Volver a alojamientos" (click)="switchForm()" *ngIf="switchHeightForm">close</mat-icon>
-			<mat-icon class="banner_icon left floatL " title="Volver a alojamientos" (click)="switchForm(true)" *ngIf="!switchHeightForm">add_circle</mat-icon>
+			<mat-icon class="banner_icon " title="Volver a alojamientos" (click)="switchForm(true)" *ngIf="!switchHeightForm">add_circle</mat-icon>
 			<div class="w100 h100" (click)="switchForm()">
 			</div>
 
 		</div>
 		<div class="w70" >
-			<!--<div style="display:flex;align-items:center">Feedback</div>-->
-			<p class="mauto bannerp1">Valoraciones</p>
+			<div style="display:flex;justify-content:center">
+				<!--<div style="display:flex;align-items:center">Feedback</div>-->
+				<p class=" bannerp1">Valoraciones</p>	
+			</div>
+			
 			<!--<span style="display:flex;margin:auto">-->
 			<p class="mauto">
 				<pre-divlevel [numLevelFeedback]="numLevelFeedback"></pre-divlevel>
@@ -96,8 +99,8 @@
 		-->
 		</div>
 
-		<div class="w15 csrpointer" (click)="switchForm()">
-			<mat-icon class="banner_icon right floatR " title="Volver a alojamientos" (click)="setPanel(1)">double_arrow</mat-icon>
+		<div class="w15 csrpointer div_icon right" (click)="switchForm()">
+			<mat-icon class="banner_icon right" title="Volver a alojamientos" (click)="setPanel(1)">double_arrow</mat-icon>
 		</div>
 
 	</div>

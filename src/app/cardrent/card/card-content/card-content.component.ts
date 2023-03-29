@@ -371,7 +371,7 @@ export class CardContentComponent implements OnInit {
         }else if(type == "location"){
           this.levelLocation = card.numLevelLocation;
           this.swDivFeed(true,card);
-          totalText='<span style="color:orange;font-size:10px;user-select:none;display:flex;align-items:center">Mostrar mapa </span>'+' <span class="material-icons" style="display:flex;align-items:center;">share_location</span>';
+          totalText='<div style="padding:0 8px;display:flex;border:#353535 1px solid"><span  class="milocation" style="color:#D3D3D3;font-size:12px;user-select:none;display:flex;align-items:center">Abrir mapa </span>'+' <span class="material-icons" style="display:flex;align-items:center;margin-left:5px;color:#37E369">arrow_drop_down</span></div>';
         }        
         this._cardrentService.setBanner2(totalText)        
       }      

@@ -409,6 +409,7 @@ export class CardrentService {
       this.heightInfo = h;
       this.heightInfoSubject.next();
     }else if(type=="maps"){
+      console.log("el type es: "+type+" el h es: ",h);
       this.heightMaps=h;
       this.heightMapsSubject.next();
     }else if(type=="images"){

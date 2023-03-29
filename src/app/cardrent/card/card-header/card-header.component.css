@@ -33,6 +33,7 @@
 .flex_item .div_icon{
 	display:flex;
 	align-items:center;
+	position:relative;
 }
 .flex_item .div_icon.left{
 	justify-content: flex-start;
@@ -45,13 +46,14 @@
 	align-items:center;
 	display: flex;
 	font-size:28px;
-	color:lightgreen;
+	color:#37E369;
 	cursor:pointer;
 	position:absolute;
-	top:45px;
+	top:6px;
+	margin:auto 10px;
 }
 .flex_item .banner_icon.left{
-	margin:auto 10px;
+	
 	transform:rotate(180deg);
 }
 .flex_item .bannerp1{
@@ -78,24 +80,28 @@
 	align-items: center;
 }
 
-.banners .icon{
+.banners .banner2 span.milocation:hover{
+	color:orange;
+}
+
+/*.banners .icon{
 	color:lightgreen;
 	font-size:18px;
 	border:white 1px solid;
 	border-radius:50%;
 	padding:3px;
 	background-color:#000;
-}
+}*/
 
 .div_feedback div{
 	/*background-color: orange;*/
 }
-.feedgreen{
+/*.feedgreen{
 	background-color: lightgreen;
 }
 .feedorange{
 	background-color: orange;
-}
+}*/
 
 .bannerp3{
 	display:flex;

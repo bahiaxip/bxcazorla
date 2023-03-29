@@ -36,17 +36,28 @@
 	align-items: center;
 	font-size: 16px;
 }
-
-.flex_item .banner_icon{
-	display: flex;
-	font-size:35px;
-	color:lightgreen;
-	cursor:pointer;
-	margin-left: 10px;
-	margin-top: 8px;
-	transform:rotate(180deg);
+.flex_item .bannerp1{
+	font-size: 18px;
+	margin:6px auto;
+	font-family:Quicksand;
+}
+.flex_item .div_icon{
 	display:flex;
 	align-items:center;
+	position:relative;
+}
+.flex_item .div_icon.left{
+	justify-content:flex-start;
+}
+.flex_item .banner_icon{
+	display: flex;
+	font-size:28px;
+	color:#37E369;
+	cursor:pointer;	
+	transform:rotate(180deg);
+	position:absolute;
+	top:6px;	
+	margin:auto 10px;
 }
 
 @media (max-width: 900px){
