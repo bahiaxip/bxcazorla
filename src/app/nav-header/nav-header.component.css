@@ -47,6 +47,7 @@
 	align-items:center;
 	display:flex;
 	font-size:28px;
+	transition:all .5s linear;
 }
 .nav_header .header .div_iconmove.right{
 	display:flex;
@@ -65,4 +66,26 @@
 	font-weight:bold;
 }
 
+@media screen and (max-width:600px){
+	.nav_header{
+		width:100%;
+	}
+	.div_iconmove .mat-icon{
+		font-size:22px;
+	}
+	.nav_header .header .nav_title p{
+		font-size:18px;
+	}
+	.nav_header .header .div_iconmove.left{
+		margin-left:5px;
+	}
+	.nav_header .header .div_iconmove.right{
+		margin-right:5px;
+	}
+}
+@media screen and (max-width:350px){
+	.nav_header .header .nav_title p{
+		font-size:16px;
+	}
+}
 /* fin estilos nav header  */
