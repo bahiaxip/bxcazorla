@@ -29,9 +29,13 @@
 	</div>
 
 	<div class="div_thumbs" style="">
+
 		<div class="thumbs">
-			<div class="div_activity" style="" >
+
+			<div class="div_activity" style="position:relative" >
+				<div class="back_hidden_activity" ></div>
 				<div class="activity" style="">
+					
 					<span *ngFor="let activity of activities">
 						<img class="image" src="{{activity.image}}" (click)="setImage(activity.image)"/>
 					</span>
@@ -45,5 +49,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
+
 </div>

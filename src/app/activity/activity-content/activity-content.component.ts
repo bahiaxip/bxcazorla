@@ -24,7 +24,7 @@ export class ActivityContentComponent implements OnInit {
     this.selectedImage="";
     this.selectedImage2="";
     this.image = '../../assets/activities/senderismo.jpg';
-    this.image2 = '../../assets/activities/servicios/labolera.jpg';
+    this.image2 = '../../assets/activities/servicios/supermercado.jpg';
 
     //this.places=Places;
   }

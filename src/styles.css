@@ -10,6 +10,13 @@
 .g-image-item{
 	/*background-size: 100%  !important;*/
 }
+.mygallery .g-nav-prev,.mygallery .g-nav-next{
+	top:90% !important;
+	margin:auto 20px !important;
+}
+gallery-core[imageSize=contain] gallery-slider .g-image-item{
+	background-size:unset;
+}
 /* añadimos los estilos del textarea de newcard ya que en local no toma efecto
 los estilos propios de angular material */
 .mat_textarea span.mat-form-field-label-wrapper{

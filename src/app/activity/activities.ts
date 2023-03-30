@@ -73,15 +73,16 @@ export const Activities2:GalleryActivities[] = [
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/servicios/spa.jpg",
+		image: "assets/activities/servicios/heladeria.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/servicios/heladeria.jpg",
+		image: "assets/activities/servicios/spa.jpg",
 		detail:""
 	},
+	
 	
 	
 ];
