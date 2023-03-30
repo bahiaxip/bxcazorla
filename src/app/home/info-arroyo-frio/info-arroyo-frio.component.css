@@ -1,3 +1,6 @@
+.pb100{
+	padding-bottom:100px;
+}
 .back_arroyofrio{
 	width: 100%;
 	height: 100vh;
@@ -135,6 +138,7 @@
 .article_image{
 	display:flex;
 	justify-content:flex-end;
+	margin:auto;
 	max-height:70vh;
 	width:50%;
 }
@@ -221,3 +225,25 @@
 	align-items: center;
 
 }*/
+
+@media screen and (max-width:850px){
+	.box_article{
+		display:block;
+	}
+	.article,.article.start,.article.end{
+		justify-content: center;
+		width:100%;
+	}
+	.article_image{
+		width:100%;
+	}
+	
+}
+@media screen and (max-width:600px){
+	.article h2{
+		font-size:35px		
+	}
+	.article p{
+		font-size:18px;
+	}
+}
