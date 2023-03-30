@@ -59,9 +59,7 @@
 	background-repeat: no-repeat;
 	width: 100%;
 	height: 100%;
-
 }
-
 
 
 .last_back{
@@ -69,16 +67,13 @@
 	height:100%;
 	position:relative;
 	/*background-image:url('../../assets/river.jpg');*/	
-	background-size: cover;
+	
 	background-image:  url("../../assets/cerrada_de_elias2.jpg");
 	background-position:top center;
 	background-repeat:no-repeat;
 	background-size:100%;
 	overflow:auto;
 }
-
-
-
 
 .back_image{
 	background-image:  url("../../assets/cerrada_de_elias2.jpg");
@@ -591,6 +586,9 @@ mat-button-toggle:hover{
 
 
 @media (max-width: 1000px){
+	.last_back{
+		background-size:cover;
+	}
 	.last_back .mainmenu{
 		display: block;
 	}	
@@ -598,6 +596,7 @@ mat-button-toggle:hover{
 
 
 @media (max-width: 600px){
+	
 	.flex_content{
 		margin-top: 10px;
 	}
