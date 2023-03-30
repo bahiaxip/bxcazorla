@@ -225,7 +225,7 @@
 .spanmenu:before{
 	content: attr(data-hover);
 	color: #D3D3D3;
-	//transition: color 1s ease-in;
+	transition: color 0.5s ease-in;
 }
 .spanmenu:after{
 	content: attr(data-hover);
@@ -240,7 +240,6 @@
 }
 .spanmenu:hover:after{
 	width: 100%;
-
 }
 
 /*
@@ -248,6 +247,15 @@
 	transform: translate(0px,0) !important;	
 }
 */
+@media (max-width: 1450px){
+	.spanmenu:hover:before{
+		color:lightgreen;
+	}
+	.spanmenu:hover:after{
+		width: 0;
+	}
+}
+
 @media (max-width: 1200px){
 
 }
