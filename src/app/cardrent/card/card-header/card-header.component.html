@@ -5,7 +5,7 @@
 			<div class="w100 d_flex" >
 			<!-- icono valoraciones -->
 				<div class="w15 csrpointer div_icon left" (click)="hideImagesCard('')">
-					<mat-icon class="banner_icon left " title="Todas las Valoraciones" (click)="setPanel(0)">double_arrow</mat-icon>
+					<mat-icon class="banner_icon left" matTooltipClass="bx_tooltip" matTooltip="Valoraciones" (click)="setPanel(0)">double_arrow</mat-icon>
 					<!--<mat-icon mat-card-avatar class="banner_icon " style="margin:15px auto;font-size:30px" title="Todas las Valoraciones">person</mat-icon>-->
 				</div>
 							
@@ -29,7 +29,7 @@
 							<mat-icon style="background-color:#353535;color:lightgreen;font-size:18px;border:#696969 1px solid;padding:3px;border-radius:50%;display:flex;justify-content:center;align-items:center">phone</mat-icon>
 						</div>
 						<div style="display:flex;align-items:center " *ngIf="switchDivCapacity">
-							<mat-icon style="background-color:#353535;color:lightgreen;font-size:18px;border:#696969 1px solid;padding:3px;border-radius:50%;display:flex;justify-content:center;align-items:center">group</mat-icon>
+							<mat-icon  style="background-color:#353535;color:lightgreen;font-size:18px;border:#696969 1px solid;padding:3px;border-radius:50%;display:flex;justify-content:center;align-items:center">group</mat-icon>
 						</div>
 						<!-- <span class="material-icons icon" *ngIf="switchDivCapacity">
 						group</span> -->
@@ -56,7 +56,7 @@
 			<!-- icono Add (new card) -->
 				<div class="w15 csrpointer div_icon right" (click)="hideImagesCard('')">
 					
-					<mat-icon class="banner_icon"  title="Información" (click)="setPanel(2)">double_arrow</mat-icon>
+					<mat-icon class="banner_icon" matTooltipClass="bx_tooltip"  matTooltip="Nuevo alojamiento" (click)="setPanel(2)">double_arrow</mat-icon>
 				
 				</div>
 			</div>

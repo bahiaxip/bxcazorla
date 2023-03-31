@@ -26,6 +26,7 @@ import { CardInfoservicesComponent } from './card/card-header/card-infoservices/
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ModalComponent } from './modal/modal.component';
 import { NewcardHeaderComponent } from './newcard/newcard-header/newcard-header.component';
+
 @NgModule({
   declarations: [
     CardrentComponent,

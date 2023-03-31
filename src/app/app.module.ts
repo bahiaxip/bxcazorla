@@ -44,6 +44,7 @@ import { NavHeaderComponent } from './nav-header/nav-header.component';
 //import { CardHeaderComponent } from './card-header/card-header.component';
 //import { CardContentComponent } from './card-content/card-content.component';
 //import { SharedModule } from './shared/shared.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { NavHeaderComponent } from './nav-header/nav-header.component';
     //PipesCommonModule,
     CardrentModule,
     //MatFormFieldModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule
     
   ],
   exports:[

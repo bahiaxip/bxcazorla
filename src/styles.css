@@ -99,6 +99,13 @@ html,body{
 ::-webkit-scrollbar{
 	display: none;
 }
+
+.bx_tooltip{
+	background-color: #353535;
+	font-family:Quicksand;
+	font-weight: bold;
+	font-size:13px;
+}
 /* media query a buttongroup de angular material*/
 @media(max-width:750px){
 	.button_group .btn>button>span{		

@@ -47,7 +47,7 @@
 	align-items:center;
 	display:flex;
 	font-size:28px;
-	transition:all .5s linear;
+	transition:font-size .5s linear;
 }
 .nav_header .header .div_iconmove.right{
 	display:flex;

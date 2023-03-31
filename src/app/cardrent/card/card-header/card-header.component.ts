@@ -42,6 +42,7 @@ export class CardHeaderComponent implements OnInit {
   private subscriptionHeightInfo:any;
   private subscriptionSelectedCard:any;
 
+  public headerPanels:any;
 
   //section4
   @ViewChild('bannerp1',{static:true}) private bannerp1!:ElementRef;
@@ -59,7 +60,8 @@ export class CardHeaderComponent implements OnInit {
     console.log("desde header: ",this.selectedCard)
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    
     //actualizamos el ancho para los mensajes deslizantes de valoraciones
 //necesario window.addEventListener(resize) para actualizar maxWidthBannerp3
     this.maxWidthBannerp3=this.bannerp3.nativeElement.parentElement.parentElement.clientWidth;

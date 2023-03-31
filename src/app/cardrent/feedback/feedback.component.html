@@ -3,8 +3,8 @@
 <!-- header feedback -->
 	<div class="flex_item " style=""  >
 		<div class="w15 csrpointer div_icon left" >			
-			<mat-icon class="banner_icon left floatL " title="Volver a alojamientos" (click)="switchForm()" *ngIf="switchHeightForm">close</mat-icon>
-			<mat-icon class="banner_icon " title="Volver a alojamientos" (click)="switchForm(true)" *ngIf="!switchHeightForm">add_circle</mat-icon>
+			<mat-icon class="banner_icon left floatL " matTooltipClass="bx_tooltip" matTooltip="Cerrar ventana" (click)="switchForm()" *ngIf="switchHeightForm">close</mat-icon>
+			<mat-icon class="banner_icon " matTooltip="Añadir valoración" matTooltipClass="bx_tooltip" (click)="switchForm(true)" *ngIf="!switchHeightForm">add_circle</mat-icon>
 			<div class="w100 h100" (click)="switchForm()">
 			</div>
 
@@ -100,7 +100,7 @@
 		</div>
 
 		<div class="w15 csrpointer div_icon right" (click)="switchForm()">
-			<mat-icon class="banner_icon right" title="Volver a alojamientos" (click)="setPanel(1)">double_arrow</mat-icon>
+			<mat-icon class="banner_icon right" matTooltipClass="bx_tooltip" matTooltip="Volver a alojamientos" (click)="setPanel(1)">double_arrow</mat-icon>
 		</div>
 
 	</div>

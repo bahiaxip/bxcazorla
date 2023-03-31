@@ -1,12 +1,15 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { CardService } from '../services/card.service';
+//import {TooltipPosition} from '@angular/material/tooltip';
+import { SharedModule } from '../shared/shared.module';
+//import {TooltipPosition} from '@angular/material/tooltip';
 @Component({
   selector: 'pre-nav-header',
   templateUrl: './nav-header.component.html',
   styleUrls: ['./nav-header.component.css']
 })
 export class NavHeaderComponent implements OnInit {
-  @Input() icons:any;
+  @Input() panels:any;
   @Input() title:any;
   //public left:any;
   //public right:any;
@@ -36,7 +39,7 @@ export class NavHeaderComponent implements OnInit {
   sendPanel(panel:number){
          console.log("llega a nav-header")
     this._cardService.setPanel(panel);
-    console.log("el iconssection es: ",this.icons)
+    //console.log("el iconssection es: ",this.icons)
     //this._cardService.setSection(this.icons.section)
   }
 }

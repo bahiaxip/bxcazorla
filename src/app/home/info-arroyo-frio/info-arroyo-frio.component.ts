@@ -12,9 +12,14 @@ export class InfoArroyoFrioComponent implements OnInit {
 
   public headerTitle:any='Más sobre ArroyoFrío';
   public dataHeader:any;
+  public headerPanels:any;
   constructor(private _cardService:CardService) { }
 
   ngOnInit(): void {
+    this.headerPanels = {
+      left:'1',
+      tooltip_left:'ArroyoFrío'
+    }
     this.dataHeader={      
       section:1,
       left : 1

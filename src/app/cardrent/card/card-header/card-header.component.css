@@ -52,6 +52,12 @@
 	top:6px;
 	margin:auto 10px;
 }
+.flex_item .banner_icon:hover{
+	color:#D3D3D3;
+}
+.flex_item .banner_icon:active{
+	color:#37E369;
+}
 .flex_item .banner_icon.left{
 	
 	transform:rotate(180deg);

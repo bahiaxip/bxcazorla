@@ -9,17 +9,19 @@ import { CardService } from '../../services/card.service';
 export class ArroyofrioComponent implements OnInit {
   public panelActive:boolean = true;
   public headerTitle:string = 'Arroyo Frío';
-  public icons:any;
+  public headerPanels:any;
 
   constructor(private _cardService:CardService) { }
 
   ngOnInit(): void {
     this.panelActive = true;
-    this.icons = {
+    this.headerPanels = {
       
       //status:'full',
       left: '0',
-      right:'2'
+      tooltip_left : 'Menú principal',
+      right:'2',
+      tooltip_right : 'Más sobre ArroyoFrío'
     }
   }
 

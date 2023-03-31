@@ -31,6 +31,8 @@ export class PlacesComponent implements OnInit {
   public headerTitle2:string = "Lugares próximos a Arroyo Frío";
   public icons:any;
   public icons2:any;
+  public headerPanels:any;
+  public headerPanels2:any;
   //section2
   @ViewChild('midivslider',{static:true}) private midivslider!:ElementRef;
   constructor(private _cardService:CardService) {
@@ -40,14 +42,22 @@ export class PlacesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  this.icons = {
-    //section:2,    
-    right:'1'
-  }
-  this.icons2 = {
-    //section:2,
-    left:'0',
-  } 
+    this.headerPanels = {
+      right: '1',
+      tooltip_right:this.headerTitle2,
+    }
+    this.headerPanels2 = {
+      left: '0',
+      tooltip_left:this.headerTitle,
+    }
+    this.icons = {
+      //section:2,    
+      right:'1'
+    }
+    this.icons2 = {
+      //section:2,
+      left:'0',
+    } 
     //suscripción para dirigir al panel almacenado en el servicio (getPanel()) 
     this.subscriptionPanel = this._cardService.panel$.subscribe(()=> {
       let section=this._cardService.getSection();

@@ -12,6 +12,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+//además de añadirlo al app.module es necesario añadirlo aquí para el componente card y 
+//declararlo en la sección exports
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -24,7 +27,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCardModule,
     MatSelectModule,
     MatExpansionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    //MatTooltipModule
   ],
   exports:[
     MatInputModule,
@@ -34,7 +38,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCardModule,
     MatSelectModule,
     MatExpansionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }
