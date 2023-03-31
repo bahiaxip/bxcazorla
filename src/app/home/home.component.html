@@ -6,7 +6,7 @@
 <section class="section1" #section1 >
 	<!--botón superior -->	
 	<button mat-icon-button (click)="setSection(sectionId-1)" class="btn_slider_section top" *ngIf="sectionId != 1">
-		<mat-icon class="icon">
+		<mat-icon class="icon" matTooltipClass="bx_tooltip" [matTooltip]="last">
 			double_arrow
 		</mat-icon>
 	</button >
@@ -68,7 +68,7 @@
 	</div>
 	<!-- botón inferior -->
 	<button mat-icon-button (click)="setSection(sectionId+1)" class="btn_slider_section bottom">
-		<mat-icon class="icon">double_arrow</mat-icon>
+		<mat-icon class="icon" matTooltipClass="bx_tooltip" [matTooltip]="next">double_arrow</mat-icon>
 	</button>
 
 </section>

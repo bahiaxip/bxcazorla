@@ -37,6 +37,11 @@ export class HomeComponent implements OnInit {
   //el buttonValue permite relacionar el botón checkeado en el buttongroup(del grupo de botones lateral)
   //de Angular Material, tb se pueden modificar el CSS por defecto 
   public buttonValue:any;
+  //se ha añadido el método setLastNowAndNext() para obtener el nombre de las secciones (inicio,lugares,actividades...)
+  //el string buttonValue es distinto al now aunque hace referencia al mismo section, pero con un texto diferente.
+  public last:string="";
+  public now:string = "";
+  public next:string="";
 
   public images2:any;
   panelOpenState=false;
@@ -544,6 +549,20 @@ export class HomeComponent implements OnInit {
     
     console.log(data)
   }
+  setLastNowAndNext(id:any){
+    let data = ['Inicio','Lugares','Aventura','Alojamiento','Galería'];
+    let buttonValues = ['home','places','entertainment','rent','gallery'];
+    let last = "",next = "", now = data[id-1],buttonvalue = buttonValues[id-1];
+    if(id == 1){
+      next = data[id];
+    }else if(id == 5){
+      last = data[id-2];
+    }else{
+      last = data[id-2];
+      next = data[id];
+    }
+    return {last,now,next,buttonvalue}
+  }
   
   //dirigir al section pasado por parámetro
   setSection(id:number){ 
@@ -551,13 +570,13 @@ export class HomeComponent implements OnInit {
     if(id==1){
       this.selectedSection=this.section1.nativeElement;
       this.sectionId=1;
-      this.buttonValue="home"
+      //this.buttonValue="home"
       console.log("al 1")
       this.selectedSection.scrollIntoView({behavior:"smooth"});       
     }else if(id==2){
       this.selectedSection=this.section2.nativeElement;
       this.sectionId=2;
-      this.buttonValue="places"
+      //this.buttonValue="places"
       let restScrollY=window.scrollY - this.firstHeight*(this.sectionId-1);
 
       console.log("al 2")
@@ -565,14 +584,14 @@ export class HomeComponent implements OnInit {
     }else if(id==3){
       this.selectedSection=this.section3.nativeElement;
       this.sectionId=3;
-      this.buttonValue="entertainment"
+      //this.buttonValue="entertainment"
       console.log("al 3")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});
     }
     else if(id==4){
       this.selectedSection=this.section4.nativeElement;
       this.sectionId=4;
-      this.buttonValue="rent"
+      //this.buttonValue="rent"
       console.log("al 4")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});        
      //this.selectedSection.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"});        
@@ -581,7 +600,7 @@ export class HomeComponent implements OnInit {
     else if(id==5){
       this.selectedSection=this.section5.nativeElement;
       this.sectionId=5;
-      this.buttonValue="gallery"
+      //this.buttonValue="gallery"
       console.log("al 5")
       this.selectedSection.scrollIntoView({behavior:"smooth",block:"center"});
       
@@ -589,8 +608,12 @@ export class HomeComponent implements OnInit {
 
     //si se realiza el section desde los botones de flecha se actualiza tb el section del servicio
     this._cardService.selectedSection=this.sectionId;
-    
-    console.log("tipo de botón: ",this.buttonValue)
+    let data = this.setLastNowAndNext(id);
+    this.buttonValue = data.buttonvalue;
+    this.now = data.now;
+    this.last = data.last;
+    this.next = data.next;
+    //console.log("tipo de botón: ",this.buttonValue)
   }
 
   //solo se ejecuta desde section1 ???
