@@ -125,8 +125,8 @@
 
 .mainmenu .menu .linkmenu .link:hover{
 	/*color: #00c341;*/
-	/*color:#37e369;*/
-	color:lightgreen;
+	color:#37e369;
+	/*color:lightgreen;*/
 	transition: color 0.3s ease-in-out
 	
 }
@@ -136,7 +136,7 @@
 	border:white 1px solid;
 	border-radius:50%;
 	padding:2px;
-	margin-top:5px;
+	margin-top:9px;
 	margin-left:5px;
 	cursor:pointer;
 	background-color: transparent;
@@ -150,7 +150,7 @@
 
 .mainmenu .menu .linkmenu .icon:hover{
 	//background-color: lightgreen;
-	color: lightgreen;
+	color: #37E369;
 }
 
 .mainmenu .menu .linkmenu .icon:active{
@@ -162,6 +162,7 @@
 }
 .mainmenu .menudetails{
 	font-family: TitanOne;
+	font-weight:normal;
 	width: 50%;
 	height: 100%;
 	transition: transform 0.5s linear, opacity 0.5s linear;
@@ -184,7 +185,7 @@
 .mainmenu .menu .optionmenu{
 	width:100%;
 	border: #353535 1px solid;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	
 	background-color:rgba(0,0,0,.5);
 	cursor: pointer;

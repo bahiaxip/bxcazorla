@@ -65,14 +65,14 @@ mat-button-toggle:hover{
 	outline: #D2D2D2 1px solid;	
 }
 mat-button-toggle:active{
-	color: lightgreen !important;
+	color: #37e369 !important;
 }
 .mat-button-toggle-checked{
 	background-color: rgba(0,0,0,.3);
 	outline: #D2D2D2 1px solid;
 	/*necesario important*/
 	/*color: #E3E3E3 !important;*/
-	color: lightgreen !important;
+	color: #37E369 !important;
 	
 }
 
