@@ -1,5 +1,11 @@
-<div #activity class="back_activity"   [ngStyle]="{'width':firstwidth*2+'px'}" >
-	<div [ngStyle]="{'width':firstwidth+'px'}"   >
+<div #activity class="back_activity" style="position:relative"   [ngStyle]="{'width':firstwidth*2+'px'}" >
+	
+	<div [ngStyle]="{'width':firstwidth+'px'}"  style="position:relative" >
+		<div style="display:none;position:absolute;height:100%;background-color:orange;z-index:1;justify-content:center;align-items:center;" [ngStyle]="{'width':firstwidth+'px'}">
+		<div style="position:relative;display:flex;align-items:center;justify-content:center;vertical-align: middle;width:75%">
+			<img src="assets/activities/descenso.jpg" style="width:100%">
+		</div>
+	</div>
 		<div class="box_activity" >
 			<div class="div_activityheader" >		
 				<!-- <pre-activity-header panel = 'panel1' ></pre-activity-header> -->
@@ -19,6 +25,10 @@
 		</div>
 	</div>
 	<div [ngStyle]="{'width':firstwidth+'px'}"   >
+		<div style="display:none;position:absolute;height:100%;background-color:orange;z-index:1;justify-content:center;align-items:center;" [ngStyle]="{'width':firstwidth+'px'}">
+		<div style="position:relative;display:flex;align-items:center;justify-content:center;vertical-align: middle;width:75%">
+			<img src="assets/activities/descenso.jpg" style="width:100%">
+		</div>
 		<div class="box_activity">
 			<div class="back_header_arroyofrio">
 				<pre-nav-header [panels] = "headerPanels2" [title]="headerTitle2"></pre-nav-header>
