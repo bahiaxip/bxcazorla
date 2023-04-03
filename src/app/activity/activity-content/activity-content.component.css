@@ -23,7 +23,97 @@
 	justify-content: center;
 	position:relative;
 	overflow:hidden;
-		
+}
+.ocio:hover .hidden_modal .box_caption,.ocio:hover .hidden_modal .box_icons{
+	transform:translate(0,0);
+	opacity:1;
+}
+
+.ocio .hidden_modal{
+	align-items:flex-end;
+	display:flex;
+	height:100%;
+	justify-content:center;
+	overflow:hidden;
+	position:absolute;
+	transition:all .5s linear;
+	width:100%;
+}
+.ocio .hidden_modal .box_caption{
+	align-items:center;
+	background-color:rgba(0,0,0,.9);
+	/*height:50px;*/
+	margin-bottom:50px;
+	height:50px;
+	max-width:80%;
+	/*padding:10px 20px;*/
+	opacity:0;
+	overflow:hidden;
+	transition:all 1s linear;
+	width:auto;
+}
+
+.ocio .hidden_modal .box_caption.show_info{opacity:1;height:80%;overflow:auto }
+
+.ocio .hidden_modal .box_caption .title{
+	width:100%;
+	display:flex;
+	justify-content: center;
+	transition:all 1s linear;
+}
+.ocio .hidden_modal .box_caption.show_info .title{padding-top:30px }
+.ocio .hidden_modal .box_caption .title p{
+	color:#FFF;
+	font-family:Quicksand;
+	font-weight:bold;
+}
+.ocio .hidden_modal .box_caption .text_info{
+	color:#D3D3D3;
+	margin:auto;
+	font-size:16px;
+	/*transition:font-size .3s ease-in ;*/
+	width:80%;
+	/*padding-bottom:20px;*/
+	
+}
+.ocio .hidden_modal .box_caption .text_info.show_info{
+	height:80%;
+
+	/*font-size:16px;
+	max-height:200px;*/
+}
+.ocio .hidden_modal .box_caption .text_info.show_info p{
+	padding-bottom:25px;
+}
+.ocio .hidden_modal .box_icons{
+	background-color:rgba(0,0,0,.7);
+	border-bottom-left-radius:10px;
+	border-top-left-radius:10px;
+	bottom:50px;
+	height:100px;
+	position:absolute;
+	right:1px;
+	transform:translate(100%,0);
+	transition:all .5s linear;
+	width:50px;
+}
+.ocio .hidden_modal .box_icons .icons{
+	display:flex;
+	flex-flow:row wrap;
+	height:100%;
+	justify-content:center;
+	width:100%;
+}
+.ocio .hidden_modal .box_icons .icons .maticon{
+	color:#696969;
+	cursor:pointer;
+	margin:auto 30px;
+}
+.ocio .hidden_modal .box_icons .icons .maticon:hover{
+	color:#D3D3D3;
+}
+.ocio .hidden_modal .box_icons .icons .maticon:active{
+	color:#37E369;
 }
 .ocio .image{
 	width: 100%;

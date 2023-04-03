@@ -22,7 +22,34 @@
 					<p style="color:white;margin:auto;font-size:20px;">Platos típicos</p>
 				</div> -->
 					
-				
+				<div class="hidden_modal" >
+					<div class="box_caption" [ngClass] = "{'show_info': showerInfo}" #caption>
+						<div class="title">
+							<p>Senderismo</p>	
+						</div>
+						<div class="text_info" [ngClass]="{'show_info':showerInfo}">
+							<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
+							</p>
+						</div>
+						
+						<!-- <mat-icon class="material-icons" style="color:#37E369;margin:auto 30px">info</mat-icon> -->
+					</div>
+					<div class="box_icons">
+						<div class="icons">
+							<mat-icon class="material-icons maticon" (click)="showInfo($event)">info</mat-icon>
+							<mat-icon class="material-icons maticon" style="color:#353535;margin:auto 30px;">zoom_in</mat-icon>	
+						</div>
+						
+					</div>
+				</div>
 			</div>
 			
 		</div>

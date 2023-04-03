@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,ViewChild,ElementRef } from '@angular/core';
 //import { GalleryPlaces } from '../../models/gallery-places';
 //import { Places } from '../places';
 @Component({
@@ -20,6 +20,8 @@ export class ActivityContentComponent implements OnInit {
   public image:string;
   public image2:string;
   public active:boolean=true;
+  public showerInfo:boolean = false;
+  @ViewChild('caption',{static:true}) private caption!:ElementRef;
   constructor() {
     this.selectedImage="";
     this.selectedImage2="";
@@ -89,5 +91,19 @@ export class ActivityContentComponent implements OnInit {
     console.log("adios")
   } 
   */
+
+  showInfo(event:any){
+    this.showerInfo = (this.showerInfo) ? false : true;
+    //subimos el scroll, ya que cuando se desactiva el overflow no permite volver al titulo inicial
+    this.caption.nativeElement.scrollTo(0,0);
+    /*this.caption.nativeElement.scroll({
+      top:0,
+      left:0,
+      behavior:'smooth',
+      block:'center'
+    });*/
+    console.log("event: ",event)
+    console.log("howinfo: ",this.caption.nativeElement)
+  }
 
 }
