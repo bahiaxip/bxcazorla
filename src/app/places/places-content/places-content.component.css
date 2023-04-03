@@ -143,7 +143,12 @@
 	color:#696969;
 	margin-top:8px
 }
-
+.box_image .div_image .title_image .icon_image:hover{	
+	color:#D3D3D3 !important;
+}
+.box_image .div_image .title_image .icon_image:active{
+	color:#37E369 !important;
+}	
 
 
 				/*class clone div_image */
