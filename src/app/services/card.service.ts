@@ -37,7 +37,11 @@ export class CardService {
   public selectedSection:any;
   //switch animación de lluvia
   public rainAnimation:any;
+
   
+
+
+
   constructor(private _http:HttpClient){}
 
   getWeather():Observable<any>{
@@ -152,6 +156,8 @@ export class CardService {
     this.rainAnimation=true;
     this.subjectRainAnimation.next();
   }
+
+  
 
 
 

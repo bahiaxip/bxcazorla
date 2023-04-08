@@ -12,7 +12,7 @@
 			<div class="ocio">
 				<!--<div class="image"></div>-->
 				<!-- panel 1 (actividad multiaventura -->
-				<img *ngIf="panel=='panel1';else elseBlock" class="image aa" [src]="image" [ngClass]='{"active":active}' (transitionend)="onTransitionEnd($event)"/>
+				<img *ngIf="panel=='panel0';else elseBlock" class="image aa" [src]="image" [ngClass]='{"active":active}' (transitionend)="onTransitionEnd($event)"/>
 				<!-- panel 2 (ocio)-->
 				<ng-template #elseBlock>
 					<img class="image" [ngClass]='{"active":active}' [src]="image2" (transitionend)="onTransitionEnd($event)"/>	
@@ -45,7 +45,7 @@
 					<div class="box_icons">
 						<div class="icons">
 							<mat-icon class="material-icons maticon" (click)="showInfo($event)">info</mat-icon>
-							<mat-icon class="material-icons maticon" style="color:#353535;margin:auto 30px;">zoom_in</mat-icon>	
+							<mat-icon class="material-icons maticon" (click)="showModal()" style="color:#353535;margin:auto 30px;">zoom_in</mat-icon>	
 						</div>
 						
 					</div>

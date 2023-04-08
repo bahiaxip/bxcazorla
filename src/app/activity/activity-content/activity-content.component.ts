@@ -1,6 +1,8 @@
 import { Component, OnInit,Input,ViewChild,ElementRef } from '@angular/core';
 //import { GalleryPlaces } from '../../models/gallery-places';
 //import { Places } from '../places';
+import { CardService } from '../../services/card.service';
+import { ActivityService } from '../services/activity.service';
 @Component({
   selector: 'pre-activity-content',
   templateUrl: './activity-content.component.html',
@@ -19,19 +21,27 @@ export class ActivityContentComponent implements OnInit {
   //public panel:any;
   public image:string;
   public image2:string;
+  //imagen para el fondo, es el mismo string pero con terminación "_back.jpg"
+  public backModalImage:string;
   public active:boolean=true;
   public showerInfo:boolean = false;
-  @ViewChild('caption',{static:true}) private caption!:ElementRef;
-  constructor() {
-    this.selectedImage="";
-    this.selectedImage2="";
-    this.image = '../../assets/activities/senderismo.jpg';
-    this.image2 = '../../assets/activities/servicios/supermercado.jpg';
 
+  @ViewChild('caption',{static:true}) private caption!:ElementRef;
+  constructor(
+      private _cardService:CardService, 
+      private _activityService:ActivityService
+  ) {
+      this.selectedImage="";
+      this.selectedImage2="";
+      this.image = 'assets/activities/senderismo.jpg';
+      this.image2 = 'assets/activities/services/supermercado.jpg';
+      this.backModalImage = 'assets/activities/senderismo_back.jpg';
     //this.places=Places;
   }
 
   ngOnInit(): void {
+    this._cardService.setPanel(0);
+    //this._activityService.setImageAct(this.image);
     if(this.active){
       //this.selectedImage=this.image;
       //this.selectedImage2=this.image2;
@@ -41,17 +51,17 @@ export class ActivityContentComponent implements OnInit {
   }
 
   setImage(image:string){
-    if(this.panel=='panel1'){
-      this.selectedImage='../../'+image;  
-      console.log("selectedImage:",image)
-    }else{
-      this.selectedImage2='../../'+image;
-      console.log("selectedImage2:",image)
+    let panel = this._cardService.getPanel();
+    //establecemos la imagen seleccionada en el servicio    
+    this._activityService.setImageAct(image);
+    if(this.panel=='panel0'){
+      this.selectedImage = this._activityService.getImageAct();      
+    }else{      
+      this.selectedImage2=this._activityService.getImageAct();      
     }
     this.active=false;
-    
-    //console.log("setimage:",image)
   }
+  
   //@HostListener('transitionend', ['$event'])
   onTransitionEnd(e:Event){
     console.log("klasdlfkasjdfñ",e)
@@ -104,6 +114,11 @@ export class ActivityContentComponent implements OnInit {
     });*/
     console.log("event: ",event)
     console.log("howinfo: ",this.caption.nativeElement)
+  }
+
+  showModal(){
+    this._activityService.switchModal();
+    console.log("modal activado")
   }
 
 }

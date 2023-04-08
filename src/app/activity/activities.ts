@@ -49,37 +49,37 @@ export const Activities2:GalleryActivities[] = [
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/servicios/supermercado.jpg",
+		image: "assets/activities/services/supermercado.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/servicios/labolera.jpg",
+		image: "assets/activities/services/labolera.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/servicios/laforchetta.jpg",
+		image: "assets/activities/services/laforchetta.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/servicios/bardecopas.jpg",
+		image: "assets/activities/services/bardecopas.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/servicios/heladeria.jpg",
+		image: "assets/activities/services/heladeria.jpg",
 		detail:""
 	},
 	{
 		_id:"",
 		title: 'Tapas',
-		image: "assets/activities/servicios/spa.jpg",
+		image: "assets/activities/services/spa.jpg",
 		detail:""
 	},
 	
