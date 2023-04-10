@@ -25,8 +25,9 @@
 	overflow:hidden;
 }
 .ocio:hover .hidden_modal .box_caption,.ocio:hover .hidden_modal .box_icons{
-	transform:translate(0,0);
+	transform:translate(0,0);	
 	opacity:1;
+	/*right:1px;*/
 }
 
 .ocio .hidden_modal{
@@ -44,7 +45,7 @@
 	background-color:rgba(0,0,0,.9);
 	/*height:50px;*/
 	margin-bottom:50px;
-	height:50px;
+	height:60px;
 	max-width:80%;
 	/*padding:10px 20px;*/
 	opacity:0;
@@ -65,12 +66,15 @@
 .ocio .hidden_modal .box_caption .title p{
 	color:#FFF;
 	font-family:Quicksand;
+	font-size:18px;
 	font-weight:bold;
 }
 .ocio .hidden_modal .box_caption .text_info{
 	color:#D3D3D3;
 	margin:auto;
+	font-family:Quicksand;
 	font-size:16px;
+	font-weight:bold;
 	/*transition:font-size .3s ease-in ;*/
 	width:80%;
 	/*padding-bottom:20px;*/
@@ -84,15 +88,18 @@
 }
 .ocio .hidden_modal .box_caption .text_info.show_info p{
 	padding-bottom:25px;
+	line-height:1.5em;
 }
 .ocio .hidden_modal .box_icons{
 	background-color:rgba(0,0,0,.7);
+	border:transparent 1px solid;
 	border-bottom-left-radius:10px;
 	border-top-left-radius:10px;
 	bottom:50px;
+	box-sizing:border-box;
 	height:100px;
 	position:absolute;
-	right:1px;
+	right:0px;
 	transform:translate(100%,0);
 	transition:all .5s linear;
 	width:50px;

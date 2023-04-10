@@ -1,5 +1,6 @@
 import { Component, OnInit,Input,ViewChild,ElementRef } from '@angular/core';
 //import { GalleryPlaces } from '../../models/gallery-places';
+//import { GalleryActivities } from '../../models/gallery-activities';
 //import { Places } from '../places';
 import { ActivityService } from '../services/activity.service';
 @Component({
@@ -50,6 +51,7 @@ export class ActivityContentComponent implements OnInit {
         this.image2 = this.activities[0].image;  
     }    
   }
+  //actualiza los datos visibles del activity (título, detalle e imagen)
   setActivity(activity:any){            
       if(this.panel=='panel0'){
           this.title = activity.title;
@@ -62,11 +64,26 @@ export class ActivityContentComponent implements OnInit {
       }
       this.active=false;
   }
+  //cambiar imagen
+  selectImage(activity:any){
+      this.checkPanelInfo(activity);
+  }
+  //comprueba si el panel de info se encuentra desplegado, en ese caso retardamos 1 segundo para 
+  //que se cierre manteniendo el tiempo de animación.
+  checkPanelInfo(activity:any){
+      if(this.showerInfo){
+          this.showerInfo = false;  
+          setTimeout(()=>{ this.setImage(activity) },1000);
+      }else
+          this.setImage(activity);
+      
+  }
   setImage(activity:any){
-    //establecemos la imagen seleccionada en el servicio
-    this.setActivity(activity);    
-    this._activityService.setModalAct(activity);    
-    this.active=false;
+    //establecemos el nuevo activity (mismo componente) y
+    //establecemos la nueva imagen del modal
+      this.setActivity(activity);
+      this._activityService.setModalAct(activity);
+      this.active=false;
   }
 
   //@HostListener('transitionend', ['$event'])
@@ -107,23 +124,14 @@ export class ActivityContentComponent implements OnInit {
   } 
   */
 
-  showInfo(event:any){
+  showInfo(){
     this.showerInfo = (this.showerInfo) ? false : true;
     //subimos el scroll, ya que cuando se desactiva el overflow no permite volver al titulo inicial
-    this.caption.nativeElement.scrollTo(0,0);
-    /*this.caption.nativeElement.scroll({
-      top:0,
-      left:0,
-      behavior:'smooth',
-      block:'center'
-    });*/
-    console.log("event: ",event)
-    console.log("howinfo: ",this.caption.nativeElement)
+    this.caption.nativeElement.scrollTo(0,0);    
   }
-
+  //mostramos modal con imagen a pantalla completa
   showModal(){
-    this._activityService.switchModal();
-    console.log("modal activado")
+    this._activityService.switchModal();    
   }
 
 }

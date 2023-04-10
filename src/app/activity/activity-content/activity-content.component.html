@@ -33,7 +33,7 @@
 						<div class="text_info" [ngClass]="{'show_info':showerInfo}">
 							<p *ngIf="panel=='panel0';else elseDetail" [innerHTML]="detail"></p>
 							<ng-template #elseDetail>
-								<p>{{detail2}}</p>	
+								<p [innerHTML]="detail2"></p>	
 							</ng-template>
 						</div>
 						
@@ -41,8 +41,8 @@
 					</div>
 					<div class="box_icons">
 						<div class="icons">
-							<mat-icon class="material-icons maticon" (click)="showInfo($event)">info</mat-icon>
-							<mat-icon class="material-icons maticon" (click)="showModal()" style="color:#353535;margin:auto 30px;">zoom_in</mat-icon>	
+							<mat-icon class="material-icons maticon" (click)="showInfo()">info</mat-icon>
+							<mat-icon class="material-icons maticon" (click)="showModal()" >zoom_in</mat-icon>	
 						</div>
 						
 					</div>
@@ -61,7 +61,7 @@
 				<div class="activity" style="">
 					
 					<span *ngFor="let activity of activities">
-						<img class="image" src="{{activity.image}}" (click)="setImage(activity)"/>
+						<img class="image" src="{{activity.image}}" (click)="selectImage(activity)"/>
 					</span>
 					<!-- <img class="image" src="../../assets/activities/rafting.jpg"/>
 					<img class="image" src="../../assets/activities/barranquismo_3.jpg"/>
