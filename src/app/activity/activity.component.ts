@@ -31,11 +31,10 @@ export class ActivityComponent implements OnInit {
   public headerTitle:string = "Actividades multiaventura";
   public headerTitle2:string = "Servicios";
   //imágenes iniciales del modal de cada uno de los paneles (paneles 0 y 1 )
-  public imageModalPanel0:string = "assets/activities/senderismo_back.jpg";
-  public imageModalPanel1:string = "assets/activities/services/supermercado_back.jpg";
+  //public imageModalPanel0:string = "assets/activities/senderismo_back.jpg";
+  //public imageModalPanel1:string = "assets/activities/services/supermercado_back.jpg";
   public imageModalAct:string="";
-  public imageModalAct2:string="";
-  public imageAct:string="";
+  public imageModalAct2:string="";  
   //interruptor que activa la clase active al modal de pantalla completa
   public switchModalAct:boolean = false;
   //public panel:string;
@@ -46,11 +45,12 @@ export class ActivityComponent implements OnInit {
   ){}
 
   ngOnInit(){
-    //establecemos la imagen y el modal de senderismo por defecto al inicio
-    this._activityService.setImageAct("assets/activities/senderismo.jpg");
+    
     //establecemos las imágenes del modal de los 2 paneles
-    this.imageModalAct = this._activityService.getModalAct();
-    this.imageModalAct2 = this.imageModalPanel1;
+    //this.imageModalAct = this._activityService.getModalAct();
+    //this.imageModalAct2 = this.imageModalPanel1;
+    this.imageModalAct = this.activities[0].imageModal;
+    this.imageModalAct2 = this.activities2[0].imageModal;
     //establecemos las características del header (según los paneles que tenga el section)
     this.headerPanels = {
       right:'1',
@@ -75,11 +75,11 @@ export class ActivityComponent implements OnInit {
     //suscripción que establece la nueva imagen del modal (imagen duplicada con mayor resolución)
     this.subscriptionModalAct = this._activityService.modalAct$.subscribe(()=>{
       let imageModalBack = this._activityService.getModalAct();
-      let panel = this._cardService.getPanel();
+      let panel = this._cardService.getPanel();      
       if(panel == 1){
-        this.imageModalAct2 = imageModalBack;  
+        this.imageModalAct2 = imageModalBack;
       }else{
-        this.imageModalAct = imageModalBack;  
+        this.imageModalAct = imageModalBack;
       }
     })
     //suscripción que permite mostrar el modal con una imagen igual pero con mayor resolución,
@@ -103,8 +103,6 @@ export class ActivityComponent implements OnInit {
       this.selectedPanel=1;
       this.activity.nativeElement.style.transform="translateX(-"+size+")";  
     }
-    console.log(this.selectedPanel)
-    
   }
 
 

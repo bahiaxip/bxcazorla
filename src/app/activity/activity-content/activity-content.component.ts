@@ -1,7 +1,6 @@
 import { Component, OnInit,Input,ViewChild,ElementRef } from '@angular/core';
 //import { GalleryPlaces } from '../../models/gallery-places';
 //import { Places } from '../places';
-import { CardService } from '../../services/card.service';
 import { ActivityService } from '../services/activity.service';
 @Component({
   selector: 'pre-activity-content',
@@ -19,56 +18,62 @@ export class ActivityContentComponent implements OnInit {
   public selectedImage2:string;
   //directiva panel que distingue panel1 de panel2
   //public panel:any;
-  public image:string;
-  public image2:string;
+  public image:string="";
+  public image2:string="";
   //imagen para el fondo, es el mismo string pero con terminación "_back.jpg"
-  public backModalImage:string;
+  //public backModalImage:string;
+
+  public title:string="";
+  public title2:string = "";
+  public detail:string="";
+  public detail2:string="";
   public active:boolean=true;
   public showerInfo:boolean = false;
 
   @ViewChild('caption',{static:true}) private caption!:ElementRef;
-  constructor(
-      private _cardService:CardService, 
+  constructor(      
       private _activityService:ActivityService
   ) {
       this.selectedImage="";
-      this.selectedImage2="";
-      this.image = 'assets/activities/senderismo.jpg';
-      this.image2 = 'assets/activities/services/supermercado.jpg';
-      this.backModalImage = 'assets/activities/senderismo_back.jpg';
-    //this.places=Places;
+      this.selectedImage2="";      
   }
 
   ngOnInit(): void {
-    this._cardService.setPanel(0);
-    //this._activityService.setImageAct(this.image);
-    if(this.active){
-      //this.selectedImage=this.image;
-      //this.selectedImage2=this.image2;
-      console.log("es true");
-    }
-
+    //this._cardService.setPanel(0);
+    if(this.panel == 'panel0'){
+        this.title = this.activities[0].title;
+        this.detail = this.activities[0].detail;
+        this.image = this.activities[0].image;
+    }else{
+        this.title2 = this.activities[0].title;
+        this.detail2 = this.activities[0].detail;
+        this.image2 = this.activities[0].image;  
+    }    
   }
-
-  setImage(image:string){
-    let panel = this._cardService.getPanel();
-    //establecemos la imagen seleccionada en el servicio    
-    this._activityService.setImageAct(image);
-    if(this.panel=='panel0'){
-      this.selectedImage = this._activityService.getImageAct();      
-    }else{      
-      this.selectedImage2=this._activityService.getImageAct();      
-    }
+  setActivity(activity:any){            
+      if(this.panel=='panel0'){
+          this.title = activity.title;
+          this.detail = activity.detail;
+          this.selectedImage = activity.image;      
+      }else{
+          this.title2 = activity.title;
+          this.detail2 = activity.detail;
+          this.selectedImage2=activity.image;      
+      }
+      this.active=false;
+  }
+  setImage(activity:any){
+    //establecemos la imagen seleccionada en el servicio
+    this.setActivity(activity);    
+    this._activityService.setModalAct(activity);    
     this.active=false;
   }
-  
+
   //@HostListener('transitionend', ['$event'])
-  onTransitionEnd(e:Event){
-    console.log("klasdlfkasjdfñ",e)
+  onTransitionEnd(e:Event){    
     this.image = this.selectedImage;
     this.image2 = this.selectedImage2;
-    this.active=true;
-    console.log("yeadd: e")
+    this.active=true;    
   }
   //efecto de seguimiento del cursor que va descubriendo y moviendo la imagen,
   //necesario evento mousemove y mouseout

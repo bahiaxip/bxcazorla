@@ -25,19 +25,16 @@
 				<div class="hidden_modal" >
 					<div class="box_caption" [ngClass] = "{'show_info': showerInfo}" #caption>
 						<div class="title">
-							<p>Senderismo</p>	
+							<p *ngIf="panel=='panel0';else elseTitle">{{title}}</p>
+							<ng-template #elseTitle>
+								<p>{{title2}}</p>
+							</ng-template>
 						</div>
 						<div class="text_info" [ngClass]="{'show_info':showerInfo}">
-							<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit error, iusto! Earum maiores impedit aperiam dolorum quas suscipit qui soluta culpa illum neque! Necessitatibus enim quibusdam accusantium reprehenderit, laborum natus.
-							</p>
+							<p *ngIf="panel=='panel0';else elseDetail" [innerHTML]="detail"></p>
+							<ng-template #elseDetail>
+								<p>{{detail2}}</p>	
+							</ng-template>
 						</div>
 						
 						<!-- <mat-icon class="material-icons" style="color:#37E369;margin:auto 30px">info</mat-icon> -->
@@ -64,7 +61,7 @@
 				<div class="activity" style="">
 					
 					<span *ngFor="let activity of activities">
-						<img class="image" src="{{activity.image}}" (click)="setImage(activity.image)"/>
+						<img class="image" src="{{activity.image}}" (click)="setImage(activity)"/>
 					</span>
 					<!-- <img class="image" src="../../assets/activities/rafting.jpg"/>
 					<img class="image" src="../../assets/activities/barranquismo_3.jpg"/>
