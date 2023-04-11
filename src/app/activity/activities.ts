@@ -35,14 +35,20 @@ export const Activities:GalleryActivities[] = [
 		title: 'Rafting',
 		image: "assets/activities/rafting.jpg",
 		imageModal:"assets/activities/rafting_back.jpg",
-		detail:`Algunos tramos del río Segura y del río Guadalquivir permiten la práctica de esta actividad, ideales para grupo de varias personas. Sin embargo es recomendable escoger los meses de primavera, cuando el caudal de los ríos suele ser más alto. Empresas como <b>Aventura Cazorla</b> en La Iruela y CazorlAventur en Arroyo Frío ofrecen este tipo de rutas.`
+		detail:`Algunos tramos del río Segura y del río Guadalquivir permiten la práctica de rafting. Sin embargo es recomendable escoger los meses de primavera, cuando el caudal de los ríos suele ser más alto. Empresas como <b>Aventura Cazorla</b> en La Iruela y CazorlAventur en Arroyo Frío ofrecen este tipo de rutas.`
 	},
 	{
 		_id:"3",
-		title: 'Ruta',
-		image: "assets/activities/ruta_rio.jpg",
-		imageModal:"assets/activities/ruta_rio_back.jpg",
-		detail:""
+		title: 'Descenso',
+		image: "assets/activities/descenso.jpg",
+		imageModal:"assets/activities/descenso_back.jpg",
+		detail:`En las cercanías de Arroyo Frío existen distintos lugares y senderos donde poder realizar descensos de distintas disciplinas:
+		<ul>
+			<li>Descenso de barrancos</li>
+			<li>Descenso en tirolina</li>
+			<li>Descenso en bicicleta</li>
+		</ul>
+		En el mismo municipio es posible contactar con empresas y obtener información.`
 	},
 	{
 		_id:"4",
@@ -59,16 +65,10 @@ export const Activities:GalleryActivities[] = [
 	},
 	{
 		_id:"5",
-		title: 'Descenso',
-		image: "assets/activities/descenso.jpg",
-		imageModal:"assets/activities/descenso_back.jpg",
-		detail:`En las cercanías de Arroyo Frío existen distintos lugares y senderos donde poder realizar descensos de distintas disciplinas:
-		<ul>
-			<li>Descenso de barrancos</li>
-			<li>Descenso en tirolina</li>
-			<li>Descenso en bicicleta</li>
-		</ul>
-		En el mismo municipio es posible contactar con empresas y obtener información.`
+		title: 'Buggies y 4X4',
+		image: "assets/activities/buggies.jpg",
+		imageModal:"assets/activities/buggies_back.jpg",
+		detail:`En Arroyo Frío podrás reservar rutas guiadas de 1 y 2 horas montado en un buggy o rutas guiadas de 4 y 5 horas en un vehículo 4x4 con el que podrás recorrer el parque natural de Cazorla.`
 	},
 	/*{
 		_id:"",
@@ -105,14 +105,14 @@ export const Activities2:GalleryActivities[] = [
 			<li>Casa Antonia</li>
 			<li>Burguer Comics</li>
 		</ul>
-		 En ellos podrás degustar la variedad de platos locales y regionales, tapas, pinchos, carnes a la brasa, pescados y postres caseros.`
+		 En ellos podrás degustar distintos platos locales y regionales, carnes y pescados a la brasa, tapas, pinchos y postres caseros.`
 	},
 	{
 		_id:"2",
 		title: 'Pizzería',
-		image: "assets/activities/services/laforchetta.jpg",
-		imageModal:"assets/activities/services/laforchetta_back.jpg",
-		detail:`El centro de Arroyo Frío cuenta con la pizzería La Forchetta que ofrece una amplia variedad de pizzas además de otros platos de cocina italiana:
+		image: "assets/activities/services/pizzeria.jpg",
+		imageModal:"assets/activities/services/pizzeria_back.jpg",
+		detail:`El municipio cuenta con la pizzería La Forchetta que ofrece una carta con una extensa lista de pizzas además de otros platos de cocina italiana:
 		<ul>
 			<li>Pastas</li>
 			<li>Ensaladas</li>

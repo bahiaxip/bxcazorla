@@ -85,7 +85,7 @@ export class ActivityContentComponent implements OnInit {
       this._activityService.setModalAct(activity);
       this.active=false;
   }
-
+  //transición en la selección de activity
   //@HostListener('transitionend', ['$event'])
   onTransitionEnd(e:Event){    
     this.image = this.selectedImage;
