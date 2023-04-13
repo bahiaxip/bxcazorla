@@ -108,7 +108,11 @@
 .box_article{
 	margin:25px auto;
 	display:flex;
+	opacity:0;
 	width:100%;
+}
+.free_route{
+	/*transform:translate(-100%,0);*/
 }
 .article{
 	align-items:center;
