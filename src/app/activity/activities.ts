@@ -125,7 +125,7 @@ export const Activities2:GalleryActivities[] = [
 		title: 'Bar de copas',
 		image: "assets/activities/services/bardecopas.jpg",
 		imageModal:"assets/activities/services/bardecopas_back.jpg",
-		detail:`Aunque Arroyo Frío no es una zona de turismo dedicada al ocio nocturno, cuenta con varios pubs y bares donde poder disfrutar de un lugar distendido mientras tomar unas copas.
+		detail:`Aunque Arroyo Frío no es una zona de turismo dedicada al ocio nocturno, cuenta con varios pubs y bares donde poder pasar un rato agradable y desenfadado tomando unas copas.
 		<ul>
 			<li>Pub Lara</li>
 			<li>Pub Nydo</li>
@@ -145,7 +145,7 @@ export const Activities2:GalleryActivities[] = [
 		title: 'Sala de spa',
 		image: "assets/activities/services/spa.jpg",
 		imageModal:"assets/activities/services/spa_back.jpg",
-		detail:"Arroyo Frío cuenta con una sala de Spa ubicada en el Hotel Balneario donde acudir para relajarse, ideal después de unos días de rutas y actividades."
+		detail:"Arroyo Frío cuenta con una sala de Spa ubicada en el Hotel Balneario donde poder acudir para relajarse, ideal después de un día intenso de actividad."
 	},
 	
 	
