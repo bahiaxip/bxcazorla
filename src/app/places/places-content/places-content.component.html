@@ -1,7 +1,7 @@
 <div class="flex_content">
 <!-- modal -->
 	<div class="modal_detail" [ngStyle]="switchModal ? {'transform':'scale(1)'}:{'transform':'scale(0)'}">					
-		<mat-icon style="color:white;position:absolute;right:2%;top:2%;cursor:pointer" (click)="switchModal=false;">close</mat-icon>		
+		<mat-icon class="icon" (click)="switchModal=false;">close</mat-icon>		
 		<h2 class="modal_title" >{{titleModal}}</h2>
 		<img class="modal_image" src="{{imageModal}}" />
 		<p class="modal_text">{{textModal}}</p>
