@@ -141,7 +141,7 @@
 	cursor:pointer;
 	background-color: transparent;
 	background-position: center;
-	background-image: radial-gradient(circle,transparent 1%, lightgreen 1%);
+	background-image: radial-gradient(circle,transparent 1%, #37E369 1%);
 	/*transition: background 0.6s linear,color 0.6s linear;*/
 	transition: background 0.6s linear;
 	background-size: 12000%;
@@ -197,7 +197,7 @@
 	background-position: bottom center;
 }
 .mainmenu .menu .optionmenu:hover{
-	color: lightgreen;
+	color: #37E360;
 	/*
 	background-image: url('../../assets/img/fondo_boton2.jpg');
 	background-position: center right;	
@@ -231,7 +231,7 @@
 .spanmenu:after{
 	content: attr(data-hover);
 	transition: width 0.5s ease-in;
-	color: lightgreen;
+	color: #37E360;
 	position: absolute;
 	left: 0;
 	width: 0;
