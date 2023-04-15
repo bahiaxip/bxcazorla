@@ -45,24 +45,24 @@
 }
 
 .linkedin_icon{
-	background: url("../../../assets/icons/linkedin_lightgreen.svg");	
+	background: url("../../../assets/icons/linkedin_greencolor.svg");	
 }
 .linkedin_icon:hover{
-	background-image: url("../../../assets/icons/linkedin_hover.svg");
+	background-image: url("../../../assets/icons/linkedin_hover_greencolor.svg");
 	background-size: 100%;
 	background-position: center center;
 }
 .facebook_icon{
-	background: url("../../../assets/icons/facebook_lightgreen.svg");
+	background: url("../../../assets/icons/facebook_greencolor.svg");
 }
 .facebook_icon:hover{
-	background: url("../../../assets/icons/facebook_hover.svg");	
+	background: url("../../../assets/icons/facebook_hover_greencolor.svg");	
 }
 .twitter_icon{
-	background: url("../../../assets/icons/twitter_lightgreen.svg");
+	background: url("../../../assets/icons/twitter_greencolor.svg");
 }
 .twitter_icon:hover{
-	background: url("../../../assets/icons/twitter_hover.svg");	
+	background: url("../../../assets/icons/twitter_hover_greencolor.svg");	
 }
 /* para imagen(<img>) anulado
 .miimage:hover{

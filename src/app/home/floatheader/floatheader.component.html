@@ -33,10 +33,10 @@
 					<img [src]="'../../../assets/icons/icons_weather_svg/'+iconWeather+'.png'" width="48"/>					
 				</div>
 				<div style="margin-left:3px">
-					<div style="color:lightgreen;display:flex;transition:all 0.4s linear;font-weight:bold;cursor:pointer" [ngStyle]="activeHeader ? {'font-size':'14px'}:{'font-size':'0px'}" [title]="'Temperatura: '+tempWeather+'ºC'" *ngIf="tempWeather">
+					<div style="color:#37E369;display:flex;transition:all 0.4s linear;font-weight:bold;cursor:pointer" [ngStyle]="activeHeader ? {'font-size':'14px'}:{'font-size':'0px'}" [title]="'Temperatura: '+tempWeather+'ºC'" *ngIf="tempWeather">
 						{{tempWeather}}ºC
 					</div>
-					<div style="color:lightgreen;display:flex;transition:all 0.4s linear;font-weight:bold;cursor:pointer" [ngStyle]="activeHeader ? {'font-size':'14px'}:{'font-size':'0px'}" [title]="'Humedad:'+humidityWeather+'%'" *ngIf="humidityWeather">
+					<div style="color:#37E369;display:flex;transition:all 0.4s linear;font-weight:bold;cursor:pointer" [ngStyle]="activeHeader ? {'font-size':'14px'}:{'font-size':'0px'}" [title]="'Humedad:'+humidityWeather+'%'" *ngIf="humidityWeather">
 						{{humidityWeather}}%
 					</div>
 				</div>
