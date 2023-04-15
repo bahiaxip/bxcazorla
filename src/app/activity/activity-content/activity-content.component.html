@@ -24,6 +24,9 @@
 					
 				<div class="hidden_modal" >
 					<div class="box_caption" [ngClass] = "{'show_info': showerInfo}" #caption>
+						<div style="position:absolute;width:100%;height:100%;display:flex;justify-content:flex-end" >
+							<mat-icon class="iconclose" [ngClass]="{'active':showerInfo}" (click)="showInfo()">close</mat-icon>
+						</div>
 						<div class="title">
 							<p *ngIf="panel=='panel0';else elseTitle">{{title}}</p>
 							<ng-template #elseTitle>

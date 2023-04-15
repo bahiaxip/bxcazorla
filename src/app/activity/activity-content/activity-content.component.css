@@ -24,7 +24,8 @@
 	position:relative;
 	overflow:hidden;
 }
-.ocio:hover .hidden_modal .box_caption,.ocio:hover .hidden_modal .box_icons{
+.ocio:hover .hidden_modal .box_caption,
+.ocio:hover .hidden_modal .box_icons{
 	transform:translate(0,0);	
 	opacity:1;
 	/*right:1px;*/
@@ -52,6 +53,25 @@
 	overflow:hidden;
 	transition:all 1s linear;
 	width:auto;
+}
+.ocio .hidden_modal .box_caption .iconclose{
+	color:#D3D3D3;
+	cursor:pointer;
+	opacity:0;
+	visibility: hidden;
+	margin-right:10px;
+	margin-top:10px;
+	transition:all .8s linear;
+}
+.ocio .hidden_modal .box_caption .iconclose.active{
+	opacity:1;
+	visibility: visible;
+}
+.ocio .hidden_modal .box_caption .iconclose:hover{
+	color:#FFF;
+}
+.ocio .hidden_modal .box_caption .iconclose:active{
+	color:#37E369;
 }
 
 .ocio .hidden_modal .box_caption.show_info{opacity:1;height:80%;overflow:auto }
