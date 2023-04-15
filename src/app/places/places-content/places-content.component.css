@@ -16,7 +16,7 @@
 	left: 10%;
 	/*visibility: hidden;*/
 	overflow: scroll;
-	transition: all 1s ease-out;
+	transition: all 1.5s ease-out;
 	transform: scale(0);
 }
 .flex_content .modal_detail .icon{
