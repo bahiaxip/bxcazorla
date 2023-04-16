@@ -89,8 +89,8 @@ export class CardService {
       list.push(activities);
       list.push(services);
     }else if(type=="renting"){
-      let rents="Buscador de alojamiento";
-      let feedrent = "Valoraciones de alojamiento";
+      let rents="Valoraciones de alojamiento";
+      let feedrent = "Buscador de alojamiento";
       let newrent="Publicar alojamiento";      
       list.push(rents);
       list.push(feedrent);
