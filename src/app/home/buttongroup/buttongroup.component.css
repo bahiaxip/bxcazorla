@@ -19,6 +19,21 @@
 	opacity:1;
 	visibility: visible;
 }
+.div_buttongroup .div_btn_mainmenu .btn_mainmenu{
+	background-color:rgba(69,46,0,1);
+	border:#463202 1px solid;
+	color: #696969;
+	height:55px;
+	position:relative;
+	width:55px;
+}
+.div_buttongroup .div_btn_mainmenu .btn_mainmenu:hover{
+	border:#655729 1px solid;
+	color:#D3D3D3;
+}
+.div_buttongroup .div_btn_mainmenu .btn_mainmenu:active{
+	color:#FFF;
+}
 				/*** buttons, button-group **/
 
 .button_group{

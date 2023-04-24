@@ -82,6 +82,9 @@
 .mainmenu .btn_close.right:hover{
 	color:#FFF;
 }
+.mainmenu .btn_close.right:active{
+	color:#37E369;
+}
 
 .mainmenu .menu{
 	width:100%;
