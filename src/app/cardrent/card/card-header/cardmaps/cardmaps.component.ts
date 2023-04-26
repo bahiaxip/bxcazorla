@@ -28,8 +28,12 @@ export class CardmapsComponent implements OnInit {
       let card=this._cardrentService.getSelectedCard();
       
       if(card.maps){
+        console.log("MAPS: ",card.maps)
         this.maps=card.maps;
-        this.iframe.nativeElement.innerHTML=this.maps;       
+        setTimeout(()=>{
+          this.iframe.nativeElement.innerHTML=this.maps;
+        },1000)
+        
         this.iframe.nativeElement.firstElementChild.style.width=this.maxWidthBannerp3+'px';
       }else{
         this.iframe.nativeElement.innerHTML='<div style="margin:auto"><p style="text-align:center;color:white">Ubicación no disponible</p></div>';  
