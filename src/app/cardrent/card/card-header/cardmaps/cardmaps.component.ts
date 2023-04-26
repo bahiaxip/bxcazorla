@@ -30,10 +30,7 @@ export class CardmapsComponent implements OnInit {
       if(card.maps){
         console.log("MAPS: ",card.maps)
         this.maps=card.maps;
-        setTimeout(()=>{
-          this.iframe.nativeElement.innerHTML=this.maps;
-        },1000)
-        
+        //this.iframe.nativeElement.innerHTML=this.maps;       
         this.iframe.nativeElement.firstElementChild.style.width=this.maxWidthBannerp3+'px';
       }else{
         this.iframe.nativeElement.innerHTML='<div style="margin:auto"><p style="text-align:center;color:white">Ubicación no disponible</p></div>';  
