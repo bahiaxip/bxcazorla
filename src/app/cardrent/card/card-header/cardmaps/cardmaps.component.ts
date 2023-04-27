@@ -13,7 +13,6 @@ export class CardmapsComponent implements OnInit {
   public subscriptionHeight:any;
   public maps:any;
   public heightMaps:any=0;
-  public midato:any;
 
   @ViewChild('iframe',{static:true}) private iframe!:ElementRef;
   
@@ -31,9 +30,7 @@ export class CardmapsComponent implements OnInit {
       if(card.maps){
         console.log("MAPS: ",card.maps)
         this.maps=card.maps;
-        //this.iframe.nativeElement.innerHTML=this.maps;
-        this.midato = this.maps;
-        console.log("this.midato: ",this.midato)
+        //this.iframe.nativeElement.innerHTML=this.maps;       
         this.iframe.nativeElement.firstElementChild.style.width=this.maxWidthBannerp3+'px';
       }else{
         this.iframe.nativeElement.innerHTML='<div style="margin:auto"><p style="text-align:center;color:white">Ubicación no disponible</p></div>';  
