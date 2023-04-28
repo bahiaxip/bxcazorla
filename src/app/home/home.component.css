@@ -721,11 +721,11 @@ mat-button-toggle:hover{
 }*/
 @font-face{
 	font-family:QuicksandB;
-	src:url('../../assets/fonts/quicksand/Quicksand-Bold.ttf');
+	src:url('../../assets/fonts/quicksand/Quicksand-Bold.ttf') format("truetype");
 }
 @font-face{
 	font-family:QuicksandR;
-	src:url('../../assets/fonts/quicksand/Quicksand-Regular.ttf');
+	src:url('../../assets/fonts/quicksand/Quicksand-Regular.ttf') format("truetype");
 }
 
 
