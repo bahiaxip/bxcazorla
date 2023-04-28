@@ -85,14 +85,14 @@
 .ocio .hidden_modal .box_caption.show_info .title{padding-top:30px }
 .ocio .hidden_modal .box_caption .title p{
 	color:#FFF;
-	font-family:Quicksand;
+	font-family:QuicksandB;
 	font-size:18px;
 	font-weight:bold;
 }
 .ocio .hidden_modal .box_caption .text_info{
 	color:#D3D3D3;
 	margin:auto;
-	font-family:Quicksand;
+	font-family:QuicksandB;
 	font-size:16px;
 	font-weight:bold;
 	/*transition:font-size .3s ease-in ;*/
