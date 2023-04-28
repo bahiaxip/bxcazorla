@@ -84,7 +84,7 @@ html,body{
 	width:80%;
 }
 .nav_header .header .nav_title p{
-	font-family:Quicksand;
+	font-family:QuicksandB;
 	font-size:20px;
 	font-weight:bold;
 }
@@ -102,7 +102,7 @@ html,body{
 
 .bx_tooltip{
 	background-color: #353535;
-	font-family:Quicksand;
+	font-family:QuicksandB;
 	font-weight: bold;
 	font-size:13px;
 }
