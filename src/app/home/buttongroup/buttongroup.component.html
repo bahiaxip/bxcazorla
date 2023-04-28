@@ -2,27 +2,35 @@
 <div class="div_buttongroup" style="">
 	<mat-button-toggle-group  name="matButtonToggleGroup" class="button_group" vertical [value]="buttonValue">
 		<mat-button-toggle (click)="setSection(1)" value="home" class="btn">
-			<mat-icon *ngIf="firstwidth>750" matTooltipClass="bx_tooltip" matTooltip="Inicio">home</mat-icon>
-			<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Inicio">circle</mat-icon>
+			<!--opción a botón pequeño anulado -->
+			<!-- <mat-icon *ngIf="firstwidth>750" matTooltipClass="bx_tooltip" matTooltip="Inicio">home</mat-icon>
+			<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Inicio">circle</mat-icon> -->
+			<mat-icon matTooltipClass="bx_tooltip" matTooltip="Inicio">home</mat-icon>
 		</mat-button-toggle>
 		<mat-button-toggle (click)="setSection(2)" value="places" class="btn">
 				<!-- twotone -->
 				<!-- <i class="material-icons material-icons-two-tone" *ngIf="firstwidth>750"> -->
-					<i class="material-icons" matTooltipClass="bx_tooltip" matTooltip="Lugares" *ngIf="firstwidth>750">nature_people</i>
-			<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Lugares">circle</mat-icon>
+					<!-- <i class="material-icons" matTooltipClass="bx_tooltip" matTooltip="Lugares" *ngIf="firstwidth>750">nature_people</i>
+			<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Lugares">circle</mat-icon> -->
+				<i class="material-icons" matTooltipClass="bx_tooltip" matTooltip="Lugares" >nature_people</i>
 		</mat-button-toggle>
 		<mat-button-toggle (click)="setSection(3)" value="entertainment" class="btn">
-			<i class="material-icons material-icons-outlined" *ngIf="firstwidth>750" matTooltipClass="bx_tooltip" matTooltip="Actividades">hiking</i>
-			<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Actividades">circle</mat-icon>
+			<!-- <i class="material-icons material-icons-outlined" *ngIf="firstwidth>750" matTooltipClass="bx_tooltip" matTooltip="Actividades">hiking</i>
+			<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Actividades">circle</mat-icon> -->
+			<i class="material-icons material-icons-outlined" matTooltipClass="bx_tooltip" matTooltip="Actividades">hiking</i>
 		</mat-button-toggle>
 		<mat-button-toggle (click)="setSection(4)" value="rent" class="btn">
-			<i class="material-icons material-icons-sharp" *ngIf="firstwidth>750" matTooltipClass="bx_tooltip" matTooltip="Alojamiento">bedroom_parent</i>
-			<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Alojamiento">circle</mat-icon>
+			<!-- <i class="material-icons material-icons-sharp" *ngIf="firstwidth>750" matTooltipClass="bx_tooltip" matTooltip="Alojamiento">bedroom_parent</i>
+			<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Alojamiento">circle</mat-icon> -->
+			<i class="material-icons material-icons-sharp" matTooltipClass="bx_tooltip" matTooltip="Alojamiento">bedroom_parent</i>
 		</mat-button-toggle>
 		<mat-button-toggle (click)="setSection(5)" value="gallery" (dblclick)="fillDB()" class="btn">
-			<mat-icon>
+			<!-- <mat-icon>
 				<i class="material-icons-round" *ngIf="firstwidth>750" matTooltipClass="bx_tooltip" matTooltip="Galería">photo_library</i>
 				<mat-icon *ngIf="firstwidth<750" class="icongroup_min" matTooltipClass="bx_tooltip" matTooltip="Galería">circle</mat-icon>
+			</mat-icon> -->
+			<mat-icon>
+				<i class="material-icons-round" matTooltipClass="bx_tooltip" matTooltip="Galería">photo_library</i>
 			</mat-icon>
 		</mat-button-toggle>
 	<!-- modal para recargar valores por defecto -->
