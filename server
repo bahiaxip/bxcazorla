@@ -1,0 +1,6 @@
+Cambios necesarios para server:
+
+- Modificar la ruta global desde src/app/shared/global.ts para server: http://85.208.20.18:3900
+- Generar un .htaccess en el directorio dist después de cada build para permitir la recarga de la página.
+- Si genera error "... budgets..." con el comando ng build aumentar las propiedades maximumWarning a 2mb y maximumError a 5mb.
+

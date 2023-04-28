@@ -673,7 +673,7 @@ mat-button-toggle:hover{
 
 @font-face{
 	font-family: "Usuzi";
-	src:url('../../assets/fonts/usuzi.ttf');
+	src:url('../../assets/fonts/usuzi.ttf') format("truetype");
 }
 @font-face{
 	font-family: "YanoneBold";
@@ -719,6 +719,14 @@ mat-button-toggle:hover{
 	font-family: "RaspoutineDemiBold";
 	src: url('../../assets/fonts/RaspoutineDemiBold_TF.otf');
 }*/
+@font-face{
+	font-family:QuicksandB;
+	src:url('../../assets/fonts/quicksand/Quicksand-Bold.ttf');
+}
+@font-face{
+	font-family:QuicksandR;
+	src:url('../../assets/fonts/quicksand/Quicksand-Regular.ttf');
+}
 
 
 
