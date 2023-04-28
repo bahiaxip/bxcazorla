@@ -98,7 +98,7 @@
 
 .content_renting{
 	font-size: 16px;
-	font-family: Quicksand;
+	font-family: QuicksandB;
 	font-weight: bold;
 	/*background-color: rgba(0,0,0,.8);*/
 	/*background: #f3ffea;*/
@@ -116,7 +116,7 @@
 	/*border-radius:10px;*/
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
-	font-family:Quicksand;
+	font-family:QuicksandB;
 }
 .content_renting .price_tmp{
 	width:90%;
@@ -125,7 +125,7 @@
 	margin:2px auto;
 	/*padding: 0 2px;*/
 	border-radius:10px;
-	font-family:Quicksand;
+	font-family:QuicksandB;
 }
 .content_renting .price .div_price_item{
 	/*
